@@ -61,6 +61,15 @@ namespace LocalizationEngine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Акула смуглява (Carcharhinus obscurus) — акула з роду Сіра акула родини Сірі акули..
+        /// </summary>
+        internal static string SharkText {
+            get {
+                return ResourceManager.GetString("SharkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ІНДЕКС.
         /// </summary>
         internal static string TestString {
