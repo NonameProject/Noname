@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Noname.Business.Components
+{
+    public static class EnvironmentInfo
+    {
+        public static string Host
+        {
+            get
+            {
+                return "http://subbotnik.azurewebsites.net";
+            }
+            private set
+            {
+            }
+        }
+        public static string Email
+        {
+            get
+            {
+                return "team2project222@gmail.com";
+            }
+            private set
+            {
+            }
+        }
+
+        public static string ReminderCacheName
+        {
+            get
+            {
+                return "Reminder";
+            }
+            private set
+            {
+            }
+        }
+    }
+}
