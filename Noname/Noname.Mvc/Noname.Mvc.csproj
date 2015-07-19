@@ -247,13 +247,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ProjectReference Include="..\Localization\Localization.csproj">
-      <Project>{9d54f459-a56c-4d36-a5c9-f8b694651a81}</Project>
-      <Name>Localization</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Views\TestLocalization.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TestLocalization.Designer.cs</LastGenOutput>
@@ -261,13 +254,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\TestLocalization.en-US.resx" />
   </ItemGroup>
-=======
+  <ItemGroup>
     <ProjectReference Include="..\LocalizationEngine\LocalizationEngine.csproj">
       <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
       <Name>LocalizationEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Localization\Localization.csproj">
+      <Project>{9d54f459-a56c-4d36-a5c9-f8b694651a81}</Project>
+      <Name>Localization</Name>
+    </ProjectReference>
   </ItemGroup>
->>>>>>> 41d3e69932f4464173372529bed79c8931273f47
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
