@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Resx = Noname.Mvc.Resources.Views.TestLocalization;
+
+<ul>
+    <li>@Html.ActionLink("Українська", "ChangeLang", "TestLocalization", new { lang = "uk-UA", returnUrl = Url.Encode(Request.RawUrl) }, null)</li>
+    <li>@Html.ActionLink("English", "ChangeLang", "TestLocalization", new { lang = "en-US", returnUrl = Url.Encode(Request.RawUrl) }, null)</li>
+</ul>
+
+<h1>@Resx.Test</h1>
