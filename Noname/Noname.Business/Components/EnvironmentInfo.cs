@@ -12,7 +12,7 @@ namespace Noname.Business.Components
         {
             get
             {
-                return "http://subbotnik.azurewebsites.net";
+                return "http://noname.azurewebsites.net";
             }
             private set
             {
@@ -22,7 +22,7 @@ namespace Noname.Business.Components
         {
             get
             {
-                return "team2project222@gmail.com";
+                return "noname@gmail.com";
             }
             private set
             {
