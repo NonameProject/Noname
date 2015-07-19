@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Noname.Mvc.Components.CustomExceptions;
+using StackExchange.Profiling;
 
 namespace Noname.Mvc
 {
@@ -34,5 +35,17 @@ namespace Noname.Mvc
             }
         }
 
+        protected void Application_BeginRequest()
+        {
+            if (Request.IsLocal)
+            {
+                MiniProfiler.Start();
+            }
+        }
+
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop();
+        }
     }
 }
