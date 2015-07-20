@@ -38,10 +38,7 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-            if (Request.IsLocal)
-            {
                 MiniProfiler.Start();
-            }
         }
 
         protected void Application_EndRequest()

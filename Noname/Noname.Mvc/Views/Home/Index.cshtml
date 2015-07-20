@@ -12,3 +12,76 @@
 <div>
     @LEngine.GetLocalizedString("SharkText", Request.RequestContext)
 </div>
+<div id="container" style="min-width: 500px; height: 400px; margin: 30px; float: left"></div>
+<div id="container1" style="min-width: 500px; height: 400px; margin: 30px; float: left"></div>
+<script type="text/javascript">
+    $(function () {
+        var obj = new Object();
+        obj = [{
+            name: 'Плата за обучение',
+            data: [[900, 1], [1100, 2], [1200, 3], [1300, 4], [1400, 5]]
+            },
+        {
+            name: 'Уровень зарплаты',
+            data: [[800, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]]
+        }]
+        drawCharts("#container", obj, "Уровень платы за обучение и уровень зарплаты спустя N лет после начала учебы");
+        drawCharts("#container1", obj, "Cуммарные затраты на образование и суммарный заработок спустя N лет после начала учебы");
+        function drawCharts(conteiner, dataObj, title) {
+            $(conteiner).highcharts({
+                chart: {
+                    type: 'spline',
+                    inverted: true
+                },
+                title: {
+                    text: title
+                },
+                subtitle: {
+                    text: 'Очень крутой график'
+                },
+                xAxis: {
+                    reversed: false,
+                    title: {
+                        enabled: true,
+                        text: 'Деньги (грн)'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    },
+                    maxPadding: 0.1,
+                    showLastLabel: true,
+                    //gridLineWidth: 0.5
+                    tickInterval: 1000
+                },
+                yAxis: {
+                    title: {
+                        text: "Время(лет)"
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    },
+                    lineWidth: 1
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br/>',
+                    pointFormat: 'прибыль: {point.x}, год: {point.y}'
+                },
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            enable: false
+                        }
+                    }
+                },
+                series: dataObj
+            });
+        }
+    });
+</script>
