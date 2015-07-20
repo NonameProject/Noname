@@ -24,17 +24,19 @@ namespace Localization
             }
 
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
+            var cookieLocaleValue = cookieLocale.Value;
             if (cookieLocale != null)
             {
                 if (!SupportedCultures.Exist(cookieLocale.Value))
                 {
-                    requestContext.HttpContext.Request.Cookies.Add(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
+                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
+                    cookieLocaleValue = SupportedCultures.DefaultLocalization;
                 }
 
-                if (!cookieLocale.Value.Equals(urlLocale, StringComparison.OrdinalIgnoreCase))
+                if (!cookieLocaleValue.Equals(cultureName, StringComparison.OrdinalIgnoreCase))
                 {
                     var routeValues = requestContext.RouteData.Values;
-                    routeValues["culture"] = cookieLocale.Value;
+                    routeValues["culture"] = cookieLocaleValue;
 
                     var queryString = requestContext.HttpContext.Request.QueryString;
                     foreach (var key in queryString.AllKeys)
@@ -49,7 +51,7 @@ namespace Localization
                 }
                 else
                 {
-                    cultureName = cookieLocale.Value;
+                    cultureName = cookieLocaleValue;
                 }
             }
 

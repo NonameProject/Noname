@@ -13,14 +13,17 @@ namespace Localization
 
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
 
-            if (!SupportedCultures.Exist(cookieLocale.Value))
-            {
-                requestContext.HttpContext.Request.Cookies.Add(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
-            }
-
             if (cookieLocale != null)
             {
-                routeValues["culture"] = cookieLocale.Value;
+                if (!SupportedCultures.Exist(cookieLocale.Value))
+                {
+                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
+                    routeValues["culture"] = SupportedCultures.DefaultLocalization;
+                }
+                else 
+                {
+                    routeValues["culture"] = cookieLocale.Value;
+                }
             }
             else
             {

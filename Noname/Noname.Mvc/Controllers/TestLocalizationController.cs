@@ -16,7 +16,7 @@ namespace Noname.Mvc.Controllers
             return View();
         }
 
-        public ActionResult ChangeLang(string lang, string returnUrl)
+        public ActionResult ChangeCulture(string lang, string returnUrl)
         {
             var langCookie = new HttpCookie("locale", lang) { HttpOnly = true };
             Response.AppendCookie(langCookie);

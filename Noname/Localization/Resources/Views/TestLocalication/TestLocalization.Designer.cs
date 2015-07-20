@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Noname.Mvc.Resources.Views {
+namespace Localization.Resources.Views.TestLocalication {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Noname.Mvc.Resources.Views {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Noname.Mvc.Resources.Views.TestLocalization", typeof(TestLocalization).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Localization.Resources.Views.TestLocalication.TestLocalization", typeof(TestLocalization).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -71,7 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultLocalizations.cs" />
+    <Compile Include="SupportedCultures.cs" />
+    <Compile Include="Resources\Views\TestLocalication\TestLocalization.Designer.cs">
+      <DependentUpon>TestLocalization.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="RouteHandlers\LocalizationRedirectRouteHandler.cs" />
     <Compile Include="RouteHandlers\LocalizedRouteHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +88,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Views\TestLocalication\TestLocalization.en-US.resx" />
+    <EmbeddedResource Include="Resources\Views\TestLocalication\TestLocalization.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestLocalization.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
