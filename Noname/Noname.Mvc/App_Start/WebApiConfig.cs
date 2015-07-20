@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace Noname.Mvc
+namespace Abitcareer.Mvc
 {
     public static class WebApiConfig
     {

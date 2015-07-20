@@ -10,7 +10,7 @@ namespace Localization
     {
         public static List<string> Cultures = new List<string>();
 
-        public static string DefaultLocalization { get; set; }
+        public static string DefaultCulture { get; set; }
 
         public static bool Exist(string cultureName)
         {

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noname.Mvc", "Noname.Mvc\Noname.Mvc.csproj", "{82076B17-C5EB-4F7B-919E-C1C9FDC894F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Mvc", "Noname.Mvc\Abitcareer.Mvc.csproj", "{82076B17-C5EB-4F7B-919E-C1C9FDC894F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noname.Business", "Noname.Business\Noname.Business.csproj", "{E046AE62-7298-4EE3-A7F5-9BD8CFDB2BBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Business", "Noname.Business\Abitcareer.Business.csproj", "{E046AE62-7298-4EE3-A7F5-9BD8CFDB2BBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noname.Web", "Noname.Web\Noname.Web.csproj", "{4FA94125-01AD-46C5-B6DA-E9FF2CC95070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Web", "Noname.Web\Abitcareer.Web.csproj", "{4FA94125-01AD-46C5-B6DA-E9FF2CC95070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noname.Core", "Noname.Core\Noname.Core.csproj", "{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Core", "Noname.Core\Abitcareer.Core.csproj", "{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C71C184-6742-47A8-B50B-16E53D2F8697}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,11 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C71C1
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-<<<<<<< HEAD
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization", "Localization\Localization.csproj", "{9D54F459-A56C-4D36-A5C9-F8B694651A81}"
-=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Localization", "Localization\Abitcareer.Localization.csproj", "{9D54F459-A56C-4D36-A5C9-F8B694651A81}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationEngine", "LocalizationEngine\LocalizationEngine.csproj", "{25F4500E-2BC2-41A0-A266-D377DE8FAF07}"
->>>>>>> 41d3e69932f4464173372529bed79c8931273f47
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,17 +44,14 @@ Global
 		{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{9D54F459-A56C-4D36-A5C9-F8B694651A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D54F459-A56C-4D36-A5C9-F8B694651A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D54F459-A56C-4D36-A5C9-F8B694651A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D54F459-A56C-4D36-A5C9-F8B694651A81}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{25F4500E-2BC2-41A0-A266-D377DE8FAF07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{25F4500E-2BC2-41A0-A266-D377DE8FAF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25F4500E-2BC2-41A0-A266-D377DE8FAF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25F4500E-2BC2-41A0-A266-D377DE8FAF07}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 41d3e69932f4464173372529bed79c8931273f47
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

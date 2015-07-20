@@ -7,10 +7,10 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Noname.Mvc.Components.CustomExceptions;
+using Abitcareer.Mvc.Components.CustomExceptions;
 using StackExchange.Profiling;
 
-namespace Noname.Mvc
+namespace Abitcareer.Mvc
 {
     // Примечание: Инструкции по включению классического режима IIS6 или IIS7 
     // см. по ссылке http://go.microsoft.com/?LinkId=9394801

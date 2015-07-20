@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Noname.Mvc.Components.CustomExceptions
+namespace Abitcareer.Mvc.Components.CustomExceptions
 {
     public class JavaScriptException : Exception
     {

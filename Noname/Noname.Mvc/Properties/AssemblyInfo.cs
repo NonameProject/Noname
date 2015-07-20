@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // общие сведения об этой сборке.
-[assembly: AssemblyTitle("Noname.Mvc")]
+[assembly: AssemblyTitle("Abitcareer.Mvc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Noname.Mvc")]
+[assembly: AssemblyProduct("Abitcareer.Mvc")]
 [assembly: AssemblyCopyright("© , 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

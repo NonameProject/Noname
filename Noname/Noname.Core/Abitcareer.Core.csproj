@@ -7,8 +7,8 @@
     <ProjectGuid>{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Noname.Core</RootNamespace>
-    <AssemblyName>Noname.Core</AssemblyName>
+    <RootNamespace>Abitcareer.Core</RootNamespace>
+    <AssemblyName>Abitcareer.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Noname.Mvc
+namespace Abitcareer.Mvc
 {
     public class BundleConfig
     {
