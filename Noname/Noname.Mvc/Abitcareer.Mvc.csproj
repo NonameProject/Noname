@@ -254,9 +254,9 @@
       <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
       <Name>LocalizationEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Localization\Localization.csproj">
+    <ProjectReference Include="..\Localization\Abitcareer.Localization.csproj">
       <Project>{9d54f459-a56c-4d36-a5c9-f8b694651a81}</Project>
-      <Name>Localization</Name>
+      <Name>Abitcareer.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
