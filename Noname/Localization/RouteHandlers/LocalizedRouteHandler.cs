@@ -49,10 +49,6 @@ namespace Localization
 
                     return new RedirectHandler(new UrlHelper(requestContext).RouteUrl(routeValues));
                 }
-                else
-                {
-                    cultureName = cookieLocaleValue;
-                }
             }
 
             if (cultureName == "")
