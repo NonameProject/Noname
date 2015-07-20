@@ -34,9 +34,12 @@ namespace LocalizationEngine
         /// <param name="cultureName">Name of culture that will be registered</param>
         private static void RegisterLocalization(string cultureName)
         {
-            SupportedLocalizations.Add(cultureName);
-            var resourceName = (cultureName == DefaultLocalization) ? "LocalizationEngine.Localization" : "LocalizationEngine.Localization." + cultureName.Replace('-', '.');
-            ResourceManagers[cultureName] = new ResourceManager(resourceName, typeof(LEngine).Assembly);
+            if (!SupportedLocalizations.Contains(cultureName))
+            {
+                SupportedLocalizations.Add(cultureName);
+                var resourceName = (cultureName == DefaultLocalization) ? "LocalizationEngine.Localization" : "LocalizationEngine.Localization." + cultureName.Replace('-', '.');
+                ResourceManagers[cultureName] = new ResourceManager(resourceName, typeof(LEngine).Assembly);
+            }          
         }
 
         /// <summary>
