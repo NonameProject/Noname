@@ -24,9 +24,10 @@ namespace Localization
             }
 
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
-            var cookieLocaleValue = cookieLocale.Value;
             if (cookieLocale != null)
             {
+                var cookieLocaleValue = cookieLocale.Value;
+
                 if (!SupportedCultures.Exist(cookieLocale.Value))
                 {
                     requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
