@@ -10,8 +10,8 @@ namespace Abitcareer.Mvc
     {
         public static void RegisterSupportedCultures()
         {
-            SupportedCultures.DefaultLocalization = "uk-UA";
-            SupportedCultures.AddLocalization(SupportedCultures.DefaultLocalization);
+            SupportedCultures.DefaultCulture = "uk-UA";
+            SupportedCultures.AddLocalization(SupportedCultures.DefaultCulture);
             SupportedCultures.AddLocalization("en-US");
             SupportedCultures.AddLocalization("ru-RU");
         }

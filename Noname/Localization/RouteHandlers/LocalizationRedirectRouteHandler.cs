@@ -17,8 +17,8 @@ namespace Localization
             {
                 if (!SupportedCultures.Exist(cookieLocale.Value))
                 {
-                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
-                    routeValues["culture"] = SupportedCultures.DefaultLocalization;
+                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultCulture));
+                    routeValues["culture"] = SupportedCultures.DefaultCulture;
                 }
                 else 
                 {
@@ -27,8 +27,7 @@ namespace Localization
             }
             else
             {
-                var uiCulture = CultureInfo.CurrentUICulture;
-                routeValues["culture"] = uiCulture.Name;
+                routeValues["culture"] = SupportedCultures.DefaultCulture;
             }
 
             var queryString = requestContext.HttpContext.Request.QueryString;

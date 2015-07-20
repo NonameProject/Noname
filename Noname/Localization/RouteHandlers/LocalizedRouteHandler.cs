@@ -20,7 +20,7 @@ namespace Localization
 
             if (!SupportedCultures.Exist(cultureName))
             {
-                cultureName = SupportedCultures.DefaultLocalization;
+                cultureName = SupportedCultures.DefaultCulture;
             }
 
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
@@ -30,8 +30,8 @@ namespace Localization
 
                 if (!SupportedCultures.Exist(cookieLocale.Value))
                 {
-                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
-                    cookieLocaleValue = SupportedCultures.DefaultLocalization;
+                    requestContext.HttpContext.Request.Cookies.Set(new HttpCookie("locale", SupportedCultures.DefaultCulture));
+                    cookieLocaleValue = SupportedCultures.DefaultCulture;
                 }
 
                 if (!cookieLocaleValue.Equals(cultureName, StringComparison.OrdinalIgnoreCase))
@@ -77,9 +77,8 @@ namespace Localization
 
         private static IHttpHandler GetDefaultLocaleRedirectHandler(RequestContext requestContext)
         {
-            var uiCulture = CultureInfo.CurrentUICulture;
             var routeValues = requestContext.RouteData.Values;
-            routeValues["culture"] = uiCulture.Name;
+            routeValues["culture"] = SupportedCultures.DefaultCulture;
             return new RedirectHandler(new UrlHelper(requestContext).RouteUrl(routeValues));
         }
     }
