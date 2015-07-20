@@ -12,7 +12,7 @@ namespace Abitcareer.Business.Components
         {
             get
             {
-                return "http://noname.azurewebsites.net";
+                return "http://abitcareer.azurewebsites.net";
             }
             private set
             {
@@ -22,7 +22,7 @@ namespace Abitcareer.Business.Components
         {
             get
             {
-                return "noname@gmail.com";
+                return "abitcareer@gmail.com";
             }
             private set
             {
