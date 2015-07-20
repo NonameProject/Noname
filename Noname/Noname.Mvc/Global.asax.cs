@@ -47,5 +47,21 @@ namespace Noname.Mvc
         {
             MiniProfiler.Stop();
         }
+
+        //for specific users
+        private bool IsUserAllowedToSeeMiniProfilerUI(HttpRequest httpRequest)
+        {
+            var principal = httpRequest.RequestContext.HttpContext.User;
+            return principal.IsInRole("admin");
+        }
+
+        //Database
+        /*public static DbConnection GetOpenConnection()
+        {
+            var cnn = CreateRealConnection(); // A SqlConnection, SqliteConnection ... or whatever
+
+            // wrap the connection with a profiling connection that tracks timings 
+            return new StackExchange.Profiling.Data.ProfiledDbConnection(cnn, MiniProfiler.Current);
+        }*/
     }
 }
