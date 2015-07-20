@@ -18,9 +18,19 @@ namespace Localization
             var urlLocale = requestContext.RouteData.Values["culture"] as string;
             var cultureName = urlLocale ?? "";
 
+            if (!SupportedCultures.Exist(cultureName))
+            {
+                cultureName = SupportedCultures.DefaultLocalization;
+            }
+
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
             if (cookieLocale != null)
             {
+                if (!SupportedCultures.Exist(cookieLocale.Value))
+                {
+                    requestContext.HttpContext.Request.Cookies.Add(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
+                }
+
                 if (!cookieLocale.Value.Equals(urlLocale, StringComparison.OrdinalIgnoreCase))
                 {
                     var routeValues = requestContext.RouteData.Values;

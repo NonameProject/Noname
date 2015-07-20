@@ -12,6 +12,12 @@ namespace Localization
             var routeValues = requestContext.RouteData.Values;
 
             var cookieLocale = requestContext.HttpContext.Request.Cookies["locale"];
+
+            if (!SupportedCultures.Exist(cookieLocale.Value))
+            {
+                requestContext.HttpContext.Request.Cookies.Add(new HttpCookie("locale", SupportedCultures.DefaultLocalization));
+            }
+
             if (cookieLocale != null)
             {
                 routeValues["culture"] = cookieLocale.Value;
