@@ -1,5 +1,14 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<h2 style="text-align: center">
+    @Html.ActionLink("Русский", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "ru-RU", returnUrl = Url.Encode(Request.RawUrl) }, null)
+    @Html.ActionLink("Українська", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "uk-UA", returnUrl = Url.Encode(Request.RawUrl) }, null)
+    @Html.ActionLink("English", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "en-US", returnUrl = Url.Encode(Request.RawUrl) }, null)
+</h2>
+<h1 style="text-align: center">
+    @LEngine.GetLocalizedString("TestString", Request.RequestContext)
+</h1>
+<div>
+    @LEngine.GetLocalizedString("SharkText", Request.RequestContext)
+</div>

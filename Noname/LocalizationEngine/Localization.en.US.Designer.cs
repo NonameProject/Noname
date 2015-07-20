@@ -61,6 +61,15 @@ namespace LocalizationEngine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The dusky shark (Carcharhinus obscurus) is a species of requiem shark, in the family Carcharhinidae, occurring in tropical and warm-temperate continental seas worldwide. A generalist apex predator, the dusky shark can be found from the coast to the outer continental shelf and adjacent pelagic waters, and has been recorded from a depth of 400 m (1,300 ft)..
+        /// </summary>
+        internal static string SharkText {
+            get {
+                return ResourceManager.GetString("SharkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Index.
         /// </summary>
         internal static string TestString {

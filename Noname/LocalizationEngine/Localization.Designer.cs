@@ -61,6 +61,15 @@ namespace LocalizationEngine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Тёмная акула[1][2], или белопёрая акула[2], или сумеречная акула[3][2], или тёмная акула-собака[2] (лат. Carcharhinus obscurus) — хищная рыба семейства серых акул отряда Кархаринообразных..
+        /// </summary>
+        internal static string SharkText {
+            get {
+                return ResourceManager.GetString("SharkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ИНДЕКС.
         /// </summary>
         internal static string TestString {
