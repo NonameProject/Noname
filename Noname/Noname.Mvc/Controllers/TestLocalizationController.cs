@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Noname.Mvc.Controllers
+namespace Abitcareer.Mvc.Controllers
 {
     public class TestLocalizationController : Controller
     {

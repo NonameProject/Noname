@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Caching;
-using Noname.Business.Interfaces;
+using Abitcareer.Business.Interfaces;
 
-namespace Noname.Business.Components
+namespace Abitcareer.Business.Components
 {
     public abstract class BaseManager
     {

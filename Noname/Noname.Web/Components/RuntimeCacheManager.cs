@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Caching;
-using Noname.Business.Components;
-using Noname.Business.Interfaces;
+using Abitcareer.Business.Components;
+using Abitcareer.Business.Interfaces;
 
-namespace Noname.Web.Components
+namespace Abitcareer.Web.Components
 {
     public class RuntimeCacheManager : ICacheManager
     {

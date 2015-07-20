@@ -7,7 +7,7 @@ using System.Web.Routing;
 using Localization;
 
 
-namespace Noname.Mvc
+namespace Abitcareer.Mvc
 {
     public class RouteConfig
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Noname.Business.Components
+namespace Abitcareer.Business.Components
 {
     public static class EnvironmentInfo
     {

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Http.Filters;
 
-namespace Noname.Mvc
+namespace Abitcareer.Mvc
 {
     public class FilterConfig
     {

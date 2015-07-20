@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Caching;
 
-namespace Noname.Business.Interfaces
+namespace Abitcareer.Business.Interfaces
 {
     public interface ICacheManager
     {
