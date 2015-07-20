@@ -61,6 +61,8 @@ namespace LocalizationEngine
         public static string GetLocalizedString(string key, RequestContext context)
         {
             var currentLocalization = context.HttpContext.Request.Cookies["locale"].Value;
+            if (!SupportedLocalizations.Contains(currentLocalization))
+                currentLocalization = DefaultLocalization;
             return ResourceManagers[currentLocalization].GetString(key);
         }
 
