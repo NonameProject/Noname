@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="PaymentsCaption" xml:space="preserve">
+    <value>Level of tuition fees and the level of salaries after N years after the start of study</value>
+  </data>
+  <data name="PaymentsGraphCaption" xml:space="preserve">
+    <value>Tuition fee</value>
+  </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Pick university's quality</value>
   </data>
@@ -131,5 +140,17 @@
   </data>
   <data name="QualityMiddle" xml:space="preserve">
     <value>Middle</value>
+  </data>
+  <data name="SummaryCaption" xml:space="preserve">
+    <value>Total expenditure on education and total earnings after N years after the start of study</value>
+  </data>
+  <data name="SummaryGraphCaption" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="xChartAxisCaption" xml:space="preserve">
+    <value>Time (years)</value>
+  </data>
+  <data name="yChartAxisCaption" xml:space="preserve">
+    <value>Money (UAH)</value>
   </data>
 </root>

@@ -61,6 +61,33 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Розрахувати.
+        /// </summary>
+        public static string Calculate {
+            get {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Рівень оплати за навчання та рівень на зарплати через N років після початку навчання.
+        /// </summary>
+        public static string PaymentsCaption {
+            get {
+                return ResourceManager.GetString("PaymentsCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Плата за навчання.
+        /// </summary>
+        public static string PaymentsGraphCaption {
+            get {
+                return ResourceManager.GetString("PaymentsGraphCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Виберіь якість ВНЗ.
         /// </summary>
         public static string PickQuality {
@@ -102,6 +129,42 @@ namespace CultureEngine {
         public static string QualityMiddle {
             get {
                 return ResourceManager.GetString("QualityMiddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сумарні витрати на освіту і сумарний заробіток потому N років після початку навчання.
+        /// </summary>
+        public static string SummaryCaption {
+            get {
+                return ResourceManager.GetString("SummaryCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Рівень зарплати.
+        /// </summary>
+        public static string SummaryGraphCaption {
+            get {
+                return ResourceManager.GetString("SummaryGraphCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Час (роки).
+        /// </summary>
+        public static string xChartAxisCaption {
+            get {
+                return ResourceManager.GetString("xChartAxisCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Гроші (грн).
+        /// </summary>
+        public static string yChartAxisCaption {
+            get {
+                return ResourceManager.GetString("yChartAxisCaption", resourceCulture);
             }
         }
     }

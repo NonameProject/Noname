@@ -27,7 +27,7 @@
    
 
 
-    function drawCharts(conteiner, dataObj, title) {
+    function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption) {
         $(conteiner).highcharts({
             chart: {
                 type: 'spline',
@@ -40,7 +40,7 @@
                 reversed: false,
                 title: {
                     enabled: true,
-                    text: 'Деньги (грн)'
+                    text: xAxisCaption
                 },
                 labels: {
                     formatter: function () {
@@ -54,7 +54,7 @@
             },
             yAxis: {
                 title: {
-                    text: "Время(лет)"
+                    text: yAxisCaption
                 },
                 labels: {
                     formatter: function () {
