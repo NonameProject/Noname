@@ -63,7 +63,6 @@ namespace LocalizationEngine
         static LEngine()
         {
             RegisterCulture(DefaultCulture);
-            RegisterCulture("uk-UA");
             RegisterCulture("en-US");
         }
 

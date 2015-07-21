@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PickQuality" xml:space="preserve">
-    <value>Выберите качество ВУЗа</value>
+    <value>Виберіь якість ВНЗ</value>
   </data>
   <data name="PickSpeciality" xml:space="preserve">
-    <value>Выберите специальность</value>
+    <value>Виберіть спеціальність</value>
   </data>
   <data name="QualityGood" xml:space="preserve">
     <value>Хороший</value>
@@ -130,6 +130,6 @@
     <value>Низкий</value>
   </data>
   <data name="QualityMiddle" xml:space="preserve">
-    <value>Средний</value>
+    <value>Средній</value>
   </data>
 </root>
