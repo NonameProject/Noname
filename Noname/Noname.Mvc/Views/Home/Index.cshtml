@@ -23,4 +23,22 @@
     <script src="~/Scripts/chartsScript.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
     <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></script>
+    <script>
+        $(function()
+        {
+            var obj = new Object();
+            obj = [{
+                name: 'Плата за обучение',
+                data: [[900, 1], [1100, 2], [1200, 3], [1300, 4], [1400, 5]],
+                color: "red"
+            },
+            {
+                name: 'Уровень зарплаты',
+                data: [[800, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
+                color: "green"
+            }]
+            drawCharts("#container", obj, "Уровень платы за обучение и уровень зарплаты спустя N лет после начала учебы");
+            drawCharts("#container1", obj, "Cуммарные затраты на образование и суммарный заработок спустя N лет после начала учебы");
+        })
+    </script>
 }
