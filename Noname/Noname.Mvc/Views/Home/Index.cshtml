@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<h2 style="text-align: center">
+@*<h2 style="text-align: center">
     @Html.ActionLink("Русский", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "ru-RU", returnUrl = Url.Encode(Request.RawUrl) }, null)
     @Html.ActionLink("Українська", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "uk-UA", returnUrl = Url.Encode(Request.RawUrl) }, null)
     @Html.ActionLink("English", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "en-US", returnUrl = Url.Encode(Request.RawUrl) }, null)
@@ -11,4 +11,16 @@
 </h1>
 <div>
     @LEngine.GetLocalizedString("SharkText", Request.RequestContext)
-</div>
+</div>*@
+
+@Styles.Render("~/Content/Home.css")
+
+<div id="container"></div>
+<div id="container1"></div>
+
+@section Scripts
+{
+    <script src="~/Scripts/HomeScript.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></script>
+}

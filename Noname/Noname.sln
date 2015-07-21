@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Mvc", "Noname.Mvc\Abitcareer.Mvc.csproj", "{82076B17-C5EB-4F7B-919E-C1C9FDC894F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Business", "Noname.Business\Abitcareer.Business.csproj", "{E046AE62-7298-4EE3-A7F5-9BD8CFDB2BBF}"
@@ -15,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C71C1
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Localization", "Localization\Abitcareer.Localization.csproj", "{9D54F459-A56C-4D36-A5C9-F8B694651A81}"
