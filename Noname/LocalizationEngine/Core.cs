@@ -19,9 +19,14 @@ namespace LocalizationEngine
         private static List<string> SupportedLocalizations = new List<string>();
 
         /// <summary>
+        /// Key for accessing stored cookies
+        /// </summary>
+        public const string CookieCultureKey = "lengine-locale";
+
+        /// <summary>
         ///     Default localization name
         /// </summary>
-        private const string DefaultLocalization = "ru-RU";
+        private const string DefaultCulture = "ru-RU";
 
         /// <summary>
         ///     Method that creates resource manager for new culture and adds that culture to SupportedLocalizations list
@@ -36,11 +41,27 @@ namespace LocalizationEngine
         }
 
         /// <summary>
+        /// Methor that set culture for thread based on culture name
+        /// </summary>
+        /// <param name="cultureName">Name of current culture</param>
+        public static void SetCultureForThread(HttpRequest request)
+        {
+            string cultureName = DefaultCulture;
+            if (request.Cookies[CookieCultureKey] != null)
+            {
+                cultureName = request.Cookies[CookieCultureKey].Value;
+            }
+            var cultureInfo = CultureInfo.GetCultureInfo(cultureName);
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+        }
+
+        /// <summary>
         ///     Static constructor that contains registrations of supported localizations
         /// </summary>
         static LEngine()
         {
-            RegisterLocalization(DefaultLocalization);
+            RegisterLocalization(DefaultCulture);
             RegisterLocalization("uk-UA");
             RegisterLocalization("en-US");
         }
@@ -53,9 +74,13 @@ namespace LocalizationEngine
         public static void SetLocalization(string newLocalization, RequestContext context)
         {
             if (SupportedLocalizations.Contains(newLocalization))
-                context.HttpContext.Response.AppendCookie(new HttpCookie("locale", newLocalization));
+            {
+                context.HttpContext.Response.AppendCookie(new HttpCookie(CookieCultureKey, newLocalization));
+            }
             else
-                context.HttpContext.Response.AppendCookie(new HttpCookie("locale", DefaultLocalization));
+            {
+                context.HttpContext.Response.AppendCookie(new HttpCookie(CookieCultureKey, DefaultCulture));
+            }
         }
     }
 }
