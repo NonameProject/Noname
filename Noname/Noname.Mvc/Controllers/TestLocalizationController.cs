@@ -18,9 +18,10 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult ChangeCulture(string lang, string returnUrl)
         {
-            var langCookie = new HttpCookie("locale", lang) { HttpOnly = true };
-            Response.AppendCookie(langCookie);
-            return Redirect(HttpUtility.UrlDecode(returnUrl));
+            var url = HttpUtility.UrlDecode(returnUrl);
+            url = url.Substring(6);
+            url = string.Concat("/", lang, url);
+            return Redirect(url);
         }
 
     }
