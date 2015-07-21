@@ -26,7 +26,7 @@ namespace LocalizationEngine
         /// <summary>
         ///     Default culture name
         /// </summary>
-        private const string DefaultCulture = "ru-RU";
+        private const string DefaultCulture = "uk-UA";
 
         /// <summary>
         ///     Method that creates resource manager for new culture and adds that culture to SupportedCultures list
