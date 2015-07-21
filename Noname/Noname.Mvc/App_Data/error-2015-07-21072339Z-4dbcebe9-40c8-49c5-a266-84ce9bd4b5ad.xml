@@ -1,0 +1,188 @@
+﻿<error errorId="4dbcebe9-40c8-49c5-a266-84ce9bd4b5ad" application="/LM/W3SVC/23/ROOT" host="MILBRO" type="Abitcareer.Mvc.Components.CustomExceptions.JavaScriptException" message="Uncaught ReferenceError: Highcharts is not defined: at document path 'http://localhost:50120/uk-UA'.&#xA;  at anonymous('Uncaught ReferenceError: Highcharts is not defined', 'http://localhost:50120/Scripts/Highcharts-4.0.1/js/modules/exporting.js', '22', '476', 'ReferenceError: Highcharts is not defined')" detail="Abitcareer.Mvc.Components.CustomExceptions.JavaScriptException: Uncaught ReferenceError: Highcharts is not defined: at document path 'http://localhost:50120/uk-UA'.&#xA;  at anonymous('Uncaught ReferenceError: Highcharts is not defined', 'http://localhost:50120/Scripts/Highcharts-4.0.1/js/modules/exporting.js', '22', '476', 'ReferenceError: Highcharts is not defined')" time="2015-07-21T07:23:39.8890383Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:356&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:*/*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:uk,ru;q=0.8,en-US;q=0.6,en;q=0.4,az;q=0.2&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=Za2Tge7LGeC7_32P2BV1ew4ZULQOuy2_DGH-BeoCPVi4c9hrNHPOS_gCzR4bwXck3ROkwkXxxbVQq8VUNQGTiB-yTA6zcQCsnqA3ZSiEM4k1; __csid__=vpQYvGp3zZ81U3JFOpie4PdcdCcdHB1TDdjZBvaEbid5JSRsXn0BkYfxzsvt0sHsxUlEFYeC7DGQjoRJgrAOTQ2; .ASPXAUTH=738012E6516B176CE4EE6E6267D42D73764EE85488C2C2A755156219CD0FDD52E348310A9F6C79EDE04D7748FD923E62D12B760E0DB270C449A4B2B554356F22DF51F45C740F7637EBF2E76FEA48904833608C31318A89EFFF49AA7660250617; ASP.NET_SessionId=rda5yyrjabowp2dr0rk1hc21; locale=ru-RU&#xD;&#xA;HTTP_HOST:localhost:50120&#xD;&#xA;HTTP_REFERER:http://localhost:50120/uk-UA&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:50120&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Content-Length: 356&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: uk,ru;q=0.8,en-US;q=0.6,en;q=0.4,az;q=0.2&#xD;&#xA;Cookie: __RequestVerificationToken=Za2Tge7LGeC7_32P2BV1ew4ZULQOuy2_DGH-BeoCPVi4c9hrNHPOS_gCzR4bwXck3ROkwkXxxbVQq8VUNQGTiB-yTA6zcQCsnqA3ZSiEM4k1; __csid__=vpQYvGp3zZ81U3JFOpie4PdcdCcdHB1TDdjZBvaEbid5JSRsXn0BkYfxzsvt0sHsxUlEFYeC7DGQjoRJgrAOTQ2; .ASPXAUTH=738012E6516B176CE4EE6E6267D42D73764EE85488C2C2A755156219CD0FDD52E348310A9F6C79EDE04D7748FD923E62D12B760E0DB270C449A4B2B554356F22DF51F45C740F7637EBF2E76FEA48904833608C31318A89EFFF49AA7660250617; ASP.NET_SessionId=rda5yyrjabowp2dr0rk1hc21; locale=ru-RU&#xD;&#xA;Host: localhost:50120&#xD;&#xA;Referer: http://localhost:50120/uk-UA&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36&#xD;&#xA;Origin: http://localhost:50120&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/23/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Borys\Source\Repos\Noname\Noname\Noname.Mvc\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="356" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="23" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/23" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/uk-UA/Error/LogJavaScriptError" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Borys\Source\Repos\Noname\Noname\Noname.Mvc\uk-UA\Error\LogJavaScriptError" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="50169" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/uk-UA/Error/LogJavaScriptError" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="50120" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/uk-UA/Error/LogJavaScriptError" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="356" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="*/*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="uk,ru;q=0.8,en-US;q=0.6,en;q=0.4,az;q=0.2" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=Za2Tge7LGeC7_32P2BV1ew4ZULQOuy2_DGH-BeoCPVi4c9hrNHPOS_gCzR4bwXck3ROkwkXxxbVQq8VUNQGTiB-yTA6zcQCsnqA3ZSiEM4k1; __csid__=vpQYvGp3zZ81U3JFOpie4PdcdCcdHB1TDdjZBvaEbid5JSRsXn0BkYfxzsvt0sHsxUlEFYeC7DGQjoRJgrAOTQ2; .ASPXAUTH=738012E6516B176CE4EE6E6267D42D73764EE85488C2C2A755156219CD0FDD52E348310A9F6C79EDE04D7748FD923E62D12B760E0DB270C449A4B2B554356F22DF51F45C740F7637EBF2E76FEA48904833608C31318A89EFFF49AA7660250617; ASP.NET_SessionId=rda5yyrjabowp2dr0rk1hc21; locale=ru-RU" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:50120" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:50120/uk-UA" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:50120" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="message">
+      <value string="Uncaught ReferenceError: Highcharts is not defined: at document path 'http://localhost:50120/uk-UA'.&#xA;  at anonymous('Uncaught ReferenceError: Highcharts is not defined', 'http://localhost:50120/Scripts/Highcharts-4.0.1/js/modules/exporting.js', '22', '476', 'ReferenceError: Highcharts is not defined')" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="Za2Tge7LGeC7_32P2BV1ew4ZULQOuy2_DGH-BeoCPVi4c9hrNHPOS_gCzR4bwXck3ROkwkXxxbVQq8VUNQGTiB-yTA6zcQCsnqA3ZSiEM4k1" />
+    </item>
+    <item name="__csid__">
+      <value string="vpQYvGp3zZ81U3JFOpie4PdcdCcdHB1TDdjZBvaEbid5JSRsXn0BkYfxzsvt0sHsxUlEFYeC7DGQjoRJgrAOTQ2" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="rda5yyrjabowp2dr0rk1hc21" />
+    </item>
+    <item name="locale">
+      <value string="ru-RU" />
+    </item>
+  </cookies>
+</error>
