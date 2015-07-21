@@ -7,7 +7,7 @@
     <ProjectGuid>{25F4500E-2BC2-41A0-A266-D377DE8FAF07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LocalizationEngine</RootNamespace>
+    <RootNamespace>CultureEngine</RootNamespace>
     <AssemblyName>LocalizationEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

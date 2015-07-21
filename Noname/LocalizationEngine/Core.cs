@@ -6,37 +6,37 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Routing;
 
-namespace LocalizationEngine
+namespace CultureEngine
 {
     /// <summary>
-    ///     Static class which contains methods that provides localization actions: changing current localization, getting localized string etc.
+    ///     Static class which contains methods that provides culture actions: changing current culture, getting localized string etc.
     /// </summary>
     public static class LEngine
     {
         /// <summary>
-        ///     List of supported localization's
+        ///     List of supported cultures
         /// </summary>
-        private static List<string> SupportedLocalizations = new List<string>();
+        private static List<string> SupportedCultures = new List<string>();
 
         /// <summary>
         /// Key for accessing stored cookies
         /// </summary>
-        public const string CookieCultureKey = "lengine-locale";
+        public const string CookieCultureKey = "culture-engine-locale";
 
         /// <summary>
-        ///     Default localization name
+        ///     Default culture name
         /// </summary>
         private const string DefaultCulture = "ru-RU";
 
         /// <summary>
-        ///     Method that creates resource manager for new culture and adds that culture to SupportedLocalizations list
+        ///     Method that creates resource manager for new culture and adds that culture to SupportedCultures list
         /// </summary>
         /// <param name="cultureName">Name of culture that will be registered</param>
-        private static void RegisterLocalization(string cultureName)
+        private static void RegisterCulture(string cultureName)
         {
-            if (!SupportedLocalizations.Contains(cultureName))
+            if (!SupportedCultures.Contains(cultureName))
             {
-                SupportedLocalizations.Add(cultureName);
+                SupportedCultures.Add(cultureName);
             }
         }
 
@@ -47,7 +47,8 @@ namespace LocalizationEngine
         public static void SetCultureForThread(HttpRequest request)
         {
             string cultureName = DefaultCulture;
-            if (request.Cookies[CookieCultureKey] != null)
+            if (request.Cookies[CookieCultureKey] != null 
+                && SupportedCultures.Contains(request.Cookies[CookieCultureKey].Value))
             {
                 cultureName = request.Cookies[CookieCultureKey].Value;
             }
@@ -57,25 +58,25 @@ namespace LocalizationEngine
         }
 
         /// <summary>
-        ///     Static constructor that contains registrations of supported localizations
+        ///     Static constructor that contains registrations of supported cultures
         /// </summary>
         static LEngine()
         {
-            RegisterLocalization(DefaultCulture);
-            RegisterLocalization("uk-UA");
-            RegisterLocalization("en-US");
+            RegisterCulture(DefaultCulture);
+            RegisterCulture("uk-UA");
+            RegisterCulture("en-US");
         }
 
         /// <summary>
-        ///     Method that set changes current localization
+        ///     Method that set changes current culture
         /// </summary>
-        /// <param name="newLocalization">Name of new localization. If localization with this name is not supported, it will be replaced with default value</param>
-        /// <param name="context">Request context that contains cookies-file with localization data</param>
-        public static void SetLocalization(string newLocalization, RequestContext context)
+        /// <param name="newCultureName">Name of new culture. If culture with this name is not supported, it will be replaced with default value</param>
+        /// <param name="context">Request context that contains cookies-file with culture data</param>
+        public static void SetCulture(string newCultureName, RequestContext context)
         {
-            if (SupportedLocalizations.Contains(newLocalization))
+            if (SupportedCultures.Contains(newCultureName))
             {
-                context.HttpContext.Response.AppendCookie(new HttpCookie(CookieCultureKey, newLocalization));
+                context.HttpContext.Response.AppendCookie(new HttpCookie(CookieCultureKey, newCultureName));
             }
             else
             {

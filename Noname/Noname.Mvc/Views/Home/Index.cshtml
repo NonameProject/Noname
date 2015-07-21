@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@using CultureEngine
+
 <h2 style="text-align: center">
     @Html.ActionLink("Русский", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "ru-RU", returnUrl = Url.Encode(Request.RawUrl) }, null)
     @Html.ActionLink("Українська", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "uk-UA", returnUrl = Url.Encode(Request.RawUrl) }, null)
@@ -12,8 +14,6 @@
 <div>
     @LocalizationResx.SharkText
 </div>
-
-@using LocalizationEngine
 
 @Styles.Render("~/Content/Home.css")
 

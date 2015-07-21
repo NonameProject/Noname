@@ -301,9 +301,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LocalizationEngine\LocalizationEngine.csproj">
+    <ProjectReference Include="..\LocalizationEngine\Abitcareer.CultureEngine.csproj">
       <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
-      <Name>LocalizationEngine</Name>
+      <Name>Abitcareer.CultureEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
