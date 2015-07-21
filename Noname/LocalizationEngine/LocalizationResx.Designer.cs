@@ -61,20 +61,47 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Тёмная акула[1][2], или белопёрая акула[2], или сумеречная акула[3][2], или тёмная акула-собака[2] (лат. Carcharhinus obscurus) — хищная рыба семейства серых акул отряда Кархаринообразных..
+        ///   Ищет локализованную строку, похожую на Выберите качество ВУЗа.
         /// </summary>
-        public static string SharkText {
+        public static string PickQuality {
             get {
-                return ResourceManager.GetString("SharkText", resourceCulture);
+                return ResourceManager.GetString("PickQuality", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ИНДЕКС.
+        ///   Ищет локализованную строку, похожую на Выберите специальность.
         /// </summary>
-        public static string TestString {
+        public static string PickSpeciality {
             get {
-                return ResourceManager.GetString("TestString", resourceCulture);
+                return ResourceManager.GetString("PickSpeciality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Хороший.
+        /// </summary>
+        public static string QualityGood {
+            get {
+                return ResourceManager.GetString("QualityGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Низкий.
+        /// </summary>
+        public static string QualityLow {
+            get {
+                return ResourceManager.GetString("QualityLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Средний.
+        /// </summary>
+        public static string QualityMiddle {
+            get {
+                return ResourceManager.GetString("QualityMiddle", resourceCulture);
             }
         }
     }

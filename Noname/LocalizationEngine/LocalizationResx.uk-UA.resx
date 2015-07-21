@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SharkText" xml:space="preserve">
-    <value>Акула смуглява (Carcharhinus obscurus) — акула з роду Сіра акула родини Сірі акули.</value>
+  <data name="PickQuality" xml:space="preserve">
+    <value>Виберіь якість ВНЗ</value>
   </data>
-  <data name="TestString" xml:space="preserve">
-    <value>ІНДЕКС</value>
+  <data name="PickSpeciality" xml:space="preserve">
+    <value>Виберіть спеціальність</value>
+  </data>
+  <data name="QualityGood" xml:space="preserve">
+    <value>Хороший</value>
+  </data>
+  <data name="QualityLow" xml:space="preserve">
+    <value>Низкий</value>
+  </data>
+  <data name="QualityMiddle" xml:space="preserve">
+    <value>Средній</value>
   </data>
 </root>

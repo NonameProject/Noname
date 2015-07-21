@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SharkText" xml:space="preserve">
-    <value>The dusky shark (Carcharhinus obscurus) is a species of requiem shark, in the family Carcharhinidae, occurring in tropical and warm-temperate continental seas worldwide. A generalist apex predator, the dusky shark can be found from the coast to the outer continental shelf and adjacent pelagic waters, and has been recorded from a depth of 400 m (1,300 ft).</value>
+  <data name="PickQuality" xml:space="preserve">
+    <value>Pick university's quality</value>
   </data>
-  <data name="TestString" xml:space="preserve">
-    <value>Index</value>
+  <data name="PickSpeciality" xml:space="preserve">
+    <value>Pick speciality</value>
+  </data>
+  <data name="QualityGood" xml:space="preserve">
+    <value>Hight</value>
+  </data>
+  <data name="QualityLow" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="QualityMiddle" xml:space="preserve">
+    <value>Middle</value>
   </data>
 </root>

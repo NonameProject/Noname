@@ -9,7 +9,7 @@ namespace Abitcareer.Mvc.Controllers
     public class LocalizationEngineController : Controller
     {
         //
-        // GET: /CultureEngine/
+        // GET: /LocalizationEngine/
 
         public ActionResult Index()
         {
@@ -18,7 +18,7 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult ChangeLocalization(string newLocalization, string returnUrl)
         {
-            CultureEngine.LEngine.SetCulture(newLocalization, Request.RequestContext);
+            LocalizationEngine.LEngine.SetCulture(newLocalization, Request.RequestContext);
             return Redirect(HttpUtility.UrlDecode(returnUrl));
         }
     }

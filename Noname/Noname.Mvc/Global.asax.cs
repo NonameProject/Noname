@@ -11,7 +11,7 @@ using Abitcareer.Mvc.Components.CustomExceptions;
 using StackExchange.Profiling;
 using System.Globalization;
 using System.Threading;
-using CultureEngine;
+using LocalizationEngine;
 
 namespace Abitcareer.Mvc
 {

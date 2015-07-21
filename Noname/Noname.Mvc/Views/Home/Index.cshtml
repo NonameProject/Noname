@@ -1,20 +1,10 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-@*<h2 style="text-align: center">
-    @Html.ActionLink("Русский", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "ru-RU", returnUrl = Url.Encode(Request.RawUrl) }, null)
-    @Html.ActionLink("Українська", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "uk-UA", returnUrl = Url.Encode(Request.RawUrl) }, null)
-    @Html.ActionLink("English", "ChangeLocalization", "LocalizationEngine", new { newLocalization = "en-US", returnUrl = Url.Encode(Request.RawUrl) }, null)
-</h2>
-<h1 style="text-align: center">
-    @LEngine.GetLocalizedString("TestString", Request.RequestContext)
-</h1>
-<div>
-    @LEngine.GetLocalizedString("SharkText", Request.RequestContext)
-</div>*@
+    
+@using CultureEngine
 
 @Styles.Render("~/Content/Home.css")
-
 <div class="chartWrapper left">
     <div id="payments-container"></div>
 </div>
@@ -28,17 +18,17 @@
 
 
  <select class="form-control" id="spec">
-            <option selected disabled>Выберите специальность</option>
+            <option selected disabled>@LocalizationResx.PickSpeciality</option>
           <option value="pi">Програмная инженерия</option>
           <option value="ki">Компьютерная инженерия</option>
           <option value="ci">Системная инженерия</option>      
         </select>  
 
      <select class="form-control" id="quality">
-          <option selected disabled>Выберите качество Вуза</option>
-          <option value="1">Хороший</option>
-          <option value="0.8">Средний</option>
-          <option value="0.6">Плохой</option>     
+          <option selected disabled>@LocalizationResx.PickQuality</option>
+          <option value="1">@LocalizationResx.QualityGood</option>
+          <option value="0.8">@LocalizationResx.QualityMiddle</option>
+          <option value="0.6">@LocalizationResx.QualityLow</option>     
         </select>  
    
         <a href="#" id="commit" class="btn btn-default">Расчитать</a>

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Routing;
 
-namespace CultureEngine
+namespace LocalizationEngine
 {
     /// <summary>
     ///     Static class which contains methods that provides culture actions: changing current culture, getting localized string etc.
@@ -21,7 +21,7 @@ namespace CultureEngine
         /// <summary>
         /// Key for accessing stored cookies
         /// </summary>
-        public const string CookieCultureKey = "culture-engine-locale";
+        public const string CookieCultureKey = "lengine-locale";
 
         /// <summary>
         ///     Default culture name

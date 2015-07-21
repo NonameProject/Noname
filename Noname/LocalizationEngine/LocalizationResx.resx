@@ -117,10 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SharkText" xml:space="preserve">
-    <value>Тёмная акула[1][2], или белопёрая акула[2], или сумеречная акула[3][2], или тёмная акула-собака[2] (лат. Carcharhinus obscurus) — хищная рыба семейства серых акул отряда Кархаринообразных.</value>
+  <data name="PickQuality" xml:space="preserve">
+    <value>Выберите качество ВУЗа</value>
   </data>
-  <data name="TestString" xml:space="preserve">
-    <value>ИНДЕКС</value>
+  <data name="PickSpeciality" xml:space="preserve">
+    <value>Выберите специальность</value>
+  </data>
+  <data name="QualityGood" xml:space="preserve">
+    <value>Хороший</value>
+  </data>
+  <data name="QualityLow" xml:space="preserve">
+    <value>Низкий</value>
+  </data>
+  <data name="QualityMiddle" xml:space="preserve">
+    <value>Средний</value>
   </data>
 </root>

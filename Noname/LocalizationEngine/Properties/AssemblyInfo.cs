@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CultureEngine")]
+[assembly: AssemblyTitle("LocalizationEngine")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Win-Yagd")]
-[assembly: AssemblyProduct("CultureEngine")]
+[assembly: AssemblyProduct("LocalizationEngine")]
 [assembly: AssemblyCopyright("Copyright © Win-Yagd 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
