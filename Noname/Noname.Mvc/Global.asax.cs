@@ -20,7 +20,6 @@ namespace Abitcareer.Mvc
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            Cultures.RegisterSupportedCultures();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

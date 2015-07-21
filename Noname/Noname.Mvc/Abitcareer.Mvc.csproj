@@ -150,14 +150,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RegisterSupportedCultures.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Components\CustomExceptions\JavaScriptException.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalizationEngineController.cs" />
-    <Compile Include="Controllers\TestLocalizationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,7 +291,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\TestLocalization\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -307,10 +304,6 @@
     <ProjectReference Include="..\LocalizationEngine\LocalizationEngine.csproj">
       <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
       <Name>LocalizationEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Localization\Abitcareer.Localization.csproj">
-      <Project>{9d54f459-a56c-4d36-a5c9-f8b694651a81}</Project>
-      <Name>Abitcareer.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
