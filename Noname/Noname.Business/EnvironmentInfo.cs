@@ -14,18 +14,12 @@ namespace Abitcareer.Business.Components
             {
                 return "http://abitcareer.azurewebsites.net";
             }
-            private set
-            {
-            }
         }
         public static string Email
         {
             get
             {
                 return "abitcareer@gmail.com";
-            }
-            private set
-            {
             }
         }
 
@@ -34,9 +28,6 @@ namespace Abitcareer.Business.Components
             get
             {
                 return "Reminder";
-            }
-            private set
-            {
             }
         }
     }

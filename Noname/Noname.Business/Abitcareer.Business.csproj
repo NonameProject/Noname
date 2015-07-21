@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\BaseManager.cs" />
-    <Compile Include="Components\EnvironmentInfo.cs" />
-    <Compile Include="Interfaces\ICacheManager.cs" />
+    <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
+    <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="EnvironmentInfo.cs" />
+    <Compile Include="Components\Cache\ICacheManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
