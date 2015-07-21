@@ -36,9 +36,6 @@
             title: {
                 text: title
             },
-            subtitle: {
-                text: 'Очень крутой график'
-            },
             xAxis: {
                 reversed: false,
                 title: {
