@@ -9,6 +9,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Abitcareer.Mvc.Components.CustomExceptions;
 using StackExchange.Profiling;
+using System.Globalization;
+using System.Threading;
 
 namespace Abitcareer.Mvc
 {
@@ -37,7 +39,11 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-                MiniProfiler.Start();
+            MiniProfiler.Start();
+            var culture = Request.Cookies["locale"].Value;
+            var ci = CultureInfo.GetCultureInfo(culture);
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
         }
 
         protected void Application_EndRequest()

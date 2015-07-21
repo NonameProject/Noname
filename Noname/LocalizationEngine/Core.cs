@@ -19,11 +19,6 @@ namespace LocalizationEngine
         private static List<string> SupportedLocalizations = new List<string>();
 
         /// <summary>
-        ///     Dictionary that contains resource managers linked to localized resource file.
-        /// </summary>
-        private static Dictionary<string, ResourceManager> ResourceManagers = new Dictionary<string, ResourceManager>();
-
-        /// <summary>
         ///     Default localization name
         /// </summary>
         private const string DefaultLocalization = "ru-RU";
@@ -37,9 +32,7 @@ namespace LocalizationEngine
             if (!SupportedLocalizations.Contains(cultureName))
             {
                 SupportedLocalizations.Add(cultureName);
-                var resourceName = (cultureName == DefaultLocalization) ? "LocalizationEngine.Localization" : "LocalizationEngine.Localization." + cultureName.Replace('-', '.');
-                ResourceManagers[cultureName] = new ResourceManager(resourceName, typeof(LEngine).Assembly);
-            }          
+            }
         }
 
         /// <summary>
@@ -50,20 +43,6 @@ namespace LocalizationEngine
             RegisterLocalization(DefaultLocalization);
             RegisterLocalization("uk-UA");
             RegisterLocalization("en-US");
-        }
-
-        /// <summary>
-        ///     Method that returns localized string by key from resource based on current localization 
-        /// </summary>
-        /// <param name="key">Alias for string</param>
-        /// <param name="context">Request context that contains cookies-file with localization data</param>
-        /// <returns>Returns localized string</returns>
-        public static string GetLocalizedString(string key, RequestContext context)
-        {
-            var currentLocalization = context.HttpContext.Request.Cookies["locale"].Value;
-            if (!SupportedLocalizations.Contains(currentLocalization))
-                currentLocalization = DefaultLocalization;
-            return ResourceManagers[currentLocalization].GetString(key);
         }
 
         /// <summary>
