@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Routing;
 
-namespace LocalizationEngine
+namespace CultureEngine
 {
     /// <summary>
     ///     Static class which contains methods that provides culture actions: changing current culture, getting localized string etc.

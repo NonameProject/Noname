@@ -18,7 +18,7 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult ChangeLocalization(string newLocalization, string returnUrl)
         {
-            LocalizationEngine.LEngine.SetCulture(newLocalization, Request.RequestContext);
+            CultureEngine.LEngine.SetCulture(newLocalization, Request.RequestContext);
             return Redirect(HttpUtility.UrlDecode(returnUrl));
         }
     }
