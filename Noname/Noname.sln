@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C71C1
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationEngine", "LocalizationEngine\LocalizationEngine.csproj", "{25F4500E-2BC2-41A0-A266-D377DE8FAF07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.CultureEngine", "LocalizationEngine\Abitcareer.CultureEngine.csproj", "{25F4500E-2BC2-41A0-A266-D377DE8FAF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
