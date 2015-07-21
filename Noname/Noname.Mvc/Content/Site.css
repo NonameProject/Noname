@@ -1,28 +1,16 @@
-﻿/*!
- * Start Bootstrap - Logo Nav HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
-    z-index: 0;
+﻿.profiler-results
+{
+    opacity: 0.05;
 }
-
-.navbar-fixed-top .nav {
-    padding: 15px 0;
+.profiler-results:hover
+{
+    opacity: 1;
 }
-
-.navbar-fixed-top .navbar-brand {
-    padding: 0 15px;
+.left
+{
+    float: left;
 }
-
-@media(min-width:768px) {
-    body {
-        padding-top: 100px; 
-    }
-
-    .navbar-fixed-top .navbar-brand {
-        padding: 15px 0;
-    }
+.right
+{
+    float: right;
 }
