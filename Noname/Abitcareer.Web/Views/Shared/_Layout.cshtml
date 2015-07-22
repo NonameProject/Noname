@@ -1,6 +1,7 @@
 ﻿@using Abitcareer.Mvc.Extensions
 @{
     var routeName = Request.RequestContext.RouteData.GetRouteName();
+    var langLink = "#";
 }
 <!DOCTYPE html>
 <html>
@@ -34,12 +35,32 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="@Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName })">
+                        @{
+                            if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
+                            {
+                                langLink = "#";  
+                            }
+                            else
+                            {
+                                langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
+                            }
+                        }
+                        <a href="@langLink">
                             <img src="@Url.Content("~/Content/Images/Flags/US.png")"/> English
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName })">
+                        @{
+                            if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "uk-UA")
+                            {
+                                langLink = "#";
+                            }
+                            else
+                            {
+                                langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName });
+                            }
+                        }
+                        <a href="@langLink">
                             <img src="@Url.Content("~/Content/Images/Flags/UA.png")" /> Українська
                         </a>
                     </li>
