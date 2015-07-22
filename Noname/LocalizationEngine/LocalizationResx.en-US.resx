@@ -120,6 +120,9 @@
   <data name="Calculate" xml:space="preserve">
     <value>Calculate</value>
   </data>
+  <data name="Costs" xml:space="preserve">
+    <value>Costs</value>
+  </data>
   <data name="PaymentsCaption" xml:space="preserve">
     <value>Level of tuition fees and the level of salaries after N years after the start of study</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="PickSpeciality" xml:space="preserve">
     <value>Pick speciality</value>
+  </data>
+  <data name="Profit" xml:space="preserve">
+    <value>Profit</value>
   </data>
   <data name="QualityGood" xml:space="preserve">
     <value>Hight</value>
@@ -152,5 +158,8 @@
   </data>
   <data name="yChartAxisCaption" xml:space="preserve">
     <value>Money (UAH)</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

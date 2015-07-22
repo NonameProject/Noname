@@ -27,7 +27,7 @@
    
 
 
-    function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption) {
+    function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, valueTypes) {
         $(conteiner).highcharts({
             chart: {
                 type: 'spline',
@@ -68,7 +68,13 @@
             },
             tooltip: {
                 headerFormat: '<b>{series.name}</b><br/>',
-                pointFormat: 'прибыль: {point.x}, год: {point.y}'
+                formatter: function()
+                {                   
+                    var header = "<strong>" + this.series.name +  "</strong><br/>";
+                    if (this.series.color == "green")
+                        return header+ valueTypes.profit +":{" + this.x + "}," +  valueTypes.year +  "{" + this.y + "}";
+                    return header + valueTypes.costs+ ":{" + this.x + "},"  +  valueTypes.year+ "{" + this.y + "}";
+                }
             },
             plotOptions: {
                 spline: {

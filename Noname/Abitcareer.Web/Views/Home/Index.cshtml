@@ -60,8 +60,13 @@
                 paymentsAxis: '@LocalizationResx.PaymentsGraphCaption',
                 summaryAxis: '@LocalizationResx.SummaryGraphCaption',
                 xAxisCaption: '@LocalizationResx.xChartAxisCaption',
-                yAxisCaption: '@LocalizationResx.yChartAxisCaption'
+                yAxisCaption: '@LocalizationResx.yChartAxisCaption',
+                Profit:'@LocalizationResx.Profit',
+                Year: '@LocalizationResx.Year',
+                Costs: '@LocalizationResx.Costs'
             };
+
+            var valueTypes = { costs: textStrings.Costs, year: textStrings.Year, profit: textStrings.Profit };
 
             var specialities = {
                 "ki": {},
@@ -80,19 +85,19 @@
                     selectedSpec[0].data[i][0] *= $("#quality").val();
                 }
                 console.log(selectedSpec.data);
-                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption);
-                drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption);
+                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.xValueType, textStrings.yValueType);
+                drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.xValueType, textStrings.yValueType);
             });
             
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
                 data: [[1400, 1], [1500, 2], [1500, 3], [1500, 4], [1500, 5]],
-                color: "red"
+                color: "red",
             },
             {
                 name: textStrings.summaryAxis,
                 data: [[0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
-                color: "green"
+                color: "green",
             }]
 
 
@@ -122,8 +127,8 @@
 
 
 
-             drawCharts("#payments-container", specialities["pi"], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption);
-             drawCharts("#summary-container", specialities["pi"], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption);
+             drawCharts("#payments-container", specialities["pi"], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
+             drawCharts("#summary-container", specialities["pi"], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
         })
     </script>
 }
