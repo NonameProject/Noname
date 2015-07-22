@@ -14,9 +14,13 @@
     text-align: center;
     margin: 0 100px;
 }
-    select
-    {
-        width: 300px !important;
-        text-align: center;
-        margin: 5px auto;
-    }
+select
+{
+    width: 300px !important;
+    text-align: center;
+    margin: 5px auto;
+}
+.highcharts-container>svg>:last-child
+{
+    display: none;
+}
