@@ -26,15 +26,15 @@ namespace Abitcareer.Mvc
         private void OnBeginRequest(Object sender, EventArgs args)
         {
             HttpApplication application = (HttpApplication)sender;
-            HttpContext context = application.Context;
-            if (context.Request.Url.AbsolutePath.Equals("") ||
-                context.Request.Url.AbsolutePath.Equals("/"))
+            HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
+
+            if (currentContext.Request.Url.AbsolutePath.Equals("") ||
+                currentContext.Request.Url.AbsolutePath.Equals("/"))
             {
                 SetCulture(Thread.CurrentThread.CurrentCulture.Name);
-                context.Response.RedirectToRoute("Default", new { locale = Thread.CurrentThread.CurrentCulture.Name });
+                currentContext.Response.RedirectToRoute("Default", new { locale = Thread.CurrentThread.CurrentCulture.Name });
                 return;
             }
-            HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
             var cultureName = routeData.Values[CEngine.CultureKey];
             if (cultureName != null)
@@ -46,7 +46,7 @@ namespace Abitcareer.Mvc
                 else
                 {
                     SetCulture(CEngine.DefaultCulture);
-                    context.Response.RedirectToRoute("Default", new { locale = CEngine.DefaultCulture });
+                    currentContext.Response.RedirectToRoute("Default", new { locale = CEngine.DefaultCulture });
                 }
             }
         }

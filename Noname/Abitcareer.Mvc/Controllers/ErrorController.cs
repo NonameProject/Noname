@@ -10,6 +10,11 @@ namespace Abitcareer.Mvc.Controllers
 {
     public class ErrorController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public void LogJavaScriptError(string message)
         {
             ErrorSignal

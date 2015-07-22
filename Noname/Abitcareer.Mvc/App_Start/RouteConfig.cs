@@ -33,6 +33,12 @@ namespace Abitcareer.Mvc
                 (dynamic constraints) =>
                 {
                 });
+
+            routes.MapRoute(
+                "NotFound",
+                "{*url}",
+             new { controller = "Error", action = "Index" }
+            );
         }
     }
 }

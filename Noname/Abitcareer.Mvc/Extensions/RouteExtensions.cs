@@ -14,7 +14,7 @@ namespace Abitcareer.Mvc.Extensions
         public static Route MapLocalizedRoute(this RouteCollection routes, string name, string url, object defaults, Action<dynamic> setupConstraints)
         {
             dynamic constraints = new ExpandoObject();
-            constraints.locale = "[a-zA-z]{2}-[a-zA-z]{2}";
+            constraints.locale = "[a-zA-Z]{2}-[a-zA-Z]{2}";
             setupConstraints(constraints);
             object constraintObject = (object)constraints;
             return routes.MapRoute(name, "{locale}/" + url, defaults, constraintObject).SetRouteName(name); ;
