@@ -33,8 +33,16 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>@Html.RouteLink("English", "ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName })</li>
-                    <li>@Html.RouteLink("Українська", "ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName })</li>
+                    <li>
+                        <a href="@Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName })">
+                            <img src="@Url.Content("~/Content/Images/Flags/US.png")"/> English
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName })">
+                            <img src="@Url.Content("~/Content/Images/Flags/UA.png")" /> Українська
+                        </a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
