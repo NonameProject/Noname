@@ -20,7 +20,7 @@ select
     text-align: center;
     margin: 5px auto;
 }
-.highcharts-container>svg>:last-child
+.highcharts-container>svg>:last-child, .highcharts-button
 {
     display: none;
 }
