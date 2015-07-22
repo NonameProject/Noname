@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Translation\Languages.cs" />
+    <Compile Include="Components\Translation\Translator.cs" />
     <Compile Include="EnvironmentInfo.cs" />
     <Compile Include="Components\Cache\ICacheManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
