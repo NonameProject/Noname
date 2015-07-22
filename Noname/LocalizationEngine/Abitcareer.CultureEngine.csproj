@@ -41,24 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core.cs" />
+    <Compile Include="CultureCore.cs" />
     <Compile Include="LocalizationResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizationResx.resx</DependentUpon>
     </Compile>
-    <Compile Include="LocalizationResx.en-US.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizationResx.en-US.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LocalizationResx.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizationResx.en-US.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizationResx.en-US.resx" />
     <EmbeddedResource Include="LocalizationResx.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizationResx.Designer.cs</LastGenOutput>

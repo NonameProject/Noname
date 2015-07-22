@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CultureEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,10 @@ namespace Abitcareer.Mvc.Controllers
     {
         public ActionResult ChangeCulture(string culture, string routeName)
         {
+            if (!CEngine.IsSupported(culture))
+            {
+                culture = CEngine.DefaultCulture;
+            }
             return RedirectToRoute(routeName, new { locale = culture });
         }
     }

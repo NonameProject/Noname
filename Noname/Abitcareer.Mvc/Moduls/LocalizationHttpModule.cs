@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Routing;
-
+using CultureEngine;
 namespace Abitcareer.Mvc
 {
     public class LocalizationHttpModule : IHttpModule
@@ -36,10 +36,18 @@ namespace Abitcareer.Mvc
             }
             HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
-            var cultureName = routeData.Values["locale"];
+            var cultureName = routeData.Values[CEngine.CultureKey];
             if (cultureName != null)
             {
-                SetCulture(cultureName.ToString());
+                if (CEngine.IsSupported(cultureName.ToString()))
+                {
+                    SetCulture(cultureName.ToString());
+                }
+                else
+                {
+                    SetCulture(CEngine.DefaultCulture);
+                    context.Response.RedirectToRoute("Default", new { locale = CEngine.DefaultCulture });
+                }
             }
         }
 

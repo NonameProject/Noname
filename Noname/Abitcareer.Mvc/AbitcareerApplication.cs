@@ -41,7 +41,6 @@ namespace Abitcareer.Mvc
         protected void Application_BeginRequest()
         {
             MiniProfiler.Start();
-            LEngine.SetCultureForThread(Request);
         }
 
         protected void Application_EndRequest()
