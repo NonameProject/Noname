@@ -16,6 +16,8 @@ namespace Abitcareer.Mvc
 {
     public class AbitcareerApplication : System.Web.HttpApplication
     {
+        private IHttpModule Module = new LocalizationHttpModule();
+
         protected void Application_Start()
         {
             ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
@@ -54,6 +56,11 @@ namespace Abitcareer.Mvc
             return principal.IsInRole("admin");
         }
 
+        public override void Init()
+        {
+            base.Init();
+            Module.Init(this);
+        }
         //Database
         /*public static DbConnection GetOpenConnection()
         {

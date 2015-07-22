@@ -116,6 +116,8 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalizationEngineController.cs" />
+    <Compile Include="Extensions\RouteExtensions.cs" />
+    <Compile Include="Moduls\LocalizationHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

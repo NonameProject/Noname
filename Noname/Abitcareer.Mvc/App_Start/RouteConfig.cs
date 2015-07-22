@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Abitcareer.Mvc.Extensions;
 
 namespace Abitcareer.Mvc
 {
@@ -15,9 +16,23 @@ namespace Abitcareer.Mvc
 
             routes.IgnoreRoute("elmah.axd");
 
-            routes.MapRoute("Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            routes.MapLocalizedRoute(
+                name: "Default",
+                url: "",
+                defaults: new { controller = "Home", action = "Index" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
+
+            routes.MapLocalizedRoute(
+                name: "ChangeCulture",
+                url: "ChangeCulture/{culture}",
+                defaults: new { controller = "LocalizationEngine", action = "ChangeCulture" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
         }
     }
 }

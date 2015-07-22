@@ -8,18 +8,9 @@ namespace Abitcareer.Mvc.Controllers
 {
     public class LocalizationEngineController : Controller
     {
-        //
-        // GET: /LocalizationEngine/
-
-        public ActionResult Index()
+        public ActionResult ChangeCulture(string culture, string routeName)
         {
-            return View();
-        }
-
-        public ActionResult ChangeLocalization(string newLocalization, string returnUrl)
-        {
-            CultureEngine.LEngine.SetCulture(newLocalization, Request.RequestContext);
-            return Redirect(HttpUtility.UrlDecode(returnUrl));
+            return RedirectToRoute(routeName, new { locale = culture });
         }
     }
 }
