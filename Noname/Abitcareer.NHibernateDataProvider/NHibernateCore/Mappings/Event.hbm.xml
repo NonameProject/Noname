@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+ xmlns="urn:nhibernate-mapping-2.2"
+ assembly="Events.NHibernateDataProvider"
+ namespace="Events.Business.Models"
+ auto-import="true">
+  <class name="Event, Events.Business" table="Events">
+    <id name="Id" access="property" type="string">
+      <generator class="assigned"></generator>
+    </id>
+    
+    <property name="Title" access="property" type="string"></property>
+    
+    <property name="Description" access="property" type="string"></property>
+    
+    <property name="FromDate" access="property" type="datetime"></property>
+    
+    <property name="ToDate" access="property" type="datetime"></property>
+
+    <property name="LocationId" access="property" type="int"></property>
+    
+    <property name="Active" access="property" type="bool"></property>
+    
+    <property name="Checked" access="property" type="bool"></property>
+    
+    <property name="DateOfCreation" access="property" type="datetime"></property>
+    
+    <property name="AuthorId" access="property" type="string"></property>
+
+    <property name="TextDescription" access="property" type="string"></property>
+
+    <property name="Image" access="property" type="string"></property>
+    
+    <filter name ="effectiveDate" condition ="ToDate >= :asOfDate"/>
+    
+    <filter name ="equalLocation" condition ="LocationId = :chosenLocation"/>
+    
+    <filter name ="equalDate" condition ="ToDate >= :nowaday AND :chosenDate >= FromDate"/>
+
+    <filter name="eventsToRemind" condition ="FromDate >= :startDate AND  :endDate >= FromDate"></filter>
+  </class>
+  
+  
+  <!--business logic-->
+  <filter-def name = "effectiveDate">
+    <filter-param name ="asOfDate" type ="System.DateTime"/>
+  </filter-def>
+
+  <filter-def name ="equalLocation">
+    <filter-param name ="chosenLocation" type ="System.String"/>
+  </filter-def>
+
+  <filter-def name ="equalDate">
+    <filter-param name ="chosenDate" type ="System.DateTime"/>
+    <filter-param name ="nowaday" type ="System.DateTime"/>
+  </filter-def>
+
+  <filter-def name = "eventsToRemind">
+    <filter-param name ="startDate" type ="System.DateTime"/>
+    <filter-param name ="endDate" type ="System.DateTime"/>
+  </filter-def>
+
+</hibernate-mapping>

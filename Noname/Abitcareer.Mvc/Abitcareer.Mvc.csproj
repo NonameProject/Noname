@@ -103,9 +103,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebGrease">
-      <HintPath>..\..\..\..\..\Morozov tasks\Noname2\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbitcareerApplication.cs" />
@@ -152,6 +149,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Abitcareer.NHibernateDataProvider\Abitcareer.NHibernateDataProvider.csproj">
+      <Project>{a67073e7-e323-43c1-a025-fe5d632b025b}</Project>
+      <Name>Abitcareer.NHibernateDataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LocalizationEngine\Abitcareer.CultureEngine.csproj">
       <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
       <Name>Abitcareer.CultureEngine</Name>

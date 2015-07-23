@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Business", "Noname.Business\Abitcareer.Business.csproj", "{E046AE62-7298-4EE3-A7F5-9BD8CFDB2BBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Core", "Noname.Core\Abitcareer.Core.csproj", "{7B9AB3D0-D0EF-4700-81EB-3BBFBE52BB15}"
@@ -16,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Web", "Abitcareer.Web\Abitcareer.Web.csproj", "{F7837939-8122-499D-95F6-6007AF2F8343}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.Mvc", "Abitcareer.Mvc\Abitcareer.Mvc.csproj", "{8739F9BE-6673-496F-B40C-25E3EA2366D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abitcareer.NHibernateDataProvider", "Abitcareer.NHibernateDataProvider\Abitcareer.NHibernateDataProvider.csproj", "{A67073E7-E323-43C1-A025-FE5D632B025B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{8739F9BE-6673-496F-B40C-25E3EA2366D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8739F9BE-6673-496F-B40C-25E3EA2366D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8739F9BE-6673-496F-B40C-25E3EA2366D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A67073E7-E323-43C1-A025-FE5D632B025B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67073E7-E323-43C1-A025-FE5D632B025B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67073E7-E323-43C1-A025-FE5D632B025B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67073E7-E323-43C1-A025-FE5D632B025B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
