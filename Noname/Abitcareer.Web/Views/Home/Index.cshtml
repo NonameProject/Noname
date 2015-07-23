@@ -88,8 +88,8 @@
                     selectedSpec[0].data[i][0] *= $("#quality").val();
                 }
                 console.log(selectedSpec.data);
-                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.xValueType, textStrings.yValueType);
-                drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.xValueType, textStrings.yValueType);
+                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
+                drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
             });
             
             specialities["pi"] = [{
