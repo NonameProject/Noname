@@ -14,7 +14,7 @@ namespace Abitcareer.Business.Components.Translation
         /// <returns>Translated string in UTF8</returns>
         public static string Translate(string input, Languages from, Languages to)
         {
-            return Translate(input, from, to);
+            return Translate(input, from, to, Encoding.UTF8);
         }
 
         /// <summary>Translate text by using Google translate in indicated encoding.</summary>
