@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using StackExchange.Profiling;
-using System.Web;
+﻿using StackExchange.Profiling;
 using System.Web.Mvc;
 
 namespace Abitcareer.Business.Components.MiniProfilers

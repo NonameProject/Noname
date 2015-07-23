@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Caching;
-using Abitcareer.Business.Components;
+﻿using Abitcareer.Business.Components;
 using Abitcareer.Business.Interfaces;
+using System;
+using System.Runtime.Caching;
 
 namespace Abitcareer.Web.Components
 {
