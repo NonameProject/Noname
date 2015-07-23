@@ -8,14 +8,26 @@
 .chartWrapper
 {
     margin-top: 10px;
+    width: 49.5%;
+    height: auto;
+}
+#chart-conteiner
+{
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .form-wrapper
 {
+    background: url(http://www.highcharts.com/samples/graphics/sand.png);
+    display: inline-block;
     text-align: center;
-    margin: 0 100px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 select
 {
+
     width: 300px !important;
     text-align: center;
     margin: 5px auto;

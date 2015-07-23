@@ -5,34 +5,35 @@
 @using CultureEngine
 
 @Styles.Render("~/Content/Home.css")
-<div class="chartWrapper left">
-    <div id="payments-container"></div>
-</div>
-
-
-<div class="chartWrapper right">
-    <div id="summary-container"></div>
-</div>
-
 <div class="form-wrapper">
 
 
- <select class="form-control" id="spec">
+    <select class="form-control" id="spec">
             <option selected disabled>@LocalizationResx.PickSpeciality</option>
           <option value="pi">Програмная инженерия</option>
           <option value="ki">Компьютерная инженерия</option>
           <option value="ci">Системная инженерия</option>      
-        </select>  
+    </select>  
 
-     <select class="form-control" id="quality">
+    <select class="form-control" id="quality">
           <option selected disabled>@LocalizationResx.PickQuality</option>
           <option value="1">@LocalizationResx.QualityGood</option>
           <option value="0.8">@LocalizationResx.QualityMiddle</option>
           <option value="0.6">@LocalizationResx.QualityLow</option>     
-        </select>  
-   
-        <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
+    </select>  
+    <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
+<div id="chart-conteiner">
+    <div class="chartWrapper left">
+        <div id="payments-container"></div>
+    </div>
+
+
+    <div class="chartWrapper right">
+        <div id="summary-container"></div>
+    </div>
+</div>
+
 
 @section Scripts
 {
