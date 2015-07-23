@@ -1,5 +1,9 @@
-﻿using NHibernate;
+﻿using Abitcareer.Business.Models;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace Events.NHibernateDataProvider.NHibernateCore
 {
@@ -11,13 +15,26 @@ namespace Events.NHibernateDataProvider.NHibernateCore
         {
             if (sessionFactory == null)
             {
-                var config = new Configuration();
-                var data = config.Configure();
-                config.AddAssembly(typeof(Helper).Assembly);
-                sessionFactory = data.BuildSessionFactory();
+                InitializeSessionFactory();
             }
 
             return sessionFactory.OpenSession();
+        }
+
+        private static void InitializeSessionFactory()
+        {
+            sessionFactory = Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2012
+                              .ConnectionString(
+                                  @"Server=tcp:ead9qcxrdo.database.windows.net,1433;Database=abitcareer;User ID=abitcareer@ead9qcxrdo;Password=ISMabit3;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
+                              .ShowSql()
+                )
+                .Mappings(m =>
+                          m.FluentMappings
+                              .AddFromAssemblyOf<Helper>())
+                //.ExposeConfiguration(cfg => new SchemaExport(cfg)
+                //                                .Create(true, true))
+                .BuildSessionFactory();
         }
     }
 }

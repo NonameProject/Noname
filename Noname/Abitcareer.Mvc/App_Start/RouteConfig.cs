@@ -43,6 +43,15 @@ namespace Abitcareer.Mvc
                 {
                 });
 
+            routes.MapLocalizedRoute(
+                name: "TestDb",
+                url: "TestDb",
+                defaults: new { controller = "LocalizationEngine", action = "TestDb" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
+
             routes.MapRoute(
                 "NotFound",
                 "{*url}",

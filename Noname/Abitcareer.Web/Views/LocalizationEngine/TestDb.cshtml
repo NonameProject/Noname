@@ -1,0 +1,12 @@
+﻿@model IList<Abitcareer.Mvc.ViewModels.LocalizedViewModels.UniversityViewModel>
+
+@{
+    ViewBag.Title = "TestDb";
+}
+
+<h2>TestDb</h2>
+
+@foreach (var item in Model)
+{
+    <h1>@item.Title</h1>
+}

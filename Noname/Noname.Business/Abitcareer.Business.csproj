@@ -53,6 +53,7 @@
     <Compile Include="Data Providers Contracts\IUniversityDataProvider.cs" />
     <Compile Include="EnvironmentInfo.cs" />
     <Compile Include="Components\Cache\ICacheManager.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

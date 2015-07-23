@@ -1,4 +1,5 @@
 ﻿using Abitcareer.Business.Components.MiniProfilers;
+using Abitcareer.Mvc.App_Start;
 using Abitcareer.Mvc.Components.CustomExceptions;
 using Elmah;
 using StackExchange.Profiling;
@@ -20,6 +21,7 @@ namespace Abitcareer.Mvc
         {
             ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
 
+            AutomapperConfig.RegisterMaps();
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
