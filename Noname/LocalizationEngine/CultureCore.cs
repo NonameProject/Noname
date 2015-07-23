@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 namespace CultureEngine
 {
@@ -42,6 +45,39 @@ namespace CultureEngine
         public static bool IsSupported(string cultureName)
         {
             return SupportedCultures.Contains(cultureName);
+        }
+
+        /// <summary>
+        /// Parse user languages array from request and return user's browser culture or default application culture name
+        /// </summary>
+        /// <param name="userLanguages"></param>
+        /// <returns></returns>
+        public static string GetCultureByUserLanguages(string[] userRequestLanguages)
+        {
+            int userLanguagesLength = userRequestLanguages.Length;
+            Char[] splitArray = new Char[] { ';' };
+            for (int i = 0; i < userLanguagesLength; i++)
+            {
+                var culture = userRequestLanguages[i].Split(splitArray)[0];
+                foreach (var item in SupportedCultures)
+                {
+                    if (item.Contains(culture))
+                    {
+                        return item;
+                    }
+                }
+            }
+            return DefaultCulture;
+        }
+
+        /// <summary>
+        /// Set culture for thread by culture name
+        /// </summary>
+        /// <param name="cultureName"></param>
+        public static void SetCultureForThread(string cultureName)
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
         }
 
         /// <summary>

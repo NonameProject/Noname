@@ -25,33 +25,30 @@ namespace Abitcareer.Mvc
             HttpApplication application = (HttpApplication)sender;
             HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
 
+            var userCulture = CEngine.GetCultureByUserLanguages(application.Request.UserLanguages);
+
             if (currentContext.Request.Url.AbsolutePath.Equals("") ||
                 currentContext.Request.Url.AbsolutePath.Equals("/"))
             {
-                SetCulture(Thread.CurrentThread.CurrentCulture.Name);
-                currentContext.Response.RedirectToRoute("Default", new { locale = Thread.CurrentThread.CurrentCulture.Name });
+                CEngine.SetCultureForThread(Thread.CurrentThread.CurrentCulture.Name);
+                currentContext.Response.RedirectToRoute("Default", new { locale = userCulture });
                 return;
             }
+
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
             var cultureName = routeData.Values[CEngine.CultureKey];
             if (cultureName != null)
             {
                 if (CEngine.IsSupported(cultureName.ToString()))
                 {
-                    SetCulture(cultureName.ToString());
+                    CEngine.SetCultureForThread(cultureName.ToString());
                 }
                 else
                 {
-                    SetCulture(CEngine.DefaultCulture);
+                    CEngine.SetCultureForThread(CEngine.DefaultCulture);
                     currentContext.Response.RedirectToRoute("Default", new { locale = CEngine.DefaultCulture });
                 }
             }
-        }
-
-        private void SetCulture(string cultureName)
-        {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
         }
     }
 }
