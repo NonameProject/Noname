@@ -118,6 +118,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalizationEngineController.cs" />
     <Compile Include="Extensions\RouteExtensions.cs" />
+    <Compile Include="MiniProfilers\ProfilingActionFilter.cs" />
+    <Compile Include="MiniProfilers\ProfilingViewEngine.cs" />
     <Compile Include="Moduls\LocalizationHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

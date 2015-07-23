@@ -39,7 +39,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,8 +48,6 @@
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
-    <Compile Include="Components\MiniProfilers\ProfilingActionFilter.cs" />
-    <Compile Include="Components\MiniProfilers\ProfilingViewEngine.cs" />
     <Compile Include="Components\Translation\Languages.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
     <Compile Include="EnvironmentInfo.cs" />
