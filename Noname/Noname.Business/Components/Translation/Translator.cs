@@ -8,6 +8,9 @@ namespace Abitcareer.Business.Components.Translation
     public static class Translator
     {
         /// <summary>Translate text by using Google translate in UTF8.</summary>
+        /// <example>
+        /// <code>Translator.Translate("Київський політехнічний університет", Languages.Uk, Languages.En)</code>
+        /// </example>
         /// <param name="input">The input string.</param>
         /// <param name="from">Source lang</param>
         /// <param name="to">Destination lang</param>
