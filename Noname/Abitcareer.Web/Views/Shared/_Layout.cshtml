@@ -16,9 +16,9 @@
     <script type="text/javascript">
         var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
     </script>
-    <script src="@Url.Content("~/Scripts/errorhandler.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")" type="text/javascript"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/errorhandler.js")    
+    @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -71,8 +71,7 @@
             </div>
         </div>
     </nav>
-    @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
+    @RenderBody()    
     @RenderSection("scripts", required: false)
     @StackExchange.Profiling.MiniProfiler.RenderIncludes()
 </body>
