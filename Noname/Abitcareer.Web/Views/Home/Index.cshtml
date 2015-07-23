@@ -3,8 +3,10 @@
 }
     
 @using CultureEngine
-
-@Styles.Render("~/Content/Home.css")
+@section styles
+{
+    @Styles.Render("~/Content/Home.css")
+}
 <div class="form-wrapper">
 
 
@@ -37,10 +39,10 @@
 
 @section Scripts
 {
-    <script src="~/Scripts/chartsScript.js"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
-    <script src="~/Scripts/Highcharts-4.0.1/js/modules/exporting.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/Scripts/chartsScript.js")
+    @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/highcharts.js")
+    @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")   
     <script>
 
         function clone(destination, source) {

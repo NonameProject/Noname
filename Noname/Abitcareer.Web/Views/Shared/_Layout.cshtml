@@ -12,13 +12,13 @@
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Site.css")
+    @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript">
         var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
     </script>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/errorhandler.js")    
-    @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
+    @Scripts.Render("~/Scripts/errorhandler.js")        
 </head>
 <body>
     <nav class="navbar navbar-default">
