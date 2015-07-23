@@ -1,37 +1,42 @@
 ﻿.highcharts-container, .highcharts-title {
     max-height: 400px;
 }
+
 .highcharts-title
 {
     font-size: small !important;
 }
+
 .chartWrapper
 {
+    height: auto;
     margin-top: 10px;
     width: 49.5%;
-    height: auto;
 }
+
 #chart-conteiner
 {
     padding-left: 5%;
     padding-right: 5%;
 }
+
 .form-wrapper
 {
     background: url(http://www.highcharts.com/samples/graphics/sand.png);
     display: inline-block;
-    text-align: center;
-    width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+    text-align: center;
+    width: 90%;
 }
+
 select
 {
-
-    width: 300px !important;
-    text-align: center;
     margin: 5px auto;
+    text-align: center;
+    width: 300px !important;
 }
+
 .highcharts-container>svg>:last-child, .highcharts-button
 {
     display: none;
