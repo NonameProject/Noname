@@ -1,20 +1,20 @@
 ﻿get_line_intersection = function(p0,p1,p2,p3)
 {        
-    var p0_x = p0.x;
-    var p0_y = p0.y;
-    var p1_x = p1.x;
-    var p1_y = p1.y;
-    var p2_x = p2.x;
-    var p2_y = p2.y;
-    var p3_x = p3.x;
-    var p3_y = p3.y;  
+    var p0_x = p0.x,
+        p0_y = p0.y,
+        p1_x = p1.x,
+        p1_y = p1.y,
+        p2_x = p2.x,
+        p2_y = p2.y,
+        p3_x = p3.x,
+        p3_y = p3.y;  
 
     var s1_x, s1_y, s2_x, s2_y;
     s1_x = p1_x - p0_x;     s1_y = p1_y - p0_y;
     s2_x = p3_x - p2_x;     s2_y = p3_y - p2_y;
 
-    var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y);
-    var t = ( s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
+    var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
+        t = ( s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
 
     if (s >= 0 && s <= 1 && t >= 0 && t <= 1)
     {
@@ -23,9 +23,6 @@
 
     return false;
 }
-
-   
-
 
 function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, valueTypes) {
     renderTheme();
@@ -92,11 +89,11 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
        $('.chartWrapper').height(),
        false
     );
-        var s0 = chart.series[0].points;
-        var s1 = chart.series[1].points;
-        var s2 = chart.series[1];
-        var n0 = s0.length;
-        var n1 = s1.length;
+        var s0 = chart.series[0].points,
+            s1 = chart.series[1].points,
+            s2 = chart.series[1];
+        var n0 = s0.length,
+            n1 = s1.length;
         var i,j,isect;
         for (i = 1; i < n0; i++){
             for (j = 1; j < n1; j++){
