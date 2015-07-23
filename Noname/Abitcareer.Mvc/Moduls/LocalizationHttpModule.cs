@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Threading;
 using System.Web;
 using System.Web.Routing;
+using Abitcareer.Mvc.Extensions;
 
 namespace Abitcareer.Mvc
 {
@@ -30,7 +31,6 @@ namespace Abitcareer.Mvc
             if (currentContext.Request.Url.AbsolutePath.Equals("") ||
                 currentContext.Request.Url.AbsolutePath.Equals("/"))
             {
-                CEngine.SetCultureForThread(Thread.CurrentThread.CurrentCulture.Name);
                 currentContext.Response.RedirectToRoute("Default", new { locale = userCulture });
                 return;
             }
@@ -45,8 +45,7 @@ namespace Abitcareer.Mvc
                 }
                 else
                 {
-                    CEngine.SetCultureForThread(CEngine.DefaultCulture);
-                    currentContext.Response.RedirectToRoute("Default", new { locale = CEngine.DefaultCulture });
+                    currentContext.Response.RedirectToRoute("Default", new { locale = userCulture });
                 }
             }
         }

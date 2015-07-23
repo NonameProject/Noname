@@ -26,6 +26,15 @@ namespace Abitcareer.Mvc
                 });
 
             routes.MapLocalizedRoute(
+                name: "Home",
+                url: "Home",
+                defaults: new { controller = "Home", action = "Index" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
+
+            routes.MapLocalizedRoute(
                 name: "ChangeCulture",
                 url: "ChangeCulture/{culture}",
                 defaults: new { controller = "LocalizationEngine", action = "ChangeCulture" },
