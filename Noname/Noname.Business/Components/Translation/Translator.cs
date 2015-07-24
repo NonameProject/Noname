@@ -5,17 +5,17 @@ using System.Web;
 namespace Abitcareer.Business.Components.Translation
 {
     /// <summary>Provide translation methods</summary>
-    public static class Translator
+    public class Translator
     {
         /// <summary>Translate text by using Google translate in UTF8.</summary>
         /// <example>
-        /// <code>Translator.Translate("Київський політехнічний університет", Languages.Uk, Languages.En)</code>
+        /// <code>(new Translator()).Translate("Київський політехнічний університет", Languages.Uk, Languages.En)</code>
         /// </example>
         /// <param name="input">The input string.</param>
         /// <param name="from">Source lang</param>
         /// <param name="to">Destination lang</param>
         /// <returns>Translated string in UTF8</returns>
-        public static string Translate(string input, Languages from, Languages to)
+        public string Translate(string input, Languages from, Languages to)
         {
             return Translate(input, from, to, Encoding.UTF8);
         }
@@ -25,7 +25,7 @@ namespace Abitcareer.Business.Components.Translation
         /// <param name="from">Source lang</param>
         /// <param name="to">Destination lang</param>
         /// <returns>Translated string in indicated encoding</returns>
-        public static string Translate(string input, Languages from, Languages to, Encoding encoding)
+        public string Translate(string input, Languages from, Languages to, Encoding encoding)
         {
             string url = string.Format("https://translate.google.com/translate_a/single?client=t&sl={0}&tl={1}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&ie=UTF-8&oe=UTF-8&source=btn&ssel=0&tsel=0&kc=0&q={2}",
                                                 from.ToString("g"),
