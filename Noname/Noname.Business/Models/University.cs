@@ -7,6 +7,6 @@ namespace Abitcareer.Business.Models
 
         public virtual string Link { get; set; }
 
-        public virtual int CityId { get; set; }
+        public virtual City City { get; set; }
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class UniversityMap : ClassMap<University>
+    public class CityMap : ClassMap<City>
     {
-        public UniversityMap()
+        public CityMap()
         {
             Id(x => x.Id).GeneratedBy.Identity();
 
@@ -18,11 +18,9 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.NameEN).Not.Nullable().Length(128);
 
-            Map(x => x.Rating).Not.Nullable();
+            HasOne(x => x.University).Cascade.All();
 
-            References(x => x.City).Unique();
-
-            Map(x => x.Link).Not.Nullable().Length(128);
+            References(x => x.Region).Unique();
         }
     }
 }
