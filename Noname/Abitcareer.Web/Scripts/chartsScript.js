@@ -49,7 +49,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             maxPadding: 0.1,
             showLastLabel: true,
             //gridLineWidth: 0.5
-            tickInterval: 1000
+            tickInterval: 1000,
         },
         yAxis: {
             title: {
@@ -60,7 +60,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
                     return this.value;
                 }
             },
-            lineWidth: 1
+            lineWidth: 1,
         },
         legend: {
             enabled: false
@@ -94,20 +94,29 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             s2 = chart.series[1];
         var n0 = s0.length,
             n1 = s1.length;
-        var i,j,isect;
+        var i, j, isect;
+        var saveIsect;
+        var mx = -100;
         for (i = 1; i < n0; i++){
-            for (j = 1; j < n1; j++){
+            for (j = 1; j < n1; j++) {
+                if (s0[i - 1].y > mx) mx = s0[i - 1].y;
+                if (s0[i].y > mx) mx = s0[i].y;
                 if (isect = get_line_intersection(s0[i-1],s0[i],
                                     s1[j-1],s1[j])){
                     s2.addPoint(isect, false, false);
-
+                    saveIsect = isect;
                 }
             } 
         }
+        chart.yAxis[0].addPlotBand({
+            inverted: true,
+            from: saveIsect[1],
+            to: mx,
+            color: 'rgba(68, 170, 213, .2)',
+        })
         chart.redraw();
     });
 }
-
 function renderTheme() {
     Highcharts.createElement('link', {
         href: '//fonts.googleapis.com/css?family=Signika:400,700',
