@@ -124,7 +124,13 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
 
         console.log(s2.data[3]);
         for (var p = 0; p < s2.data.length; p++) {
-            if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) s2.data[p].select();
+            if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1])
+            {
+                s2.data[p].select();
+                chart.redraw();
+            };
         }
+
+ 
     });
 }

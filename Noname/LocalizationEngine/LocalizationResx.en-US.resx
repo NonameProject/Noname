@@ -124,7 +124,7 @@
     <value>Costs</value>
   </data>
   <data name="PaymentsCaption" xml:space="preserve">
-    <value>Level of tuition fees and the level of salaries after N years after the start of study</value>
+    <value>The level of tuition fees and wages</value>
   </data>
   <data name="PaymentsGraphCaption" xml:space="preserve">
     <value>Tuition fee</value>
@@ -148,7 +148,7 @@
     <value>Middle</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
-    <value>Total expenditure on education and total earnings after N years after the start of study</value>
+    <value>Total costs and earnings</value>
   </data>
   <data name="SummaryGraphCaption" xml:space="preserve">
     <value>Salary</value>
