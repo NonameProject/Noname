@@ -48,8 +48,12 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             },
             maxPadding: 0.1,
             showLastLabel: true,
+<<<<<<< HEAD
             //gridLineWidth: 0.5
             tickInterval: 1000,
+=======
+            tickInterval: 1000
+>>>>>>> origin/master
         },
         yAxis: {
             title: {
@@ -71,8 +75,8 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             {                   
                 var header = "<strong>" + this.series.name +  "</strong><br/>";
                 if (this.series.color == "green")
-                    return header+ valueTypes.profit +":{" + this.x + "}," +  valueTypes.year +  "{" + this.y + "}";
-                return header + valueTypes.costs+ ":{" + this.x + "},"  +  valueTypes.year+ "{" + this.y + "}";
+                    return header+ valueTypes.profit +":{" + this.x.toFixed(1) + "}," +  valueTypes.year +  "{" + this.y.toFixed(1) + "}";
+                return header + valueTypes.costs+ ":{" + this.x.toFixed(1) + "},"  +  valueTypes.year+ "{" + this.y.toFixed(1) + "}";
             }
         },
         plotOptions: {
