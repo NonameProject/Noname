@@ -20,7 +20,6 @@ namespace Abitcareer.Mvc
         protected void Application_Start()
         {
             ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
-
             AutomapperConfig.RegisterMaps();
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -43,7 +42,6 @@ namespace Abitcareer.Mvc
             MiniProfiler.Start();
             // Add Profiling Action Filter (mvc mini profiler)
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
-
             // Add Profiling View Engine (mvc mini profiler)
             var copy = ViewEngines.Engines.ToList();
             ViewEngines.Engines.Clear();
@@ -66,7 +64,9 @@ namespace Abitcareer.Mvc
             var principal = httpRequest.RequestContext.HttpContext.User;
             return principal.IsInRole("admin");
         }
+
         public static bool DisableProfilingResults { get; set; }
+
         private void InitProfilerSettings()
         {
             // by default, sql parameters won't be displayed
@@ -92,13 +92,5 @@ namespace Abitcareer.Mvc
             base.Init();
             Module.Init(this);
         }
-        //Database
-        /*public static DbConnection GetOpenConnection()
-        {
-            var cnn = CreateRealConnection(); // A SqlConnection, SqliteConnection ... or whatever
-
-            // wrap the connection with a profiling connection that tracks timings 
-            return new StackExchange.Profiling.Data.ProfiledDbConnection(cnn, MiniProfiler.Current);
-        }*/
     }
 }

@@ -21,10 +21,8 @@ namespace Abitcareer.Business.Components.MiniProfilers
                     stack = new Stack<IDisposable>();
                     HttpContext.Current.Items[stackKey] = stack;
                 }
-
                 var prof = MiniProfiler.Current.Step("Controller: " + filterContext.Controller.ToString() + "." + filterContext.ActionDescriptor.ActionName);
                 stack.Push(prof);
-
             }
             base.OnActionExecuting(filterContext);
         }

@@ -145,7 +145,7 @@
     <value>Низкий</value>
   </data>
   <data name="QualityMiddle" xml:space="preserve">
-    <value>Средній</value>
+    <value>Середній</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
     <value>Сумарні витрати на освіту і сумарний заробіток потому N років після початку навчання</value>
@@ -154,10 +154,10 @@
     <value>Рівень зарплати</value>
   </data>
   <data name="xChartAxisCaption" xml:space="preserve">
-    <value>Час (роки)</value>
+    <value>Гроші (грн)</value>
   </data>
   <data name="yChartAxisCaption" xml:space="preserve">
-    <value>Гроші (грн)</value>
+    <value>Час (роки)</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Рік</value>

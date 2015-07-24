@@ -154,10 +154,10 @@
     <value>Salary</value>
   </data>
   <data name="xChartAxisCaption" xml:space="preserve">
-    <value>Time (years)</value>
+    <value>Money (UAH)</value>
   </data>
   <data name="yChartAxisCaption" xml:space="preserve">
-    <value>Money (UAH)</value>
+    <value>Time (years)</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
