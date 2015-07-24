@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
+    <Compile Include="NHibernateCore\Mappings\ClityMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\RegionMap.cs" />
     <Compile Include="NHibernateCore\Mappings\UniversityMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

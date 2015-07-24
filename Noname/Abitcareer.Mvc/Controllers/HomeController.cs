@@ -8,14 +8,14 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult Index()
         {
             //var provider = new NHibernateUniversityDataProvider();
-            //provider.Create(new Business.Models.University()
+            //var univ = new Business.Models.University()
             //    {
-            //        Name = "Житомирський Державний Технологічний Унівеситет",
-            //        NameEN = "Zhytomyr State Technological University",
-            //        Link="link",
-            //        CityId = 1,
-            //        Rating=5
-            //    });
+            //        Name = "Житомирський агротехнічний коледж",
+            //        NameEN = "Zhitomir Agricultural College",
+            //        Link = "link",
+            //        Rating = 3
+            //    };
+            //provider.Create(univ);
             //var list = provider.GetList();
             return View();
         }
