@@ -11,23 +11,27 @@
 {
     height: auto;
     margin-top: 10px;
-    width: 49.5%;
+    width: 100%;
+    height: 40%;
 }
 
-#chart-conteiner
+#chart-container
 {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 20px;
+    width: 50%;
+    float: right; 
+    padding-top: 0;
 }
 
 .form-wrapper
 {
-    background: url(http://www.highcharts.com/samples/graphics/sand.png);
+    padding-top: 100px;
+    float: left;
+    width: 400px;
     display: inline-block;
     margin-left: 5%;
     margin-right: 5%;
     text-align: center;
-    width: 90%;
 }
 
 select

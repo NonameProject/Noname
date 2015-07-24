@@ -14,13 +14,15 @@
 {
     float: right;
 }
+.inline-block
+{
+    display: inline-block;
+}
 @media (min-width: 768px) {
     .mobile-localization-changer{
         display: none;
     }
 }
-    
-
 .mobile-localization-changer a img {
   padding: 12px;
 }

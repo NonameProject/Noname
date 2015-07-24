@@ -25,7 +25,6 @@
 }
 
 function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, valueTypes) {
-    renderTheme();
     $(conteiner).highcharts({
         chart: {
             type: 'spline',
@@ -51,12 +50,17 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             tickInterval: 1000
         },
         yAxis: {
+            showEmpty: false,
             title: {
                 text: yAxisCaption
             },
             labels: {
                 formatter: function () {
-                    return this.value;
+                    if (this.y === 0) {
+                        return null;
+                    } else {
+                        return this.value;
+                    }
                 }
             },
             lineWidth: 1,
@@ -84,8 +88,8 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
         series: dataObj
     }, function (chart) {
         chart.setSize(
-       $('.chartWrapper').width(),
-       $('.chartWrapper').height(),
+       $(window).width()/2.3,
+       $(window).height()/2.3,
        false
     );
         var s0 = chart.series[0].points,
@@ -103,9 +107,12 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
                 if (isect = get_line_intersection(s0[i-1],s0[i],
                                     s1[j-1],s1[j])){
                     s2.addPoint(isect, false, false);
+                    var ob;
+
                     saveIsect = isect;
                 }
-            } 
+            }
+            
         }
         chart.yAxis[0].addPlotBand({
             inverted: true,
@@ -114,105 +121,10 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             color: 'rgba(68, 170, 213, .2)',
         })
         chart.redraw();
+
+        console.log(s2.data[3]);
+        for (var p = 0; p < s2.data.length; p++) {
+            if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) s2.data[p].select();
+        }
     });
-}
-function renderTheme() {
-    Highcharts.createElement('link', {
-        href: '//fonts.googleapis.com/css?family=Signika:400,700',
-        rel: 'stylesheet',
-        type: 'text/css'
-    }, null, document.getElementsByTagName('head')[0]);
-
-    // Add the background image to the container
-    Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
-        proceed.call(this);
-        this.container.style.background = 'url(http://www.highcharts.com/samples/graphics/sand.png)';
-    });
-
-
-    Highcharts.theme = {
-        colors: ["#f45b5b", "#8085e9", "#8d4654", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-           "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
-        chart: {
-            backgroundColor: null,
-            style: {
-                fontFamily: "Signika, serif"
-            }
-        },
-        title: {
-            style: {
-                color: 'black',
-                fontSize: '16px',
-                fontWeight: 'bold'
-            }
-        },
-        subtitle: {
-            style: {
-                color: 'black'
-            }
-        },
-        tooltip: {
-            borderWidth: 0
-        },
-        legend: {
-            itemStyle: {
-                fontWeight: 'bold',
-                fontSize: '13px'
-            }
-        },
-        xAxis: {
-            labels: {
-                style: {
-                    color: '#6e6e70'
-                }
-            }
-        },
-        yAxis: {
-            labels: {
-                style: {
-                    color: '#6e6e70'
-                }
-            }
-        },
-        plotOptions: {
-            series: {
-                shadow: true
-            },
-            candlestick: {
-                lineColor: '#404048'
-            },
-            map: {
-                shadow: false
-            }
-        },
-
-        // Highstock specific
-        navigator: {
-            xAxis: {
-                gridLineColor: '#D0D0D8'
-            }
-        },
-        rangeSelector: {
-            buttonTheme: {
-                fill: 'white',
-                stroke: '#C0C0C8',
-                'stroke-width': 1,
-                states: {
-                    select: {
-                        fill: '#D0D0D8'
-                    }
-                }
-            }
-        },
-        scrollbar: {
-            trackBorderColor: '#C0C0C8'
-        },
-
-        // General
-        background2: '#E0E0E8'
-
-    };
-
-    // Apply the theme
-    Highcharts.setOptions(Highcharts.theme);
 }
