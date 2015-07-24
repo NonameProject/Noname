@@ -53,6 +53,8 @@
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\CityMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\SpecialityMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\FacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RegionMap.cs" />
     <Compile Include="NHibernateCore\Mappings\UniversityMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

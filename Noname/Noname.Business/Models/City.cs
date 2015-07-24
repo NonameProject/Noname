@@ -1,5 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 namespace Abitcareer.Business.Models
 {
     public class City : BaseModel

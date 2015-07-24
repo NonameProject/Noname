@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Abitcareer.Business.Models
 {
     public class University : BaseModel
@@ -8,5 +9,7 @@ namespace Abitcareer.Business.Models
         public virtual string Link { get; set; }
 
         public virtual City City { get; set; }
+
+        public virtual IList<Faculty> Faculties { get; set; }
     }
 }

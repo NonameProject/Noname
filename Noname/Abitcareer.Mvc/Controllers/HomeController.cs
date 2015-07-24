@@ -10,13 +10,6 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult Index()
         {
             //var provider = new NHibernateUniversityDataProvider();
-            //var univ = new Business.Models.University()
-            //    {
-            //        Name = "житомирський агротехнічний коледж",
-            //        NameEN = "Zhytomyr Agricultural College",
-            //        Link = "link",
-            //        Rating = 5
-            //    };
             //univ.City = new Business.Models.City()
             //    {
             //        Universities = new List<University>(),
@@ -24,8 +17,14 @@ namespace Abitcareer.Mvc.Controllers
             //        NameEN = "Zhytomyr"
             //    };
             //univ.City.Universities.Add(univ);
+            //var univ = new Business.Models.University()
+            //{
+            //    Name = "Національний технічний університет України «Київський політехнічний інститут»",
+            //    NameEN = "National Technical University of Ukraine «Kyiv Polytechnic Institute»",
+            //    Link = "link",
+            //    Rating = 5
+            //};
             //provider.Create(univ);
-            //var list = provider.GetList();
             return View();
         }
     }
