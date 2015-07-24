@@ -48,12 +48,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
             },
             maxPadding: 0.1,
             showLastLabel: true,
-<<<<<<< HEAD
-            //gridLineWidth: 0.5
-            tickInterval: 1000,
-=======
             tickInterval: 1000
->>>>>>> origin/master
         },
         yAxis: {
             title: {
