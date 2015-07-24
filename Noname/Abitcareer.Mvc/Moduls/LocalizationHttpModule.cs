@@ -48,6 +48,10 @@ namespace Abitcareer.Mvc
                     currentContext.Response.RedirectToRoute("Default", new { locale = userCulture });
                 }
             }
+            else
+            {
+                CEngine.SetCultureForThread(userCulture);
+            }
         }
     }
 }

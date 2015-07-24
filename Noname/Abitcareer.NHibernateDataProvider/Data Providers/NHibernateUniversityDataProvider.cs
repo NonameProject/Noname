@@ -33,8 +33,14 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
         {
             using (ISession session = Helper.OpenSession())
             {
-                session.Save(model);
-                session.Flush();
+                using (var transaction = session.BeginTransaction())
+                {
+                    var city = session.Get<City>(1);
+                    model.City = city;
+                    session.Save(model);
+                    session.Save(city);
+                    transaction.Commit();
+                }
             }
         }
 
