@@ -14,10 +14,10 @@ namespace Abitcareer.Mvc.App_Start
         {
             AutoMapper.Mapper
                 .CreateMap<University, UniversityViewModel>()
-                .IncludeBase<University, BaseViewModel>();
+                .IncludeBase<BaseModel, BaseViewModel>();
             AutoMapper.Mapper
                 .CreateMap<UniversityViewModel, University>()
-                .IncludeBase<BaseViewModel, University>();
+                .IncludeBase<BaseViewModel, BaseModel>();
 
         }
     }
