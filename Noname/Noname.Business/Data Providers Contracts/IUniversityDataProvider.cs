@@ -13,7 +13,7 @@ namespace Abitcareer.Business.Data_Providers_Contracts
 
         University GetById(string id);
 
-        void Create(University model);
+        void Create(University model, City cityModel);
 
         void Update(University model);
 
