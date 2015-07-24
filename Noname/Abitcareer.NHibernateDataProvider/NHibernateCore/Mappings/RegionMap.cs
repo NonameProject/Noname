@@ -18,7 +18,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.NameEN).Not.Nullable().Length(128);
 
-            HasOne(x => x.City).Cascade.All();
+            HasMany(x => x.Cities).Inverse();
         }
     }
 }

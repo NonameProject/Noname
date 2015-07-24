@@ -20,7 +20,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.Rating).Not.Nullable();
 
-            References(x => x.City).Unique();
+            References(x => x.City).Class<City>();
 
             Map(x => x.Link).Not.Nullable().Length(128);
         }

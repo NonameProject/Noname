@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 namespace Abitcareer.Business.Models
 {
     public class City : BaseModel
@@ -7,6 +8,6 @@ namespace Abitcareer.Business.Models
 
         public virtual Region Region { get; set; }
 
-        public virtual University University { get; set; }
+        public virtual IList<University> Universities { get; set; }
     }
 }

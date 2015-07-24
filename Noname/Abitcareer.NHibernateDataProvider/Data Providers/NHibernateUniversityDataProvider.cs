@@ -29,16 +29,16 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             }
         }
 
-        public void Create(University model)
+        public void Create(University model, City cityModel)
         {
             using (ISession session = Helper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var city = session.Get<City>(1);
-                    model.City = city;
+                    model.City = cityModel;
+                    model.City.Universities.Add(model);
                     session.Save(model);
-                    session.Save(city);
+                    session.Save(model.City);
                     transaction.Commit();
                 }
             }
