@@ -94,7 +94,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
        chartHeight,
        false
     );
-        if (chart.series.length > 2)
+        if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0)
         {
             var s0 = chart.series[0].points,
             s1 = chart.series[1].points,
