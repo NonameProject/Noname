@@ -1,4 +1,16 @@
-﻿.profiler-results
+﻿body
+{
+    min-width: 400px;
+    overflow-x: scroll;
+}
+#content
+{
+    height: 100%;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.profiler-results
 {
     opacity: 0.05;
 }
@@ -18,11 +30,11 @@
 {
     display: inline-block;
 }
+.mobile-localization-changer a img {
+  padding: 12px;
+}
 @media (min-width: 768px) {
     .mobile-localization-changer{
         display: none;
     }
-}
-.mobile-localization-changer a img {
-  padding: 12px;
 }

@@ -1,4 +1,6 @@
-﻿get_line_intersection = function(p0,p1,p2,p3)
+﻿var chartHeight = 400;
+
+get_line_intersection = function (p0, p1, p2, p3)
 {        
     var p0_x = p0.x,
         p0_y = p0.y,
@@ -88,49 +90,59 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
         series: dataObj
     }, function (chart) {
         chart.setSize(
-       $(window).width()/2.3,
-       $(window).height()/2.3,
+       $(".chartWrapper").width(),
+       chartHeight,
        false
     );
-        var s0 = chart.series[0].points,
+        if (chart.series.length > 2)
+        {
+            var s0 = chart.series[0].points,
             s1 = chart.series[1].points,
             s2 = chart.series[1];
-        var n0 = s0.length,
-            n1 = s1.length;
-        var i, j, isect;
-        var saveIsect;
-        var mx = -100;
-        for (i = 1; i < n0; i++){
-            for (j = 1; j < n1; j++) {
-                if (s0[i - 1].y > mx) mx = s0[i - 1].y;
-                if (s0[i].y > mx) mx = s0[i].y;
-                if (isect = get_line_intersection(s0[i-1],s0[i],
-                                    s1[j-1],s1[j])){
-                    s2.addPoint(isect, false, false);
-                    var ob;
+            var n0 = s0.length,
+                n1 = s1.length;
+            var i, j, isect;
+            var saveIsect;
+            var mx = -100;
+            for (i = 1; i < n0; i++) {
+                for (j = 1; j < n1; j++) {
+                    if (s0[i - 1].y > mx) mx = s0[i - 1].y;
+                    if (s0[i].y > mx) mx = s0[i].y;
+                    if (isect = get_line_intersection(s0[i - 1], s0[i],
+                                        s1[j - 1], s1[j])) {
+                        s2.addPoint(isect, false, false);
+                        var ob;
 
-                    saveIsect = isect;
+                        saveIsect = isect;
+                    }
                 }
+
             }
-            
-        }
-        chart.yAxis[0].addPlotBand({
-            inverted: true,
-            from: saveIsect[1],
-            to: mx,
-            color: 'rgba(68, 170, 213, .2)',
-        })
-        chart.redraw();
+            chart.yAxis[0].addPlotBand({
+                inverted: true,
+                from: saveIsect[1],
+                to: mx,
+                color: 'rgba(68, 170, 213, .2)',
+            })
+            chart.redraw();
 
-        console.log(s2.data[3]);
-        for (var p = 0; p < s2.data.length; p++) {
-            if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1])
-            {
-                s2.data[p].select();
-                chart.redraw();
-            };
+            console.log(s2.data[3]);
+            for (var p = 0; p < s2.data.length; p++) {
+                if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) {
+                    s2.data[p].select();
+                    chart.redraw();
+                };
+            }
         }
+        
 
- 
+        $(window).resize(function () {
+            chart.redraw();
+            chart.setSize(
+               $(".chartWrapper").width(),
+               chartHeight,
+               false
+            );
+        });
     });
 }

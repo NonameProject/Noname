@@ -1,8 +1,4 @@
-﻿.highcharts-container, .highcharts-title {
-    max-height: 400px;
-}
-
-.highcharts-title
+﻿.highcharts-title
 {
     font-size: small !important;
 }
@@ -25,12 +21,9 @@
 
 .form-wrapper
 {
-    padding-top: 100px;
-    float: left;
-    width: 400px;
+    width: 50%;
+    padding-top: 10px;
     display: inline-block;
-    margin-left: 5%;
-    margin-right: 5%;
     text-align: center;
 }
 
@@ -44,4 +37,21 @@ select
 .highcharts-container>svg>:last-child, .highcharts-button
 {
     display: none;
+}
+
+.highcharts-container>svg
+{
+    float: right;
+}
+@media (max-width: 768px){
+    .form-wrapper {
+        float: none !important;
+        width: 100%;
+        text-align: center;
+    }
+    #chart-container {
+      padding: 20px;
+      width: 100%;
+      padding-top: 0;
+    }
 }

@@ -90,7 +90,10 @@
             </div>
         </div>
     </nav>
-    @RenderBody()    
+    <div id="content">
+        &nbsp;
+        @RenderBody() 
+    </div> 
     @RenderSection("scripts", required: false)
     @StackExchange.Profiling.MiniProfiler.RenderIncludes()
 </body>

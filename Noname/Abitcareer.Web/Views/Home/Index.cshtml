@@ -7,25 +7,21 @@
 {
     @Styles.Render("~/Content/Home.css")
 }
-<div class="form-wrapper">
-
-
+<div class="form-wrapper left">
     <select class="form-control" id="spec">
-            <option disabled>@LocalizationResx.PickSpeciality</option>
-          <option value="pi" selected>Програмная инженерия</option>
-          <option value="ki">Компьютерная инженерия</option>
-          <option value="ci">Системная инженерия</option>      
-    </select>  
-
+        <option value="noData">@LocalizationResx.PickSpeciality</option>
+        <option value="pi">Програмная инженерия</option>
+        <option value="ki">Компьютерная инженерия</option>
+        <option value="ci">Системная инженерия</option>
+    </select>
     <select class="form-control" id="quality">
-          <option disabled>@LocalizationResx.PickQuality</option>
-          <option value="1" selected>@LocalizationResx.QualityGood</option>
-          <option value="0.8">@LocalizationResx.QualityMiddle</option>
-          <option value="0.6">@LocalizationResx.QualityLow</option>     
-    </select>  
+        <option value="noData">@LocalizationResx.PickQuality</option>
+        <option value="1">@LocalizationResx.QualityGood</option>
+        <option value="0.8">@LocalizationResx.QualityMiddle</option>
+        <option value="0.6">@LocalizationResx.QualityLow</option>
+    </select>
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
-
 <div id="chart-container">
     <div class="chartWrapper right">
         <div id="payments-container"></div>
@@ -36,6 +32,9 @@
         <div id="summary-container"></div>
     </div>
 </div>
+
+
+
 
 
 @section Scripts
@@ -70,6 +69,17 @@
                 Costs: '@LocalizationResx.Costs'
             };
 
+            var noData = [{
+                name: textStrings.paymentsAxis,
+                data: [],
+                color: "red"
+                },
+                {
+                    name: textStrings.summaryAxis,
+                    data: [],
+                    color: "green"
+                }];
+
             var valueTypes = { costs: textStrings.Costs, year: textStrings.Year, profit: textStrings.Profit };
 
             var specialities = {
@@ -79,16 +89,22 @@
             };
             
             $("#commit").on("click", function () {
-                var names = ["ki", "pi", "ci"];
-                var selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));          
-                for (var i = selectedSpec[1].data.length; i--;) {
-                    selectedSpec[1].data[i][0] *= $("#quality").val();
-                }
+                var selectedSpec;
+                if ($("#spec").val() != "noData" || $("#quality").val() != "noData") {
+                    var names = ["ki", "pi", "ci"];
+                    selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
+                    for (var i = selectedSpec[1].data.length; i--;) {
+                        selectedSpec[1].data[i][0] *= $("#quality").val();
+                    }
 
-                for (var i = selectedSpec[0].data.length; i--;) {
-                    selectedSpec[0].data[i][0] *= $("#quality").val();
+                    for (var i = selectedSpec[0].data.length; i--;) {
+                        selectedSpec[0].data[i][0] *= $("#quality").val();
+                    }
+                    console.log(selectedSpec.data);
                 }
-                console.log(selectedSpec.data);
+                else selectedSpec = noData;
+                
+
                 drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
                 drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
             });
@@ -130,9 +146,8 @@
             }]
 
 
-
-             drawCharts("#payments-container", specialities["pi"], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
-             drawCharts("#summary-container", specialities["pi"], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
+             drawCharts("#payments-container", noData, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
+             drawCharts("#summary-container", noData, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, valueTypes);
         })
     </script>
 }
