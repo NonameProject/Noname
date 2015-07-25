@@ -8,12 +8,14 @@
     @Styles.Render("~/Content/Home.css")
 }
 <div class="form-wrapper left">
-    <select class="form-control" id="spec">
-        <option value="noData">@LocalizationResx.PickSpeciality</option>
-        <option value="pi">Програмная инженерия</option>
-        <option value="ki">Компьютерная инженерия</option>
-        <option value="ci">Системная инженерия</option>
-    </select>
+    <label for="spec">@LocalizationResx.СhooseSpeciality</label>
+        <select class="form-control" id="spec">
+            <option value="noData">@LocalizationResx.PickSpeciality</option>
+            <option value="pi">Програмная инженерия</option>
+            <option value="ki">Компьютерная инженерия</option>
+            <option value="ci">Системная инженерия</option>
+        </select>
+    <label for="quality">@LocalizationResx.ChooseUniversity</label>
     <select class="form-control" id="quality">
         <option value="noData">@LocalizationResx.PickQuality</option>
         <option value="1">@LocalizationResx.QualityGood</option>

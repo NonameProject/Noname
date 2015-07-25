@@ -70,6 +70,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Виберіть університет.
+        /// </summary>
+        public static string ChooseUniversity {
+            get {
+                return ResourceManager.GetString("ChooseUniversity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Витрати.
         /// </summary>
         public static string Costs {
@@ -192,6 +201,15 @@ namespace CultureEngine {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Виберіть спеціальність.
+        /// </summary>
+        public static string СhooseSpeciality {
+            get {
+                return ResourceManager.GetString("СhooseSpeciality", resourceCulture);
             }
         }
     }

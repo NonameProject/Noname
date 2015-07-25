@@ -162,4 +162,10 @@
   <data name="Year" xml:space="preserve">
     <value>Рік</value>
   </data>
+  <data name="ChooseUniversity" xml:space="preserve">
+    <value>Виберіть університет</value>
+  </data>
+  <data name="СhooseSpeciality" xml:space="preserve">
+    <value>Виберіть спеціальність</value>
+  </data>
 </root>
