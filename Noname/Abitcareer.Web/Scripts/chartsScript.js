@@ -1,148 +1,172 @@
-﻿var chartHeight = 400;
+﻿$(document).ready(function () {
+    Chart.defaults.global = {
+        // Boolean - Whether to animate the chart
+        animation: true,
 
-get_line_intersection = function (p0, p1, p2, p3)
-{        
-    var p0_x = p0.x,
-        p0_y = p0.y,
-        p1_x = p1.x,
-        p1_y = p1.y,
-        p2_x = p2.x,
-        p2_y = p2.y,
-        p3_x = p3.x,
-        p3_y = p3.y;  
+        // Number - Number of animation steps
+        animationSteps: 60,
 
-    var s1_x, s1_y, s2_x, s2_y;
-    s1_x = p1_x - p0_x;     s1_y = p1_y - p0_y;
-    s2_x = p3_x - p2_x;     s2_y = p3_y - p2_y;
+        // String - Animation easing effect
+        // Possible effects are:
+        // [easeInOutQuart, linear, easeOutBounce, easeInBack, easeInOutQuad,
+        //  easeOutQuart, easeOutQuad, easeInOutBounce, easeOutSine, easeInOutCubic,
+        //  easeInExpo, easeInOutBack, easeInCirc, easeInOutElastic, easeOutBack,
+        //  easeInQuad, easeInOutExpo, easeInQuart, easeOutQuint, easeInOutCirc,
+        //  easeInSine, easeOutExpo, easeOutCirc, easeOutCubic, easeInQuint,
+        //  easeInElastic, easeInOutSine, easeInOutQuint, easeInBounce,
+        //  easeOutElastic, easeInCubic]
+        animationEasing: "easeOutQuart",
 
-    var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
-        t = ( s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
+        // Boolean - If we should show the scale at all
+        showScale: true,
 
-    if (s >= 0 && s <= 1 && t >= 0 && t <= 1)
-    {
-        return [p0_x + (t * s1_x),p0_y + (t * s1_y)];
+        // Boolean - If we want to override with a hard coded scale
+        scaleOverride: false,
+
+        // ** Required if scaleOverride is true **
+        // Number - The number of steps in a hard coded scale
+        scaleSteps: null,
+        // Number - The value jump in the hard coded scale
+        scaleStepWidth: null,
+        // Number - The scale starting value
+        scaleStartValue: null,
+
+        // String - Colour of the scale line
+        scaleLineColor: "rgba(0,0,0,.1)",
+
+        // Number - Pixel width of the scale line
+        scaleLineWidth: 1,
+
+        // Boolean - Whether to show labels on the scale
+        scaleShowLabels: true,
+
+        // Interpolated JS string - can access value
+        scaleLabel: "<%=value%>",
+
+        // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+        scaleIntegersOnly: true,
+
+        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: false,
+
+        // String - Scale label font declaration for the scale label
+        scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+        // Number - Scale label font size in pixels
+        scaleFontSize: 12,
+
+        // String - Scale label font weight style
+        scaleFontStyle: "normal",
+
+        // String - Scale label font colour
+        scaleFontColor: "#666",
+
+        // Boolean - whether or not the chart should be responsive and resize when the browser does.
+        responsive: true,
+
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+
+        // Boolean - Determines whether to draw tooltips on the canvas or not
+        showTooltips: true,
+
+        // Function - Determines whether to execute the customTooltips function instead of drawing the built in tooltips (See [Advanced - External Tooltips](#advanced-usage-custom-tooltips))
+        customTooltips: false,
+
+        // Array - Array of string names to attach tooltip events
+        tooltipEvents: ["mousemove", "touchstart", "touchmove"],
+
+        // String - Tooltip background colour
+        tooltipFillColor: "rgba(0,0,0,0.8)",
+
+        // String - Tooltip label font declaration for the scale label
+        tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+        // Number - Tooltip label font size in pixels
+        tooltipFontSize: 14,
+
+        // String - Tooltip font weight style
+        tooltipFontStyle: "normal",
+
+        // String - Tooltip label font colour
+        tooltipFontColor: "#fff",
+
+        // String - Tooltip title font declaration for the scale label
+        tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+        // Number - Tooltip title font size in pixels
+        tooltipTitleFontSize: 14,
+
+        // String - Tooltip title font weight style
+        tooltipTitleFontStyle: "bold",
+
+        // String - Tooltip title font colour
+        tooltipTitleFontColor: "#fff",
+
+        // Number - pixel width of padding around tooltip text
+        tooltipYPadding: 6,
+
+        // Number - pixel width of padding around tooltip text
+        tooltipXPadding: 6,
+
+        // Number - Size of the caret on the tooltip
+        tooltipCaretSize: 8,
+
+        // Number - Pixel radius of the tooltip border
+        tooltipCornerRadius: 6,
+
+        // Number - Pixel offset from point x to tooltip edge
+        tooltipXOffset: 10,
+
+        // String - Template string for single tooltips
+        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+        // String - Template string for multiple tooltips
+        multiTooltipTemplate: "<%= value %>",
+
+        // Function - Will fire on animation progression.
+        onAnimationProgress: function () { },
+
+        // Function - Will fire on animation completion.
+        onAnimationComplete: function () { }
+    }
+});
+
+function drawChart(destination, data, labels)
+{
+    function addAlpha(alpha, color) {
+        return color.replace(")", "," + alpha + ")").replace("rgb", "rgba");
     }
 
-    return false;
-}
+    function getRandomColor() {
+        var r = function () { return Math.floor(Math.random() * 256) };
+        return "rgb(" + r() + "," + r() + "," + r() + ")";
+    }
 
-function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, valueTypes) {
-    $(conteiner).highcharts({
-        chart: {
-            type: 'spline',
-            inverted: true,
-            zoomtype: "xy"
-        },
-        title: {
-            text: title
-        },
-        xAxis: {
-            reversed: false,
-            title: {
-                enabled: true,
-                text: xAxisCaption
-            },
-            labels: {
-                formatter: function () {
-                    return this.value;
-                }
-            },
-            maxPadding: 0.1,
-            showLastLabel: true,
-            tickInterval: 1000
-        },
-        yAxis: {
-            showEmpty: false,
-            title: {
-                text: yAxisCaption
-            },
-            labels: {
-                formatter: function () {
-                    if (this.y === 0) {
-                        return null;
-                    } else {
-                        return this.value;
-                    }
-                }
-            },
-            lineWidth: 1,
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            headerFormat: '<b>{series.name}</b><br/>',
-            formatter: function()
-            {                   
-                var header = "<strong>" + this.series.name +  "</strong><br/>";
-                if (this.series.color == "green")
-                    return header+ valueTypes.profit +":{" + this.x.toFixed(1) + "}," +  valueTypes.year +  "{" + this.y.toFixed(1) + "}";
-                return header + valueTypes.costs+ ":{" + this.x.toFixed(1) + "},"  +  valueTypes.year+ "{" + this.y.toFixed(1) + "}";
-            }
-        },
-        plotOptions: {
-            spline: {
-                marker: {
-                    enable: false
-                }
-            }
-        },
-        series: dataObj
-    }, function (chart) {
-        chart.setSize(
-       $(".chartWrapper").width(),
-       chartHeight,
-       false
-    );
-        if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0)
+    var countOfDatasets = data[0].length;
+    var tempData = {
+        labels: [],
+        datasets: []
+    };
+    for (var q = countOfDatasets; q--;)
+    {
+        var colorCode = getRandomColor(0, 255);
+        tempData.datasets.push(
         {
-            var s0 = chart.series[0].points,
-            s1 = chart.series[1].points,
-            s2 = chart.series[1];
-            var n0 = s0.length,
-                n1 = s1.length;
-            var i, j, isect;
-            var saveIsect;
-            var mx = -100;
-            for (i = 1; i < n0; i++) {
-                for (j = 1; j < n1; j++) {
-                    if (s0[i - 1].y > mx) mx = s0[i - 1].y;
-                    if (s0[i].y > mx) mx = s0[i].y;
-                    if (isect = get_line_intersection(s0[i - 1], s0[i],
-                                        s1[j - 1], s1[j])) {
-                        s2.addPoint(isect, false, false);
-                        var ob;
-
-                        saveIsect = isect;
-                    }
-                }
-
-            }
-            chart.yAxis[0].addPlotBand({
-                inverted: true,
-                from: saveIsect[1],
-                to: mx,
-                color: 'rgba(68, 170, 213, .2)',
-            })
-            chart.redraw();
-
-            console.log(s2.data[3]);
-            for (var p = 0; p < s2.data.length; p++) {
-                if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) {
-                    s2.data[p].select();
-                    chart.redraw();
-                };
-            }
-        }
-        
-
-        $(window).resize(function () {
-            chart.redraw();
-            chart.setSize(
-               $(".chartWrapper").width(),
-               chartHeight,
-               false
-            );
+            label: "Dataset",
+            fillColor: addAlpha(0.2, colorCode),
+            strokeColor: addAlpha(0.8, colorCode),
+            pointColor: addAlpha(1, colorCode),
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: addAlpha(1, colorCode),
+            data: []
         });
-    });
+    }
+    var chart = new Chart(destination.get(0).getContext("2d")).Line(tempData);
+    for (var c = 0; data.length > c; c++)
+    {
+        chart.addData(data[c], labels[c]);
+    }
+    return chart;
 }

@@ -205,6 +205,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js\Chart.js" />
     <Content Include="Scripts\chartsScript.js" />
     <Content Include="Scripts\errorhandler.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
