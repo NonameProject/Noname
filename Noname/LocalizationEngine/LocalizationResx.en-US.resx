@@ -168,4 +168,7 @@
   <data name="ChooseUniversity" xml:space="preserve">
     <value>Choose University</value>
   </data>
+  <data name="DotCaption" xml:space="preserve">
+    <value>Moment when your salary is equal to tution fee</value>
+  </data>
 </root>

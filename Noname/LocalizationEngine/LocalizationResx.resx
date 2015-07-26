@@ -168,4 +168,7 @@
   <data name="СhooseSpeciality" xml:space="preserve">
     <value>Виберіть спеціальність</value>
   </data>
+  <data name="DotCaption" xml:space="preserve">
+    <value>Момент, коли ваша заробітня плата рівна платі за навчання</value>
+  </data>
 </root>

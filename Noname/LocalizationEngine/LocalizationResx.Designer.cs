@@ -88,6 +88,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Момент, коли ваша заробітня плата рівна платі за навчання.
+        /// </summary>
+        public static string DotCaption {
+            get {
+                return ResourceManager.GetString("DotCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Рівень оплати за навчання та рівень зарплати.
         /// </summary>
         public static string PaymentsCaption {

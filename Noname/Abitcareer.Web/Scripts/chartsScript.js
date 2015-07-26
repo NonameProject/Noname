@@ -1,5 +1,4 @@
 ﻿var chartHeight = 400;
-
 get_line_intersection = function (p0, p1, p2, p3)
 {        
     var p0_x = p0.x,
@@ -26,7 +25,7 @@ get_line_intersection = function (p0, p1, p2, p3)
     return false;
 }
 
-function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, valueTypes) {
+function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes) {
     $(conteiner).highcharts({
         chart: {
             type: 'spline',
@@ -73,11 +72,15 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
         tooltip: {
             headerFormat: '<b>{series.name}</b><br/>',
             formatter: function()
-            {                   
+            {
+               
                 var header = "<strong>" + this.series.name +  "</strong><br/>";
                 if (this.series.color == "green")
-                    return header+ valueTypes.profit +":{" + this.x.toFixed(1) + "}," +  valueTypes.year +  "{" + this.y.toFixed(1) + "}";
-                return header + valueTypes.costs+ ":{" + this.x.toFixed(1) + "},"  +  valueTypes.year+ "{" + this.y.toFixed(1) + "}";
+                    return header + valueTypes.profit + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
+                /*temporary code*/
+                if ((this.series.name == "Salary" || this.series.name == "Рівень зарплати") && (this.x == 1200 || this.x == 1500 || this.x == 720 || this.x == 960 || this.x == 1090 || this.x == 872.7 || this.x == 654.5))
+                    return dotCaption;
+                return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
             }
         },
         plotOptions: {
@@ -122,7 +125,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, value
                 inverted: true,
                 from: saveIsect[1],
                 to: mx,
-                color: 'rgba(68, 170, 213, .2)',
+                color: ' #FFEFD5',
             })
             chart.redraw();
 
