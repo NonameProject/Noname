@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Components.Managers
@@ -31,9 +32,15 @@ namespace Abitcareer.Business.Components.Managers
             this.provider = provider;
         }
 
+        public void Create(University model)
+        {
+            ClearCache();
+            provider.Create(model);
+        }
+
         public IList<University> GetList()
         {
-            return FromCache<IList<University>>("list", () =>
+            return FromCache<IList<University>>(Thread.CurrentThread.CurrentUICulture.LCID + "_list", () =>
             {
                 var list = provider.GetList();
                 var newList = new List<University>();

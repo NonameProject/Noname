@@ -22,7 +22,7 @@ namespace Abitcareer.Business.Models
         [LocalizableField]
         public virtual string Name { get; set; }
 
-        public virtual Dictionary<string, object> Fields { get; set; }
+        public virtual Dictionary<string, string> Fields { get; set; }
 
         public virtual string Xml
         {
@@ -35,8 +35,8 @@ namespace Abitcareer.Business.Models
             set
             {
                 XElement xElem2 = XElement.Parse(value);
-                Fields = xElem2.Descendants("item")
-                                    .ToDictionary(x => (string)x.Attribute("key"), x => (object)x.Attribute("value"));
+                Fields = xElem2.Descendants("field")
+                                    .ToDictionary(x => (string)x.Attribute("key"), x => (string)x.Attribute("value"));
             }
         }
     }

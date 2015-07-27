@@ -38,9 +38,9 @@ namespace Abitcareer.Web.Components
 
         public void ClearCacheByRegion(string region)
         {
-            ClearCacheHelper( key => 
+            ClearCacheHelper(key =>
             {
-                return key.StartsWith(region) || key.StartsWith(EnvironmentInfo.Instance.ReminderCacheName);
+                return key.StartsWith(region);
             });
         }
 
