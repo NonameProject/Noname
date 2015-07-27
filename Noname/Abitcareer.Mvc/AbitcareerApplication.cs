@@ -39,7 +39,6 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-            MiniprofilerConfig.StartMiniprofiler();
             MiniProfiler.Start();
             // Add Profiling Action Filter (mvc mini profiler)
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
@@ -56,7 +55,7 @@ namespace Abitcareer.Mvc
 
         protected void Application_EndRequest()
         {
-            MiniprofilerConfig.StopMiniprofiler();
+            MiniProfiler.Stop();
         }        
 
         public override void Init()
