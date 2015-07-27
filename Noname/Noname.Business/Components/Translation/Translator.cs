@@ -7,6 +7,15 @@ namespace Abitcareer.Business.Components.Translation
     /// <summary>Provide translation methods</summary>
     public class Translator
     {
+
+        /// <summary>Languages enumeration</summary>
+        public enum Languages
+        {
+            /// <summary>English</summary>
+            En,
+            /// <summary>Ukrainian</summary>
+            Uk
+        }
         /// <summary>Translate text by using Google translate in UTF8.</summary>
         /// <example>
         /// <code>(new Translator()).Translate("Київський політехнічний університет", Languages.Uk, Languages.En)</code>

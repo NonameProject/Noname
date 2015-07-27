@@ -61,7 +61,6 @@
     <Compile Include="Components\Miniprofiler\DbCommandProxy.cs" />
     <Compile Include="Components\Miniprofiler\HasManyConvention.cs" />
     <Compile Include="Components\Miniprofiler\ProfiledSqlCeDriver.cs" />
-    <Compile Include="Components\Translation\Languages.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
     <Compile Include="Data Providers Contracts\IUniversityDataProvider.cs" />
     <Compile Include="EnvironmentInfo.cs" />
