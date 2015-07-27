@@ -1,7 +1,9 @@
-﻿
-var chartHeight = 400;
-get_line_intersection = function (p0, p1, p2, p3) {
-    var p0_x = p0.x,
+﻿var Chart = (function () {
+
+    var height = 400;
+
+    var getLineIntersection = function (p0, p1, p2, p3) {
+        var p0_x = p0.x,
         p0_y = p0.y,
         p1_x = p1.x,
         p1_y = p1.y,
@@ -10,92 +12,23 @@ get_line_intersection = function (p0, p1, p2, p3) {
         p3_x = p3.x,
         p3_y = p3.y;
 
-    var s1_x, s1_y, s2_x, s2_y;
-    s1_x = p1_x - p0_x; s1_y = p1_y - p0_y;
-    s2_x = p3_x - p2_x; s2_y = p3_y - p2_y;
+        var s1_x, s1_y, s2_x, s2_y;
+        s1_x = p1_x - p0_x; s1_y = p1_y - p0_y;
+        s2_x = p3_x - p2_x; s2_y = p3_y - p2_y;
 
-    var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
-        t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
+        var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
+            t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
 
-    if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
-        return [p0_x + (t * s1_x), p0_y + (t * s1_y)];
-    }
+        if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
+            return [p0_x + (t * s1_x), p0_y + (t * s1_y)];
+        }
 
-    return false;
-}
+        return false;
+    };
 
-function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes) {
-    $(conteiner).highcharts({
-        chart: {
-            type: 'spline',
-            inverted: true,
-            zoomtype: "xy"
-        },
-        title: {
-            text: title
-        },
-        xAxis: {
-            reversed: false,
-            title: {
-                enabled: true,
-                text: xAxisCaption
-            },
-            labels: {
-                formatter: function () {
-                    return this.value;
-                }
-            },
-            maxPadding: 0.1,
-            showLastLabel: true,
-            tickInterval: 1000
-        },
-        yAxis: {
-            categories: ['0'],
-            showEmpty: false,
-            title: {
-                text: yAxisCaption
-            },
-            labels: {
-                formatter: function () {
-                    if (this.y === 0) {
-                    } else {
-                        return this.value;
-                    }
-                }
-            },
-            lineWidth: 1,
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            headerFormat: '<b>{series.name}</b><br/>',
-            formatter: function () {
+    var tuneChart = function (chart) {
 
-                var header = "<strong>" + this.series.name + "</strong><br/>";
-                if (this.series.color == "green")
-                    return header + valueTypes.profit + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
-                /*temporary code*/
-                //if (((this.x.toFixed(1) == 1500 || this.x.toFixed(1) == 900) && this.y.toFixed(1) == 2.3) || (this.x.toFixed(1) == 1200 && (this.y.toFixed(1) == 2.3 || this.y.toFixed(1) == 2)) || ((this.x.toFixed(1) == 960 || this.x.toFixed(1) == 720) && this.y.toFixed(1) == 2) || ((this.x.toFixed(1) == 654.5 || this.x.toFixed(1) == 872.7) && (this.y.toFixed(1) == 2.9)) || ((this.x.toFixed(1) == 1090.9) && (this.y.toFixed(1) == 2.9)))
-                //  return dotCaption;
-                return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
-            }
-        },
-        plotOptions: {
-            spline: {
-                marker: {
-                    enable: false
-                }
-            }
-        },
-        series: dataObj
-    }, function (chart) {
-        chart.setSize(
-       $(".chartWrapper").width(),
-       chartHeight,
-       false
-    );
-        if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0) {
+        var customizeIntersectedData = function () {
             var s0 = chart.series[0].points,
             s1 = chart.series[1].points,
             s2 = chart.series[1];
@@ -108,7 +41,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCa
                 for (j = 1; j < n1; j++) {
                     if (s0[i - 1].y > mx) mx = s0[i - 1].y;
                     if (s0[i].y > mx) mx = s0[i].y;
-                    if (isect = get_line_intersection(s0[i - 1], s0[i],
+                    if (isect = getLineIntersection(s0[i - 1], s0[i],
                                         s1[j - 1], s1[j])) {
                         s2.addPoint(isect, false, false);
                         var ob;
@@ -118,6 +51,7 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCa
                 }
 
             }
+
             chart.yAxis[0].addPlotBand({
                 inverted: true,
                 from: saveIsect[1],
@@ -126,23 +60,90 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCa
             })
             chart.redraw();
 
-            console.log(s2.data[3]);
             for (var p = 0; p < s2.data.length; p++) {
                 if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) {
                     s2.data[p].select();
                     chart.redraw();
                 };
             }
-        }
+        };
 
+        chart.setSize($(".chartWrapper").width(), height, false);
+
+        if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0) {
+            customizeIntersectedData();
+        }
 
         $(window).resize(function () {
             chart.redraw();
-            chart.setSize(
-               $(".chartWrapper").width(),
-               chartHeight,
-               false
-            );
+            chart.setSize($(".chartWrapper").width(), height, false);
         });
-    });
-}
+    };
+
+    return {
+        draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes) {
+            $(conteiner).highcharts({
+                chart: {
+                    type: 'spline',
+                    inverted: true,
+                    zoomtype: "xy"
+                },
+                title: {
+                    text: title
+                },
+                xAxis: {
+                    reversed: false,
+                    title: {
+                        enabled: true,
+                        text: xAxisCaption
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    },
+                    maxPadding: 0.1,
+                    showLastLabel: true,
+                    tickInterval: 1000
+                },
+                yAxis: {
+                    categories: ['0'],
+                    showEmpty: false,
+                    title: {
+                        text: yAxisCaption
+                    },
+                    labels: {
+                        formatter: function () {
+                            if (this.y === 0) {
+                            } else {
+                                return this.value;
+                            }
+                        }
+                    },
+                    lineWidth: 1,
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br/>',
+                    formatter: function () {
+
+                        var header = "<strong>" + this.series.name + "</strong><br/>";
+                        if (this.series.color == "green")
+                            return header + valueTypes.profit + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
+                        return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
+                    }
+                },
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            enable: false
+                        }
+                    }
+                },
+                series: dataObj
+            }, function (chart) { tuneChart(chart)});
+        }
+    };
+})();
