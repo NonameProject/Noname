@@ -60,6 +60,7 @@
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
+    <Compile Include="NHibernateCore\Mappings\BaseMap.cs" />
     <Compile Include="NHibernateCore\Mappings\CityMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SpecialityMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FacultyMap.cs" />
