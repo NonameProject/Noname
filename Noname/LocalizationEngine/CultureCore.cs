@@ -16,19 +16,20 @@ namespace CultureEngine
         private CEngine()
         {
             RegisterCulture(DefaultCulture);
+            RegisterCulture("uk");
             RegisterCulture("en-US");
         }
 
         public static CEngine Instance
         {
-           get
-           {
-                if(instance == null)
+            get
+            {
+                if (instance == null)
                 {
                     instance = new CEngine();
                 }
                 return instance;
-           }
+            }
         }
 
         /// <summary>
@@ -39,12 +40,12 @@ namespace CultureEngine
         /// <summary>
         /// Key for accessing stored cookies
         /// </summary>
-        public const string CultureKey = "locale";
+        public readonly string CultureKey = "locale";
 
         /// <summary>
         ///     Default culture name
         /// </summary>
-        public const string DefaultCulture = "uk-UA";
+        public readonly string DefaultCulture = "uk-UA";
 
         /// <summary>
         ///     Method that creates resource manager for new culture and adds that culture to SupportedCultures list
@@ -52,7 +53,7 @@ namespace CultureEngine
         /// <param name="cultureName">Name of culture that will be registered</param>
         private void RegisterCulture(string cultureName)
         {
-            if(!SupportedCultures.Any(s => s.Equals(cultureName, StringComparison.OrdinalIgnoreCase)))
+            if (!SupportedCultures.Any(s => s.Equals(cultureName, StringComparison.OrdinalIgnoreCase)))
             {
                 SupportedCultures.Add(cultureName);
             }
@@ -79,10 +80,10 @@ namespace CultureEngine
             Char[] splitArray = new Char[] { ';' };
             for (int i = 0; i < userLanguagesLength; i++)
             {
-                var culture = userRequestLanguages[i].Split(splitArray)[0];
+                string culture = userRequestLanguages[i].Split(splitArray)[0];
                 foreach (var item in SupportedCultures)
                 {
-                    if (item.Equals(culture, StringComparison.OrdinalIgnoreCase))
+                    if (item.IndexOf(culture, 0, StringComparison.OrdinalIgnoreCase) > 0)
                     {
                         return item;
                     }

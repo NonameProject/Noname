@@ -35,7 +35,7 @@ namespace Abitcareer.Mvc
             }
 
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
-            var cultureName = routeData.Values[CEngine.CultureKey];
+            var cultureName = routeData.Values[CEngine.Instance.CultureKey];
             if (cultureName != null)
             {
                 if (CEngine.Instance.IsSupported(cultureName.ToString()))
