@@ -171,4 +171,11 @@
   <data name="DotCaption" xml:space="preserve">
     <value>Moment when your salary is equal to tution fee</value>
   </data>
+  <data name="Greeting" xml:space="preserve">
+    <value>Dear graduate!
+
+Higher education is the first and the most important part of your career. We have developed "AbitCareer" to help you make more informed and conscious choice of the specialization.
+
+See how different jobs are paid and check how quickly you'll regain your educational expenses.</value>
+  </data>
 </root>
