@@ -180,4 +180,10 @@
   <data name="GreetingHeader" xml:space="preserve">
     <value>Шановний абітурієнте!</value>
   </data>
+  <data name="SummaryCosts" xml:space="preserve">
+    <value>Cумарні витрати</value>
+  </data>
+  <data name="SummarySalary" xml:space="preserve">
+    <value>Сумарний заробіток</value>
+  </data>
 </root>
