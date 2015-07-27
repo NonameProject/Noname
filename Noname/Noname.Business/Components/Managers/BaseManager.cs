@@ -1,8 +1,11 @@
 ﻿using Abitcareer.Business.Interfaces;
+using Abitcareer.Business.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Runtime.Caching;
 using System.Threading;
+using System.Reflection;
 
 namespace Abitcareer.Business.Components
 {
@@ -37,42 +40,42 @@ namespace Abitcareer.Business.Components
             CacheManager.RemoveFromCache(Name + "::" + name);
         }
 
-        //public Abitcareer.Business.Models.BaseModel GetBaseModel()
-        //{
-        //    var model = CacheManager.FromCache("asdasdasd", () =>
-        //    {
-        //        return new Abitcareer.Business.Models.BaseModel();//get from provider
-        //    });
+        public Abitcareer.Business.Models.BaseModel GetBaseModel(BaseModel model)
+        {
+            TranslateModel(model);
+            return model;
+        }
 
-        //    TranslateModel(model);
+        private string Localize(Abitcareer.Business.Models.BaseModel model, string keyPrefix, int languageId, string defaultValue)
+        {
+            var key = string.Format("{0}_{1}", keyPrefix, languageId);
+            object localizedValue;
+            if (model.Fields.TryGetValue(key, out localizedValue))
+            {
+                if (localizedValue != null && !string.IsNullOrEmpty(localizedValue.ToString()))
+                    return localizedValue.ToString();
+            }
+            return defaultValue;
+        }
 
-        //    model.Title = Localize(model, "Title", Thread.CurrentThread.CurrentUICulture.LCID, model.Title);
-        //    model.Name = Localize(model, "Name", Thread.CurrentThread.CurrentUICulture.LCID, model.Name);
+        private void TranslateModel(Abitcareer.Business.Models.BaseModel model)
+        {
+            Type type = model.GetType();
 
-        //    return model;
-        //}
+            var translatableProperties = model.GetType().GetProperties().Where(
+            p => p.GetCustomAttributes(typeof(LocalizableFieldAttribute), true).Length != 0);
 
-        //private string Localize(Abitcareer.Business.Models.BaseModel model, string keyPrefix, int languageId, string defaultValue)
-        //{
-        //    var key = string.Format("{0}_{1}", keyPrefix, languageId);
-        //    object localizedValue;
-        //    if (model.Fields.TryGetValue(key, out localizedValue))
-        //    {
-        //        if (localizedValue != null && !string.IsNullOrEmpty(localizedValue.ToString()))
-        //            return localizedValue.ToString();
-        //    }
+            foreach (var item in translatableProperties)
+            {
+                PropertyInfo prop = type.GetProperty(item.Name);
 
-        //    return defaultValue;
-        //}
-
-        //private void TranslateModel(Abitcareer.Business.Models.BaseModel model)
-        //{
-        //    var translatableProperties = new List<string>();// take by attributes with cache
-
-        //    foreach (var item in translatableProperties)
-        //    {
-        //        //Localize
-        //    }
-        //}
+                prop.SetValue(model,
+                    Localize(model,
+                        item.Name,
+                        Thread.CurrentThread.CurrentUICulture.LCID,
+                        (string)type.GetProperty(item.Name).GetValue(model, null)),
+                    null);
+            }
+        }
     }
 }

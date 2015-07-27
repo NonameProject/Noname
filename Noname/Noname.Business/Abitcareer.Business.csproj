@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\UniversityManager.cs" />
     <Compile Include="Components\Miniprofiler\DbCommandProxy.cs" />
     <Compile Include="Components\Miniprofiler\HasManyConvention.cs" />
     <Compile Include="Components\Miniprofiler\ProfiledSqlCeDriver.cs" />

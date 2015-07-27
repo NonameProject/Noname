@@ -1,4 +1,5 @@
-﻿using Abitcareer.Business.Models;
+﻿using Abitcareer.Business.Components.Managers;
+using Abitcareer.Business.Models;
 using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.NHibernateDataProvider.Data_Providers;
 using CultureEngine;
@@ -9,6 +10,13 @@ namespace Abitcareer.Mvc.Controllers
 {
     public class LocalizationEngineController : Controller
     {
+        UniversityManager manager;
+
+        public LocalizationEngineController(UniversityManager manager)
+        {
+            this.manager = manager;
+        }
+
         public ActionResult ChangeCulture(string culture, string routeName)
         {
             return RedirectToRoute(routeName, new { locale = culture });
@@ -16,8 +24,7 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult TestDb()
         {
-            var provider = new NHibernateUniversityDataProvider();
-            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(provider.GetList());
+            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(manager.GetList());
             return View(list);
         }
     }

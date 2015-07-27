@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace Abitcareer.Business.Models
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    sealed class LocalizebleFieldAttribute : Attribute
+    sealed class LocalizableFieldAttribute : Attribute
     {
     }
 
@@ -19,6 +19,7 @@ namespace Abitcareer.Business.Models
     {
         public virtual int Id { get; set; }
 
+        [LocalizableField]
         public virtual string Name { get; set; }
 
         public virtual Dictionary<string, object> Fields { get; set; }

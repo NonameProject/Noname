@@ -17,9 +17,10 @@ namespace Abitcareer.Mvc
     {
         protected void Application_Start()
         {
-            ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
-            AutomapperConfig.RegisterMaps();
             AreaRegistration.RegisterAllAreas();
+            ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
+            AutofacConfig.RegisterDependencies();
+            AutomapperConfig.RegisterMaps();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
