@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class SpecialityMap : ClassMap<Speciality>
+    public class SpecialityMap : BaseMap<Speciality>
     {
         public SpecialityMap()
+            : base()
         {
-            Id(x => x.Id).GeneratedBy.Identity();
-
-            Map(x => x.Name).Not.Nullable().Length(128);
-
-            Map(x => x.NameEN).Not.Nullable().Length(128);
-
             Map(x => x.Code);
 
             Map(x => x.DirectionCode);

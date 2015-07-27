@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class RegionMap : BaseMap<Region>
+    public class BaseMap<TEntity> : ClassMap<TEntity>
+        where TEntity : BaseModel
     {
-        public RegionMap()
-            : base()
+        public BaseMap()
         {
-            HasMany(x => x.Cities).Inverse();
+            Id(x => x.Id).GeneratedBy.Identity();
+
+            Map(x => x.Name).Not.Nullable().Length(128);
+
+            Map(x => x.Xml);
         }
     }
 }

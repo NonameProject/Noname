@@ -1,4 +1,5 @@
-﻿using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
+﻿using Abitcareer.Business.Models;
+using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.NHibernateDataProvider.Data_Providers;
 using CultureEngine;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult TestDb()
         {
-            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(new NHibernateUniversityDataProvider().GetList());
+            var provider = new NHibernateUniversityDataProvider();
+            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(provider.GetList());
             return View(list);
         }
     }

@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    public class CityMap : ClassMap<City>
+    public class CityMap : BaseMap<City>
     {
         public CityMap()
+            : base()
         {
-            Id(x => x.Id).GeneratedBy.Identity();
-
-            Map(x => x.Name).Not.Nullable().Length(128);
-
-            Map(x => x.NameEN).Not.Nullable().Length(128);
-
             HasMany(x => x.Universities).Inverse();
 
             References(x => x.Region).Class<Region>();
