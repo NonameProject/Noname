@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StackExchange.Profiling;
+using Abitcareer.Business.Components;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
@@ -24,13 +25,10 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
         {
             try
             {
-                using (MiniProfiler.Current.Step(funcName))
+                using (var session = CreateSession())
                 {
-                    using (var session = CreateSession())
-                    {
-                        return func(session);
-                    }
-                }                
+                    return func(session);
+                }
             }
             catch (Exception)
             {
@@ -43,13 +41,10 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
         {
             try
             {
-                using (MiniProfiler.Current.Step(funcName))
+                using (var session = CreateSession())
                 {
-                    using (var session = CreateSession())
-                    {
-                        action(session);
-                    }
-                }                
+                    action(session);
+                }
             }
             catch (Exception)
             {
