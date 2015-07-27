@@ -1,6 +1,5 @@
 ﻿using Abitcareer.Business.Components.MiniProfilers;
 using Abitcareer.Mvc.App_Start;
-using Abitcareer.Mvc.Components.CustomExceptions;
 using Elmah;
 using StackExchange.Profiling;
 using System;
@@ -10,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Abitcareer.Core.CustomExceptions;
 
 namespace Abitcareer.Mvc
 {

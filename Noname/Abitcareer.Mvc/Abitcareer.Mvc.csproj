@@ -118,7 +118,6 @@
     <Compile Include="App_Start\MiniprofilerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Components\CustomExceptions\JavaScriptException.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalizationEngineController.cs" />
@@ -131,7 +130,6 @@
     <Compile Include="ViewModels\LocalizedViewModels\UniversityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Readme\" />
+    <Folder Include="Components\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abitcareer.NHibernateDataProvider\Abitcareer.NHibernateDataProvider.csproj">

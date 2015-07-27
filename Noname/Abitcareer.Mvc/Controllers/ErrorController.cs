@@ -1,4 +1,4 @@
-﻿using Abitcareer.Mvc.Components.CustomExceptions;
+﻿using Abitcareer.Core.CustomExceptions;
 using Elmah;
 using System.Web.Mvc;
 
