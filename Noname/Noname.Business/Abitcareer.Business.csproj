@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.3.1.1.140\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +57,9 @@
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Miniprofiler\DbCommandProxy.cs" />
+    <Compile Include="Components\Miniprofiler\HasManyConvention.cs" />
+    <Compile Include="Components\Miniprofiler\ProfiledSqlCeDriver.cs" />
     <Compile Include="Components\Translation\Languages.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
     <Compile Include="Data Providers Contracts\IUniversityDataProvider.cs" />
