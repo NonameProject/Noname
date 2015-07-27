@@ -43,6 +43,19 @@ select
 {
     float: right;
 }
+
+#greeting h3
+{
+    text-align: center;
+}
+
+#greeting
+{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media (max-width: 768px){
     .form-wrapper {
         float: none !important;
