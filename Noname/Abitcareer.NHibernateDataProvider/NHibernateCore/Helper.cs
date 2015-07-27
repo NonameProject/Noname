@@ -4,6 +4,8 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using StackExchange.Profiling;
+using StackExchange.Profiling.NHibernate;
 
 namespace Events.NHibernateDataProvider.NHibernateCore
 {
@@ -25,6 +27,7 @@ namespace Events.NHibernateDataProvider.NHibernateCore
         {
             sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
+                              .Driver(typeof(StackExchange.Profiling.NHibernate.Drivers.MiniProfilerSql2008ClientDriver).AssemblyQualifiedName)
                               .ConnectionString(
                                   @"Server=tcp:ead9qcxrdo.database.windows.net,1433;Database=abitcareer;User ID=abitcareer@ead9qcxrdo;Password=ISMabit3;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
                               .ShowSql()
