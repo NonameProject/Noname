@@ -78,8 +78,8 @@ function drawCharts(conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCa
                 if (this.series.color == "green")
                     return header + valueTypes.profit + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
                 /*temporary code*/
-                if ((this.series.name == "Salary" || this.series.name == "Рівень зарплати") && (this.x == 1200 || this.x == 1500 || this.x == 720 || this.x == 960 || this.x == 1090 || this.x == 872.7 || this.x == 654.5))
-                    return dotCaption;
+                //if ((this.series.name == "Salary" || this.series.name == "Рівень зарплати") && (this.x == 1200 || this.x == 1500 || this.x == 720 || this.x == 960 || this.x == 1090 || this.x == 872.7 || this.x == 654.5))
+                  //  return dotCaption;
                 return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
             }
         },
