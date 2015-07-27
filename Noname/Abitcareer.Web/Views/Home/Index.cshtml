@@ -52,17 +52,6 @@
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
     <script>
-
-        function clone(destination, source) {
-            for (var property in source) {
-                if (typeof source[property] === "object" && source[property] !== null && destination[property]) {
-                    clone(destination[property], source[property]);
-                } else {
-                    destination[property] = source[property];
-                }
-            }
-        };
-
         $(function () {
             var textStrings = {
                 paymentsCaption: "@LocalizationResx.PaymentsCaption",
@@ -109,17 +98,11 @@
                             selectedSpec[j].data[i][0] *= $("#quality").val();
                         }
                     }
-
-                    //for (var i = selectedSpec[0].data.length; i--;) {
-                    //  selectedSpec[0].data[i][0] *= $("#quality").val();
-                    //}
                     console.log(selectedSpec.data);
                 }
                 else selectedSpec = noData;
 
-
-                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
-                // drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption,valueTypes);
+                Chart.draw("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes); 
             });
 
             specialities["pi"] = [{
@@ -190,8 +173,7 @@
             ]
 
 
-            drawCharts("#payments-container", noData, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
-            //drawCharts("#summary-container", noData, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption,textStrings.dotCaption, valueTypes);
+            Chart.draw("#payments-container", noData, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
         })
     </script>
 }
