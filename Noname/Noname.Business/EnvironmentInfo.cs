@@ -1,4 +1,5 @@
-﻿
+﻿using System.Configuration;
+
 namespace Abitcareer.Business.Components
 {
     public static class EnvironmentInfo
@@ -7,14 +8,14 @@ namespace Abitcareer.Business.Components
         {
             get
             {
-                return "http://abitcareer.azurewebsites.net";
+                return ConfigurationManager.AppSettings.Get("Host");
             }
         }
         public static string Email
         {
             get
             {
-                return "abitcareer@gmail.com";
+                return ConfigurationManager.AppSettings.Get("Email");
             }
         }
 
@@ -22,7 +23,7 @@ namespace Abitcareer.Business.Components
         {
             get
             {
-                return "Reminder";
+                return ConfigurationManager.AppSettings.Get("ReminderCacheName");
             }
         }
     }
