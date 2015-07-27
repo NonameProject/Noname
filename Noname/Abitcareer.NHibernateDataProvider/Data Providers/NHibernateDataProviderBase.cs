@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StackExchange.Profiling;
 using Abitcareer.Business.Components;
+using Elmah;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
@@ -17,8 +18,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
     {
         private ISession CreateSession()
         {
-            var session = Helper.OpenSession();
-            return session;
+            return Helper.OpenSession();
         }
 
         private T Execute<T>(Func<ISession, T> func, string funcName, string errorMessage = null)
@@ -32,7 +32,9 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             }
             catch (Exception)
             {
-                //Log message here
+                ErrorSignal
+                    .FromCurrentContext()
+                        .Raise(new Exception(errorMessage));
                 throw;
             }
         }
@@ -48,7 +50,9 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             }
             catch (Exception)
             {
-                //Log message here
+                ErrorSignal
+                    .FromCurrentContext()
+                        .Raise(new Exception(errorMessage));
                 throw;
             }
         }

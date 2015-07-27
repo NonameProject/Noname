@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Abitcareer.Mvc.Components.CustomExceptions
+namespace Abitcareer.Core.CustomExceptions
 {
     public class JavaScriptException : Exception
     {

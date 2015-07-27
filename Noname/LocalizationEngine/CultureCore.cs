@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using System.Linq;
 
 namespace CultureEngine
 {
@@ -31,7 +32,7 @@ namespace CultureEngine
         /// <param name="cultureName">Name of culture that will be registered</param>
         private static void RegisterCulture(string cultureName)
         {
-            if (!SupportedCultures.Contains(cultureName))
+            if(!SupportedCultures.Any(s => s.Equals(cultureName, StringComparison.OrdinalIgnoreCase)))
             {
                 SupportedCultures.Add(cultureName);
             }
@@ -44,7 +45,7 @@ namespace CultureEngine
         /// <returns></returns>
         public static bool IsSupported(string cultureName)
         {
-            return SupportedCultures.Contains(cultureName);
+            return SupportedCultures.Any(s => s.Equals(cultureName, StringComparison.OrdinalIgnoreCase));
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace CultureEngine
                 var culture = userRequestLanguages[i].Split(splitArray)[0];
                 foreach (var item in SupportedCultures)
                 {
-                    if (item.Contains(culture))
+                    if (item.Equals(culture, StringComparison.OrdinalIgnoreCase))
                     {
                         return item;
                     }

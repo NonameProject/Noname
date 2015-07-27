@@ -1,6 +1,5 @@
 ﻿using Abitcareer.Business.Components.MiniProfilers;
 using Abitcareer.Mvc.App_Start;
-using Abitcareer.Mvc.Components.CustomExceptions;
 using Elmah;
 using StackExchange.Profiling;
 using System;
@@ -10,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Abitcareer.Core.CustomExceptions;
 
 namespace Abitcareer.Mvc
 {
@@ -38,22 +38,24 @@ namespace Abitcareer.Mvc
         protected void Application_BeginRequest()
         {
             MiniProfiler.Start();
-            // Add Profiling Action Filter (mvc mini profiler)
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
-            // Add Profiling View Engine (mvc mini profiler)
-            var copy = ViewEngines.Engines.ToList();
-            ViewEngines.Engines.Clear();
-            foreach (var item in copy)
-            {
-                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
-            }
-
+            RewriteViewEngines();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
 
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
+        }
+
+        private void RewriteViewEngines()
+        {
+            var copy = ViewEngines.Engines.ToList();
+            ViewEngines.Engines.Clear();
+            foreach (var item in copy)
+            {
+                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
+            }
         }
     }
 }
