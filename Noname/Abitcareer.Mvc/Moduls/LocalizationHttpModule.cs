@@ -10,7 +10,6 @@ namespace Abitcareer.Mvc
 {
     public class LocalizationHttpModule : IHttpModule
     {
-
         public void Dispose()
         {
             throw new NotImplementedException();

@@ -15,8 +15,6 @@ namespace Abitcareer.Mvc
 {
     public class AbitcareerApplication : System.Web.HttpApplication
     {
-        private IHttpModule Module = new LocalizationHttpModule();
-
         protected void Application_Start()
         {
             ControllerBuilder.Current.DefaultNamespaces.Add("Abitcareer.Mvc.Controllers");
@@ -56,12 +54,6 @@ namespace Abitcareer.Mvc
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
-        }        
-
-        public override void Init()
-        {
-            base.Init();
-            Module.Init(this);
         }
     }
 }
