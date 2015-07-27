@@ -291,6 +291,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Components\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <PropertyGroup>
