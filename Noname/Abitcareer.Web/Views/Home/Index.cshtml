@@ -104,7 +104,7 @@
                 if ($("#spec").val() != "noData" || $("#quality").val() != "noData") {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
-                    for (j = selectedSpec.length - 1; j >= 0; j--) {
+                    for (var j = selectedSpec.length - 1; j >= 0; j--) {
                         for (var i = selectedSpec[j].data.length; i--;) {
                             selectedSpec[j].data[i][0] *= $("#quality").val();
                         }
@@ -125,46 +125,46 @@
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
                 data: [[1300, 0], [1300, 1], [1300, 2], [1300, 3], [1300, 4], [1500, 5]],
-                color: "#990033",// was red
+                color: "#990033"// was red
             },
             {
                 name: textStrings.summaryAxis,
                 data: [[0, 0], [0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
-                color: "#0099CC",// was green
+                color: "#0099CC"// was green
             },
             {
                 name: textStrings.summaryCosts,
                 data: [[1300, 0], [2600, 1], [3900, 2], [5200, 3], [6500, 4], [8000, 5]],
-                color: "#E3402D",
+                color: "#E3402D"
             },
             {
                 name: textStrings.summarySalary,
                 data: [[0, 0], [0, 1], [800, 2], [3800, 3], [8800, 4], [15800, 5]],
-                color: "#187A0F",
+                color: "#187A0F"
             }]
 
 
 
             specialities["ci"] = [{
                 name: textStrings.paymentsAxis,
-                data: [[1000, 0], [1000, 1], [1000, 2], [1000, 3], [1000, 4], [1200, 5]],
-                color: "#990033"
+                data: [[1300, 0], [1300, 1], [1300, 2], [1300, 3], [1300, 4], [1500, 5]],
+                color: "#990033"// was red
             },
-           {
-               name: textStrings.summaryAxis,
-               data: [[0, 0], [0, 1],[800,2] [1200, 3], [2000, 4], [3000, 5]],
-               color: "#0099CC"
-           },
-           {
-               name: textStrings.summarySalary,
-               data: [[0, 0], [0, 1], [800, 2], [2000, 3], [4000, 4], [7000, 5]],
-               color: "#E3402D",
-           },
-           {
-               name: textStrings.summaryCosts,
-               data: [[1000, 0], [2000, 1], [3000, 2], [4000, 3], [5000, 4],[6200,5]],
-               color: "#187A0F",
-           }]
+            {
+                name: textStrings.summaryAxis,
+                data: [[0, 0], [0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
+                color: "#0099CC"// was green
+            },
+            {
+                name: textStrings.summaryCosts,
+                data: [[1300, 0], [2600, 1], [3900, 2], [5200, 3], [6500, 4], [8000, 5]],
+                color: "#E3402D"
+            },
+            {
+                name: textStrings.summarySalary,
+                data: [[0, 0], [0, 1], [800, 2], [3800, 3], [8800, 4], [15800, 5]],
+                color: "#187A0F"
+            }]
 
 
             specialities["ki"] = [{
