@@ -60,7 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Providers\NHibernateCityDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
+    <Compile Include="Data Providers\NHibernateFacultyDataProvider.cs" />
+    <Compile Include="Data Providers\NHibernateRegionDataProvider.cs" />
+    <Compile Include="Data Providers\NHibernateSpecialityDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\BaseMap.cs" />

@@ -13,13 +13,13 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
         public UniversityMap()
             : base()
         {
-            Map(x => x.Rating).Not.Nullable();
+            Map(x => x.Rating).Nullable();
 
             References(x => x.City).Class<City>();
 
             HasMany(x => x.Faculties).Cascade.SaveUpdate().Inverse();
 
-            Map(x => x.Link).Not.Nullable().Length(128);
+            Map(x => x.Link).Nullable().Length(128);
         }
     }
 }

@@ -14,8 +14,8 @@ namespace Abitcareer.Mvc.Controllers
         public void LogJavaScriptError(string message)
         {
             ErrorSignal
-            .FromCurrentContext()
-            .Raise(new JavaScriptException(message));
+                .FromCurrentContext()
+                    .Raise(new JavaScriptException(message));
         }
     }
 }

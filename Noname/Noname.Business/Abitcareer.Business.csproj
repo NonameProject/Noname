@@ -63,6 +63,11 @@
     <Compile Include="Components\Miniprofiler\HasManyConvention.cs" />
     <Compile Include="Components\Miniprofiler\ProfiledSqlCeDriver.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
+    <Compile Include="Data Providers Contracts\ICityDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IFacultyDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IRegionDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\ISpecialityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IUniversityDataProvider.cs" />
     <Compile Include="EnvironmentInfo.cs" />
     <Compile Include="Components\Cache\ICacheManager.cs" />
