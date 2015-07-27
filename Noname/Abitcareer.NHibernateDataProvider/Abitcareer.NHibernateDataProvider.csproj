@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\CityMap.cs" />

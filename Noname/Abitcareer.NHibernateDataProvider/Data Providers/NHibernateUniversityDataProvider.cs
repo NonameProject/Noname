@@ -10,56 +10,7 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
-    public class NHibernateUniversityDataProvider : IUniversityDataProvider
+    public class NHibernateUniversityDataProvider : NHibernateDataProviderBase<University>
     {
-        public IList<University> GetList()
-        {
-            using (ISession session = Helper.OpenSession())
-            {
-                var criteria = session.CreateCriteria<University>();
-                return criteria.List<University>();
-            }
-        }
-
-        public University GetById(string id)
-        {
-            using (ISession session = Helper.OpenSession())
-            {
-                return session.Get<University>(id);
-            }
-        }
-
-        public void Create(University model)
-        {
-            using (ISession session = Helper.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    //model.City = cityModel;
-                    //model.City.Universities.Add(model);
-                    session.Save(model);
-                    //session.Save(model.City);
-                    transaction.Commit();
-                }
-            }
-        }
-
-        public void Update(University model)
-        {
-            using (ISession session = Helper.OpenSession())
-            {
-                session.Update(model);
-                session.Flush();
-            }
-        }
-
-        public void Delete(University model)
-        {
-            using (ISession session = Helper.OpenSession())
-            {
-                session.Delete(model);
-                session.Flush();
-            }
-        }
     }
 }
