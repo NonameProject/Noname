@@ -8,5 +8,6 @@ ga('create', 'UA-65612868-1', 'auto');
 ga('send', 'pageview');
 
 window.onerror = function (message, file, line) {
-    ga('send', 'event', 'Error', 'js error', 'js');
+    var sendObj = "line: " + line + "message " + message;
+    ga('send', 'event', 'Error', file, sendObj);
 }
