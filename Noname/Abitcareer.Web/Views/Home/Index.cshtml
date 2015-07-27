@@ -50,7 +50,7 @@
     @Scripts.Render("~/Scripts/chartsScript.js")
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/highcharts.js")
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
-    @Scripts.Render("~/Scripts/bootstrap.min.js")   
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
     <script>
 
         function clone(destination, source) {
@@ -63,8 +63,7 @@
             }
         };
 
-        $(function()
-        {
+        $(function () {
             var textStrings = {
                 paymentsCaption: "@LocalizationResx.PaymentsCaption",
                 summaryCaption: "@LocalizationResx.SummaryCaption",
@@ -72,91 +71,127 @@
                 summaryAxis: '@LocalizationResx.SummaryGraphCaption',
                 xAxisCaption: '@LocalizationResx.xChartAxisCaption',
                 yAxisCaption: '@LocalizationResx.yChartAxisCaption',
-                Profit:'@LocalizationResx.Profit',
+                Profit: '@LocalizationResx.Profit',
                 Year: '@LocalizationResx.Year',
                 Costs: '@LocalizationResx.Costs',
-                dotCaption:'@LocalizationResx.DotCaption',
+                dotCaption: '@LocalizationResx.DotCaption',
+                summarySalary: '@LocalizationResx.SummarySalary',
+                summaryCosts: '@LocalizationResx.SummaryCosts'
             };
 
             var noData = [{
                 name: textStrings.paymentsAxis,
                 data: [],
                 color: "red"
-                },
+            },
                 {
                     name: textStrings.summaryAxis,
                     data: [],
                     color: "green"
                 }];
 
-            var valueTypes = { costs: textStrings.Costs, year: textStrings.Year, profit: textStrings.Profit};
+            var valueTypes = { costs: textStrings.Costs, year: textStrings.Year, profit: textStrings.Profit };
 
             var specialities = {
                 "ki": {},
                 "pi": {},
                 "ci": {}
             };
-            
+
             $("#commit").on("click", function () {
+                debugger;
                 var selectedSpec;
                 if ($("#spec").val() != "noData" || $("#quality").val() != "noData") {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
-                    for (var i = selectedSpec[1].data.length; i--;) {
-                        selectedSpec[1].data[i][0] *= $("#quality").val();
+                    for (j = selectedSpec.length - 1; j >= 0; j--) {
+                        for (var i = selectedSpec[j].data.length; i--;) {
+                            selectedSpec[j].data[i][0] *= $("#quality").val();
+                        }
                     }
 
-                    for (var i = selectedSpec[0].data.length; i--;) {
-                        selectedSpec[0].data[i][0] *= $("#quality").val();
-                    }
+                    //for (var i = selectedSpec[0].data.length; i--;) {
+                    //  selectedSpec[0].data[i][0] *= $("#quality").val();
+                    //}
                     console.log(selectedSpec.data);
                 }
                 else selectedSpec = noData;
-                
 
-                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption,textStrings.dotCaption, valueTypes);
-                drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+
+                drawCharts("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+                // drawCharts("#summary-container", selectedSpec, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption,valueTypes);
             });
-            
+
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
-                data: [[1300, 0], [1400, 1], [1500, 2], [1500, 3], [1500, 4], [1500, 5]],
+                data: [[1300, 0], [1300, 1], [1300, 2], [1300, 3], [1300, 4], [1500, 5]],
                 color: "#990033",// was red
             },
             {
                 name: textStrings.summaryAxis,
                 data: [[0, 0], [0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
                 color: "#0099CC",// was green
+            },
+            {
+                name: textStrings.summaryCosts,
+                data: [[1300, 0], [2600, 1], [3900, 2], [5200, 3], [6500, 4], [8000, 5]],
+                color: "#E3402D",
+            },
+            {
+                name: textStrings.summarySalary,
+                data: [[0, 0], [0, 1], [800, 2], [3800, 3], [8800, 4], [15800, 5]],
+                color: "#187A0F",
             }]
 
 
 
-             specialities["ci"]  = [{
-                 name: textStrings.paymentsAxis,
-                 data: [[1000, 0], [1000, 1], [1000, 2], [1100, 3], [1000, 4], [1000, 5]],
-                 color: "#990033"
-             },
+            specialities["ci"] = [{
+                name: textStrings.paymentsAxis,
+                data: [[1000, 0], [1000, 1], [1000, 2], [1000, 3], [1000, 4], [1200, 5]],
+                color: "#990033"
+            },
+           {
+               name: textStrings.summaryAxis,
+               data: [[0, 0], [0, 1],[800,2] [1200, 3], [2000, 4], [3000, 5]],
+               color: "#0099CC"
+           },
+           {
+               name: textStrings.summarySalary,
+               data: [[0, 0], [0, 1], [800, 2], [2000, 3], [4000, 4], [7000, 5]],
+               color: "#E3402D",
+           },
+           {
+               name: textStrings.summaryCosts,
+               data: [[1000, 0], [2000, 1], [3000, 2], [4000, 3], [5000, 4],[6200,5]],
+               color: "#187A0F",
+           }]
+
+
+            specialities["ki"] = [{
+                name: textStrings.paymentsAxis,
+                data: [[1200, 0], [1200, 1], [1200, 2], [1200, 3], [1200, 4], [1400, 5]],
+                color: "#990033"
+            },
             {
                 name: textStrings.summaryAxis,
-                data: [[0, 0], [0, 2], [1200, 3], [2000, 4], [3000, 5]],
+                data: [[0, 0], [0, 1], [1200, 2], [1700, 3], [2000, 4], [2500, 5]],
                 color: "#0099CC"
-            }]
-
-             
-             specialities["ki"] = [{
-                 name: textStrings.paymentsAxis,
-                 data: [[1200, 0], [1200, 1], [1200, 2], [1200, 3], [1400, 4], [1400, 5]],
-                 color: "#990033"
-             },
+            },
             {
-                name: textStrings.summaryAxis,
-                data: [[0, 0],[0, 1], [1200, 2], [1700, 3], [2000, 4], [2500, 5]],
-                color: "#0099CC"
-            }]
+                name: textStrings.summarySalary,
+                data: [[0, 0], [0, 1], [1200, 2], [2900, 3], [4900, 4], [7400, 5]],
+                color: "#E3402D"
+            },
+            {
+                name: textStrings.summaryCosts,
+                data: [[1200, 0], [2400, 1], [3600, 2], [4800, 3], [6000, 4], [7400, 5]],
+                color: "#187A0F"
+            }
+            ]
 
 
-             drawCharts("#payments-container", noData, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption,textStrings.dotCaption, valueTypes);
-             drawCharts("#summary-container", noData, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption,textStrings.dotCaption, valueTypes);
+            drawCharts("#payments-container", noData, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+            //drawCharts("#summary-container", noData, textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption,textStrings.dotCaption, valueTypes);
         })
     </script>
 }

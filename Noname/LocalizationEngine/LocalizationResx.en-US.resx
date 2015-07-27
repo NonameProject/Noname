@@ -180,4 +180,10 @@
   <data name="GreetingHeader" xml:space="preserve">
     <value>Dear graduate!</value>
   </data>
+  <data name="SummaryCosts" xml:space="preserve">
+    <value>Total costs</value>
+  </data>
+  <data name="SummarySalary" xml:space="preserve">
+    <value>Total Salary</value>
+  </data>
 </root>
