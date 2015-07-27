@@ -30,17 +30,17 @@ namespace Abitcareer.Web.Components
             return itemToSave;
         }
 
-        public void ClearCacheByRegion(string r)
+        public void ClearCacheByName(string name)
         {
-            ClearCacheHelper(key => key.Contains(r));
+            ClearCacheHelper(key => key.Contains(name));
 
         }
 
-        public void ClearCacheByName(string name)
+        public void ClearCacheByRegion(string region)
         {
             ClearCacheHelper( key => 
             {
-                return key.StartsWith(name) || key.StartsWith(EnvironmentInfo.ReminderCacheName);
+                return key.StartsWith(region) || key.StartsWith(EnvironmentInfo.ReminderCacheName);
             });
         }
 

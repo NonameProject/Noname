@@ -29,7 +29,7 @@ namespace Abitcareer.Business.Components
 
         protected void ClearCache()
         {
-            CacheManager.ClearCacheByName(Name);
+            CacheManager.ClearCacheByRegion(Name);
         }
 
         protected void RemoveFromCache(string name)
