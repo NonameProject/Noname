@@ -40,7 +40,7 @@ namespace Abitcareer.Web.Components
         {
             ClearCacheHelper( key => 
             {
-                return key.StartsWith(region) || key.StartsWith(EnvironmentInfo.ReminderCacheName);
+                return key.StartsWith(region) || key.StartsWith(EnvironmentInfo.Instance.ReminderCacheName);
             });
         }
 

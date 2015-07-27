@@ -2,16 +2,32 @@
 
 namespace Abitcareer.Business.Components
 {
-    public static class EnvironmentInfo
+    public class EnvironmentInfo
     {
-        public static string Host
+        private static EnvironmentInfo instance;
+
+        private EnvironmentInfo() {}
+
+        public static EnvironmentInfo Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EnvironmentInfo();
+                }
+                return instance;
+            }
+        }
+
+        public string Host
         {
             get
             {
                 return ConfigurationManager.AppSettings.Get("Host");
             }
         }
-        public static string Email
+        public string Email
         {
             get
             {
@@ -19,7 +35,7 @@ namespace Abitcareer.Business.Components
             }
         }
 
-        public static string ReminderCacheName
+        public string ReminderCacheName
         {
             get
             {

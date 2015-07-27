@@ -25,7 +25,7 @@ namespace Abitcareer.Mvc
             HttpApplication application = (HttpApplication)sender;
             HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
 
-            var userCulture = CEngine.GetCultureByUserLanguages(application.Request.UserLanguages);
+            var userCulture = CEngine.Instance.GetCultureByUserLanguages(application.Request.UserLanguages);
 
             if (currentContext.Request.Url.AbsolutePath.Equals("") ||
                 currentContext.Request.Url.AbsolutePath.Equals("/"))
@@ -38,9 +38,9 @@ namespace Abitcareer.Mvc
             var cultureName = routeData.Values[CEngine.CultureKey];
             if (cultureName != null)
             {
-                if (CEngine.IsSupported(cultureName.ToString()))
+                if (CEngine.Instance.IsSupported(cultureName.ToString()))
                 {
-                    CEngine.SetCultureForThread(cultureName.ToString());
+                    CEngine.Instance.SetCultureForThread(cultureName.ToString());
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace Abitcareer.Mvc
             }
             else
             {
-                CEngine.SetCultureForThread(userCulture);
+                CEngine.Instance.SetCultureForThread(userCulture);
             }
         }
     }
