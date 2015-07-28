@@ -169,7 +169,7 @@
     <value>Choose University</value>
   </data>
   <data name="DotCaption" xml:space="preserve">
-    <value>Moment when your salary is equal to tution fee</value>
+    <value>Moment when your earnings is equal to tution fee</value>
   </data>
   <data name="Greeting" xml:space="preserve">
     <value>Higher education is the first and the most important part of your career. We have developed "AbitCareer" to help you make more informed and conscious choice of the specialization.</value>
@@ -185,5 +185,8 @@
   </data>
   <data name="SummarySalary" xml:space="preserve">
     <value>Total Salary</value>
+  </data>
+  <data name="BrinkCaption" xml:space="preserve">
+    <value>Moment when your total costs are equal to total earnings</value>
   </data>
 </root>

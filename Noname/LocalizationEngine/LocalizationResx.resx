@@ -186,4 +186,7 @@
   <data name="SummarySalary" xml:space="preserve">
     <value>Сумарний заробіток</value>
   </data>
+  <data name="BrinkCaption" xml:space="preserve">
+    <value>Момент, коли ваш загальний заробіток рівний платні за навчання</value>
+  </data>
 </root>

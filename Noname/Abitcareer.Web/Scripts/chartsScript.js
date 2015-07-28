@@ -97,7 +97,7 @@ var Chart = (function () {
     };
 
     return {
-        draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes) {
+        draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption,brinkCaption, valueTypes) {
             $(conteiner).highcharts({
                 chart: {
                     type: 'spline',
@@ -150,8 +150,8 @@ var Chart = (function () {
 
                         var header = "<strong>" + this.series.name + "</strong><br/>";
                         if (cross1 && cross2) {
-                            if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return 'cross1';
-                            if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return 'cross2';
+                            if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return dotCaption;
+                            if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return  brinkCaption;
                         }
                         return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
                     }
@@ -167,8 +167,8 @@ var Chart = (function () {
                             enabled: true,
                             formatter: function () {
                                 if (!cross1 || !cross2) return;
-                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return 'cross1';
-                                if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return 'cross2';
+                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return ;
+                                if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return ;
                             }
                         }
                     }

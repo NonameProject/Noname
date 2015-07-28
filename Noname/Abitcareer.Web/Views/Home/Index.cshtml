@@ -65,7 +65,8 @@
                 Costs: '@LocalizationResx.Costs',
                 dotCaption: '@LocalizationResx.DotCaption',
                 summarySalary: '@LocalizationResx.SummarySalary',
-                summaryCosts: '@LocalizationResx.SummaryCosts'
+                summaryCosts: '@LocalizationResx.SummaryCosts',
+                brinkCaprion:'@LocalizationResx.BrinkCaption'
             };
 
             var noData = [{
@@ -101,7 +102,7 @@
                 }
                 else selectedSpec = noData;
 
-                Chart.draw("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes); 
+                Chart.draw("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption,textStrings.brinkCaprion, valueTypes); 
             });
 
             specialities["pi"] = [{
