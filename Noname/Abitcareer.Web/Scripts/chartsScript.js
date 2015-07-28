@@ -123,7 +123,10 @@
                     lineWidth: 1,
                 },
                 legend: {
-                    enabled: false
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
                 },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br/>',
