@@ -17,7 +17,7 @@ namespace Abitcareer.Business.Models
 
     public class BaseModel
     {
-        public virtual int Id { get; set; }
+        public virtual string Id { get; set; }
 
         [LocalizableField]
         public virtual string Name { get; set; }
@@ -42,6 +42,7 @@ namespace Abitcareer.Business.Models
 
         public BaseModel()
         {
+            Id = Guid.NewGuid().ToString();
             Fields = new Dictionary<string, string>();
         }
     }

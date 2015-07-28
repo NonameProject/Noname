@@ -13,6 +13,8 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
         public FacultyMap()
             : base()
         {
+            References(x => x.University).Class<University>();
+
             HasManyToMany(x => x.Specialities).Not.LazyLoad().Cascade.All();
         }
     }

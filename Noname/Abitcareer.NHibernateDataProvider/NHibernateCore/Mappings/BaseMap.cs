@@ -13,7 +13,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
     {
         public BaseMap()
         {
-            Id(x => x.Id).GeneratedBy.Identity();
+            Id(x => x.Id);
 
             Map(x => x.Name).Not.Nullable().Length(128);
 

@@ -19,7 +19,7 @@ namespace Abitcareer.Mvc.Controllers
         SpecialityManager specialityManager;
 
         public LocalizationEngineController(UniversityManager universityManager, RegionManager regionManager,
-            SpecialityManager specialityManager, CityManager  cityManager, FacultyManager facultyManager)
+            SpecialityManager specialityManager, CityManager cityManager, FacultyManager facultyManager)
         {
             this.universityManager = universityManager;
             this.regionManager = regionManager;
@@ -40,7 +40,7 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult TestDb()
         {
-            var doc = XDocument.Load(Server.MapPath("~/App_Data/Data.xml"));
+            var doc = XDocument.Load(Server.MapPath("~/Data.xml"));
 
             var regionModel = new Region();
 
@@ -52,53 +52,55 @@ namespace Abitcareer.Mvc.Controllers
 
             var specialityModel = new Speciality();
 
-           // ///test///
+            // ///test///
 
-           //// regionModel.Id = 1;
-           // regionModel.Name = "testreg";
-           // regionModel.Fields.Add(Make(regionModel.Name), "<qweqweqeqeq>");
+            // regionModel.Id = 1;
+            regionModel.Name = "testreg";
+            regionModel.Fields.Add(Make(regionModel.Name), "<qweqweqeqeq>");
 
-           //             //cityModel.Id = 1;
-           // cityModel.Name = "testcity";
-           // cityModel.Region = regionModel;
-           // cityModel.Fields.Add(Make(cityModel.Name), "<12313>");
+            //cityModel.Id = 1;
+            cityModel.Name = "testcity";
+            cityModel.Region = regionModel;
+            cityModel.Fields.Add(Make(cityModel.Name), "<12313>");
 
-           // universityModel.City = cityModel;
-           // //universityModel.Id = 1;
-           // universityModel.Name = "testuniver";
-           // universityModel.Fields.Add(Make(universityModel.Name), "<12313123>");
-
-
-           // //facultyModel.Id = 1;
-           // facultyModel.Name = "testfac";
-           // facultyModel.Fields.Add(Make(facultyModel.Name), "<123123123>");
+            universityModel.City = cityModel;
+            //universityModel.Id = 1;
+            universityModel.Name = "testuniver";
+            universityModel.Fields.Add(Make(universityModel.Name), "<12313123>");
 
 
-           // //specialityModel.Id = 1;
-           // specialityModel.Name = "testspec";
-           // specialityModel.Fields.Add(specialityModel.Name, "<123123>");
+            //facultyModel.Id = 1;
+            facultyModel.Name = "testfac";
+            facultyModel.Fields.Add(Make(facultyModel.Name), "<123123123>");
 
-           // specialityModel.Faculties.Add(facultyModel);
 
-           // facultyModel.Specialities.Add(specialityModel);
-           // facultyModel.University = universityModel;
-            
+            //specialityModel.Id = 1;
+            specialityModel.Name = "testspec";
+            specialityModel.Fields.Add(specialityModel.Name, "<123123>");
 
-           // universityModel.Faculties.Add(facultyModel);
-           // universityModel.City = cityModel;
+            specialityModel.Faculties.Add(facultyModel);
 
-           // cityModel.Universities.Add(universityModel);
-           // cityModel.RegionId = regionModel.Id;
+            facultyModel.Specialities.Add(specialityModel);
+            facultyModel.University = universityModel;
 
-           // regionModel.Cities.Add(cityModel);
 
-           // regionManager.Create(regionModel);
-           // cityManager.Create(cityModel);
-           // universityManager.Create(universityModel);
+            //universityModel.Faculties.Add(facultyModel);
+            universityModel.City = cityModel;
+
+            cityModel.Universities.Add(universityModel);
+
+            regionModel.Cities.Add(cityModel);
+
+
+            //specialityManager.Create(specialityModel);
+            regionManager.Create(regionModel);
+            cityManager.Create(cityModel);
+            universityManager.Create(universityModel);
+            //facultyManager.CreateFacultyToSpeciality(facultyModel, specialityModel);
 
             ///test///
 
-            
+
             //foreach(XElement region in doc.Root.Elements())
             //{
             //    regionModel.Id = Convert.ToInt32(region.Attribute("id").Value);
@@ -113,7 +115,7 @@ namespace Abitcareer.Mvc.Controllers
             //        {
             //            universityModel.Id = Convert.ToInt32(university.Attribute("id").Value);
             //            universityModel.Name = university.Attribute("name").Value;
-                        
+
             //            foreach(XElement faculty in university.Elements())
             //            {
             //                facultyModel.Id = Convert.ToInt32(faculty.Attribute("id").Value);

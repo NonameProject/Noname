@@ -134,6 +134,7 @@
     <Compile Include="Moduls\LocalizationHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LocalizedViewModels\CityViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\UniversityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

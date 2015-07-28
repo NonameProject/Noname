@@ -21,7 +21,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             return Helper.OpenSession();
         }
 
-        private T Execute<T>(Func<ISession, T> func, string funcName, string errorMessage = null)
+        protected T Execute<T>(Func<ISession, T> func, string funcName, string errorMessage = null)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             }
         }
 
-        private void Execute(Action<ISession> action, string funcName, string errorMessage = null)
+        protected void Execute(Action<ISession> action, string funcName, string errorMessage = null)
         {
             try
             {

@@ -5,7 +5,5 @@
         public int Rating { get; set; }
 
         public string Link { get; set; }
-
-        public int CityId { get; set; }
     }
 }

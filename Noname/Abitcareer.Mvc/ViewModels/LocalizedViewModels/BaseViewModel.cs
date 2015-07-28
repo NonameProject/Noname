@@ -9,7 +9,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
     public class BaseViewModel
     {
-        public virtual int Id { get; set; }
+        public virtual string Id { get; set; }
 
         public virtual string Name { get; set; }
     }
