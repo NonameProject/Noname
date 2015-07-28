@@ -9,5 +9,10 @@ namespace Abitcareer.Business.Models
         public virtual Region Region { get; set; }
 
         public virtual IList<University> Universities { get; set; }
+
+        public City()
+        {
+            Universities = new List<University>();
+        }
     }
 }

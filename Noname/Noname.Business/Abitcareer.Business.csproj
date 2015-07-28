@@ -58,6 +58,10 @@
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
+    <Compile Include="Components\Managers\SpecialityManager.cs" />
+    <Compile Include="Components\Managers\FacultyManager.cs" />
+    <Compile Include="Components\Managers\CityManager.cs" />
+    <Compile Include="Components\Managers\RegionManager.cs" />
     <Compile Include="Components\Managers\UniversityManager.cs" />
     <Compile Include="Components\Miniprofiler\DbCommandProxy.cs" />
     <Compile Include="Components\Miniprofiler\HasManyConvention.cs" />

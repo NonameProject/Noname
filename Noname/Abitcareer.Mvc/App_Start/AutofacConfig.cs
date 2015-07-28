@@ -20,12 +20,37 @@ namespace Abitcareer.Mvc.App_Start
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(AbitcareerApplication).Assembly);
+
             builder.RegisterType<UniversityManager>();
+
+            builder.RegisterType<RegionManager>();
+
+            builder.RegisterType<CityManager>();
+
+            builder.RegisterType<FacultyManager>();
+
+            builder.RegisterType<SpecialityManager>();
+
+            builder.RegisterType<NHibernateRegionDataProvider>()
+                .As<IRegionDataProvider>();
+
+            builder.RegisterType<NHibernateCityDataProvider>()
+                .As<ICityDataProvider>();
+
+            builder.RegisterType<NHibernateFacultyDataProvider>()
+                .As<IFacultyDataProvider>();
+
+            builder.RegisterType<NHibernateSpecialityDataProvider>()
+                .As<ISpecialityDataProvider>();
+            
             builder.RegisterType<NHibernateUniversityDataProvider>()
                 .As<IUniversityDataProvider>();
+
             builder.RegisterType<RuntimeCacheManager>()
                 .As<ICacheManager>();
+
             var container = builder.Build();
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }

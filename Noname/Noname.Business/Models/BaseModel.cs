@@ -39,5 +39,10 @@ namespace Abitcareer.Business.Models
                                     .ToDictionary(x => (string)x.Attribute("key"), x => (string)x.Attribute("value"));
             }
         }
+
+        public BaseModel()
+        {
+            Fields = new Dictionary<string, string>();
+        }
     }
 }

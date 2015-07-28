@@ -11,5 +11,10 @@ namespace Abitcareer.Business.Models
         public virtual City City { get; set; }
 
         public virtual IList<Faculty> Faculties { get; set; }
+
+        public University()
+        {
+            Faculties = new List<Faculty>();
+        }
     }
 }

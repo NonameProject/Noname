@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
-    class NHibernateSpecialityDataProvider : NHibernateDataProviderBase<Speciality> ,ISpecialityDataProvider
+    public class NHibernateSpecialityDataProvider : NHibernateDataProviderBase<Speciality> ,ISpecialityDataProvider
     {
     }
 }

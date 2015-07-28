@@ -48,7 +48,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                     action(session);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ErrorSignal
                     .FromCurrentContext()

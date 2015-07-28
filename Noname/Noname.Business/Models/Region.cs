@@ -5,5 +5,10 @@ namespace Abitcareer.Business.Models
     public class Region : BaseModel
     {
         public virtual IList<City> Cities { get; set; }
+
+        public Region()
+        {
+            Cities = new List<City>();
+        }
     }
 }
