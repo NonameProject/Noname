@@ -29,43 +29,58 @@
     var tuneChart = function (chart) {
 
         var customizeIntersectedData = function () {
-            var s0 = chart.series[0].points,
-            s1 = chart.series[1].points,
-            s2 = chart.series[1];
-            var n0 = s0.length,
-                n1 = s1.length;
-            var i, j, isect;
+            var retData = new Object();
+            retData[0] = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
+            retData[1] = addPointToLine(chart.series[2].points, chart.series[3].points, chart.series[3]);
+
+            addPlotChart(retData[0], ' #FFEFD5');
+            addPlotChart(retData[1], ' green');
+            chart.redraw();
+            selectPoint(chart.series[1], retData[0]);
+            selectPoint(chart.series[3], retData[1]);
+            chart.redraw();
+        };
+
+        var addPlotChart = function (data, col) {
+            chart.yAxis[0].addPlotBand({
+                inverted: true,
+                from: data.saveIsect[1],
+                to: data.mx,
+                color: col,
+            })
+        };
+
+        var selectPoint = function (line, retData) {
+            for (var p = 0; p < line.data.length; p++) {
+                if (line.data[p].x == retData.saveIsect[0] && line.data[p].y == retData.saveIsect[1]) {
+                    line.data[p].select();
+                    chart.redraw();
+                };
+            }
+        };
+
+        var addPointToLine = function (linePoints1, linePoints2, linePointsTo) {
+            var n0 = linePoints1.length,
+            n1 = linePoints2.length;
+            var i, j, isect, isect2;
             var saveIsect;
             var mx = -100;
             for (i = 1; i < n0; i++) {
                 for (j = 1; j < n1; j++) {
-                    if (s0[i - 1].y > mx) mx = s0[i - 1].y;
-                    if (s0[i].y > mx) mx = s0[i].y;
-                    if (isect = getLineIntersection(s0[i - 1], s0[i],
-                                        s1[j - 1], s1[j])) {
-                        s2.addPoint(isect, false, false);
+                    if (linePoints1[i - 1].y > mx) mx = linePoints1[i - 1].y;
+                    if (linePoints1[i].y > mx) mx = linePoints1[i].y;
+                    if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
+                                        linePoints2[j - 1], linePoints2[j])) {
+                        linePointsTo.addPoint(isect, false, false);
                         var ob;
-
                         saveIsect = isect;
                     }
                 }
-
             }
-
-            chart.yAxis[0].addPlotBand({
-                inverted: true,
-                from: saveIsect[1],
-                to: mx,
-                color: ' #FFEFD5',
-            })
-            chart.redraw();
-
-            for (var p = 0; p < s2.data.length; p++) {
-                if (s2.data[p].x == saveIsect[0] && s2.data[p].y == saveIsect[1]) {
-                    s2.data[p].select();
-                    chart.redraw();
-                };
-            }
+            var ret = new Object();
+            ret.saveIsect = saveIsect;
+            ret.mx = mx;
+            return ret;
         };
 
         chart.setSize($(".chartWrapper").width(), height, false);
