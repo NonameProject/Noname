@@ -12,7 +12,7 @@ namespace Abitcareer.Mvc
     {
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Init(HttpApplication context)
