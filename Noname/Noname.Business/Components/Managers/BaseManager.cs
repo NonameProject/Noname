@@ -40,25 +40,27 @@ namespace Abitcareer.Business.Components
             CacheManager.RemoveFromCache(Name + "::" + name);
         }
 
-        public Abitcareer.Business.Models.BaseModel GetBaseModel(BaseModel model)
+        public BaseModel GetBaseModel(BaseModel model)
         {
             TranslateModel(model);
             return model;
         }
 
-        private string Localize(Abitcareer.Business.Models.BaseModel model, string keyPrefix, int languageId, string defaultValue)
+        private string Localize(BaseModel model, string keyPrefix, int languageId, string defaultValue)
         {
-            var key = string.Format("{0}_{1}", keyPrefix, languageId);
+            var key = string.Format("<{0}>_<{1}>", languageId, keyPrefix);
             string localizedValue;
             if (model.Fields.TryGetValue(key, out localizedValue))
             {
                 if (localizedValue != null && !string.IsNullOrEmpty(localizedValue.ToString()))
+                {
                     return localizedValue.ToString();
+                }
             }
             return defaultValue;
         }
 
-        private void TranslateModel(Abitcareer.Business.Models.BaseModel model)
+        private void TranslateModel(BaseModel model)
         {
             Type type = model.GetType();
 

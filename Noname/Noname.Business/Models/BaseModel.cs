@@ -30,13 +30,16 @@ namespace Abitcareer.Business.Models
             {
                 return new XElement(
                      "fields",
-                     Fields.Select(x => new XElement("field", new XAttribute("key", x.Key), new XAttribute("value", x.Value)))).ToString();
+                     Fields
+                        .Select(x => new XElement("field", new XAttribute("key", x.Key), new XAttribute("value", x.Value))))
+                        .ToString();
             }
             set
             {
-                XElement xElem2 = XElement.Parse(value);
-                Fields = xElem2.Descendants("field")
-                                    .ToDictionary(x => (string)x.Attribute("key"), x => (string)x.Attribute("value"));
+                Fields = XElement
+                    .Parse(value)
+                    .Descendants("field")
+                    .ToDictionary(x => (string)x.Attribute("key"), x => (string)x.Attribute("value"));
             }
         }
 

@@ -15,7 +15,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
         {
             Id(x => x.Id);
 
-            Map(x => x.Name).Not.Nullable().Length(128);
+            Map(x => x.Name).Not.Nullable().Length(300);
 
             Map(x => x.Xml);
         }
