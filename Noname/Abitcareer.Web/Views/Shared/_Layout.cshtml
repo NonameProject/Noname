@@ -15,7 +15,7 @@
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript">
-        var logErrorUrl = '@Url.Action("LogJavaScriptError", "Error")';
+        Logger.getUrl('@Url.Action("LogJavaScriptError", "Error")');
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/errorhandler.js")

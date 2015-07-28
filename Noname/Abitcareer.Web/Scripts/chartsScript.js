@@ -1,5 +1,8 @@
-﻿var cross1, cross2;
+﻿
 var Chart = (function () {
+
+    var cross1,
+        cross2;
 
     var height = 400;
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using Abitcareer.Business.Components.Translation;
+using System.Threading;
 
 namespace Abitcareer.Mvc.Controllers
 {
@@ -35,12 +36,19 @@ namespace Abitcareer.Mvc.Controllers
             return RedirectToRoute(routeName, new { locale = culture });
         }
 
-        private string Make(string name)
+        private string GetKey()
         {
-            return "<uk>_<" + name + ">";
+            return string.Format("<{0}>_<{1}>", Thread.CurrentThread.CurrentUICulture.LCID, "Name");
         }
 
         public ActionResult TestDb()
+        {
+
+            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(universityManager.GetList());
+            return View(list);
+        }
+
+        public ActionResult Import()
         {
             var doc = XDocument.Load(Server.MapPath("~/Data.xml"));
 
@@ -60,53 +68,9 @@ namespace Abitcareer.Mvc.Controllers
 
             var univerList = new List<string>();
 
-            // ///test///
+            var facultyList = new List<string>();
 
-            //// regionModel.Id = 1;
-            //regionModel.Name = "testreg";
-            //regionModel.Fields.Add(Make(regionModel.Name), "<qweqweqeqeq>");
-
-            ////cityModel.Id = 1;
-            //cityModel.Name = "testcity";
-            //cityModel.Region = regionModel;
-            //cityModel.Fields.Add(Make(cityModel.Name), "<12313>");
-
-            //universityModel.City = cityModel;
-            ////universityModel.Id = 1;
-            //universityModel.Name = "testuniver";
-            //universityModel.Fields.Add(Make(universityModel.Name), "<12313123>");
-
-
-            ////facultyModel.Id = 1;
-            //facultyModel.Name = "testfac";
-            //facultyModel.Fields.Add(Make(facultyModel.Name), "<123123123>");
-
-
-            ////specialityModel.Id = 1;
-            //specialityModel.Name = "testspec";
-            //specialityModel.Fields.Add(specialityModel.Name, "<123123>");
-
-            //specialityModel.Faculties.Add(facultyModel);
-
-            //facultyModel.Specialities.Add(specialityModel);
-            //facultyModel.University = universityModel;
-
-
-            ////universityModel.Faculties.Add(facultyModel);
-            //universityModel.City = cityModel;
-
-            //cityModel.Universities.Add(universityModel);
-
-            //regionModel.Cities.Add(cityModel);
-
-
-            ////specialityManager.Create(specialityModel);
-            //regionManager.Create(regionModel);
-            //cityManager.Create(cityModel);
-            //universityManager.Create(universityModel);
-            //facultyManager.CreateFacultyToSpeciality(facultyModel, specialityModel);
-
-            ///test///
+            var specialityList = new List<string>();
 
 
             foreach (XElement region in doc.Root.Elements())
@@ -115,11 +79,11 @@ namespace Abitcareer.Mvc.Controllers
                 {
                     regionModel.Name = region.Attribute("name").Value;
                     regionModel.Id = Guid.NewGuid().ToString();
-                    regionModel.Fields.Add(Make(regionModel.Name), translator.Translate(regionModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+                    regionModel.Fields.Add(GetKey(), translator.Translate(regionModel.Name, Translator.Languages.Uk, Translator.Languages.En));
                     regList.Add(regionModel.Name);
                     regionManager.Create(regionModel);
+
                 }
- 
 
                 foreach (XElement city in region.Elements())
                 {
@@ -128,11 +92,13 @@ namespace Abitcareer.Mvc.Controllers
                         cityModel.Name = city.Attribute("name").Value;
                         cityModel.Id = Guid.NewGuid().ToString();
                         cityModel.Region = regionModel;
-                        cityModel.Fields.Add(Make(cityModel.Name), translator.Translate(cityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+                        cityModel.Fields.Add(GetKey(), translator.Translate(cityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
                         cityList.Add(cityModel.Name);
                         cityManager.Create(cityModel);
+                        cityModel.Fields.Clear();
+
                     }
- 
+
 
                     foreach (XElement university in city.Elements())
                     {
@@ -141,38 +107,43 @@ namespace Abitcareer.Mvc.Controllers
                             universityModel.Name = university.Attribute("name").Value;
                             universityModel.Id = Guid.NewGuid().ToString();
                             universityModel.City = cityModel;
-                            universityModel.Fields.Add(Make(universityModel.Name), translator.Translate(universityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+                            universityModel.Fields.Add(GetKey(), translator.Translate(universityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
                             univerList.Add(universityModel.Name);
                             universityManager.Create(universityModel);
+                            universityModel.Fields.Clear();
+
                         }
 
-                        universityModel.Fields.Clear();
-                        cityModel.Fields.Clear();
-                        regionModel.Fields.Clear();
 
+                        foreach (XElement faculty in university.Elements())
+                        {
+                            if (!facultyList.Contains(faculty.Attribute("name").Value))
+                            {
+                                facultyModel.Name = faculty.Attribute("name").Value;
+                                facultyModel.Id = Guid.NewGuid().ToString();
+                                facultyModel.Fields.Add(GetKey(), translator.Translate(facultyModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+                                facultyList.Add(facultyModel.Name);
+                                facultyManager.Create(facultyModel);
+                                facultyModel.Fields.Clear();
+                            }
 
-                        //foreach (XElement faculty in university.Elements())
-                        //{
-                        //    facultyModel.Id = Convert.ToInt32(faculty.Attribute("id").Value);
-                        //    facultyModel.Name = faculty.Attribute("name").Value;
-
-                        //    foreach (XElement speciality in faculty.Elements())
-                        //    {
-                        //        specialityModel.Id = Convert.ToInt32(speciality.Attribute("id").Value);
-                        //        specialityModel.Name = speciality.Attribute("name").Value;
-                        //    }
-                        //}
+                            foreach (XElement speciality in faculty.Elements())
+                            {
+                                if (!specialityList.Contains(speciality.Attribute("name").Value))
+                                {
+                                    specialityModel.Name = faculty.Attribute("name").Value;
+                                    specialityModel.Id = Guid.NewGuid().ToString();
+                                    specialityModel.Fields.Add(GetKey(), translator.Translate(specialityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+                                    specialityList.Add(specialityModel.Name);
+                                    specialityManager.Create(specialityModel);
+                                    specialityModel.Fields.Clear();
+                                }
+                            }
+                        }
                     }
                 }
             }
-
-            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(universityManager.GetList());
-            return View(list);
-        }
-
-        public ActionResult Import()
-        {
-            return View();
+            return View("TestDb");
         }
     }
 }
