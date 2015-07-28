@@ -158,6 +158,16 @@
                         marker: {
                             enable: false
                         }
+                    },
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function () {
+                                if (!cross1 || !cross2) return;
+                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return 'cross1';
+                                if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return 'cross2';
+                            }
+                        }
                     }
                 },
                 series: dataObj
