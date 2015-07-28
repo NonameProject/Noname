@@ -73,6 +73,9 @@
     <Compile Include="NHibernateCore\Mappings\FacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RegionMap.cs" />
     <Compile Include="NHibernateCore\Mappings\UniversityMap.cs" />
+    <Compile Include="NHibernateCore\DatabaseProfiler\DbCommandProxy.cs" />
+    <Compile Include="NHibernateCore\DatabaseProfiler\HasManyConvention.cs" />
+    <Compile Include="NHibernateCore\DatabaseProfiler\ProfiledSqlCeDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
