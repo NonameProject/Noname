@@ -1,4 +1,5 @@
-﻿var Chart = (function () {
+﻿var cross1, cross2;
+var Chart = (function () {
 
     var height = 400;
 
@@ -30,8 +31,8 @@
 
         var customizeIntersectedData = function () {
             var retData = new Object();
-            retData[0] = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
-            retData[1] = addPointToLine(chart.series[2].points, chart.series[3].points, chart.series[3]);
+            cross1 = retData[0] = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
+            cross2 = retData[1] = addPointToLine(chart.series[2].points, chart.series[3].points, chart.series[3]);
 
             addPlotChart(retData[0], '#FFEFD5');
             addPlotChart(retData[1], '#97ABF0');
@@ -148,8 +149,10 @@
                     formatter: function () {
 
                         var header = "<strong>" + this.series.name + "</strong><br/>";
-                        if (this.series.color == "green")
-                            return header + valueTypes.profit + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
+                        if (cross1 && cross2) {
+                            if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return 'cross1';
+                            if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return 'cross2';
+                        }
                         return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
                     }
                 },
