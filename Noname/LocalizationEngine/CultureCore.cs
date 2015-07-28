@@ -7,12 +7,15 @@ using System.Linq;
 namespace CultureEngine
 {
     /// <summary>
-    ///     Static class which contains methods that provides culture actions: changing current culture, getting localized string etc.
+    ///     Class which contains methods that provides culture actions: changing current culture, getting localized string etc.
     /// </summary>
     public class CEngine
     {
         private static CEngine instance;
 
+        /// <summary>
+        ///     Initialization method
+        /// </summary>
         private CEngine()
         {
             RegisterCulture(DefaultCulture);
@@ -20,6 +23,9 @@ namespace CultureEngine
             RegisterCulture("en-US");
         }
 
+        /// <summary>
+        ///    Realisation of Singleton pattern. Returns created instance of Engine. If instance not exist this one will create new. 
+        /// </summary>
         public static CEngine Instance
         {
             get
