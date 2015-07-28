@@ -33,8 +33,8 @@
             retData[0] = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
             retData[1] = addPointToLine(chart.series[2].points, chart.series[3].points, chart.series[3]);
 
-            addPlotChart(retData[0], ' #FFEFD5');
-            addPlotChart(retData[1], ' green');
+            addPlotChart(retData[0], '#FFEFD5');
+            addPlotChart(retData[1], '#97ABF0');
             chart.redraw();
             selectPoint(chart.series[1], retData[0]);
             selectPoint(chart.series[3], retData[1]);
@@ -53,7 +53,7 @@
         var selectPoint = function (line, retData) {
             for (var p = 0; p < line.data.length; p++) {
                 if (line.data[p].x == retData.saveIsect[0] && line.data[p].y == retData.saveIsect[1]) {
-                    line.data[p].select();
+                    line.data[p].select(true,true);
                     chart.redraw();
                 };
             }
