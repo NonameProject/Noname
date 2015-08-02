@@ -10,16 +10,6 @@ namespace Abitcareer.Mvc.App_Start
 {
     public class MiniprofilerConfig
     {
-        public static void StartMiniprofiler()
-        {
-            MiniProfiler.Start();
-        }
-
-        public static void StopMiniprofiler()
-        {
-            MiniProfiler.Stop();
-        }
-
         //for specific users
         private bool IsUserAllowedToSeeMiniProfilerUI(HttpRequest httpRequest)
         {
