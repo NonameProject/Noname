@@ -21,7 +21,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             return Helper.OpenSession();
         }
 
-        protected T Execute<T>(Func<ISession, T> func, string funcName, string errorMessage = null)
+        protected T Execute<T>(Func<ISession, T> func, string errorMessage = null)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             }
         }
 
-        protected void Execute(Action<ISession> action, string funcName, string errorMessage = null)
+        protected void Execute(Action<ISession> action, string errorMessage = null)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             {
                 var criteria = session.CreateCriteria<TEntity>();
                 return criteria.List<TEntity>();
-            }, "GetList");
+            });
         }
 
         public TEntity GetById(string id)
@@ -71,7 +71,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             return Execute(session =>
             {
                 return session.Get<TEntity>(id);
-            }, "GetById");
+            });
         }
 
         public void Create(TEntity model)
@@ -83,7 +83,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                    session.Save(model);
                    transaction.Commit();
                }
-           }, "Create");
+           });
         }
 
         public void Update(TEntity model)
@@ -95,7 +95,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                     session.Update(model);
                     session.Flush();
                 }
-            }, "Update");
+            });
         }
 
         public void Delete(TEntity model)
@@ -104,7 +104,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             {
                 session.Delete(model);
                 session.Flush();
-            }, "Delete");
+            });
         }
     }
 }
