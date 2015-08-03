@@ -1,8 +1,7 @@
 ﻿
 var Chart = (function () {
 
-    var cross1,
-        cross2;
+    var cross1;
 
     var height = $(window).height() * 0.75;
 
@@ -34,14 +33,10 @@ var Chart = (function () {
 
         var customizeIntersectedData = function () {
             var retData = new Object();
-            cross1 = retData[0] = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
-            cross2 = retData[1] = addPointToLine(chart.series[2].points, chart.series[3].points, chart.series[3]);
-
-            addPlotChart(retData[0], '#FFEFD5');
-            addPlotChart(retData[1], '#97ABF0');
+            cross1 = retData = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
+            addPlotChart(retData, '#FFEFD5');
             chart.redraw();
-            selectPoint(chart.series[1], retData[0]);
-            selectPoint(chart.series[3], retData[1]);
+            selectPoint(chart.series[1], retData);
             chart.redraw();
         };
 
@@ -94,13 +89,13 @@ var Chart = (function () {
         }
 
         $(window).resize(function () {
-            chart.redraw();
             chart.setSize($(".chartWrapper").width(), height, false);
+            chart.redraw();
         });
     };
 
     return {
-        draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption,brinkCaption, valueTypes) {
+        draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes, out) {
             $(conteiner).highcharts({
                 chart: {
                     type: 'spline',
@@ -141,20 +136,13 @@ var Chart = (function () {
                     },
                     lineWidth: 1,
                 },
-                legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle',
-                        borderWidth: 0
-                },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br/>',
                     formatter: function () {
 
                         var header = "<strong>" + this.series.name + "</strong><br/>";
-                        if (cross1 && cross2) {
-                            if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return dotCaption;
-                            if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return  brinkCaption;
+                        if (cross1) {
+                            //return dotCaption;  
                         }
                         return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
                     }
@@ -169,9 +157,8 @@ var Chart = (function () {
                         dataLabels: {
                             enabled: true,
                             formatter: function () {
-                                if (!cross1 || !cross2) return;
+                                if (!cross1) return;
                                 if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return ;
-                                if (this.point.x == cross2.saveIsect[0] && this.point.y === cross2.saveIsect[1]) return ;
                             }
                         }
                     }
