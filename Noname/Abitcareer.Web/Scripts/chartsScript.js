@@ -4,7 +4,7 @@ var Chart = (function () {
     var cross1,
         cross2;
 
-    var height = 400;
+    var height = $(window).height() * 0.75;
 
     var getLineIntersection = function (p0, p1, p2, p3) {
         var p0_x = p0.x,

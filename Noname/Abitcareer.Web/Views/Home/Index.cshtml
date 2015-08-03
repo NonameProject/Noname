@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/Home.css")
 }
 
-<div class="form-wrapper left">
+<div id="input" class="panel left">
     <div id="greeting">
         <h3>@LocalizationResx.GreetingHeader</h3>
         <p>@LocalizationResx.Greeting</p>
@@ -30,12 +30,11 @@
         </select>
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
-<div id="chart-container">
+<div id="chart-container" class="panel" style="display: none">
+    <input type="button" id="js-changeInput" class="btn btn-default" value="@LocalizationResx.SelectAnotherInput"/>
     <div class="chartWrapper right">
         <div id="payments-container"></div>
     </div>
-
-
     <div class="chartWrapper right">
         <div id="summary-container"></div>
     </div>
@@ -88,7 +87,14 @@
                 "ci": {}
             };
 
+            $("#js-changeInput").click(function () {
+                $("#input").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
+            });
+
             $("#commit").on("click", function () {
+                $("#input").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
                 var selectedSpec;
                 if ($("#spec").val() != "noData" || $("#quality").val() != "noData") {
                     var names = ["ki", "pi", "ci"];
@@ -102,7 +108,8 @@
                 }
                 else selectedSpec = noData;
 
-                Chart.draw("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption,textStrings.brinkCaprion, valueTypes); 
+                Chart.draw("#payments-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, textStrings.brinkCaprion, valueTypes);
+                Chart.draw("#summary-container", selectedSpec, textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, textStrings.brinkCaprion, valueTypes);
             });
 
             specialities["pi"] = [{
@@ -122,7 +129,7 @@
             },
             {
                 name: textStrings.summarySalary,
-                data: [[0, 0], [0, 1], [800, 2], [3800, 3], [8800, 4], [15800, 5]],
+                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
                 color: "#187A0F"
             }]
 
@@ -145,7 +152,7 @@
             },
             {
                 name: textStrings.summarySalary,
-                data: [[0, 0], [0, 1], [800, 2], [3800, 3], [8800, 4], [15800, 5]],
+                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
                 color: "#187A0F"
             }]
 
@@ -167,7 +174,7 @@
             },
             {
                 name: textStrings.summaryCosts,
-                data: [[1200, 0], [2400, 1], [3600, 2], [4800, 3], [6000, 4], [7400, 5]],
+                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
                 color: "#187A0F"
             }
             ]

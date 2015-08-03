@@ -189,4 +189,7 @@
   <data name="BrinkCaption" xml:space="preserve">
     <value>Момент, коли ваш загальний заробіток рівний платні за навчання</value>
   </data>
+  <data name="SelectAnotherInput" xml:space="preserve">
+    <value>Вибрати інші данні</value>
+  </data>
 </root>

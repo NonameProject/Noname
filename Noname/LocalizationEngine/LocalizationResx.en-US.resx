@@ -189,4 +189,7 @@
   <data name="BrinkCaption" xml:space="preserve">
     <value>Moment when your total costs are equal to total earnings</value>
   </data>
+  <data name="SelectAnotherInput" xml:space="preserve">
+    <value>Select another input data</value>
+  </data>
 </root>

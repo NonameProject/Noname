@@ -1,7 +1,8 @@
 ﻿body
 {
-    min-width: 400px;
-    overflow-x: scroll;
+    min-width: 700px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #content
 {
@@ -32,6 +33,10 @@
 }
 .mobile-localization-changer a img {
   padding: 12px;
+}
+nav{
+    z-index: 1000;
+    margin: 0 !important;
 }
 @media (min-width: 768px) {
     .mobile-localization-changer{
