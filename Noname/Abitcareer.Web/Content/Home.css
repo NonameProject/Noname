@@ -9,6 +9,7 @@
     margin-left: -100px;
     position: absolute;
     top: 65px;
+    left: 50%;
 }
 
 .chartWrapper
@@ -60,7 +61,7 @@ select
     text-align: center;
 }
 
-@media (max-width: 1500px){
+@media (max-width: 800px){
     .chartWrapper
     {
         display: inline-block;
