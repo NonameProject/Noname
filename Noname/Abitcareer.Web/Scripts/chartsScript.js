@@ -141,6 +141,8 @@ var Chart = (function () {
                     formatter: function () {
 
                         var header = "<strong>" + this.series.name + "</strong><br/>";
+                        if (cross1 && this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1])
+                            var header = '<strong>' + dotCaption + '</strong><br/>';
                         if (cross1) {
                             //return dotCaption;  
                         }
@@ -154,13 +156,13 @@ var Chart = (function () {
                         }
                     },
                     series: {
-                        dataLabels: {
+                        /*dataLabels: {
                             enabled: true,
                             formatter: function () {
                                 if (!cross1) return;
-                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return ;
+                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return dotCaption;
                             }
-                        }
+                        }*/
                     }
                 },
                 series: dataObj
