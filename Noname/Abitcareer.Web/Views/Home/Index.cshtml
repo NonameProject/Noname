@@ -93,11 +93,9 @@
                 $("#chart-container").fadeToggle(500);
             });
 
-            $("#commit").on("click", function () {
-                $("#input").fadeToggle(500);
-                $("#chart-container").fadeToggle(500);
+            $("#commit").on("click", function () {                
                 var selectedSpec;
-                if ($("#spec").val() != "noData" || $("#quality").val() != "noData") {
+                if ($("#spec").val() != "noData" && $("#quality").val() != "noData") {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
                     for (var j = selectedSpec.length - 1; j >= 0; j--) {
@@ -107,7 +105,10 @@
                     }
                     console.log(selectedSpec.data);
                 }
-                else selectedSpec = noData;
+                else return;
+
+                $("#input").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
 
                  Chart.draw("#payments-container", [selectedSpec[0], selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
                  Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
