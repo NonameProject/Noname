@@ -142,7 +142,7 @@
     <value>Хороший</value>
   </data>
   <data name="QualityLow" xml:space="preserve">
-    <value>Низкий</value>
+    <value>Низький</value>
   </data>
   <data name="QualityMiddle" xml:space="preserve">
     <value>Середній</value>
@@ -187,9 +187,9 @@
     <value>Сумарний заробіток</value>
   </data>
   <data name="BrinkCaption" xml:space="preserve">
-    <value>Момент, коли ваш загальний заробіток рівний платні за навчання</value>
+    <value>Момент, коли ваш загальний заробіток рівний платі за навчання</value>
   </data>
   <data name="SelectAnotherInput" xml:space="preserve">
-    <value>Вибрати інші данні</value>
+    <value>Вибрати інші дані</value>
   </data>
 </root>
