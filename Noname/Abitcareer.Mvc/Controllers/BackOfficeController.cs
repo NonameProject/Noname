@@ -15,25 +15,36 @@ namespace Abitcareer.Web.Components
 {
     public class BackOfficeController : Controller
     {
-        //
-        // GET: /BackOfiice/
+        SpecialityManager specialityManager;
 
-        public ActionResult AllSpecialities()
+        public BackOfficeController(SpecialityManager manager)
+        {
+            specialityManager = manager;
+        }
+
+        public ActionResult Specialities()
         {
            // var res = new List<Speciality>();
 
-            var spec = new NHibernateSpecialityDataProvider().GetList();
+            var spec = specialityManager.GetList();
 
+            var result = AutoMapper.Mapper.Map(spec, new List<SpecialityViewModel>());
 
-
-            throw new NotImplementedException();
-            return View(spec);
+            return View(result);
         }
 
         public ActionResult EditSpecialities()
         {
-            throw new NotImplementedException();
-            return View();
+      
+            return View(new SpecialityViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult Save(SpecialityViewModel editedModel)
+        {
+            var mappedModel = new Speciality();//AutoMapper.Mapper.Map(editedModel, new Speciality());
+            var result = specialityManager.TrySave(mappedModel);
+            return Json(result);
         }
     }
 }

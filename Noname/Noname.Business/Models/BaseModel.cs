@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Abitcareer.Business.Models
 {
@@ -17,6 +18,7 @@ namespace Abitcareer.Business.Models
 
     public class BaseModel
     {
+        
         public virtual string Id { get; set; }
 
         [LocalizableField]
