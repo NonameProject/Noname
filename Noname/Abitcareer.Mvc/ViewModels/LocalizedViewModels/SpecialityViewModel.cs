@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,12 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
     public class SpecialityViewModel : BaseViewModel
     {
+        [ScaffoldColumn(false)]
+        public virtual int DirectionCode { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual int Code { get; set; }
+
         public Dictionary<int, int> Salaries = new Dictionary<int, int>();
         public SpecialityViewModel()
         {

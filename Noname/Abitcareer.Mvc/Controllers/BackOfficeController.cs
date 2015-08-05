@@ -27,16 +27,23 @@ namespace Abitcareer.Web.Components
            // var res = new List<Speciality>();
 
             var spec = specialityManager.GetList();
+            var result = new List<SpecialityViewModel>();
 
-            var result = AutoMapper.Mapper.Map(spec, new List<SpecialityViewModel>());
+
+            foreach (var item in spec)
+            {
+                if (String.IsNullOrEmpty(item.Name) || String.IsNullOrEmpty(item.Id))
+                    continue;
+                result.Add(new SpecialityViewModel() { Name = item.Name, Id = item.Id });
+            }
 
             return View(result);
         }
 
-        public ActionResult EditSpecialities()
+        public ActionResult EditSpecialities(string id)
         {
-      
-            return View(new SpecialityViewModel());
+            var model = specialityManager.GetById(id);
+            return View(new SpecialityViewModel() { Name = model.Name, Id = model.Id });
         }
 
         [HttpPost]

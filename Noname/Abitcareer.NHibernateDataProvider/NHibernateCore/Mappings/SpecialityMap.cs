@@ -17,7 +17,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 
             Map(x => x.DirectionCode);
 
-            HasManyToMany(x => x.Faculties).Not.LazyLoad().Cascade.All();
+            //HasManyToMany(x => x.Faculties).Not.LazyLoad().Cascade.All();
         }
     }
 }
