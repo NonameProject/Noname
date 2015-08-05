@@ -103,11 +103,15 @@ var Chart = (function () {
     return {
         draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes, out) {
             var max = 0;
+            var categ = [];
             for(var i = 0; i < dataObj.length; i++){
                 var data = dataObj[i].data;
-                for(var j = 0; j < data.length; j++)
-                    if(data[j][0] > max) max = data[j][0];
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j][0] > max) max = data[j][0];
+                    categ.push(data[j][1]);
+                }
             }
+
             var interval = Math.ceil(max/4000)*1000;
 
             $(conteiner).highcharts({
@@ -143,6 +147,8 @@ var Chart = (function () {
                     offset: -28*/
                 },
                 yAxis: {
+                    categories: ['0'],
+                    tickmarkPlacement: 'on',
                     showEmpty: false,
                     title: {
                         text: yAxisCaption
@@ -155,9 +161,12 @@ var Chart = (function () {
                             }
                         }
                     },
-                    lineWidth: 1,
-                    tickInterval: 1,
+                    min: 0.5,
                     startOnTick: false,
+                    endOnTick: false,
+                    minPadding: 0,
+                    maxPadding: 0,
+                    align: "left",  
                     offset: -2
                 },
                 tooltip: {
