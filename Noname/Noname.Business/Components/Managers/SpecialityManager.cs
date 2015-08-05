@@ -57,5 +57,10 @@ namespace Abitcareer.Business.Components.Managers
             }
             return result;
         }
+
+        public Speciality GetById(string id)
+        {
+            return provider.GetById(id);
+        }
     }
 }
