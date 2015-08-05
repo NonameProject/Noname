@@ -1,6 +1,6 @@
 ﻿
 var Chart = (function () {
-
+    var plotColors = ['#FFEFD5', '#FFDFD5', '#FFCFD5'];
     var height = function () { return $(window).height() * 0.75; };
 
     var getLineIntersection = function (p0, p1, p2, p3) {
@@ -37,7 +37,7 @@ var Chart = (function () {
             var retData = new Object();
             for (var i = 1; i < chart.series.length; i++){
                 retData = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
-                addPlotChart(retData, '#FFEFD5');
+                addPlotChart(retData, plotColors[i] || '#FFEFD5');
                 chart.redraw();
                 selectPoint(chart.series[i], retData);
             }            
