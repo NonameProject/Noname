@@ -105,9 +105,9 @@
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
 
                     data1 = {
-                        name: selectedSpec[1].name,
+                        name: selectedSpec[0].name,
                         color: 'darkblue',
-                        data: selectedSpec[1].data
+                        data: selectedSpec[0].data
                     };
                     data2 = {
                         name: data1.name,
@@ -133,7 +133,8 @@
 
                 $("#input").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
-                Chart.draw("#payments-container", [selectedSpec[0], data1, data2, data3], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+
+                Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
                 Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
             });
 
