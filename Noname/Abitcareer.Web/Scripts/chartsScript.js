@@ -34,12 +34,12 @@ var Chart = (function () {
     var tuneChart = function (chart) {
 
         var customizeIntersectedData = function () {
-            var retData = [];
-            for (var i = 1; i < chart.series.length; i++){
-                var data = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
-                retData.push(data);                
-                chart.redraw();
-                selectPoint(chart.series[i], data);
+            var retData = [],
+                length = chart.series.length;
+            for (var i = 0; i < length-1; i++) {
+                var data = addPointToLine(chart.series[length-1].points, chart.series[i].points, chart.series[length - 1]);
+                retData.push(data);                              
+                selectPoint(chart.series[length-1], data);
             }            
             
             for (var i = 0; i < retData.length; i++) {
@@ -80,8 +80,7 @@ var Chart = (function () {
                     if (linePoints1[i].y > mx) mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
-                        linePointsTo.addPoint(isect, false, false);
-                        var ob;
+                        linePointsTo.addPoint(isect, true, false);
                         saveIsect = isect;
                     }
                 }
