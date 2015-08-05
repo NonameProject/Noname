@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.ComponentModel.DataAnnotations;
+using Abitcareer.Business.Components.Extensions;
 
 namespace Abitcareer.Business.Models
 {
@@ -30,18 +31,11 @@ namespace Abitcareer.Business.Models
         {
             get
             {
-                return new XElement(
-                     "fields",
-                     Fields
-                        .Select(x => new XElement("field", new XAttribute("key", x.Key), new XAttribute("value", x.Value))))
-                        .ToString();
+                return Fields.ToXmlString<string, string>();
             }
             set
             {
-                Fields = XElement
-                    .Parse(value)
-                    .Descendants("field")
-                    .ToDictionary(x => (string)x.Attribute("key"), x => (string)x.Attribute("value"));
+                Fields = value.ToDictionary<string, string>();
             }
         }
 

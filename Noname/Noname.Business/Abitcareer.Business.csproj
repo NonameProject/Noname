@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
+    <Compile Include="Components\Extensions\StringExtensions.cs" />
+    <Compile Include="Components\Extensions\DictonaryExtensions.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\SpecialityManager.cs" />
     <Compile Include="Components\Managers\FacultyManager.cs" />
