@@ -104,15 +104,19 @@
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
 
-                    data1 = selectedSpec[1];
+                    data1 = {
+                        name: selectedSpec[1].name,
+                        color: 'darkblue',
+                        data: selectedSpec[1].data
+                    };
                     data2 = {
                         name: data1.name,
-                        color: data1.color,
+                        color: 'blue',
                         data: []
                     };
                     data3 = {
                         name: data1.name,
-                        color: data1.color,
+                        color: 'royalblue',
                         data: []
                     };
 
