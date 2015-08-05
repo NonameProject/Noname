@@ -1,7 +1,7 @@
 ﻿
 var Chart = (function () {
-
-    var height = $(window).height() * 0.75;
+    var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'];
+    var height = function () { return $(window).height() * 0.75; };
 
     var getLineIntersection = function (p0, p1, p2, p3) {
         var p0_x = p0.x,
@@ -34,14 +34,18 @@ var Chart = (function () {
     var tuneChart = function (chart) {
 
         var customizeIntersectedData = function () {
-            var retData = new Object();
+            var retData = [];
             for (var i = 1; i < chart.series.length; i++){
-                retData = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
-                addPlotChart(retData, '#FFEFD5');
+                var data = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
+                retData.push(data);                
                 chart.redraw();
-                selectPoint(chart.series[i], retData);
+                selectPoint(chart.series[i], data);
             }            
             
+            for (var i = 0; i < retData.length; i++) {
+                if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.y;
+                addPlotChart(retData[i], plotColors[i] || '#FFEFD5');
+            }
             chart.redraw();
         };
 
@@ -88,14 +92,14 @@ var Chart = (function () {
             return ret;
         };
 
-        chart.setSize($(".chartWrapper").width(), height, false);
+        chart.setSize($(".chartWrapper").width(), height(), false);
 
         if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0) {
             customizeIntersectedData();
         }
 
         $(window).resize(function () {
-            chart.setSize($(".chartWrapper").width(), height, false);
+            chart.setSize($(".chartWrapper").width(), height(), false);
             chart.redraw();
         });
     };
@@ -103,11 +107,15 @@ var Chart = (function () {
     return {
         draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes, out) {
             var max = 0;
+            var categ = [];
             for(var i = 0; i < dataObj.length; i++){
                 var data = dataObj[i].data;
-                for(var j = 0; j < data.length; j++)
-                    if(data[j][0] > max) max = data[j][0];
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j][0] > max) max = data[j][0];
+                    categ.push(data[j][1]);
+                }
             }
+
             var interval = Math.ceil(max/4000)*1000;
 
             $(conteiner).highcharts({
@@ -143,6 +151,8 @@ var Chart = (function () {
                     offset: -28*/
                 },
                 yAxis: {
+                    categories: ['0'],
+                    tickmarkPlacement: 'on',
                     showEmpty: false,
                     title: {
                         text: yAxisCaption
@@ -155,9 +165,12 @@ var Chart = (function () {
                             }
                         }
                     },
-                    lineWidth: 1,
-                    tickInterval: 1,
+                    min: 0.5,
                     startOnTick: false,
+                    endOnTick: false,
+                    minPadding: 0,
+                    maxPadding: 0,
+                    align: "left",  
                     offset: -2
                 },
                 tooltip: {
