@@ -120,7 +120,7 @@ var Chart = (function () {
                 },
                 xAxis: {
                     reversed: false,
-                    showFirstLabel: false,
+                    //showFirstLabel: false,
                     title: {
                         enabled: true,
                         text: xAxisCaption
@@ -129,7 +129,7 @@ var Chart = (function () {
                     labels: {
                         
                         formatter: function () {                         
-                            //if(this.value !== 0)
+                            if(this.value !== 0)
                                 return this.value;
                         }
                     },
@@ -183,7 +183,6 @@ var Chart = (function () {
                         dataLabels: {
                             enabled: true,
                             align: 'left',
-                            crop: false,
                             formatter: function () {
                                 if (!cross1) return;
                                 if (this.point.myName === 'crossPoint') {
