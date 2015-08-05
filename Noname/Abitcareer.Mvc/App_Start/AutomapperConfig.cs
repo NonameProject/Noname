@@ -21,6 +21,9 @@ namespace Abitcareer.Mvc.App_Start
             AutoMapper.Mapper
                 .CreateMap<Speciality, SpecialityViewModel>()
                 .IncludeBase<BaseModel,BaseViewModel>();
+            AutoMapper.Mapper
+                .CreateMap<SpecialityViewModel, Speciality>()
+                .IncludeBase<BaseViewModel, BaseModel>();
         }
     }
 }
