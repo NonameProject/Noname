@@ -1,8 +1,6 @@
 ﻿
 var Chart = (function () {
 
-    var cross1;
-
     var height = $(window).height() * 0.75;
 
     var getLineIntersection = function (p0, p1, p2, p3) {
@@ -37,10 +35,13 @@ var Chart = (function () {
 
         var customizeIntersectedData = function () {
             var retData = new Object();
-            cross1 = retData = addPointToLine(chart.series[0].points, chart.series[1].points, chart.series[1]);
-            addPlotChart(retData, '#FFEFD5');
-            chart.redraw();
-            selectPoint(chart.series[1], retData);
+            for (var i = 1; i < chart.series.length; i++){
+                retData = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
+                addPlotChart(retData, '#FFEFD5');
+                chart.redraw();
+                selectPoint(chart.series[i], retData);
+            }            
+            
             chart.redraw();
         };
 
@@ -107,7 +108,7 @@ var Chart = (function () {
                 for(var j = 0; j < data.length; j++)
                     if(data[j][0] > max) max = data[j][0];
             }
-            var interval = Math.ceil(max/4/1000)*1000;
+            var interval = Math.ceil(max/4000)*1000;
 
             $(conteiner).highcharts({
                 chart: {
@@ -116,7 +117,11 @@ var Chart = (function () {
                     zoomtype: "xy"
                 },
                 title: {
-                    text: title
+                    text: title,
+                    style: {
+                        'text-transform': 'uppercase',
+                        fontWeight: 'bold'
+                    }
                 },
                 xAxis: {
                     reversed: false,
@@ -160,8 +165,7 @@ var Chart = (function () {
                     formatter: function () {
 
                         var header = '<strong>' + this.series.name + '</strong><br/>';
-                        if (this.point.myName === 'crossPoint')
-                            header = '<strong>' + dotCaption + '</strong><br/>';
+
                         var year = this.y.toFixed(1),
                             yearStr = valueTypes.manyYears;
                         if (year - Math.ceil(year) === 0) {
@@ -184,19 +188,17 @@ var Chart = (function () {
                             enabled: true,
                             align: 'left',
                             formatter: function () {
-                                if (!cross1) return;
-                                if (this.point.myName === 'crossPoint') {
-                                    var year = this.y.toFixed(1),
-                                        yearStr = valueTypes.manyYears;
-                                    if (year - Math.ceil(year) === 0) {
-                                        year = Math.ceil(year);
-                                        var last = year % 10;
-                                        if (last === 1) yearStr = valueTypes.oneYear;
-                                        else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
-                                    }
-                                    return this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
-                                    //return dotCaption;
+                                if (this.point.myName !== 'crossPoint') return;
+                                var year = this.y.toFixed(1),
+                                    yearStr = valueTypes.manyYears;
+                                if (year - Math.ceil(year) === 0) {
+                                    year = Math.ceil(year);
+                                    var last = year % 10;
+                                    if (last === 1) yearStr = valueTypes.oneYear;
+                                    else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
                                 }
+                                return this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
+                                //return dotCaption                             
                             }
                         }
                     }

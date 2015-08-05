@@ -43,7 +43,6 @@
 
 
 
-
 @section Scripts
 {
     @Scripts.Render("~/Scripts/chartsScript.js")
@@ -62,6 +61,10 @@
                 yAxisCaption: '@LocalizationResx.yChartAxisCaption',
                 Profit: '@LocalizationResx.Profit',
                 Year: '@LocalizationResx.Year',
+                OneYear: '@LocalizationResx.OneYear',
+                FewYears: '@LocalizationResx.FewYears',
+                ManyYears: '@LocalizationResx.ManyYears',
+                UAH: '@LocalizationResx.UAH',
                 Costs: '@LocalizationResx.Costs',
                 dotCaption: '@LocalizationResx.DotCaption',
                 summarySalary: '@LocalizationResx.SummarySalary',
@@ -80,7 +83,15 @@
                     color: "green"
                 }];
 
-            var valueTypes = { costs: textStrings.Costs, year: textStrings.Year, profit: textStrings.Profit };
+            var valueTypes = {
+                costs: textStrings.Costs,
+                year: textStrings.Year,
+                oneYear: textStrings.OneYear,
+                fewYears: textStrings.FewYears,
+                manyYears: textStrings.ManyYears,
+                UAH: textStrings.UAH,
+                profit: textStrings.Profit
+            };
 
             var specialities = {
                 "ki": {},
@@ -95,6 +106,7 @@
 
             $("#commit").on("click", function () {                
                 var selectedSpec;
+                var data2, data3;
                 if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
@@ -103,14 +115,32 @@
                             selectedSpec[j].data[i][0] *= $("#quality").val();
                         }
                     }*/
+
+                    data2 = {
+                        name: selectedSpec[1].name,
+                        color: selectedSpec[1].color,
+                        data: []
+                    };
+                    data3 = {
+                        name: selectedSpec[1].name,
+                        color: selectedSpec[1].color,
+                        data: []
+                    };
+
+                    for (var i = 0; i < selectedSpec[1].data.length; i++) {
+                        var x = selectedSpec[1].data[i][1];
+                        var y2 = selectedSpec[1].data[i][0] * 0.8;
+                        var y3 = selectedSpec[1].data[i][0] * 0.6;
+                        data2.data.push([y2, x]);
+                        data3.data.push([y3, x]);
+                    }
                     console.log(selectedSpec.data);
                 }
                 else return;
 
                 $("#input").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
-
-                 Chart.draw("#payments-container", [selectedSpec[0], selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+                 Chart.draw("#payments-container", [selectedSpec[0], selectedSpec[1], data2, data3], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
                  Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
             });
 
