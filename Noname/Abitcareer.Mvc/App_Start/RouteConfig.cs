@@ -35,15 +35,20 @@ namespace Abitcareer.Mvc
                 });
 
             routes.MapRoute(
-               name: "AllSpecialities",
-               url: "AllSpecialities",
-               defaults: new { controller = "BackOffice", action = "AllSpecialities" });
+               name: "specialities",
+               url: "specialities",
+               defaults: new { controller = "BackOffice", action = "Specialities" });
 
 
             routes.MapRoute(
-                name: "EditSpecialities",
-                url: "EditSpecialities",
-                defaults: new { controller = "BackOffice", action = "EditSpecialities" });
+               name: "saveSpeciality",
+               url: "BackOffice/Save",
+               defaults: new { controller = "BackOffice", action = "Save" });
+
+            routes.MapRoute(
+                name: "editSpecialities",
+                url: "editSpecialities/{id}",
+                defaults: new { controller = "BackOffice", action = "EditSpecialities", id = UrlParameter.Optional });
              
 
             routes.MapLocalizedRoute(

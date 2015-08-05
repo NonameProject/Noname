@@ -1,0 +1,19 @@
+﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
+@using System.Web
+@using System.Globalization
+@using System.Web.Mvc
+@using System.Text.RegularExpressions
+@model List<SpecialityViewModel>
+
+@{
+    ViewBag.Title = "Specialities";
+}
+
+<h2>Specialities</h2>
+
+@Html.ActionLink("Cсылка", "EditSpecialities", "BackOffice")
+@foreach (var item in Model)
+{
+  @Html.ActionLink(item.Name, "EditSpecialities", "BackOffice")
+}
+

@@ -36,5 +36,26 @@ namespace Abitcareer.Business.Components.Managers
             ClearCache();
             provider.Create(model);
         }
+        public IList<Speciality> GetList() 
+        {
+            ClearCache();
+            return provider.GetList();
+        }
+
+        public bool TrySave(Speciality editedModel)
+        {
+            bool result;
+            try
+            {
+                //code that will save changes
+                throw new NotImplementedException();
+                result = true;
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }
