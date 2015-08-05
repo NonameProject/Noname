@@ -272,6 +272,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\LocalizationEngine\TestDb.cshtml" />
+    <Content Include="Views\BackOffice\AllSpecialities.cshtml" />
+    <Content Include="Views\BackOffice\EditSpecialities.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

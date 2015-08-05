@@ -34,6 +34,18 @@ namespace Abitcareer.Mvc
                 {
                 });
 
+            routes.MapRoute(
+               name: "AllSpecialities",
+               url: "AllSpecialities",
+               defaults: new { controller = "BackOffice", action = "AllSpecialities" });
+
+
+            routes.MapRoute(
+                name: "EditSpecialities",
+                url: "EditSpecialities",
+                defaults: new { controller = "BackOffice", action = "EditSpecialities" });
+             
+
             routes.MapLocalizedRoute(
                 name: "ChangeCulture",
                 url: "ChangeCulture/{culture}",
