@@ -160,7 +160,7 @@
     <value>Time (years)</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Year</value>
+    <value>year</value>
   </data>
   <data name="СhooseSpeciality" xml:space="preserve">
     <value>Choose Speciality</value>
@@ -169,7 +169,7 @@
     <value>Choose University</value>
   </data>
   <data name="DotCaption" xml:space="preserve">
-    <value>Moment when your earnings is equal to tution fee</value>
+    <value>Break even</value>
   </data>
   <data name="Greeting" xml:space="preserve">
     <value>Higher education is the first and the most important part of your career. We have developed "AbitCareer" to help you make more informed and conscious choice of the specialization.</value>
@@ -191,5 +191,17 @@
   </data>
   <data name="SelectAnotherInput" xml:space="preserve">
     <value>Select another input data</value>
+  </data>
+  <data name="FewYears" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="ManyYears" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="UAH" xml:space="preserve">
+    <value>uah</value>
   </data>
 </root>

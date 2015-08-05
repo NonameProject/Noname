@@ -23,7 +23,11 @@ var Chart = (function () {
             t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
 
         if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
-            return [p0_x + (t * s1_x), p0_y + (t * s1_y)];
+            return {
+                x: p0_x + (t * s1_x),
+                y: p0_y + (t * s1_y),
+                myName: 'crossPoint'
+            };
         }
 
         return false;
@@ -43,15 +47,16 @@ var Chart = (function () {
         var addPlotChart = function (data, col) {
             chart.yAxis[0].addPlotBand({
                 inverted: true,
-                from: data.saveIsect[1],
-                to: data.mx,
+                from: data.saveIsect.y,
+                to: data.mx, //+1, //fill to the end
                 color: col,
+                name: 'cross'
             })
         };
 
         var selectPoint = function (line, retData) {
             for (var p = 0; p < line.data.length; p++) {
-                if (line.data[p].x == retData.saveIsect[0] && line.data[p].y == retData.saveIsect[1]) {
+                if (line.data[p].x == retData.saveIsect.x && line.data[p].y == retData.saveIsect.y) {
                     line.data[p].select(true,true);
                     chart.redraw();
                 };
@@ -96,6 +101,14 @@ var Chart = (function () {
 
     return {
         draw: function (conteiner, dataObj, title, xAxisCaption, yAxisCaption, dotCaption, valueTypes, out) {
+            var max = 0;
+            for(var i = 0; i < dataObj.length; i++){
+                var data = dataObj[i].data;
+                for(var j = 0; j < data.length; j++)
+                    if(data[j][0] > max) max = data[j][0];
+            }
+            var interval = Math.ceil(max/4/1000)*1000;
+
             $(conteiner).highcharts({
                 chart: {
                     type: 'spline',
@@ -107,21 +120,24 @@ var Chart = (function () {
                 },
                 xAxis: {
                     reversed: false,
+                    //showFirstLabel: false,
                     title: {
                         enabled: true,
                         text: xAxisCaption
                     },
+                    max: max + Math.round(max*0.1), 
                     labels: {
-                        formatter: function () {
-                            return this.value;
+                        
+                        formatter: function () {                         
+                            if(this.value !== 0)
+                                return this.value;
                         }
                     },
-                    maxPadding: 0.1,
-                    showLastLabel: true,
-                    tickInterval: 1000
+                    maxPadding: 0.5,
+                    tickInterval: interval/*,
+                    offset: -28*/
                 },
                 yAxis: {
-                    categories: ['0'],
                     showEmpty: false,
                     title: {
                         text: yAxisCaption
@@ -135,18 +151,26 @@ var Chart = (function () {
                         }
                     },
                     lineWidth: 1,
+                    tickInterval: 1,
+                    startOnTick: false,
+                    offset: -2
                 },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br/>',
                     formatter: function () {
 
-                        var header = "<strong>" + this.series.name + "</strong><br/>";
-                        if (cross1 && this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1])
-                            var header = '<strong>' + dotCaption + '</strong><br/>';
-                        if (cross1) {
-                            //return dotCaption;  
+                        var header = '<strong>' + this.series.name + '</strong><br/>';
+                        if (this.point.myName === 'crossPoint')
+                            header = '<strong>' + dotCaption + '</strong><br/>';
+                        var year = this.y.toFixed(1),
+                            yearStr = valueTypes.manyYears;
+                        if (year - Math.ceil(year) === 0) {
+                            year = Math.ceil(year);
+                            var last = year % 10;
+                            if (last === 1) yearStr = valueTypes.oneYear;
+                            else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
                         }
-                        return header + valueTypes.costs + ":{" + this.x.toFixed(1) + "}," + valueTypes.year + "{" + this.y.toFixed(1) + "}";
+                        return header + this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
                     }
                 },
                 plotOptions: {
@@ -156,13 +180,25 @@ var Chart = (function () {
                         }
                     },
                     series: {
-                        /*dataLabels: {
+                        dataLabels: {
                             enabled: true,
+                            align: 'left',
                             formatter: function () {
                                 if (!cross1) return;
-                                if (this.point.x == cross1.saveIsect[0] && this.point.y === cross1.saveIsect[1]) return dotCaption;
+                                if (this.point.myName === 'crossPoint') {
+                                    var year = this.y.toFixed(1),
+                                        yearStr = valueTypes.manyYears;
+                                    if (year - Math.ceil(year) === 0) {
+                                        year = Math.ceil(year);
+                                        var last = year % 10;
+                                        if (last === 1) yearStr = valueTypes.oneYear;
+                                        else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                                    }
+                                    return this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
+                                    //return dotCaption;
+                                }
                             }
-                        }*/
+                        }
                     }
                 },
                 series: dataObj
