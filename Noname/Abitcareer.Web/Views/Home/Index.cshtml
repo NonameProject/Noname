@@ -21,13 +21,13 @@
             <option value="ki">Компьютерная инженерия</option>
             <option value="ci">Системная инженерия</option>
         </select>
-    <label for="quality">@LocalizationResx.ChooseUniversity</label>
+    <!--<label for="quality">@LocalizationResx.ChooseUniversity</label>
         <select class="form-control" id="quality">
             <option value="noData">@LocalizationResx.PickQuality</option>
             <option value="1">@LocalizationResx.QualityGood</option>
             <option value="0.8">@LocalizationResx.QualityMiddle</option>
             <option value="0.6">@LocalizationResx.QualityLow</option>
-        </select>
+        </select><!-->
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
 <div id="chart-container" class="panel" style="display: none">
@@ -95,14 +95,14 @@
 
             $("#commit").on("click", function () {                
                 var selectedSpec;
-                if ($("#spec").val() != "noData" && $("#quality").val() != "noData") {
+                if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
-                    for (var j = selectedSpec.length - 1; j >= 0; j--) {
+                    /*for (var j = selectedSpec.length - 1; j >= 0; j--) {
                         for (var i = selectedSpec[j].data.length; i--;) {
                             selectedSpec[j].data[i][0] *= $("#quality").val();
                         }
-                    }
+                    }*/
                     console.log(selectedSpec.data);
                 }
                 else return;
