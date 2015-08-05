@@ -34,14 +34,18 @@ var Chart = (function () {
     var tuneChart = function (chart) {
 
         var customizeIntersectedData = function () {
-            var retData = new Object();
+            var retData = [];
             for (var i = 1; i < chart.series.length; i++){
-                retData = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
-                addPlotChart(retData, plotColors[i] || '#FFEFD5');
+                var data = addPointToLine(chart.series[0].points, chart.series[i].points, chart.series[i]);
+                retData.push(data);                
                 chart.redraw();
-                selectPoint(chart.series[i], retData);
+                selectPoint(chart.series[i], data);
             }            
             
+            for (var i = 0; i < retData.length; i++) {
+                if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.y;
+                addPlotChart(retData[i], plotColors[i] || '#FFEFD5');
+            }
             chart.redraw();
         };
 
