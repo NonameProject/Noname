@@ -21,13 +21,6 @@
             <option value="ki">Компьютерная инженерия</option>
             <option value="ci">Системная инженерия</option>
         </select>
-    <!--<label for="quality">@LocalizationResx.ChooseUniversity</label>
-        <select class="form-control" id="quality">
-            <option value="noData">@LocalizationResx.PickQuality</option>
-            <option value="1">@LocalizationResx.QualityGood</option>
-            <option value="0.8">@LocalizationResx.QualityMiddle</option>
-            <option value="0.6">@LocalizationResx.QualityLow</option>
-        </select><!-->
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
 <div id="chart-container" class="panel" style="display: none">
@@ -106,31 +99,27 @@
 
             $("#commit").on("click", function () {                
                 var selectedSpec;
-                var data2, data3;
+                var data1, data2, data3;
                 if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
-                    /*for (var j = selectedSpec.length - 1; j >= 0; j--) {
-                        for (var i = selectedSpec[j].data.length; i--;) {
-                            selectedSpec[j].data[i][0] *= $("#quality").val();
-                        }
-                    }*/
 
+                    data1 = selectedSpec[1];
                     data2 = {
-                        name: selectedSpec[1].name,
-                        color: selectedSpec[1].color,
+                        name: data1.name,
+                        color: data1.color,
                         data: []
                     };
                     data3 = {
-                        name: selectedSpec[1].name,
-                        color: selectedSpec[1].color,
+                        name: data1.name,
+                        color: data1.color,
                         data: []
                     };
 
-                    for (var i = 0; i < selectedSpec[1].data.length; i++) {
-                        var x = selectedSpec[1].data[i][1];
-                        var y2 = selectedSpec[1].data[i][0] * 0.8;
-                        var y3 = selectedSpec[1].data[i][0] * 0.6;
+                    for (var i = 0; i < data1.data.length; i++) {
+                        var x = data1.data[i][1];
+                        var y2 = data1.data[i][0] * 0.8;
+                        var y3 = data1.data[i][0] * 0.6;
                         data2.data.push([y2, x]);
                         data3.data.push([y3, x]);
                     }
@@ -140,8 +129,8 @@
 
                 $("#input").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
-                 Chart.draw("#payments-container", [selectedSpec[0], selectedSpec[1], data2, data3], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
-                 Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
+                Chart.draw("#payments-container", [selectedSpec[0], data1, data2, data3], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+                Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
             });
 
             specialities["pi"] = [{
