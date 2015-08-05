@@ -134,8 +134,8 @@ var Chart = (function () {
                         }
                     },
                     maxPadding: 0.5,
-                    tickInterval: interval,
-                    offset: -28
+                    tickInterval: interval/*,
+                    offset: -28*/
                 },
                 yAxis: {
                     showEmpty: false,
@@ -162,7 +162,15 @@ var Chart = (function () {
                         var header = '<strong>' + this.series.name + '</strong><br/>';
                         if (this.point.myName === 'crossPoint')
                             header = '<strong>' + dotCaption + '</strong><br/>';
-                        return header + valueTypes.costs + ' : ' + this.x.toFixed(0) + ',  ' + valueTypes.year + ' : ' + this.y.toFixed(1);
+                        var year = this.y.toFixed(1),
+                            yearStr = valueTypes.manyYears;
+                        if (year - Math.ceil(year) === 0) {
+                            year = Math.ceil(year);
+                            var last = year % 10;
+                            if (last === 1) yearStr = valueTypes.oneYear;
+                            else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                        }
+                        return header + this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
                     }
                 },
                 plotOptions: {
@@ -174,12 +182,22 @@ var Chart = (function () {
                     series: {
                         dataLabels: {
                             enabled: true,
-                            align: 'right',
+                            align: 'left',
                             crop: false,
                             formatter: function () {
                                 if (!cross1) return;
-                                if (this.point.myName === 'crossPoint')
-                                    return dotCaption;
+                                if (this.point.myName === 'crossPoint') {
+                                    var year = this.y.toFixed(1),
+                                        yearStr = valueTypes.manyYears;
+                                    if (year - Math.ceil(year) === 0) {
+                                        year = Math.ceil(year);
+                                        var last = year % 10;
+                                        if (last === 1) yearStr = valueTypes.oneYear;
+                                        else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                                    }
+                                    return this.x.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
+                                    //return dotCaption;
+                                }
                             }
                         }
                     }
