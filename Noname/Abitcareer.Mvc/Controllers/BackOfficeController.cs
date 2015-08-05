@@ -19,12 +19,20 @@ namespace Abitcareer.Web.Components
         // GET: /BackOfiice/
 
         public ActionResult AllSpecialities()
-        {        
-            return View();
+        {
+           // var res = new List<Speciality>();
+
+            var spec = new NHibernateSpecialityDataProvider().GetList();
+
+
+
+            throw new NotImplementedException();
+            return View(spec);
         }
 
         public ActionResult EditSpecialities()
         {
+            throw new NotImplementedException();
             return View();
         }
     }
