@@ -49,11 +49,13 @@ var Chart = (function () {
                     return 0;                
                 return -1;
             });
-
+            var ticks = [];
             for (var i = 0; i < retData.length; i++) {
+                ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
                 addPlotChart(retData[i], plotColors[i] || '#FFEFD5');
             }
+            chart.xAxis[0].update({ additionalTicks: ticks });
             chart.redraw();
         };
 
@@ -96,7 +98,7 @@ var Chart = (function () {
             ret.saveIsect = saveIsect;
             ret.mx = mx;
             return ret;
-        };
+        };        
 
         chart.setSize($(".chartWrapper").width(), height(), false);
 
@@ -119,8 +121,22 @@ var Chart = (function () {
                     if (data[j] > max) max = data[j];
                 }
             }
-
             var interval = Math.ceil(max/4000)*1000;
+
+            var unique = function (arr) {
+                var result = [];
+
+                nextInput:
+                    for (var i = 0; i < arr.length; i++) {
+                        var item = arr[i];
+                        for (var j = 0; j < result.length; j++) {
+                            if (result[j] == item) continue nextInput;
+                        }
+                        result.push(item);
+                    }
+
+                return result;
+            }
 
             $(conteiner).highcharts({
                 chart: {
@@ -151,12 +167,24 @@ var Chart = (function () {
                     tickInterval: interval,
                 },
                 xAxis: {
+                    tickPositioner: function (min, max) {
+                        var positions = [];
+                        for (var tick = min; tick < max; tick++)
+                            positions.push(tick);
+                        if (this.options.additionalTicks) {
+                            positions = positions.concat(this.options.additionalTicks);
+                            positions.sort(function (a, b) { return a - b; });
+                        }
+                        return unique(positions);
+                    },
                     
                     tickmarkPlacement: 'on',
                     title: {
                         text: xAxisCaption
                     },
                     labels: {
+                        autoRotationLimit: 100,
+                        maxStaggerLines: 1,                        
                         formatter: function () {
                             if(+this.value !== 0)
                                 return this.value;
@@ -167,8 +195,6 @@ var Chart = (function () {
                     max: dataObj[0].data.length-0.5,
                     startOnTick: true,
                     //endOnTick: true,
-                    minPadding: 0,
-                    maxPadding: 0,
                     align: "left"
                 },
                 tooltip: {
@@ -197,7 +223,7 @@ var Chart = (function () {
                     },
                     series: {
                         dataLabels: {
-                            enabled: true,
+                            enabled: false,                            
                             align: 'left',
                             formatter: function () {
                                 if (this.point.myName !== 'crossPoint') return;
