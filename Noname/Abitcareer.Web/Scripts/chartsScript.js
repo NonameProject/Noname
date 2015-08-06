@@ -40,8 +40,16 @@ var Chart = (function () {
                 var data = addPointToLine(chart.series[length-1].points, chart.series[i].points, chart.series[length - 1]);
                 retData.push(data);                              
                 selectPoint(chart.series[length-1], data);
-            }            
-            
+            }
+
+            retData.sort(function (a, b) {
+                if (a.saveIsect.x > b.saveIsect.x)
+                    return 1;
+                if (a.saveIsect.x === b.saveIsect.x)
+                    return 0;                
+                return -1;
+            });
+
             for (var i = 0; i < retData.length; i++) {
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
                 addPlotChart(retData[i], plotColors[i] || '#FFEFD5');
