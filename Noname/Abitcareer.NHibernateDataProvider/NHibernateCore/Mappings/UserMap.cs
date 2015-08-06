@@ -18,6 +18,8 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
             Map(x => x.Email);
 
             Map(x => x.Password);
+
+            Map(x => x.PasswordSalt);
         }
     }
 }

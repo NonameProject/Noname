@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace Abitcareer.Web.Components
 {
-    
+    [Authorize]
     public class BackOfficeController : Controller
     {
         SpecialityManager specialityManager;

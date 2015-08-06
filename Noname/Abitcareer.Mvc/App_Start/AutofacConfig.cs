@@ -5,12 +5,14 @@ using Abitcareer.NHibernateDataProvider.Data_Providers;
 using Abitcareer.Web.Components;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Events.Business.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using team2project.Components;
 
 namespace Abitcareer.Mvc.App_Start
 {
@@ -21,6 +23,8 @@ namespace Abitcareer.Mvc.App_Start
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(AbitcareerApplication).Assembly);
 
+            builder.RegisterType<WebUserContext>().As<UserContext>().InstancePerHttpRequest();
+
             builder.RegisterType<UniversityManager>();
 
             builder.RegisterType<RegionManager>();
@@ -30,6 +34,8 @@ namespace Abitcareer.Mvc.App_Start
             builder.RegisterType<FacultyManager>();
 
             builder.RegisterType<SpecialityManager>();
+
+            builder.RegisterType<UserManager>();
 
             builder.RegisterType<NHibernateRegionDataProvider>()
                 .As<IRegionDataProvider>();
@@ -45,6 +51,9 @@ namespace Abitcareer.Mvc.App_Start
             
             builder.RegisterType<NHibernateUniversityDataProvider>()
                 .As<IUniversityDataProvider>();
+
+            builder.RegisterType<NHibernateUserDataProvider>()
+                .As<IUserDataProvider>();
 
             builder.RegisterType<RuntimeCacheManager>()
                 .As<ICacheManager>();
