@@ -199,7 +199,10 @@ var Chart = (function () {
                 },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br/>',
-                    crosshairs: true,
+                    crosshairs: [{
+                        color: 'black',
+                        width: 1
+                    }],
                     formatter: function () {
 
                         var header = '<strong>' + this.series.name + '</strong><br/>';
