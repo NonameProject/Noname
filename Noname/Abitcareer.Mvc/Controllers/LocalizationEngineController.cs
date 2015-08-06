@@ -32,9 +32,11 @@ namespace Abitcareer.Mvc.Controllers
             this.cityManager = cityManager;
         }
 
-        public ActionResult ChangeCulture(string culture, string routeName)
+        public ActionResult ChangeCulture(string culture, string routeName, string anchor = "")
         {
-            return RedirectToRoute(routeName, new { locale = culture });
+            if(string.IsNullOrEmpty(anchor))
+                return RedirectToRoute(routeName, new { locale = culture });
+            return Redirect(Url.RouteUrl(routeName, new { locale = culture }) + "#" + anchor);            
         }
 
         private string GetKey()

@@ -33,9 +33,10 @@
                         else
                         {
                             langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
+                            langLink = langLink + "&anchor=True";
                         }
                     }
-                    <a href="@langLink">
+                    <a class="changeLanguage" href="@langLink">
                         <img src="@Url.Content("~/Content/Images/Flags/US.png")" />
                     </a>
                     @{
@@ -45,10 +46,11 @@
                         }
                         else
                         {
-                            langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName });
+                            langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName, anchor = "" });
+                            langLink += "&anchor=True";
                         }
                     }
-                    <a href="@langLink">
+                    <a class="changeLanguage" href="@langLink">
                         <img src="@Url.Content("~/Content/Images/Flags/UA.png")" />
                     </a>
                 </div>
@@ -67,7 +69,7 @@
                                 langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
                             }
                         }
-                        <a href="@langLink">
+                        <a class="changeLanguage" href="@langLink">
                             <img src="@Url.Content("~/Content/Images/Flags/US.png")" /> English
                         </a>
                     </li>
@@ -82,7 +84,7 @@
                                 langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName });
                             }
                         }
-                        <a href="@langLink">
+                        <a class="changeLanguage" href="@langLink">
                             <img src="@Url.Content("~/Content/Images/Flags/UA.png")" /> Українська
                         </a>
                     </li>
@@ -93,6 +95,7 @@
     <div id="content">
         @RenderBody()
     </div>
+    @Scripts.Render("~/Scripts/Layout.js")
     @RenderSection("scripts", required: false)
     <!-- Yandex.Metrika counter -->
     @*<script type="text/javascript">

@@ -37,13 +37,15 @@
 
 
 @section Scripts
-{
+{    
     @Scripts.Render("~/Scripts/chartsScript.js")
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/highcharts.js")
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
     <script>
         $(function () {           
+
+            setHash();
 
             var textStrings = {
                 paymentsCaption: "@LocalizationResx.PaymentsCaption",
@@ -99,7 +101,8 @@
 
             $("#commit").on("click", function () {
                 var selectedSpec;
-                var data1, data2, data3;
+                var data1, data2, data3;                
+
                 if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
                     var names = ["ki", "pi", "ci"];
                     selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
@@ -132,8 +135,11 @@
 
                 $("#input").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
+                window.location.hash = $("#spec").val();
                 Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
                 Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
+                setHash();
+                return false;
             });
 
             specialities["pi"] = [{
