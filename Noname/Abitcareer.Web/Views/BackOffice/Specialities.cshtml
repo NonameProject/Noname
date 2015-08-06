@@ -7,6 +7,7 @@
 
 @section styles
 {
+    @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Specialities.css")
 }
 
@@ -20,12 +21,18 @@
 
 <section class="wrapperButton">
     <table class="table">
-    @foreach (var item in Model)
+        <tr>
+            <td class="specButton" id="123">Програмна інженерія</td>
+        </tr>
+        <tr>
+            <td class="specButton" id="124">Системна інженерія</td>
+        </tr>
+    @*@foreach (var item in Model)
     {
         <tr>
             <td class="specButton" id="@item.Id">@item.Name</td>
         </tr>
-    }
+    }*@
     </table>
 </section>
 @section Scripts

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SimpleCrypto;
 
 namespace Abitcareer.Business.Components.Managers
 {
@@ -35,6 +36,13 @@ namespace Abitcareer.Business.Components.Managers
         public void Create(User model)
         {
             ClearCache();
+
+            var crypto = new SimpleCrypto.PBKDF2();
+
+            model.PasswordSalt = crypto.GenerateSalt();
+
+            model.Password = crypto.Compute(model.Password,model.PasswordSalt);
+
             provider.Create(model);
         }
 
@@ -49,6 +57,28 @@ namespace Abitcareer.Business.Components.Managers
         public User GetByEmail(string email)
         {
             return provider.GetByEmail(email);
+        }
+
+        public bool IsPasswordValid(string email, string password)
+        {
+            var user = provider.GetByEmail(email);
+            if(user != null)
+            {
+                if (String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt)))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsUserExists(string email)
+        {
+            if(provider.GetByEmail(email) != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
