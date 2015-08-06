@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Xml.Linq;
 using Abitcareer.Business.Components.Translation;
 using System.Threading;
-
+using System.Linq;
 
 namespace Abitcareer.Web.Components
 {
@@ -26,17 +26,10 @@ namespace Abitcareer.Web.Components
         {
            // var res = new List<Speciality>();
 
-            var spec = specialityManager.GetList();
-            var result = new List<SpecialityViewModel>();
-
-
-            foreach (var item in spec)
-            {
-                if (String.IsNullOrEmpty(item.Name) || String.IsNullOrEmpty(item.Id))
-                    continue;
-                result.Add(new SpecialityViewModel() { Name = item.Name, Id = item.Id });
-            }
-
+            var spec = specialityManager.GetList() as List<Speciality>;
+            var tmp = spec.Where(x =>
+                !string.IsNullOrEmpty(x.Name) && !string.IsNullOrEmpty(x.Id)).ToList();
+            var result = AutoMapper.Mapper.Map<List<SpecialityViewModel>>(tmp);
             return View(result);
         }
 
@@ -53,6 +46,7 @@ namespace Abitcareer.Web.Components
             var result = specialityManager.TrySave(mappedModel);
             return Json(result);
         }
+
         public ActionResult EditPartial()
         {
             return PartialView();

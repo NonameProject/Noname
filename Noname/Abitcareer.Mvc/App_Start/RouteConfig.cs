@@ -34,22 +34,35 @@ namespace Abitcareer.Mvc
                 {
                 });
 
-            routes.MapRoute(
-               name: "specialities",
-               url: "specialities",
-               defaults: new { controller = "BackOffice", action = "Specialities" });
+
+            routes.MapLocalizedRoute(
+                name: "specialities",
+                url: "specialities",
+                defaults: new { controller = "BackOffice", action = "Specialities" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
+
+            routes.MapLocalizedRoute(
+                name: "saveSpeciality",
+                url: "BackOffice/Save",
+                defaults: new { controller = "BackOffice", action = "Save" },
+                setupConstraints:
+                (dynamic constraints) =>
+                {
+                });
 
 
-            routes.MapRoute(
-               name: "saveSpeciality",
-               url: "BackOffice/Save",
-               defaults: new { controller = "BackOffice", action = "Save" });
+            routes.MapLocalizedRoute(
+              name: "editSpeciality",
+              url: "editSpecialities/{id}",
+              defaults: new { controller = "BackOffice", action = "EditSpecialities", id = UrlParameter.Optional },
+              setupConstraints:
+              (dynamic constraints) =>
+              {
+              });
 
-            routes.MapRoute(
-                name: "editSpecialities",
-                url: "editSpecialities/{id}",
-                defaults: new { controller = "BackOffice", action = "EditSpecialities", id = UrlParameter.Optional });
-             
 
             routes.MapLocalizedRoute(
                 name: "ChangeCulture",
@@ -60,6 +73,7 @@ namespace Abitcareer.Mvc
                 {
                 });
 
+
             routes.MapLocalizedRoute(
                 name: "TestDb",
                 url: "TestDb",
@@ -68,6 +82,7 @@ namespace Abitcareer.Mvc
                 (dynamic constraints) =>
                 {
                 });
+
 
             routes.MapRoute(
                 "NotFound",
