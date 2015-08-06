@@ -17,9 +17,9 @@
     <label for="spec">@LocalizationResx.СhooseSpeciality</label>
         <select class="form-control" id="spec">
             <option value="noData">@LocalizationResx.PickSpeciality</option>
-            <option value="pi">Програмная инженерия</option>
-            <option value="ki">Компьютерная инженерия</option>
-            <option value="ci">Системная инженерия</option>
+            <option value="pi">Програмна інженерія</option>
+            <option value="ki">Комп'ютерна інженерія</option>
+            <option value="ci">Системна інженерія</option>
         </select>
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
@@ -138,26 +138,27 @@
 
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
-                data: [1300, 1300, 1300, 1300, 1300, 1500],
+                data: [1708, 1708, 1708, 1708, 2500],
                 color: "#990033"// was red
             },
             {
                 name: textStrings.summaryAxis,
-                data: [0, 0, 800, 3000, 5000, 7000],
+                data: [0, 0, 800, 3000, 5000, 7000], //will be overrided
                 color: "green"// was green
             },
             {
                 name: textStrings.summaryCosts,
-                data: [1300, 2600, 3900, 5200, 6500, 8000],
+                data: [0, 3416, 5124, 6832, 8540, 11040],
                 color: "blue"
             },
             {
                 name: textStrings.summarySalary,
                 data: [0, 0, 9600, 36000, 60000, 84000],
                 color: "green"
-            }]
-
-
+            }];
+            $.post('@Url.RouteUrl("GetData")', { polinom: 3 }, function (data) {
+                specialities["pi"][1].data = data;
+            });
 
             specialities["ci"] = [{
                 name: textStrings.paymentsAxis,

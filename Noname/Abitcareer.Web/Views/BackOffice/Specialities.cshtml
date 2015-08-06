@@ -19,18 +19,12 @@
 </div>
 
 <section class="wrapperButton">
-    <table class="table-hover">
+    <table class="table">
     @foreach (var item in Model)
     {
         <tr>
             <td class="specButton" id="@item.Id">@item.Name</td>
         </tr>
-        @*<tr>
-            @foreach (var salary in item.Salaries)
-            {
-                <td>@salary.Value</td>   
-            }
-        </tr>*@
     }
     </table>
 </section>

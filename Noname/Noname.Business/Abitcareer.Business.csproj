@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
+    <Compile Include="Components\Approximator.cs" />
     <Compile Include="Components\Extensions\StringExtensions.cs" />
     <Compile Include="Components\Extensions\DictonaryExtensions.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\FacultiesToSpecialities.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\Speciality.cs" />
     <Compile Include="Models\University.cs" />

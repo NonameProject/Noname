@@ -26,13 +26,22 @@
     margin-top: -35px;
 }
 
-table {
+.table {
     font-size: 1em;
-    width:320px;
+    width:500px;
     margin:0 auto;
 }
 
+    table tr:nth-child(odd) {
+        background-color:rgb(167, 167, 179);
+    }
+
+    table td {
+        padding:1%;
+        text-align:center;
+    }
     table td:hover {
+        background-color:rgba(0, 153, 153, .2); 
         cursor:pointer;
     }
 

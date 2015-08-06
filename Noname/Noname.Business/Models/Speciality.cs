@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abitcareer.Business.Components.Extensions;
 
 namespace Abitcareer.Business.Models
 {
@@ -8,11 +9,18 @@ namespace Abitcareer.Business.Models
 
         public virtual int Code { get; set; }
 
-        //public virtual IList<Faculty> Faculties { get; set; }
+        public virtual Dictionary<int, int> Salaries { get; set; }
 
-        //public Speciality()
-        //{
-        //    Faculties = new List<Faculty>();
-        //}
+        public virtual string CompressedSalaries
+        {
+            get
+            {
+                return Salaries.ToXmlString<int, int>();
+            }
+            set
+            {
+                Salaries = value.ToDictionary<int, int>();
+            }
+        }
     }
 }

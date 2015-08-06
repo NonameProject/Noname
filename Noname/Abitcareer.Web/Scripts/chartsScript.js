@@ -62,7 +62,7 @@ var Chart = (function () {
         var addPlotChart = function (data, col) {
             chart.xAxis[0].addPlotBand({
                 from: data.saveIsect.x,
-                to: data.mx, //+1, //fill to the end
+                to: data.mx,
                 color: col,
                 name: 'cross'
             })
@@ -118,7 +118,9 @@ var Chart = (function () {
             for(var i = 0; i < dataObj.length; i++){
                 var data = dataObj[i].data;
                 for (var j = 0; j < data.length; j++) {
-                    if (data[j] > max) max = data[j];
+                    if (data[j].y && data[j].y > max) max = data[j].y; //for arr of objects
+                    else if (data[j][1] && data[j][1] > max) max = data[j][1]; // for arr of arrays
+                    else if (data[j] > max) max = data[j];   //for arr of y values
                 }
             }
             var interval = Math.ceil(max/4000)*1000;
@@ -192,9 +194,7 @@ var Chart = (function () {
                         }                        
                     },
                     min: 0,
-                    max: dataObj[0].data.length-0.5,
                     startOnTick: true,
-                    //endOnTick: true,
                     align: "left"
                 },
                 tooltip: {
