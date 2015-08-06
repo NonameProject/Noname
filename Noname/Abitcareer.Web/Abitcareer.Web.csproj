@@ -274,6 +274,7 @@
     <Content Include="Views\LocalizationEngine\TestDb.cshtml" />
     <Content Include="Views\BackOffice\Specialities.cshtml" />
     <Content Include="Views\BackOffice\EditSpecialities.cshtml" />
+    <Content Include="Views\BackOffice\EditPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,11 +11,10 @@
 
 <h2>Specialities</h2>
 
-@Html.ActionLink("Cсылка", "EditSpecialities", "BackOffice")
 <ol>
     @foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.Name, "EditSpecialities", "BackOffice", new { id = item.Id }, new { @class = "btn btn-default" });</li>
+        <li>@Html.ActionLink(item.Name, "EditSpecialities", "BackOffice", new { id = item.Id }, new { @class = "btn btn-default" })</li>
 
         <br>
     }
