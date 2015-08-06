@@ -3,27 +3,48 @@
     box-sizing: border-box;
     display: none;
     height: 100%;
-    padding-left: 40%;
-    padding-top: 15%;
+    padding-left: 35%;
+    padding-top: 10%;
     position: fixed;
     top: 0;
     width: 100%;
 }
 
 #inner {
-    width: 50%;
+    background-color: white;
     margin: 0;
-    background-color:whitesmoke;
+    padding-left: 2%;
+    width: 60%;
+    padding-bottom: 1%;
 }
+
+form {
+    padding: 3px;
+}
+
+    form input[type="number"] {
+        float: right;
+        width: 250px;
+    }
+
+    form input:focus {
+        border-style: solid;
+        border-color: rgba(0, 153, 153, .4);
+    }
+
+    form button {
+        margin-top: 1%;
+    }
 
 #exit {
     background-image: url("Images/closegray.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width:8%;
-    border-style:none;
+    border-style: none;
     float: right;
-    margin-top: -35px;
+    margin-top: -50px;
+    width: 6%;
+    background-color: white;
 }
 
 .table {
@@ -32,18 +53,26 @@
     margin:0 auto;
 }
 
-    table tr:nth-child(odd) {
+    .table tr:nth-child(odd) {
         background-color:rgb(167, 167, 179);
     }
 
-    table td {
+    .table td {
         padding:1%;
         text-align:center;
     }
-    table td:hover {
+    .table td:hover {
         background-color:rgba(0, 153, 153, .2); 
         cursor:pointer;
     }
+
+.salaries {
+    font-size: 1em;
+}
+
+.salaries td {
+    padding: 5px;
+}
 
 .specButton {
     padding: 1%;
