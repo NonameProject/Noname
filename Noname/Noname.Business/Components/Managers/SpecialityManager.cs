@@ -53,8 +53,7 @@ namespace Abitcareer.Business.Components.Managers
             bool result;
             try
             {
-                //code that will save changes
-                throw new NotImplementedException();
+                provider.Update(editedModel);
                 result = true;
             }
             catch
