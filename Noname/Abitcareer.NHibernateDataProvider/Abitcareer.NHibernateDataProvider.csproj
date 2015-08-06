@@ -62,13 +62,16 @@
   <ItemGroup>
     <Compile Include="Data Providers\NHibernateCityDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateDataProviderBase.cs" />
+    <Compile Include="Data Providers\NHibernateFacultiesToSpecialitiesDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateFacultyDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateRegionDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateSpecialityDataProvider.cs" />
     <Compile Include="Data Providers\NHibernateUniversityDataProvider.cs" />
+    <Compile Include="Data Providers\NHibernateUserDataProvider.cs" />
     <Compile Include="NHibernateCore\Helper.cs" />
     <Compile Include="NHibernateCore\Mappings\BaseMap.cs" />
     <Compile Include="NHibernateCore\Mappings\CityMap.cs" />
+    <Compile Include="NHibernateCore\Mappings\FacultiesToSpecialitiesMap.cs" />
     <Compile Include="NHibernateCore\Mappings\SpecialityMap.cs" />
     <Compile Include="NHibernateCore\Mappings\FacultyMap.cs" />
     <Compile Include="NHibernateCore\Mappings\RegionMap.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="NHibernateCore\DatabaseProfiler\DbCommandProxy.cs" />
     <Compile Include="NHibernateCore\DatabaseProfiler\HasManyConvention.cs" />
     <Compile Include="NHibernateCore\DatabaseProfiler\ProfiledSqlCeDriver.cs" />
+    <Compile Include="NHibernateCore\Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,7 @@ using System.Threading;
 
 namespace Abitcareer.Web.Components
 {
+    [Authorize]
     public class BackOfficeController : Controller
     {
         SpecialityManager specialityManager;
