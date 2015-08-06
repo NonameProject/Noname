@@ -10,10 +10,11 @@ using System.Xml.Linq;
 using Abitcareer.Business.Components.Translation;
 using System.Threading;
 using System.Linq;
+using Abitcareer.Core;
 
 namespace Abitcareer.Web.Components
 {
-    [Authorize]
+    [LanguageAuthorize]
     public class BackOfficeController : Controller
     {
         SpecialityManager specialityManager;

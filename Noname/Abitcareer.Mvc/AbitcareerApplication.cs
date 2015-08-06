@@ -46,11 +46,6 @@ namespace Abitcareer.Mvc
 
         protected void Application_EndRequest()
         {
-            //if (HttpContext.Current.Request.Path.Contains("login"))
-            //{
-            //    var a = HttpContext.Current.Request.UserLanguages[0];
-            //    HttpContext.Current.Response.RedirectToRoutePermanent()
-            //}
             MiniProfiler.Stop();
         }
 

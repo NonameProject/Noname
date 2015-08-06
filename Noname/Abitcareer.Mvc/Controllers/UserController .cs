@@ -43,7 +43,11 @@ namespace Abitcareer.Mvc.Controllers
             if(manager.IsPasswordValid(user.Email, user.Password))
             {
                 FormsAuthentication.SetAuthCookie(user.Email, false);
-                return RedirectToRoute("Home");
+                if(!String.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                return RedirectToRoute("Default");
             }
             else
             {
