@@ -4,6 +4,7 @@ using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.NHibernateDataProvider.Data_Providers;
 using CultureEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Xml.Linq;
@@ -47,7 +48,7 @@ namespace Abitcareer.Mvc.Controllers
             var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(universityManager.GetList());
             return View(list);
         }
-
+   
         public ActionResult Import()
         {
             var doc = XDocument.Load(Server.MapPath("~/Data.xml"));

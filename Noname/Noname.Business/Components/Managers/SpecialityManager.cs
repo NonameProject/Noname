@@ -39,7 +39,13 @@ namespace Abitcareer.Business.Components.Managers
         public IList<Speciality> GetList() 
         {
             ClearCache();
-            return provider.GetList();
+            var list = provider.GetList();
+            var newList = new List<Speciality>(list.Count);
+            foreach (var item in list)
+            {
+                newList.Add((Speciality)GetBaseModel(item));
+            }
+            return newList;
         }
 
         public bool TrySave(Speciality editedModel)
