@@ -121,11 +121,10 @@
                     };
 
                     for (var i = 0; i < data1.data.length; i++) {
-                        var x = data1.data[i][1];
-                        var y2 = data1.data[i][0] * 0.8;
-                        var y3 = data1.data[i][0] * 0.6;
-                        data2.data.push([y2, x]);
-                        data3.data.push([y3, x]);
+                        var y2 = data1.data[i] * 0.8;
+                        var y3 = data1.data[i] * 0.6;
+                        data2.data.push(y2);
+                        data3.data.push(y3);
                     }
                     console.log(selectedSpec.data);
                 }
@@ -133,29 +132,28 @@
 
                 $("#input").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
-
                 Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
                 Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
             });
 
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
-                data: [[1300, 0], [1300, 1], [1300, 2], [1300, 3], [1300, 4], [1500, 5]],
+                data: [1300, 1300, 1300, 1300, 1300, 1500],
                 color: "#990033"// was red
             },
             {
                 name: textStrings.summaryAxis,
-                data: [[0, 0], [0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
+                data: [0, 0, 800, 3000, 5000, 7000],
                 color: "#0099CC"// was green
             },
             {
                 name: textStrings.summaryCosts,
-                data: [[1300, 0], [2600, 1], [3900, 2], [5200, 3], [6500, 4], [8000, 5]],
+                data: [1300, 2600, 3900, 5200, 6500, 8000],
                 color: "#E3402D"
             },
             {
                 name: textStrings.summarySalary,
-                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
+                data: [0, 0, 9600, 36000, 60000, 84000],
                 color: "#187A0F"
             }]
 
@@ -163,44 +161,44 @@
 
             specialities["ci"] = [{
                 name: textStrings.paymentsAxis,
-                data: [[1300, 0], [1300, 1], [1300, 2], [1300, 3], [1300, 4], [1500, 5]],
+                data: [1300, 1300, 1300, 1300, 1300, 1500],
                 color: "#990033"// was red
             },
             {
                 name: textStrings.summaryAxis,
-                data: [[0, 0], [0, 1], [800, 2], [3000, 3], [5000, 4], [7000, 5]],
+                data: [0, 0, 800, 3000, 5000, 7000],
                 color: "#0099CC"// was green
             },
             {
                 name: textStrings.summaryCosts,
-                data: [[1300, 0], [2600, 1], [3900, 2], [5200, 3], [6500, 4], [8000, 5]],
+                data: [1300, 2600, 3900, 5200, 6500, 8000],
                 color: "#E3402D"
             },
             {
                 name: textStrings.summarySalary,
-                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
+                data: [0, 0, 9600, 36000, 60000, 84000],
                 color: "#187A0F"
             }]
 
 
             specialities["ki"] = [{
                 name: textStrings.paymentsAxis,
-                data: [[1200, 0], [1200, 1], [1200, 2], [1200, 3], [1200, 4], [1400, 5]],
+                data: [1200, 1200, 1200, 1200, 1200, 1400],
                 color: "#990033"
             },
             {
                 name: textStrings.summaryAxis,
-                data: [[0, 0], [0, 1], [1200, 2], [1700, 3], [2000, 4], [2500, 5]],
+                data: [0, 0, 1200, 1700, 2000, 2500],
                 color: "#0099CC"
             },
             {
                 name: textStrings.summarySalary,
-                data: [[0, 0], [0, 1], [1200, 2], [2900, 3], [4900, 4], [7400, 5]],
+                data: [0, 0, 1200, 2900, 4900, 7400],
                 color: "#E3402D"
             },
             {
                 name: textStrings.summaryCosts,
-                data: [[0, 0], [0, 1], [9600, 2], [36000, 3], [60000, 4], [84000, 5]],
+                data: [0, 0, 9600, 36000, 60000, 84000],
                 color: "#187A0F"
             }
             ]
