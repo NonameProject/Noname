@@ -55,7 +55,6 @@ namespace Abitcareer.Web.Components
         }
         public ActionResult EditPartial()
         {
-            ViewBag.Message = "Это частичное представление.";
             return PartialView();
         }
     }

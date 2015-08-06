@@ -1,1 +1,18 @@
-﻿
+﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
+@using System.Web
+@using System.Globalization
+@using System.Web.Mvc
+@using System.Text.RegularExpressions
+@model SpecialityViewModel
+<h2>EditSpecialities</h2>
+@using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post))
+{
+    <div><span>Назва: </span>@Html.EditorFor(m => m.Name)</div>
+    foreach (var item in Model.Salaries)
+    {
+        <div>
+            <span>Зарплата за </span>@item.Key<span>-й рік: </span>@Html.EditorFor(m => m.Salaries[item.Key])
+        </div>
+    }
+    <input type="submit" value="Зберегти">
+}

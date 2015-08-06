@@ -1,0 +1,23 @@
+﻿#partialView 
+{
+  position: fixed;
+  display: none;
+  padding-left: 40%;
+  padding-top:15%;
+  top: 0;
+  width: 100%;
+  background-color: rgba(32, 32, 32, 0.81);
+  box-sizing: border-box;
+  height: 100%;
+  background-image: url("Images/elementsSprite.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: -36px -142px;
+}
+#inner 
+{
+  width: 50%;
+  margin: 0;
+  background-color:whitesmoke;
+
+}
