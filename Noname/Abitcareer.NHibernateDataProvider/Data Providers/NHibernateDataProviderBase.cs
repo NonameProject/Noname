@@ -62,7 +62,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             return Execute(session =>
             {
                 var criteria = session.CreateCriteria<TEntity>();
-                return criteria.List<TEntity>();
+                return criteria.List<TEntity>().OrderBy(x => x.Name).ToList();
             });
         }
 
