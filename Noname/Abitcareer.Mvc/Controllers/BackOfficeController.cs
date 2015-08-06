@@ -53,5 +53,10 @@ namespace Abitcareer.Web.Components
             var result = specialityManager.TrySave(mappedModel);
             return Json(result);
         }
+        public ActionResult EditPartial()
+        {
+            ViewBag.Message = "Это частичное представление.";
+            return PartialView();
+        }
     }
 }
