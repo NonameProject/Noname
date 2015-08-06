@@ -150,7 +150,7 @@ var Chart = (function () {
                     },
                     labels: {
                         formatter: function () {
-                            if(this.value !== '0')
+                            if(+this.value !== 0)
                                 return this.value;
                             return '';
                         }                        
