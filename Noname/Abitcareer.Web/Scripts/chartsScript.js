@@ -200,7 +200,7 @@ var Chart = (function () {
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br/>',
                     crosshairs: [{
-                        color: 'black',
+                        color: '#669999',
                         width: 1
                     }],
                     formatter: function () {

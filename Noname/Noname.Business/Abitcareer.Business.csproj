@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,22 +68,28 @@
     <Compile Include="Components\Managers\CityManager.cs" />
     <Compile Include="Components\Managers\RegionManager.cs" />
     <Compile Include="Components\Managers\UniversityManager.cs" />
+    <Compile Include="Components\Managers\UserManager.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
+    <Compile Include="Components\UserContext.cs" />
     <Compile Include="Data Providers Contracts\ICityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IFacultiesToSpecialitiesDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IFacultyDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IRegionDataProvider.cs" />
     <Compile Include="Data Providers Contracts\ISpecialityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IUniversityDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IUserDataProvider.cs" />
     <Compile Include="EnvironmentInfo.cs" />
     <Compile Include="Components\Cache\ICacheManager.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\FacultiesToSpecialities.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\Speciality.cs" />
     <Compile Include="Models\University.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

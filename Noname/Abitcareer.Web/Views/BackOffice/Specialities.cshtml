@@ -5,17 +5,50 @@
 @using System.Text.RegularExpressions
 @model List<SpecialityViewModel>
 
-@{
-    ViewBag.Title = "Specialities";
+@section styles
+{
+    @Styles.Render("~/Content/Specialities.css")
 }
 
 <h2>Specialities</h2>
 
-<ol>
+<div id="partialView">
+    <div id="inner">
+        @Html.Partial("EditPartial", new SpecialityViewModel())
+    </div>
+</div>
+
+<section class="wrapperButton">
+    <table class="table-hover">
     @foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.Name, "EditSpecialities", "BackOffice", new { id = item.Id }, new { @class = "btn btn-default" })</li>
-
-        <br>
+        <tr>
+            <td class="specButton" id="@item.Id">@item.Name</td>
+        </tr>
+        @*<tr>
+            @foreach (var salary in item.Salaries)
+            {
+                <td>@salary.Value</td>   
+            }
+        </tr>*@
     }
-</ol>
+    </table>
+</section>
+@section Scripts
+{
+   <script>
+
+       $(function () {
+           $('.specButton').click(function () {
+               $('#partialView').show();
+           });
+       });
+
+       $(function () {
+           $('#exit').click(function () {
+               $('#partialView').hide();
+           });
+       });
+
+    </script>
+}

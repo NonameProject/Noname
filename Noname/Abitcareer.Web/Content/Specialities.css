@@ -1,0 +1,41 @@
+﻿#partialView {
+    background-color: rgba(32, 32, 32, 0.81);
+    box-sizing: border-box;
+    display: none;
+    height: 100%;
+    padding-left: 40%;
+    padding-top: 15%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#inner {
+    width: 50%;
+    margin: 0;
+    background-color:whitesmoke;
+}
+
+#exit {
+    background-image: url("Images/closegray.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:8%;
+    border-style:none;
+    float: right;
+    margin-top: -35px;
+}
+
+table {
+    font-size: 1em;
+    width:320px;
+    margin:0 auto;
+}
+
+    table td:hover {
+        cursor:pointer;
+    }
+
+.specButton {
+    padding: 1%;
+}

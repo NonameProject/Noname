@@ -14,7 +14,7 @@ namespace Abitcareer.Business.Components.Extensions
             var tempDict = XElement
                     .Parse(str)
                     .Descendants("field")
-                    .ToDictionary(x => x.Attribute("key").ToString(), x => x.Attribute("value").ToString());
+                    .ToDictionary(x => x.Attribute("key").Value, x => x.Attribute("value").Value);
             var result = new Dictionary<TKey, TValue>();
             foreach (var item in tempDict)
 	        {

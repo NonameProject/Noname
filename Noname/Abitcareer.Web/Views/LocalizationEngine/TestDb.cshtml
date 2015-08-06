@@ -5,4 +5,8 @@
 }
 
 <h2>Multilanguage test</h2>
-@Model.Count
+@foreach (var item in Model)
+{
+    @item.Name
+    <br/>
+}
