@@ -118,7 +118,9 @@ var Chart = (function () {
             for(var i = 0; i < dataObj.length; i++){
                 var data = dataObj[i].data;
                 for (var j = 0; j < data.length; j++) {
-                    if (data[j] > max) max = data[j];
+                    if (data[j].y && data[j].y > max) max = data[j].y; //for arr of objects
+                    else if (data[j][1] && data[j][1] > max) max = data[j][1]; // for arr of arrays
+                    else if (data[j] > max) max = data[j];   //for arr of y values
                 }
             }
             var interval = Math.ceil(max/4000)*1000;

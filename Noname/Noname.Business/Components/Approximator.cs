@@ -19,6 +19,10 @@ namespace Abitcareer.Business.Components
             {
                 throw new ArgumentException("different arrays length", "x y");
             }
+            if (polinom >= x.Length)
+            {
+                throw new ArgumentException("can't solve: polinom power to large", "polinom");
+            }
             Matrix = new double[x.Length, y.Length];
             Polinom = polinom;
             UnknownCoef = new double[polinom + 1];
@@ -139,6 +143,20 @@ namespace Abitcareer.Business.Components
             foreach (var m in x)
             {
                 res.Add(new Point(m, CalcY(m)));
+            }
+            return res;
+        }
+
+        public List<Point> CalcY(double fromX, double toX)
+        {
+            if (toX < fromX)
+            {
+                throw new ArgumentException("uncorrect range");
+            }
+            var res = new List<Point>((int)(toX - fromX));
+            for (; fromX <= toX; fromX++)
+            {
+                res.Add(new Point(fromX, CalcY(fromX)));
             }
             return res;
         }

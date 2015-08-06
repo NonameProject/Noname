@@ -1,6 +1,7 @@
 ﻿using Abitcareer.Business.Components;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using Abitcareer.Business.Models;
 
 namespace Abitcareer.Mvc.Controllers
 {
@@ -11,13 +12,15 @@ namespace Abitcareer.Mvc.Controllers
             return View();
         }
 
-        public ActionResult GetData(short polinom)
+        public ActionResult GetData(short polinom = 3)
         {
-            var x = new double[] { 2, 3, 4, 5};
-            var y = new double[] { 800, 3000, 5000, 7000 };
+            var x = new double[] { 1, 2, 3, 4, 5};
+            var y = new double[] { 0, 1500, 2800, 4000, 5200 };
             var aproximator = new Approximator(x, y, polinom);
-            x = new double[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            return Json(aproximator.CalcY(new List<double>(x)), JsonRequestBehavior.AllowGet);
+            //x = new double[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var list = Point.GetZeroList(2);
+            list.AddRange(aproximator.CalcY(2, 15));
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 }
