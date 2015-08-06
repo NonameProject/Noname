@@ -11,6 +11,8 @@ namespace Abitcareer.Business.Components.Extensions
     {
         public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this string str)
         {
+            if (String.IsNullOrEmpty(str))
+                return new Dictionary<TKey, TValue>();
             var tempDict = XElement
                     .Parse(str)
                     .Descendants("field")
