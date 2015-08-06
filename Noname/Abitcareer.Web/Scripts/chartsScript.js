@@ -62,7 +62,7 @@ var Chart = (function () {
         var addPlotChart = function (data, col) {
             chart.xAxis[0].addPlotBand({
                 from: data.saveIsect.x,
-                to: data.mx, //+1, //fill to the end
+                to: data.mx,
                 color: col,
                 name: 'cross'
             })
@@ -194,9 +194,7 @@ var Chart = (function () {
                         }                        
                     },
                     min: 0,
-                    max: dataObj[0].data.length-0.5,
                     startOnTick: true,
-                    //endOnTick: true,
                     align: "left"
                 },
                 tooltip: {
