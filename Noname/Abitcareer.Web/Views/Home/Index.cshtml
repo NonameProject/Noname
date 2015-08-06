@@ -43,41 +43,26 @@
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
     <script>
-        $(function () {           
-
-            setHash();
-
+        $(function () {
             var textStrings = {
                 paymentsCaption: "@LocalizationResx.PaymentsCaption",
-                summaryCaption: "@LocalizationResx.SummaryCaption",
-                paymentsAxis: '@LocalizationResx.PaymentsGraphCaption',
-                summaryAxis: '@LocalizationResx.SummaryGraphCaption',
-                xAxisCaption: '@LocalizationResx.xChartAxisCaption',
-                yAxisCaption: '@LocalizationResx.yChartAxisCaption',
-                Profit: '@LocalizationResx.Profit',
-                Year: '@LocalizationResx.Year',
-                OneYear: '@LocalizationResx.OneYear',
-                FewYears: '@LocalizationResx.FewYears',
-                ManyYears: '@LocalizationResx.ManyYears',
-                UAH: '@LocalizationResx.UAH',
-                Costs: '@LocalizationResx.Costs',
-                dotCaption: '@LocalizationResx.DotCaption',
-                summarySalary: '@LocalizationResx.SummarySalary',
-                summaryCosts: '@LocalizationResx.SummaryCosts',
-                brinkCaprion:'@LocalizationResx.BrinkCaption'
-            };
-
-            var noData = [{
-                name: textStrings.paymentsAxis,
-                data: [],
-                color: "red"
-            },
-                {
-                    name: textStrings.summaryAxis,
-                    data: [],
-                    color: "green"
-                }];
-
+                 summaryCaption: "@LocalizationResx.SummaryCaption",
+                 paymentsAxis: '@LocalizationResx.PaymentsGraphCaption',
+                 summaryAxis: '@LocalizationResx.SummaryGraphCaption',
+                 xAxisCaption: '@LocalizationResx.xChartAxisCaption',
+                 yAxisCaption: '@LocalizationResx.yChartAxisCaption',
+                 Profit: '@LocalizationResx.Profit',
+                 Year: '@LocalizationResx.Year',
+                 OneYear: '@LocalizationResx.OneYear',
+                 FewYears: '@LocalizationResx.FewYears',
+                 ManyYears: '@LocalizationResx.ManyYears',
+                 UAH: '@LocalizationResx.UAH',
+                 Costs: '@LocalizationResx.Costs',
+                 dotCaption: '@LocalizationResx.DotCaption',
+                 summarySalary: '@LocalizationResx.SummarySalary',
+                 summaryCosts: '@LocalizationResx.SummaryCosts',
+                 brinkCaprion: '@LocalizationResx.BrinkCaption'
+             };
             var valueTypes = {
                 costs: textStrings.Costs,
                 year: textStrings.Year,
@@ -93,54 +78,6 @@
                 "pi": {},
                 "ci": {}
             };
-
-            $("#js-changeInput").click(function () {
-                $("#input").fadeToggle(500);
-                $("#chart-container").fadeToggle(500);
-            });
-
-            $("#commit").on("click", function () {
-                var selectedSpec;
-                var data1, data2, data3;                
-
-                if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
-                    var names = ["ki", "pi", "ci"];
-                    selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
-
-                    data1 = {
-                        name: selectedSpec[0].name,
-                        color: 'darkblue',
-                        data: selectedSpec[0].data
-                    };
-                    data2 = {
-                        name: data1.name,
-                        color: 'blue',
-                        data: []
-                    };
-                    data3 = {
-                        name: data1.name,
-                        color: 'royalblue',
-                        data: []
-                    };
-
-                    for (var i = 0; i < data1.data.length; i++) {
-                        var y2 = data1.data[i] * 0.8;
-                        var y3 = data1.data[i] * 0.6;
-                        data2.data.push(y2);
-                        data3.data.push(y3);
-                    }
-                    console.log(selectedSpec.data);
-                }
-                else return;
-
-                $("#input").fadeToggle(500);
-                $("#chart-container").fadeToggle(500);
-                window.location.hash = $("#spec").val();
-                Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
-                Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
-                setHash();
-                return false;
-            });
 
             specialities["pi"] = [{
                 name: textStrings.paymentsAxis,
@@ -200,7 +137,7 @@
             },
             {
                 name: textStrings.summarySalary,
-                data: [0, 0, 9600, 36000, 60000, 84000],                
+                data: [0, 0, 9600, 36000, 60000, 84000],
                 color: "blue"
             },
             {
@@ -209,6 +146,76 @@
                 color: "green"
             }
             ]
+
+            var draw = function () {
+                var selectedSpec;
+                var data1, data2, data3;
+
+                if ($("#spec").val() != "noData"/* && $("#quality").val() != "noData"*/) {
+                    var names = ["ki", "pi", "ci"];
+                    selectedSpec = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
+
+                    data1 = {
+                        name: selectedSpec[0].name,
+                        color: 'darkblue',
+                        data: selectedSpec[0].data
+                    };
+                    data2 = {
+                        name: data1.name,
+                        color: 'blue',
+                        data: []
+                    };
+                    data3 = {
+                        name: data1.name,
+                        color: 'royalblue',
+                        data: []
+                    };
+
+                    for (var i = 0; i < data1.data.length; i++) {
+                        var y2 = data1.data[i] * 0.8;
+                        var y3 = data1.data[i] * 0.6;
+                        data2.data.push(y2);
+                        data3.data.push(y3);
+                    }
+                    console.log(selectedSpec.data);
+                }
+                else return;
+
+                $("#input").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
+                window.location.hash = $("#spec").val();
+                Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+                Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
+                setHash();
+                return false;
+            };
+
+            setHash();                   
+
+            if (window.location.hash) {
+                $("#spec").val(window.location.hash.slice(1));
+                draw();
+            }
+
+            var noData = [{
+                name: textStrings.paymentsAxis,
+                data: [],
+                color: "red"
+            },
+                {
+                    name: textStrings.summaryAxis,
+                    data: [],
+                    color: "green"
+                }];                     
+
+            $("#js-changeInput").click(function () {
+                $("#input").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
+            });
+
+            $("#commit").on("click", draw);
+
+            
         })
     </script>
 }
