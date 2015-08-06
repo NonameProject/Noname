@@ -4,9 +4,10 @@
 @using System.Web.Mvc
 @using System.Text.RegularExpressions
 @model SpecialityViewModel
-<h2>EditSpecialities</h2>
+<h3>EditSpecialities</h3>
+<input type="button" id="exit"/>
 @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post))
-{
+{    
     <div><span>Назва: </span>@Html.EditorFor(m => m.Name)</div>
     foreach (var item in Model.Salaries)
     {
@@ -14,5 +15,5 @@
             <span>Зарплата за </span>@item.Key<span>-й рік: </span>@Html.EditorFor(m => m.Salaries[item.Key])
         </div>
     }
-    <input type="submit" value="Зберегти">
+    <input type="submit" value="Зберегти"/>    
 }

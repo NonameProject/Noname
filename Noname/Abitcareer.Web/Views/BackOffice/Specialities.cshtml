@@ -19,12 +19,20 @@
 </div>
 
 <section class="wrapperButton">
+    <table class="table-hover">
     @foreach (var item in Model)
     {
-        
-        <button class="specButton" id="@item.Id">@item.Name</button>
-        <br>
+        <tr>
+            <td class="specButton" id="@item.Id">@item.Name</td>
+        </tr>
+        @*<tr>
+            @foreach (var salary in item.Salaries)
+            {
+                <td>@salary.Value</td>   
+            }
+        </tr>*@
     }
+    </table>
 </section>
 @section Scripts
 {
@@ -33,6 +41,12 @@
        $(function () {
            $('.specButton').click(function () {
                $('#partialView').show();
+           });
+       });
+
+       $(function () {
+           $('#exit').click(function () {
+               $('#partialView').hide();
            });
        });
 
