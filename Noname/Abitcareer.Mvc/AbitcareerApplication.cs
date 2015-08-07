@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Abitcareer.Core.CustomExceptions;
+using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
+using Abitcareer.Mvc.Components;
 
 namespace Abitcareer.Mvc
 {
@@ -25,7 +27,7 @@ namespace Abitcareer.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            DefaultModelBinder.ResourceClassKey = "LocalizationResx";
+            ModelBinders.Binders.Add(typeof(SpecialityViewModel), new SpecialityBinder());
         }
 
         public void ErrorMail_Filtering(object sender, ExceptionFilterEventArgs e)
