@@ -12,6 +12,7 @@ using System.Web.Routing;
 using Abitcareer.Core.CustomExceptions;
 using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.Mvc.Components;
+using CultureEngine;
 
 namespace Abitcareer.Mvc
 {
@@ -62,6 +63,23 @@ namespace Abitcareer.Mvc
             {
                 ViewEngines.Engines.Add(new ProfilingViewEngine(item));
             }
+        }
+
+        private void Application_Error(Object sender, EventArgs args)
+        {
+            HttpApplication application = (HttpApplication)sender;
+            HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
+
+            var userCulture = CEngine.Instance.GetCultureByUserLanguages(application.Request.UserLanguages);
+
+            RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
+            var cultureName = routeData.Values[CEngine.Instance.CultureKey];
+
+            if (cultureName == null)
+            {
+                currentContext.Response.Redirect(userCulture + currentContext.Request.Path);
+                return;
+            }        
         }
     }
 }
