@@ -124,9 +124,9 @@ $(function () {
         $("#chart-container").fadeToggle(500);
 
         window.location.hash = $("#spec").val();
-
-        Chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
-        Chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
+        var chart = new Chart();
+        chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+        chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
 
         setHash();
         return false;

@@ -1,5 +1,6 @@
 ﻿
-var Chart = (function () {
+function Chart() {
+    $(window).off('resize');
     var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'];
     var height = function () { return $(window).height() * 0.75; };
 
@@ -106,7 +107,7 @@ var Chart = (function () {
             customizeIntersectedData();
         }
 
-        $(window).resize(function () {
+        $(window).on('resize', function () {
             chart.setSize($(".chartWrapper").width(), height(), false);
             chart.redraw();
         });
@@ -138,6 +139,11 @@ var Chart = (function () {
                     }
 
                 return result;
+            }
+
+            if ($(conteiner).highcharts()) {
+                $(conteiner).highcharts().destroy();
+                $(conteiner).html('');
             }
 
             $(conteiner).highcharts({
@@ -211,9 +217,11 @@ var Chart = (function () {
                             yearStr = valueTypes.manyYears;
                         if (year - Math.ceil(year) === 0) {
                             year = Math.ceil(year);
-                            var last = year % 10;
-                            if (last === 1) yearStr = valueTypes.oneYear;
-                            else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                            if (year < 10 || year > 20) {                                
+                                var last = year % 10;
+                                if (last === 1) yearStr = valueTypes.oneYear;
+                                else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                            }
                         }
                         return header + this.y.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
                     }
@@ -247,4 +255,4 @@ var Chart = (function () {
             }, function (chart) { tuneChart(chart)});
         }
     };
-})();
+};
