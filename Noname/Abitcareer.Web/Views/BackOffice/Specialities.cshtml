@@ -35,12 +35,19 @@
    <script>
 
        $(function () {
-           $('.specButton').click(function () {
+           $(document).ajaxStart(function () {
+               $("body").toggleClass("loading");
+           }).ajaxStop(function () {
+               $("body").toggleClass("loading");
+           })
+
+           $('.specButton').click(function (event) {
+               $("#partialView").show(0);
+               event.stopPropagation();
                $.ajax("specialities/edit/" + $(this).attr("id"), {
                    method: 'GET'
                }).done(function (data) {
-                   $("#inner").html(data);
-                   $("#partialView").show();
+                   $("#inner").html(data);                   
                });
            });
            $(document).click(function (event) {
