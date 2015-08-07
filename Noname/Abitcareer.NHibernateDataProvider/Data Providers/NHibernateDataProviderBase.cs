@@ -94,6 +94,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                 {
                     session.Update(model);
                     session.Flush();
+                    transaction.Commit();
                 }
             });
         }

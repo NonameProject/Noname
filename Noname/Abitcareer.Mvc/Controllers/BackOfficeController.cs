@@ -33,11 +33,11 @@ namespace Abitcareer.Web.Components
             return View(result);
         }
 
-        public ActionResult EditSpecialities(string id)
-        {
-            var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
-            return View(model);
-        }
+        //public ActionResult EditSpecialities(string id)
+        //{
+        //    var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
+        //    return View(model);
+        //}
 
         [HttpPost]
         public ActionResult Save(SpecialityViewModel editedModel)
@@ -47,7 +47,7 @@ namespace Abitcareer.Web.Components
             return Json(result);
         }
 
-        public ActionResult EditPartial()
+        public ActionResult EditSpeciality()
         {
             return PartialView();
         }

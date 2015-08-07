@@ -115,6 +115,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Електронна адреса.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ий.
         /// </summary>
         public static string EndAfterFour {
@@ -169,6 +178,24 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Увійти.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вхід.
+        /// </summary>
+        public static string Logining {
+            get {
+                return ResourceManager.GetString("Logining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на років.
         /// </summary>
         public static string ManyYears {
@@ -183,6 +210,15 @@ namespace CultureEngine {
         public static string OneYear {
             get {
                 return ResourceManager.GetString("OneYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пароль.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         

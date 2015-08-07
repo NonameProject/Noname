@@ -16,24 +16,18 @@
 
 <div id="partialView">
     <div id="inner">
-        @Html.Partial("EditPartial", new SpecialityViewModel())
+        @Html.Partial("EditSpeciality", new SpecialityViewModel())
     </div>
 </div>
 
 <section class="wrapperButton">
     <table class="table">
-        <tr>
-            <td class="specButton" id="123">Програмна інженерія</td>
-        </tr>
-        <tr>
-            <td class="specButton" id="124">Системна інженерія</td>
-        </tr>
-    @*@foreach (var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td class="specButton" id="@item.Id">@item.Name</td>
         </tr>
-    }*@
+    }
     </table>
 </section>
 @section Scripts
