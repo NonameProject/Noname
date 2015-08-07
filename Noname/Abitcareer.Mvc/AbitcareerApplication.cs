@@ -13,6 +13,7 @@ using Abitcareer.Core.CustomExceptions;
 using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.Mvc.Components;
 using CultureEngine;
+using System.Text.RegularExpressions;
 
 namespace Abitcareer.Mvc
 {
@@ -74,11 +75,11 @@ namespace Abitcareer.Mvc
 
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
             var cultureName = routeData.Values[CEngine.Instance.CultureKey];
-
-            if (cultureName == null)
+            var hasCultureSegment = Regex.IsMatch(currentContext.Request.Path, "[A-z]{2}-[A-z]{2}");
+            if (!hasCultureSegment && cultureName == null)
             {
+                CEngine.Instance.SetCultureForThread(userCulture);
                 currentContext.Response.Redirect(userCulture + currentContext.Request.Path);
-                return;
             }        
         }
     }
