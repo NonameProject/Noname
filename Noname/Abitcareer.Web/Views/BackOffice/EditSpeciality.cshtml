@@ -7,18 +7,21 @@
 @model SpecialityViewModel
 
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form" }))
-    {
-        <h3>@LocalizationResx.EditSpeciality</h3>
+    {        
         <input type="button" id="exit"/>
+        @Html.HiddenFor(x => x.Id);
         <table class="salaries">
             <tr>
-                <td>@LocalizationResx.Speciality </td>
+                <th colspan="2"><h3>@LocalizationResx.EditSpeciality</h3></th>
+            </tr>
+            <tr>
+                <td>@LocalizationResx.Speciality.ToUpper() </td>
                 <td>@Html.EditorFor(m => m.Name)</td>
             </tr>
             <tr>
-                <td>@LocalizationResx.Salaries</td>
+                <td>@LocalizationResx.Salaries.ToUpper()</td>
                 <td></td>
-            </tr>            
+            </tr>
             @foreach (var item in Model.Salaries)
             {
                 <tr>
