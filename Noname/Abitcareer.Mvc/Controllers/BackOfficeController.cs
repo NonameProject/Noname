@@ -33,11 +33,12 @@ namespace Abitcareer.Web.Components
             return View(result);
         }
 
-        //public ActionResult EditSpecialities(string id)
-        //{
-        //    var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
-        //    return View(model);
-        //}
+        [HttpGet]
+        public ActionResult EditSpecialities(string id)
+        {
+            var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
+            return PartialView("EditSpeciality", model);
+        }
 
         [HttpPost]
         public ActionResult Save(SpecialityViewModel editedModel)
