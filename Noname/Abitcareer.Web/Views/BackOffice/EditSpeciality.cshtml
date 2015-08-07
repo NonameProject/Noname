@@ -1,0 +1,49 @@
+﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
+@using System.Web
+@using System.Globalization
+@using System.Web.Mvc
+@using System.Text.RegularExpressions
+
+@model SpecialityViewModel
+
+    @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form" }))
+    {
+        <h3>@LocalizationResx.EditSpeciality</h3>
+        <input type="button" id="exit"/>
+        <table class="salaries">
+            <tr>
+                <td>@LocalizationResx.Speciality </td>
+                <td>@Html.EditorFor(m => m.Name)</td>
+            </tr>
+            <tr>
+                <td>@LocalizationResx.Salaries</td>
+                <td></td>
+            </tr>            
+            @foreach (var item in Model.Salaries)
+            {
+                <tr>
+                  @if(item.Key == 1)
+                  { 
+                    <td>@{@item.Key}-@LocalizationResx.FirstEnd @LocalizationResx.Year</td>
+                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
+                  }
+                   @if(item.Key == 2)
+                   { 
+                    <td>@{@item.Key}-@LocalizationResx.SecondEnd @LocalizationResx.Year</td>
+                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
+                   }
+                    @if(item.Key == 3)
+                    { 
+                    <td>@{@item.Key}-@LocalizationResx.ThirdEnd @LocalizationResx.Year</td>
+                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
+                    }
+                   @if (item.Key > 3)
+                   { 
+                    <td>@{@item.Key}-@LocalizationResx.EndAfterFour @LocalizationResx.Year</td>
+                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
+                   }
+                </tr>
+            }
+            </table>
+            <button type="submit" class="btn btn-default">@LocalizationResx.Save</button>
+    }
