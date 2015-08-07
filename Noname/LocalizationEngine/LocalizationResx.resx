@@ -204,4 +204,31 @@
   <data name="UAH" xml:space="preserve">
     <value>грн.</value>
   </data>
+  <data name="EditSpeciality" xml:space="preserve">
+    <value>Редагувати спеціальність</value>
+  </data>
+  <data name="EndAfterFour" xml:space="preserve">
+    <value>ий</value>
+  </data>
+  <data name="FirstEnd" xml:space="preserve">
+    <value>ий</value>
+  </data>
+  <data name="Salaries" xml:space="preserve">
+    <value>Зарплати</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="SecondEnd" xml:space="preserve">
+    <value>ий</value>
+  </data>
+  <data name="Specialities" xml:space="preserve">
+    <value>Спеціальності</value>
+  </data>
+  <data name="Speciality" xml:space="preserve">
+    <value>Спеціальність</value>
+  </data>
+  <data name="ThirdEnd" xml:space="preserve">
+    <value>ий</value>
+  </data>
 </root>

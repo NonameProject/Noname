@@ -204,4 +204,31 @@
   <data name="UAH" xml:space="preserve">
     <value>uah</value>
   </data>
+  <data name="EditSpeciality" xml:space="preserve">
+    <value>Edit speciality</value>
+  </data>
+  <data name="EndAfterFour" xml:space="preserve">
+    <value>th</value>
+  </data>
+  <data name="FirstEnd" xml:space="preserve">
+    <value>st</value>
+  </data>
+  <data name="Salaries" xml:space="preserve">
+    <value>Salaries</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SecondEnd" xml:space="preserve">
+    <value>nd</value>
+  </data>
+  <data name="Specialities" xml:space="preserve">
+    <value>Specialities</value>
+  </data>
+  <data name="Speciality" xml:space="preserve">
+    <value>Speciality</value>
+  </data>
+  <data name="ThirdEnd" xml:space="preserve">
+    <value>rd</value>
+  </data>
 </root>
