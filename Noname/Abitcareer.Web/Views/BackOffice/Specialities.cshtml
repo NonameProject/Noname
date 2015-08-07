@@ -43,6 +43,11 @@
                    $("#partialView").show();
                });
            });
+           $(document).click(function (event) {
+               if ($(event.target).closest('#inner').length) return;
+               $('#partialView').hide();
+               event.stopPropagation();
+           });           
        });
 
        

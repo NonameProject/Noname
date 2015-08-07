@@ -40,13 +40,19 @@ form {
     }
 
 #exit {
-    background-image: url("Images/closegray.png");
+    background-color: inherit;
+    background-image: url("Images/elementsSprite.png");
+    background-position: -38px -148px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 52px 244px;
+    border-radius: 20%;
     border-style: none;
     float: right;
-    width: 4%;
-    background-color: white;
+    height: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 0;
+    width: 15px;
 }
 
 .table {
