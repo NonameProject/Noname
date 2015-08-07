@@ -126,6 +126,7 @@
     <Compile Include="App_Start\MiniprofilerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Components\SpecialityBinder.cs" />
     <Compile Include="Components\WebUserContext.cs" />
     <Compile Include="Controllers\BackOfficeController.cs" />
     <Compile Include="Controllers\DataImportController.cs" />

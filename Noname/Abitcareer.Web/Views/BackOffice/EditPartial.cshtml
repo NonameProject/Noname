@@ -9,22 +9,13 @@
     {
         <h3>EditSpecialities</h3>
         <input type="button" id="exit"/>
-        <table class="salaries">
-            <tr>
-                <td>Спеціальність: </td>
-                <td>@Html.EditorFor(m => m.Name)</td>
-            </tr>
-            <tr>
-                <td>Зарплати:</td>
-                <td></td>
-            </tr>            
-            @foreach (var item in Model.Salaries)
-            {
-                <tr>
-                    <td>@{@item.Key}-й рік</td>
-                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
-                </tr>
-            }
-            </table>
-            <button type="submit" class="btn btn-default">Зберегти</button>
+        @Html.HiddenFor(x => x.Id)
+        <div><span>Назва: </span>@Html.EditorFor(m => m.Name)</div>
+        foreach (var item in Model.Salaries)
+        {
+            <div>
+                <span>Зарплата за </span>@item.Key<span>-й рік: </span>@Html.EditorFor(m => m.Salaries[item.Key])
+            </div>
+        }
+        <input type="submit" class="btn btn-default" value="Зберегти">
     }

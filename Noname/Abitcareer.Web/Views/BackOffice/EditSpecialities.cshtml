@@ -7,6 +7,7 @@
 <h2>EditSpecialities</h2>
 @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post))
 {
+    @Html.HiddenFor(x => x.Id)
     <div><span>Назва: </span>@Html.EditorFor(m => m.Name)</div>
     foreach (var item in Model.Salaries)
     {
