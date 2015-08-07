@@ -138,6 +138,8 @@ $(function () {
     }
 
     $("#js-changeInput").click(function () {
+        window.location.hash = '';
+        setHash();
         $("#input").fadeToggle(500);
         $("#chart-container").fadeToggle(500);
     });
