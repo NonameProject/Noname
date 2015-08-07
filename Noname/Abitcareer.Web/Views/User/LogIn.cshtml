@@ -5,12 +5,13 @@
 }
 @Styles.Render("~/Content/User.css")
 
-<h2>@LocalizationResx.Logining</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+    <h3>@LocalizationResx.Logining</h3>
+    
     <div class="form-group">
         @LocalizationResx.Email
         @Html.TextBoxFor(model => model.Email, new { @class="form-control"})

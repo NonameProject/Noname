@@ -14,7 +14,7 @@
     background-color: white;
     margin: 0;
     padding-left: 2%;
-    width: 60%;
+    width: 70%;
     padding-bottom: 1%;
 }
 
@@ -22,9 +22,9 @@ form {
     padding: 3px;
 }
 
-    form input[type="number"] {
+    form input {
         float: right;
-        width: 200px;
+        width: 100%;
     }
 
     form input:focus {
@@ -34,6 +34,7 @@ form {
 
     form button {
         margin-top: 1%;
+        margin-left: 40%;
     }
 
 #exit {
@@ -42,8 +43,7 @@ form {
     background-size: contain;
     border-style: none;
     float: right;
-    margin-top: -50px;
-    width: 6%;
+    width: 4%;
     background-color: white;
 }
 
@@ -68,6 +68,8 @@ form {
 
 .salaries {
     font-size: 1em;
+    width:70%;
+    margin: 0 auto;
 }
 
 .salaries td {
