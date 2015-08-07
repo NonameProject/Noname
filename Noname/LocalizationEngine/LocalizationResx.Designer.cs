@@ -124,6 +124,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Некорректна адреса електронної почти.
+        /// </summary>
+        public static string EmailError {
+            get {
+                return ResourceManager.GetString("EmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ий.
         /// </summary>
         public static string EndAfterFour {
@@ -291,6 +300,15 @@ namespace CultureEngine {
         public static string QualityMiddle {
             get {
                 return ResourceManager.GetString("QualityMiddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поле повинно бути заповнено.
+        /// </summary>
+        public static string RequiredMessage {
+            get {
+                return ResourceManager.GetString("RequiredMessage", resourceCulture);
             }
         }
         

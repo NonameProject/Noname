@@ -61,8 +61,8 @@ namespace Abitcareer.Mvc
 
             routes.MapLocalizedRoute(
               name: "editSpeciality",
-              url: "specialities/edit/{id}",
-              defaults: new { controller = "BackOffice", action = "EditSpecialities"},
+              url: "editSpecialities/{id}",
+              defaults: new { controller = "BackOffice", action = "EditSpecialities", id = UrlParameter.Optional },
               setupConstraints:
               (dynamic constraints) =>
               {

@@ -96,6 +96,9 @@
         @RenderBody()
     </div>
     @Scripts.Render("~/Scripts/Layout.js")
+    <script src='@Url.Content("~/Scripts/jquery-1.8.2.js")' type='text/javascript'></script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.js")' type='text/javascript'>         </script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")' type='text/javascript'></script>
     @RenderSection("scripts", required: false)
     <!-- Yandex.Metrika counter -->
     @*<script type="text/javascript">

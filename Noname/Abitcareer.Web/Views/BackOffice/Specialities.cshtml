@@ -16,17 +16,24 @@
 
 <div id="partialView">
     <div id="inner">
+        @Html.Partial("EditSpeciality", new SpecialityViewModel())
     </div>
 </div>
 
 <section class="wrapperButton">
     <table class="table">
-    @foreach (var item in Model)
+        <tr>
+            <td class="specButton" id="123">Програмна інженерія</td>
+        </tr>
+        <tr>
+            <td class="specButton" id="124">Системна інженерія</td>
+        </tr>
+    @*@foreach (var item in Model)
     {
         <tr>
             <td class="specButton" id="@item.Id">@item.Name</td>
         </tr>
-    }
+    }*@
     </table>
 </section>
 @section Scripts
@@ -35,13 +42,7 @@
 
        $(function () {
            $('.specButton').click(function () {
-               $.ajax("specialities/edit/" + $(this).attr("id"), {
-                   method: 'GET'
-               }).done(function (data) {
-                   $("#inner").html(data);
-                   $("#partialView").show();
-               });
-               
+               $('#partialView').show();
            });
        });
 
