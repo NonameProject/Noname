@@ -5,9 +5,8 @@
 }
 @Styles.Render("~/Content/User.css")
 
-<h2>@LocalizationResx.Logining</h2>
-
 @using (Html.BeginForm()) {
+    <h3>@LocalizationResx.Logining</h3>
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
