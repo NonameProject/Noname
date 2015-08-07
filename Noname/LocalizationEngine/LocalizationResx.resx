@@ -231,4 +231,16 @@
   <data name="ThirdEnd" xml:space="preserve">
     <value>ий</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна адреса</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Увійти</value>
+  </data>
+  <data name="Logining" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
 </root>
