@@ -28,6 +28,8 @@ namespace Abitcareer.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(SpecialityViewModel), new SpecialityBinder());
+            DefaultModelBinder.ResourceClassKey = "LocalizationResx";
+
         }
 
         public void ErrorMail_Filtering(object sender, ExceptionFilterEventArgs e)
