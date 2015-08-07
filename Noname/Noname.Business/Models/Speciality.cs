@@ -22,5 +22,21 @@ namespace Abitcareer.Business.Models
                 Salaries = value.ToDictionary<int, int>();
             }
         }
+
+        public virtual string EnglishName
+        {
+            get
+            {
+                if (!Fields.ContainsKey("<1058>_<Name>"))
+                    Fields.Add("<1058>_<Name>", null);
+                return Fields["<1058>_<Name>"];
+            }
+            set
+            {
+                if (!Fields.ContainsKey("<1058>_<Name>"))
+                    Fields.Add("<1058>_<Name>", null);
+                Fields["<1058>_<Name>"] = value;
+            }
+        }
     }
 }

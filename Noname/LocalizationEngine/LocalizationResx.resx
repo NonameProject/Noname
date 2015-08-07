@@ -249,4 +249,10 @@
   <data name="RequiredMessage" xml:space="preserve">
     <value>Поле повинно бути заповнено</value>
   </data>
+  <data name="NameEN" xml:space="preserve">
+    <value>Назва (англійська)</value>
+  </data>
+  <data name="NameUA" xml:space="preserve">
+    <value>Назва (українська)</value>
+  </data>
 </root>

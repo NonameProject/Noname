@@ -9,6 +9,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
     public class SpecialityViewModel : BaseViewModel
     {
+        public string EnglishName { get; set; }
         [ScaffoldColumn(false)]
         public virtual int DirectionCode { get; set; }
 

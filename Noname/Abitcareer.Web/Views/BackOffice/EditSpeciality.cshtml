@@ -16,7 +16,12 @@
             </tr>
             <tr>
                 <td>@LocalizationResx.Speciality.ToUpper() </td>
-                <td>@Html.EditorFor(m => m.Name)</td>
+            </tr>
+            <tr>
+                <td>@LocalizationResx.NameUA : @Html.EditorFor(m => m.Name)</td>
+            </tr>
+            <tr>
+                <td>@LocalizationResx.NameEN : @Html.EditorFor(m => m.EnglishName)</td>
             </tr>
             <tr>
                 <td>@LocalizationResx.Salaries.ToUpper()</td>

@@ -2,13 +2,14 @@
 using System.Web.Mvc;
 using System.Collections.Generic;
 using Abitcareer.Business.Models;
+using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 
 namespace Abitcareer.Mvc.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {            
+        {
             return View();
         }
 

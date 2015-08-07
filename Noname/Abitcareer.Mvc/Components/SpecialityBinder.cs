@@ -15,7 +15,7 @@ namespace Abitcareer.Mvc.Components
             var model = new SpecialityViewModel();
             model.Id = bindingContext.ValueProvider.GetValue("Id").AttemptedValue;
             model.Name = bindingContext.ValueProvider.GetValue("Name").AttemptedValue;
-
+            model.EnglishName = bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue;
             var dict = new Dictionary<int, int>();
             foreach (var item in model.Salaries)
             {
