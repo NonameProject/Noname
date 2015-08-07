@@ -2,3 +2,11 @@
     width:50%;
     margin: 0 auto;
 }
+
+    form h3 {
+        margin-left:40%;
+    }
+
+.field-validation-error {
+    color: red;
+}
