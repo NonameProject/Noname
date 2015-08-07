@@ -37,7 +37,7 @@ namespace Abitcareer.Web.Components
         public ActionResult EditSpecialities(string id)
         {
             var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
-            return PartialView("EditSpecialities", model);
+            return PartialView("EditSpeciality", model);
         }
 
         [HttpPost]
