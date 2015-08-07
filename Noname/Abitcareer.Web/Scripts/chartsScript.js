@@ -153,7 +153,6 @@ var Chart = (function () {
                     }
                 },
                 yAxis: {
-                    reversed: false,
                     title: {
                         enabled: true,
                         text: yAxisCaption
@@ -165,6 +164,7 @@ var Chart = (function () {
                             return this.value;
                         }
                     },
+                    minorTickInterval: interval/2, //to 1 minor tick per 2 labels
                     maxPadding: 0.5,
                     tickInterval: interval,
                 },
