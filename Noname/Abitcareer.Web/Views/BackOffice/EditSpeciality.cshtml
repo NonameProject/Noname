@@ -56,7 +56,12 @@
         var url = $(this).attr("action");
         $.post(url, data, function (d) {
             if (d)
+            {
                 alert("Success");
+                $('#partialView').hide();
+                $('#' + '@Model.Id').html($("#EnglishName").val().replace('"', ''));
+            }
+                
             else
                 alert("Failed");
         });

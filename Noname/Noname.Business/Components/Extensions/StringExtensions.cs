@@ -10,7 +10,9 @@ namespace Abitcareer.Business.Components.Extensions
     public static class StringExtensions
     {
         public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this string str)
-        {          
+        {
+            if (str.Contains("avia-"))
+                str.Clone();
             var result = new Dictionary<TKey, TValue>();
             if(string.IsNullOrEmpty(str))
                 return result;
