@@ -1,6 +1,6 @@
 ﻿
-var Chart = (function () {
-
+function Chart() {
+    $(window).off('resize');
     var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'];
     var height = function () { return $(window).height() * 0.75; };
 
@@ -106,8 +106,8 @@ var Chart = (function () {
         if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0) {
             customizeIntersectedData();
         }
-
-        $(window).resize(function () {
+        
+        $(window).on('resize' ,function () {
             chart.setSize($(".chartWrapper").width(), height(), false);
             chart.redraw();
         });
@@ -140,8 +140,10 @@ var Chart = (function () {
 
                 return result;
             }
-            if($(conteiner).highcharts())
+            if ($(conteiner).highcharts()) {
                 $(conteiner).highcharts().destroy();
+                $(conteiner).html('');
+            }
             $(conteiner).highcharts({
                 chart: {
                     type: 'spline',
@@ -251,4 +253,4 @@ var Chart = (function () {
             }, function (chart) { tuneChart(chart)});
         }
     };
-})();
+};
