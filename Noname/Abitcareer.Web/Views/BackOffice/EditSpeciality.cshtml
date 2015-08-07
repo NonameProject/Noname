@@ -9,50 +9,45 @@
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <input type="button" id="exit"/>
-        @Html.HiddenFor(x => x.Id);
-        <table class="salaries">
-            <tr>
-                <th colspan="2"><h3>@LocalizationResx.EditSpeciality</h3></th>
-            </tr>
-            <tr>
-                <td>@LocalizationResx.Speciality.ToUpper() </td>
-            </tr>
-            <tr>
-                <td>@LocalizationResx.NameUA : @Html.EditorFor(m => m.Name)</td>
-            </tr>
-            <tr>
-                <td>@LocalizationResx.NameEN : @Html.EditorFor(m => m.EnglishName)</td>
-            </tr>
-            <tr>
-                <td>@LocalizationResx.Salaries.ToUpper()</td>
-                <td></td>
-            </tr>
+        @Html.HiddenFor(x => x.Id)
+        <h3>@LocalizationResx.EditSpeciality</h3>
+        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
+        
+        @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
+        @Html.EditorFor(m => m.Name)
+        <br />
+        @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
+        @Html.EditorFor(m => m.EnglishName)
+        
+        <h4>@LocalizationResx.Salaries.ToUpper()</h4>
+        
+        <ul class="salaries">
             @foreach (var item in Model.Salaries)
             {
-                <tr>
-                  @if(item.Key == 1)
-                  { 
-                    <td>@{@item.Key}-@LocalizationResx.FirstEnd @LocalizationResx.Year</td>
-                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
-                  }
-                   @if(item.Key == 2)
-                   { 
-                    <td>@{@item.Key}-@LocalizationResx.SecondEnd @LocalizationResx.Year</td>
-                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
-                   }
-                    @if(item.Key == 3)
-                    { 
-                    <td>@{@item.Key}-@LocalizationResx.ThirdEnd @LocalizationResx.Year</td>
-                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
+                string yearEnding = LocalizationResx.EndAfterFour;
+                <li>
+                    @if(item.Key < 10 || item.Key > 20){
+                        switch(item.Key%10){
+                            case 1:
+                                yearEnding = LocalizationResx.FirstEnd;
+                                break;
+                            case 2:
+                                yearEnding = LocalizationResx.SecondEnd;
+                                break;
+                            case 3:
+                                yearEnding = LocalizationResx.ThirdEnd;
+                                break;
+                            default:
+                                yearEnding = LocalizationResx.EndAfterFour;
+                                break;
+                        }
                     }
-                   @if (item.Key > 3)
-                   { 
-                    <td>@{@item.Key}-@LocalizationResx.EndAfterFour @LocalizationResx.Year</td>
-                    <td>@Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })</td>
-                   }
-                </tr>
+
+                    @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
+                    @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                </li>
             }
-            </table>
+            </ul>
             <button type="submit" class="btn btn-default">@LocalizationResx.Save</button>
     }
 <script>
