@@ -16,7 +16,7 @@
 
 <div id="partialView">
     <div id="inner">
-        @Html.Partial("EditSpeciality", new SpecialityViewModel())
+        
     </div>
 </div>
 
@@ -36,7 +36,12 @@
 
        $(function () {
            $('.specButton').click(function () {
-               $('#partialView').show();
+               $.ajax("specialities/edit/" + $(this).attr("id"), {
+                   method: 'GET'
+               }).done(function (data) {
+                   $("#inner").html(data);
+                   $("#partialView").show();
+               });
            });
        });
 
