@@ -25,6 +25,7 @@ namespace Abitcareer.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DefaultModelBinder.ResourceClassKey = "LocalizationResx";
         }
 
         public void ErrorMail_Filtering(object sender, ExceptionFilterEventArgs e)
