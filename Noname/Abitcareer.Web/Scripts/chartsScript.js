@@ -1,5 +1,6 @@
 ﻿
 var Chart = (function () {
+
     var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'];
     var height = function () { return $(window).height() * 0.75; };
 
@@ -139,7 +140,8 @@ var Chart = (function () {
 
                 return result;
             }
-
+            if($(conteiner).highcharts())
+                $(conteiner).highcharts().destroy();
             $(conteiner).highcharts({
                 chart: {
                     type: 'spline',
@@ -211,9 +213,11 @@ var Chart = (function () {
                             yearStr = valueTypes.manyYears;
                         if (year - Math.ceil(year) === 0) {
                             year = Math.ceil(year);
-                            var last = year % 10;
-                            if (last === 1) yearStr = valueTypes.oneYear;
-                            else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                            if (year < 10 || year > 20) {
+                                var last = year % 10;
+                                if (last === 1) yearStr = valueTypes.oneYear;
+                                else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
+                            }
                         }
                         return header + this.y.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
                     }
