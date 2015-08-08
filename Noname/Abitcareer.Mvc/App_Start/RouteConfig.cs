@@ -98,15 +98,6 @@ namespace Abitcareer.Mvc
                 });
 
             routes.MapLocalizedRoute(
-                name: "Registration",
-                url: "registration",
-                defaults: new { controller = "User", action = "Registration" },
-                setupConstraints:
-                (dynamic constraints) =>
-                {
-                });
-
-            routes.MapLocalizedRoute(
                 name: "LogOut",
                 url: "logout",
                 defaults: new { controller = "User", action = "LogOut"},

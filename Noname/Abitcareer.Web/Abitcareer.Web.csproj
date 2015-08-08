@@ -282,7 +282,6 @@
     <Content Include="Views\BackOffice\Specialities.cshtml" />
     <Content Include="Views\BackOffice\EditSpeciality.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
-    <Content Include="Views\User\Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

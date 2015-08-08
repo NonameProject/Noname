@@ -20,6 +20,7 @@ namespace Abitcareer.Mvc.Controllers
             this.manager = manager;
         }
 
+
         [HttpGet]
         public ActionResult LogIn()
         {
@@ -31,7 +32,6 @@ namespace Abitcareer.Mvc.Controllers
         }
 
         
-
         [HttpPost]
         public ActionResult LogIn(UserViewModel user, string returnUrl)
         {
@@ -57,6 +57,7 @@ namespace Abitcareer.Mvc.Controllers
             return View(user);
         }
 
+
         [HttpGet]
         public ActionResult LogOut()
         {
@@ -65,33 +66,7 @@ namespace Abitcareer.Mvc.Controllers
             return RedirectToRoute("Default");
         }
 
-        [HttpGet]
-        public ActionResult Registration()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Registration(UserViewModel user)
-        {
-            if(!ModelState.IsValid)
-            {
-                return View(user);
-            }
-
-            if(manager.IsUserExists(user.Email))
-            {
-                ModelState.AddModelError("RegistrationError", "This user is already exists");
-                return View(user);
-            }
-
-            var userModel = AutoMapper.Mapper.Map<User>(user);
-
-            manager.Create(userModel);
-
-            return RedirectToRoute("Home");
-        }
-
+    
         private void SignOut()
         {
             FormsAuthentication.SignOut();
