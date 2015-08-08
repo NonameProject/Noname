@@ -255,4 +255,7 @@
   <data name="NameUA" xml:space="preserve">
     <value>Назва (українська)</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Відмінити</value>
+  </data>
 </root>
