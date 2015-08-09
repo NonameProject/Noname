@@ -60,6 +60,8 @@
                 alert("Success");
                 $('#partialView').hide();
                 $('#' + '@Model.Id').html($("#EnglishName").val().replace('"', ''));
+                $('#' + '@Model.Id').addClass("edited");
+                setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
             }
                 
             else

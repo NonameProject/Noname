@@ -1,4 +1,10 @@
-﻿#partialView {
+﻿.edited {
+    -webkit-box-shadow: inset 0px 0px 10px 2px rgba(8,170,0,1);
+    -moz-box-shadow: inset 0px 0px 10px 2px rgba(8,170,0,1);
+    box-shadow: inset 0px 0px 10px 2px rgba(8,170,0,1);
+}
+
+#partialView {
     background-color: rgba(32, 32, 32, 0.81);
     display: none;
     height: 100%;
