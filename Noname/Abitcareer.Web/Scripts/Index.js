@@ -10,17 +10,17 @@
     };
     specialities["pi"] = [{
         name: textStrings.paymentsAxis,
-        data: [1708, 1708, 1708, 1708, 2500, [4, 0]],
+        data: [1708, 1708, 1708, 1708, 2500],
         color: "#990033"// was red
     },
     {
         name: textStrings.summaryAxis,
         data: [0, 0, 800, 3000, 5000, 7000], //will be overrided
-        color: "green"// was green
+        color: "green"
     },
     {
         name: textStrings.summaryCosts,
-        data: [0, 3416, 5124, 6832, 8540, 11040, [5, 0]],
+        data: [0, 3416, 5124, 6832, 8540, 11040],
         color: "blue"
     },
     {
@@ -31,17 +31,17 @@
 
     specialities["ci"] = [{
         name: textStrings.paymentsAxis,
-        data: [1300, 1300, 1300, 1300, 1300, 1500, [5, 0]],
+        data: [1300, 1300, 1300, 1300, 1300, 1500],
         color: "#990033"// was red
     },
     {
         name: textStrings.summaryAxis,
         data: [0, 0, 800, 3000, 5000, 7000],
-        color: "green"// was green
+        color: "green"
     },
     {
         name: textStrings.summaryCosts,
-        data: [1300, 2600, 3900, 5200, 6500, 8000, [5, 0]],
+        data: [1300, 2600, 3900, 5200, 6500, 8000],
         color: "blue"
     },
     {
@@ -52,7 +52,7 @@
 
     specialities["ki"] = [{
         name: textStrings.paymentsAxis,
-        data: [1200, 1200, 1200, 1200, 1200, 1400, [5, 0]],
+        data: [1200, 1200, 1200, 1200, 1200, 1400],
         color: "#990033"
     },
     {
@@ -63,12 +63,12 @@
     {
         name: textStrings.summarySalary,
         data: [0, 0, 9600, 36000, 60000, 84000],
-        color: "blue"
+        color: "green"
     },
     {
         name: textStrings.summaryCosts,
-        data: [0, 0, 1200, 2900, 4900, 7400, [5, 0]],
-        color: "green"
+        data: [0, 0, 1200, 2900, 4900, 7400],
+        color: "blue"
     }];
     $.post(textStrings.UrlGet, { polinom: 3 }, function (data) {
         specialities["pi"][1].data = data;
@@ -90,12 +90,12 @@ $(function () {
 
     var provider = new DataProvider();
 
-    var draw = function () {        
+    var draw = function () {
         if ($("#spec").val() === "noData")
             return false;
 
         var selectedSpec = provider.getData();
-        var data1, data2, data3;       
+        var data1, data2, data3;
 
         data1 = {
             name: selectedSpec[0].name,
@@ -114,12 +114,10 @@ $(function () {
         };
 
         for (var i = 0; i < data1.data.length; i++) {
-            if (data1.data[i] * 1) {
-                var y2 = data1.data[i] * 0.8;
-                var y3 = data1.data[i] * 0.6;
-                data2.data.push(y2);
-                data3.data.push(y3);
-            }
+            var y2 = data1.data[i] * 0.8;
+            var y3 = data1.data[i] * 0.6;
+            data2.data.push(y2);
+            data3.data.push(y3);
         }
 
         $("#input").fadeToggle(500);
@@ -132,7 +130,7 @@ $(function () {
 
         setHash();
         return false;
-    };    
+    };
 
     if (window.location.hash) {
         $("#spec").val(window.location.hash.slice(1));
