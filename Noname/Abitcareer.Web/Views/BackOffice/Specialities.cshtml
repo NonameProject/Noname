@@ -42,6 +42,7 @@
            })
 
            $('.specButton').click(function (event) {
+               $("#inner").html(null);
                $("#partialView").show(0);
                event.stopPropagation();
                $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
