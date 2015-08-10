@@ -18,6 +18,7 @@
     margin-top: 10px;
     width: 50%;
 }
+
 .panel
 {
     background-color: white;
@@ -83,6 +84,10 @@ select
     top: -4px;
 }
 
+    .customLegend legend {
+        font-size: 18px;
+    }
+
     .customLegend .item {
         clear: both;
         display: inline-block;
@@ -109,9 +114,9 @@ select
         line-height: 16px;
     }
 
-.payment {
-    width: 50%;
+.payment {    
     display: inline-block;
+    width: 50%;
 }
 
 .payment+.item {
