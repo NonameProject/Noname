@@ -1,8 +1,12 @@
 ﻿
 function Chart() {
     $(window).off('resize');
-    var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'];
-    var height = function () { return $(".chartWrapper").height() - $(".customLegend").height(); };
+    var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'],
+        minHeight = 300, //px
+        height = function () {
+            var computedHeight = $(".chartWrapper").height() - $(".customLegend").height();
+            return minHeight > computedHeight ? minHeight : computedHeight;
+        };
 
     var getLineIntersection = function (p0, p1, p2, p3) {
         var p0_x = p0.x,
