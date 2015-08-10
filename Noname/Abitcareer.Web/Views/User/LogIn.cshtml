@@ -3,8 +3,9 @@
 @{
     ViewBag.Title = "LogIn";
 }
-@Styles.Render("~/Content/User.css")
-
+@section styles {
+    @Styles.Render("~/Content/User.css")
+}
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
