@@ -115,3 +115,8 @@ select
     padding-top: 9%;
     padding-right: 20%;
 }
+
+    .payment .item {
+        float:left;
+        margin-left:25%;
+    }
