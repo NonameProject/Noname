@@ -14,10 +14,9 @@
 
 .chartWrapper
 {
-    height: auto;
     margin-top: 10px;
+    max-height: 90%;
     width: 50%;
-    height: 90%;
 }
 .panel
 {

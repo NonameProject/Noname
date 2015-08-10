@@ -35,8 +35,19 @@ function Chart() {
     var tuneChart = function (chart) {
 
         (function () {
-            var legend = $(chart.container).parent().siblings('.customLegend');
-            var payment = legend.find('fieldset.payment');
+            var legend = $(chart.container).parent().siblings('.customLegend'),
+                fieldsets = legend.find('fieldset');
+                payment = legend.find('fieldset.payment');
+
+                fieldsets.each(function (i, element) {
+                    element = $(element);
+                    var leg = element.find('legend').detach();
+                    element.empty();
+                    element.append(leg);
+                });
+                fieldsets = fieldsets.detach();
+                legend.empty();
+                legend.append(fieldsets);
 
             $.each(chart.series, function (j, data) {
                 item = '<div class="item"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div><div class="serieName" id="">' + data.name + '</div></div>';
@@ -197,16 +208,19 @@ function Chart() {
                         enabled: true,
                         text: yAxisCaption
                     },
-                    max: max + Math.round(max * 0.1),
+                    endOnTick: false,
+                    //max: max + Math.round(max * 0.1),
                     min: 0,
                     labels: {                
                         formatter: function () {                         
                             return this.value;
                         }
                     },
-                    minorTickInterval: interval/2, //to 1 minor tick per 2 labels
-                    maxPadding: 0.5,
-                    tickInterval: interval,
+                    minorGridLineWidth: 0,
+                    minorTickInterval: 'auto',
+                    minorTickLength: 10,
+                    minorTickWidth: 1,
+                    maxPadding: 0.5
                 },
                 xAxis: {
                     tickPositioner: function (min, max) {
