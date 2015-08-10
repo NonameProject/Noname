@@ -14,8 +14,8 @@
 
 .chartWrapper
 {
+    height: 98%;
     margin-top: 10px;
-    max-height: 90%;
     width: 50%;
 }
 .panel
@@ -79,10 +79,10 @@ select
 }
 
     .customLegend .item {
-        clear:both;
+        clear: both;
         display: inline-block;
-        margin: 0 10px 4px 0;
-        height:40px;    
+        height: 36px;
+        margin: 0 10px 0 0;   
     }
 
     .customLegend .nonVisible {
