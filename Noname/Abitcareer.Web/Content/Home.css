@@ -104,3 +104,14 @@ select
         float: left;
         line-height: 16px;
     }
+
+.payment {
+    width: 50%;
+    display: inline-block;
+}
+
+.payment+.item {
+    float: right;
+    padding-top: 9%;
+    padding-right: 20%;
+}
