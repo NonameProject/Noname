@@ -51,7 +51,7 @@
             <button type="submit" class="btn btn-default">@LocalizationResx.Save</button>
     }
 <script>
-    $("#editor").submit(function () {
+    $("#editor").submit(function (event) {
         var data = $(this).serialize();
         var url = $(this).attr("action");
         $.post(url, data, function (d) {
@@ -59,7 +59,6 @@
             {
                 alert("Success");
                 $('#partialView').hide();
-                $('#' + '@Model.Id').html($("#EnglishName").val().replace('"', ''));
                 $('#' + '@Model.Id').addClass("edited");
                 setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
             }
