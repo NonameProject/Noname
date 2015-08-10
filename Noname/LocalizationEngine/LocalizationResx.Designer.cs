@@ -169,6 +169,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на топовому ВНЗ.
+        /// </summary>
+        public static string FirstPaymentName {
+            get {
+                return ResourceManager.GetString("FirstPaymentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вища освіта - це перший та найважливіший крок у твоїй майбутній кар&apos;єрі. Ми створили цей веб-сайт, щоб допомогти тобі зробити більш інформований та вдалий вибір вузу та спеціалізації..
         /// </summary>
         public static string Greeting {
@@ -268,20 +277,20 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Плата за навчання в.
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Рівень оплати за навчання та рівень зарплати.
         /// </summary>
         public static string PaymentsCaption {
             get {
                 return ResourceManager.GetString("PaymentsCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Плата за навчання.
-        /// </summary>
-        public static string PaymentsGraphCaption {
-            get {
-                return ResourceManager.GetString("PaymentsGraphCaption", resourceCulture);
             }
         }
         
@@ -376,6 +385,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на середньому ВНЗ.
+        /// </summary>
+        public static string SecondPaymentName {
+            get {
+                return ResourceManager.GetString("SecondPaymentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вибрати інші дані.
         /// </summary>
         public static string SelectAnotherInput {
@@ -444,6 +462,15 @@ namespace CultureEngine {
         public static string ThirdEnd {
             get {
                 return ResourceManager.GetString("ThirdEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на малопрестижному ВНЗ.
+        /// </summary>
+        public static string ThirdPaymentName {
+            get {
+                return ResourceManager.GetString("ThirdPaymentName", resourceCulture);
             }
         }
         

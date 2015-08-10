@@ -126,8 +126,8 @@
   <data name="PaymentsCaption" xml:space="preserve">
     <value>Рівень оплати за навчання та рівень зарплати</value>
   </data>
-  <data name="PaymentsGraphCaption" xml:space="preserve">
-    <value>Плата за навчання</value>
+  <data name="Payment" xml:space="preserve">
+    <value>Плата за навчання в</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Виберіь якість ВНЗ</value>
@@ -260,5 +260,14 @@
   </data>
   <data name="LoginIncorrect" xml:space="preserve">
     <value>Невірний пароль або електронна адреса</value>
+  </data>
+  <data name="FirstPaymentName" xml:space="preserve">
+    <value>топовому ВНЗ</value>
+  </data>
+  <data name="SecondPaymentName" xml:space="preserve">
+    <value>середньому ВНЗ</value>
+  </data>
+  <data name="ThirdPaymentName" xml:space="preserve">
+    <value>малопрестижному ВНЗ</value>
   </data>
 </root>

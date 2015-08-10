@@ -34,33 +34,36 @@ function Chart() {
 
     var tuneChart = function (chart) {
 
-        var legend = $(chart.container).parent().siblings('.customLegend');
-        var payment = legend.find('fieldset.payment');
+        (function () {
+            var legend = $(chart.container).parent().siblings('.customLegend');
+            var payment = legend.find('fieldset.payment');
 
-        $.each(chart.series, function (j, data) {
-            item = '<div class="item"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div><div class="serieName" id="">' + data.name + '</div></div>';
-            if(data.options.stack === 'payment' && payment.length)
-                payment.append(item);
-            else
-                legend.append(item);
+            $.each(chart.series, function (j, data) {
+                item = '<div class="item"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div><div class="serieName" id="">' + data.name + '</div></div>';
+                if (data.options.stack === 'payment' && payment.length)
+                    payment.append(item);
+                else
+                    legend.append(item);
 
-        });
+            });
 
-        legend.find('.item').click(function () {
-            var item = $(this),
-                inx = item.index(),
-                seria = chart.series[inx],
-                symbol = item.find('.symbol');
-            item.toggleClass('nonVisible');
-            if (seria.visible) {
-                seria.setVisible(false);
-                symbol.css('backgroundColor', item.css('color'));
-            }
-            else {
-                seria.setVisible(true);
-                symbol.css('backgroundColor', symbol.attr('oldColor'));
-            }
-        });
+            var items = legend.find('.item');
+            items.click(function () {
+                var item = $(this),
+                    inx = $.inArray(this, items.toArray()),
+                    seria = chart.series[inx],
+                    symbol = item.find('.symbol');
+                item.toggleClass('nonVisible');
+                if (seria.visible) {
+                    seria.setVisible(false);
+                    symbol.css('backgroundColor', item.css('color'));
+                }
+                else {
+                    seria.setVisible(true);
+                    symbol.css('backgroundColor', symbol.attr('oldColor'));
+                }
+            });
+        })(); //fillLegend
 
         var customizeIntersectedData = function () {
             var retData = [],

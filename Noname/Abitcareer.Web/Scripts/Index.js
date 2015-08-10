@@ -98,19 +98,19 @@ $(function () {
         var data1, data2, data3;
 
         data1 = {
-            name: selectedSpec[0].name,
+            name: textStrings.payment1Name,
             color: 'darkblue',
             data: selectedSpec[0].data,
             stack: 'payment'
         };
         data2 = {
-            name: data1.name,
+            name: textStrings.payment2Name,
             color: 'blue',
             data: [],
             stack: 'payment'
         };
         data3 = {
-            name: data1.name,
+            name: textStrings.payment3Name,
             color: 'royalblue',
             data: [],
             stack: 'payment'

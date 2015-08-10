@@ -126,8 +126,8 @@
   <data name="PaymentsCaption" xml:space="preserve">
     <value>The level of tuition fees and wages</value>
   </data>
-  <data name="PaymentsGraphCaption" xml:space="preserve">
-    <value>Tuition fee</value>
+  <data name="Payment" xml:space="preserve">
+    <value>Tuition fee in</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Pick university's quality</value>
@@ -260,5 +260,14 @@
   </data>
   <data name="LoginIncorrect" xml:space="preserve">
     <value>Login data is incorrect</value>
+  </data>
+  <data name="FirstPaymentName" xml:space="preserve">
+    <value>top university</value>
+  </data>
+  <data name="SecondPaymentName" xml:space="preserve">
+    <value>middle university</value>
+  </data>
+  <data name="ThirdPaymentName" xml:space="preserve">
+    <value>little prestige university</value>
   </data>
 </root>
