@@ -205,6 +205,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Невірний пароль або електронна адреса.
+        /// </summary>
+        public static string LoginIncorrect {
+            get {
+                return ResourceManager.GetString("LoginIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вхід.
         /// </summary>
         public static string Logining {

@@ -258,4 +258,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="LoginIncorrect" xml:space="preserve">
+    <value>Login data is incorrect</value>
+  </data>
 </root>
