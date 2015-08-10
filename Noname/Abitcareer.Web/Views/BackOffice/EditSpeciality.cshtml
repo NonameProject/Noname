@@ -48,7 +48,10 @@
                 </li>
             }
             </ul>
-            <button type="submit" class="btn btn-default">@LocalizationResx.Save</button>
+        <div class="row">            
+            <button type="submit" class="btn btn-default right">@LocalizationResx.Save</button>
+            <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
+        </div>
     }
 <script>
     $("#editor").submit(function (event) {
@@ -67,6 +70,11 @@
         });
         event.preventDefault();
     });
+
+    $('#exitButton').click(function () {
+        $('#partialView').hide();
+    });
+
     $('#exit').click(function () {
         $('#partialView').hide();
     });

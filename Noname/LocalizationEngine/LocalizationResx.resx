@@ -258,4 +258,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>Відмінити</value>
   </data>
+  <data name="LoginIncorrect" xml:space="preserve">
+    <value>Невірний пароль або електронна адреса</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@
 using Abitcareer.Business.Models;
 using Abitcareer.Mvc.ViewModels.Authorize;
 using Abitcareer.NHibernateDataProvider.Data_Providers;
+using CultureEngine;
 using Events.Business.Components;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace Abitcareer.Mvc.Controllers
             }
             else
             {
-                ModelState.AddModelError("AuthError", "LogIn data is incorrect");
+                ModelState.AddModelError("AuthError", LocalizationResx.LoginIncorrect);
             }
 
             return View(user);
