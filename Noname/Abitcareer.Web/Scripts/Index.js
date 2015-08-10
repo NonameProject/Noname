@@ -10,7 +10,7 @@
     };
     specialities["pi"] = [{
         name: textStrings.paymentsAxis,
-        data: [1708, 1708, 1708, 1708, 2500],
+        data: [1708, 1708, 1708, 1708, 2500, [4, 0]],
         color: "#990033"// was red
     },
     {
@@ -20,7 +20,7 @@
     },
     {
         name: textStrings.summaryCosts,
-        data: [0, 3416, 5124, 6832, 8540, 11040],
+        data: [0, 3416, 5124, 6832, 8540, 11040, [5, 0]],
         color: "blue"
     },
     {
@@ -31,7 +31,7 @@
 
     specialities["ci"] = [{
         name: textStrings.paymentsAxis,
-        data: [1300, 1300, 1300, 1300, 1300, 1500],
+        data: [1300, 1300, 1300, 1300, 1300, 1500, [5, 0]],
         color: "#990033"// was red
     },
     {
@@ -41,7 +41,7 @@
     },
     {
         name: textStrings.summaryCosts,
-        data: [1300, 2600, 3900, 5200, 6500, 8000],
+        data: [1300, 2600, 3900, 5200, 6500, 8000, [5, 0]],
         color: "blue"
     },
     {
@@ -52,7 +52,7 @@
 
     specialities["ki"] = [{
         name: textStrings.paymentsAxis,
-        data: [1200, 1200, 1200, 1200, 1200, 1400],
+        data: [1200, 1200, 1200, 1200, 1200, 1400, [5, 0]],
         color: "#990033"
     },
     {
@@ -67,7 +67,7 @@
     },
     {
         name: textStrings.summaryCosts,
-        data: [0, 0, 1200, 2900, 4900, 7400],
+        data: [0, 0, 1200, 2900, 4900, 7400, [5, 0]],
         color: "green"
     }];
     $.post(textStrings.UrlGet, { polinom: 3 }, function (data) {
@@ -114,10 +114,12 @@ $(function () {
         };
 
         for (var i = 0; i < data1.data.length; i++) {
-            var y2 = data1.data[i] * 0.8;
-            var y3 = data1.data[i] * 0.6;
-            data2.data.push(y2);
-            data3.data.push(y3);
+            if (data1.data[i] * 1) {
+                var y2 = data1.data[i] * 0.8;
+                var y3 = data1.data[i] * 0.6;
+                data2.data.push(y2);
+                data3.data.push(y3);
+            }
         }
 
         $("#input").fadeToggle(500);
