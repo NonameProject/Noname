@@ -44,9 +44,7 @@
            $('.specButton').click(function (event) {
                $("#partialView").show(0);
                event.stopPropagation();
-               $.ajax("specialities/edit/" + $(this).attr("id"), {
-                   method: 'GET'
-               }).done(function (data) {
+               $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
                    $("#inner").html(data);                   
                });
            });
