@@ -11,7 +11,7 @@
     specialities["pi"] = [{
         name: textStrings.paymentsAxis,
         data: [1708, 1708, 1708, 1708, 2500],
-        color: "#990033"// was red
+        color: "#990033"// was red,        
     },
     {
         name: textStrings.summaryAxis,
@@ -100,17 +100,20 @@ $(function () {
         data1 = {
             name: selectedSpec[0].name,
             color: 'darkblue',
-            data: selectedSpec[0].data
+            data: selectedSpec[0].data,
+            stack: 'payment'
         };
         data2 = {
             name: data1.name,
             color: 'blue',
-            data: []
+            data: [],
+            stack: 'payment'
         };
         data3 = {
             name: data1.name,
             color: 'royalblue',
-            data: []
+            data: [],
+            stack: 'payment'
         };
 
         for (var i = 0; i < data1.data.length; i++) {
