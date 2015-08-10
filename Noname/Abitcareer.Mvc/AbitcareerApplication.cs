@@ -69,8 +69,7 @@ namespace Abitcareer.Mvc
         private void Application_Error(Object sender, EventArgs args)
         {
             HttpApplication application = (HttpApplication)sender;
-            HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);
-
+            HttpContextBase currentContext = new HttpContextWrapper(HttpContext.Current);            
             var userCulture = CEngine.Instance.GetCultureByUserLanguages(application.Request.UserLanguages);
 
             RouteData routeData = RouteTable.Routes.GetRouteData(currentContext);
@@ -79,8 +78,10 @@ namespace Abitcareer.Mvc
             if (!hasCultureSegment && cultureName == null)
             {
                 CEngine.Instance.SetCultureForThread(userCulture);
+                Response.Clear();
                 currentContext.Response.Redirect(userCulture + currentContext.Request.Path);
-            }        
+                currentContext.ClearError();
+            }            
         }
     }
 }
