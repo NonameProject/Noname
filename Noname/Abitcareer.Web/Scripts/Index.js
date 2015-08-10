@@ -128,6 +128,7 @@ $(function () {
 
         window.location.hash = $("#spec").val();
         var chart = new Chart();
+        $('#selectedSpeciality').html($("#spec option:selected").html());
         chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
         chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
 
