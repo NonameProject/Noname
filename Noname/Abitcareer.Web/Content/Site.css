@@ -3,6 +3,8 @@
     min-width: 320px;
     overflow-x: hidden;
     overflow-y: scroll;
+    background-image: url(Images/subtle_dots.png);
+
 }
 #content
 {
@@ -39,6 +41,52 @@ nav{
     z-index: 1000;
     margin: 0 !important;
 }
+
+.navbar.navbar-default
+{
+    background: black;  
+    height: 80px;
+    line-height: 80px;
+
+}
+
+a.navbar-brand
+{
+    line-height: 60px;
+    height: 6px;
+}
+
+li a.changeLanguage
+{
+    line-height: 55px;
+        height: 55px;
+    font-family: myriad;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: black;
+}
+
+@font-face
+{
+    font-family: marckScript;
+    src: url(fonts/MarckScript-Regular.ttf);
+}
+
+@font-face
+{
+    font-family: myriad;
+    src: url(fonts/MYRIADPRO-REGULAR.woff);
+}
+
+.navbar-brand
+{
+    font-family: marckScript;
+    font-size: 30px;
+}
+
+
+
 @media (min-width: 768px) {
     .mobile-localization-changer{
         display: none;

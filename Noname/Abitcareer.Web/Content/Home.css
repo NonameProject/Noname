@@ -21,7 +21,6 @@
 
 .panel
 {
-    background-color: white;
     box-shadow: none;
     display: inline-block;
     height: 100%;
@@ -32,6 +31,8 @@
     text-align: center;
     top: 0;
     width: 100%;
+    background-image: url(Images/subtle_dots.png);
+    top: 40px;
 }
 
 select

@@ -10,6 +10,7 @@
 {
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Specialities.css")
+    @Styles.Render("~/Content/Site.css")
 }
 
 <h2>@LocalizationResx.Specialities</h2>
@@ -20,16 +21,28 @@
     </div>
 </div>
 
+<div class="search">
+    <input placeholder="@LocalizationResx.Search"/>
+</div>
+
+<div id="addNew" class="card col-md-4 boxShadow17">
+    <span>@LocalizationResx.AddSpeciality</span>
+</div>
 <section class="wrapperButton">
-    <table class="table">
     @foreach (var item in Model)
     {
-        <tr>
-            <td class="specButton" id="@item.Id">@item.Name</td>
-        </tr>
+        <div class="col-md-4 card boxShadow17 specButton" id="@item.Id">
+            <div class="ttip"><span>@LocalizationResx.PressToEdit</span></div>
+            <div class="name">
+                @item.Name
+            </div>
+            <div class="salary-wrapper">
+                <h4>@item.Salaries.First().Value - @item.Salaries.Last().Value</h4>
+            </div>
+        </div>
     }
-    </table>
 </section>
+
 @section Scripts
 {
    <script>
@@ -56,6 +69,13 @@
            });           
        });
 
+       $('.card:not(#addNew)').on("mouseover", function () {
+           $(this.children[0]).show();
+       });
+
+       $(".card:not(#addNew)").mouseout(function () {
+           $(this.children[0]).hide();
+       });
        
 
     </script>

@@ -270,4 +270,13 @@
   <data name="ThirdPaymentName" xml:space="preserve">
     <value>малопрестижному ВНЗ</value>
   </data>
+  <data name="AddSpeciality" xml:space="preserve">
+    <value>Додати нову</value>
+  </data>
+  <data name="PressToEdit" xml:space="preserve">
+    <value>Натисни для редагування</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
 </root>
