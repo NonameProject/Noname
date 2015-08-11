@@ -197,3 +197,7 @@ form {
     width: 300px;
 }
 
+#wrapper {
+    width: 99%;
+    margin: 0 auto;
+}

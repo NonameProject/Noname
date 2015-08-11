@@ -130,3 +130,10 @@ select
         float:left;
         margin-left:25%;
     }
+
+#chart-container {
+    max-height: 620px;
+}
+.serieName {
+    font-size: 0.9em;
+}
