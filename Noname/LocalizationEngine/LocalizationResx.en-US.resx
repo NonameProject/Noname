@@ -285,4 +285,16 @@
   <data name="ValidationNameCannotBeEmpty" xml:space="preserve">
     <value>Name cannot be empty</value>
   </data>
+  <data name="SpecialityAdditingFailed" xml:space="preserve">
+    <value>Error occured while adding speciality</value>
+  </data>
+  <data name="SpecialityAdditingSuccess" xml:space="preserve">
+    <value>Speciality successfuly added</value>
+  </data>
+  <data name="SpecialityAditingFailed" xml:space="preserve">
+    <value>When editing the specialty error</value>
+  </data>
+  <data name="SpecialityAditingSuccess" xml:space="preserve">
+    <value>Speciality successfully edited</value>
+  </data>
 </root>
