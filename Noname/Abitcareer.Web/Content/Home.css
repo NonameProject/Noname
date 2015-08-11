@@ -82,7 +82,7 @@ select
 
 .customLegend {
     position:relative;
-    top: -4px;
+    top: -5px;
 }
 
     .customLegend legend {
@@ -135,5 +135,9 @@ select
     max-height: 620px;
 }
 .serieName {
-    font-size: 0.9em;
+    font-size: 0.8em;
+}
+
+#input {
+    max-height: 620px;
 }
