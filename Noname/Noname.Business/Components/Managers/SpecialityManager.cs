@@ -61,6 +61,8 @@ namespace Abitcareer.Business.Components.Managers
             bool result;
             try
             {
+                if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
+                    throw new ArgumentException("One of the names is unacceptable");
                 provider.Update(editedModel);
                 result = true;
             }
