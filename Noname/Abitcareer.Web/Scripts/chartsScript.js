@@ -85,7 +85,7 @@ function Chart() {
                 length = chart.series.length;
             for (var i = 0; i < length-1; i++) {
                 var data = addPointToLine(chart.series[length-1].points, chart.series[i].points, chart.series[length - 1]);
-                retData.push(data);                              
+                retData.push(data);
                 selectPoint(chart.series[length-1], data);
             }
 
