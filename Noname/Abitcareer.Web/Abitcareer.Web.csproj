@@ -152,6 +152,7 @@
     <Content Include="Content\Images\Flags\UA.png" />
     <Content Include="Content\Images\Flags\US.png" />
     <Content Include="Content\Images\notificationImage.png" />
+    <Content Include="Content\Images\subtle_dots.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Specialities.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
