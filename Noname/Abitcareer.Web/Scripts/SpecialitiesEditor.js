@@ -1,4 +1,8 @@
-﻿$(function () {
+﻿getCulture = function () {
+    return document.location.href.split('/')[3].toLowerCase();
+};
+
+$(function () {
     $(document).ajaxStart(function () {
         $("body").toggleClass("loading");
     }).ajaxStop(function () {
