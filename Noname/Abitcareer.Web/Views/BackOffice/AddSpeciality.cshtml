@@ -1,11 +1,12 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
-<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script sr1c="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/Notifications.js"></script>
 
-@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post)) {
+@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor"}))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
@@ -15,7 +16,7 @@
         <h3>@LocalizationResx.AddSpeciality</h3>
         <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         
-        @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
+        @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
@@ -59,22 +60,22 @@
 }
 
 <script>
-    $("#editor").submit(function (event) {
-        var data = $(this).serialize();
-        var url = $(this).attr("action");
-        $.post(url, data, function (d) {
-            if (d)
-            {
-                Notificate("Success");
-                $('#partialView').hide();
-                $('#' + '@Model.Id').addClass("edited");
-                setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
-            }
-            else
-                Notificate("Failed");
+    var customSubmit = function (event) {
+            var data = $(this).serialize();
+            var url = $(this).attr("action");
+            $.post(url, data, function (d) {
+                if (d)
+                {
+                    Notificate("@LocalizationResx.SpecialityAdditingSuccess");
+                    $('#partialView').hide();
+                }
+                else
+                    Notificate("@LocalizationResx.SpecialityAdditingFailed");
         });
         event.preventDefault();
-    });
+    }
+
+    document.getElementById("editor").onsubmit = function (e) { customSubmit(e); return false; }
 
     $('#exitButton').click(function () {
         $('#partialView').hide();
