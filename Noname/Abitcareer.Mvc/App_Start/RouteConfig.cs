@@ -68,6 +68,15 @@ namespace Abitcareer.Mvc
               {
               });
 
+            routes.MapLocalizedRoute(
+             name: "addSpeciality",
+             url: "specialities/add",
+             defaults: new { controller = "BackOffice", action = "AddSpeciality" },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
+
 
             routes.MapLocalizedRoute(
                 name: "ChangeCulture",

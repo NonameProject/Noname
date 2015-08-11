@@ -271,6 +271,9 @@
     <value>малопрестижному ВНЗ</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
+    <value>Додати  спеціальність</value>
+  </data>
+  <data name="NewSpeciality" xml:space="preserve">
     <value>Додати нову</value>
   </data>
   <data name="PressToEdit" xml:space="preserve">

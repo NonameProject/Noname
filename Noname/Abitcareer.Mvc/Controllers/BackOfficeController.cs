@@ -40,12 +40,27 @@ namespace Abitcareer.Web.Components
             return PartialView("EditSpeciality",model);
         }
 
+        //[HttpPost]
+        //public ActionResult AddSpeciality(SpecialityViewModel viewModel)
+        //{
+        //    var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
+        //    return Json(specialityManager.Create(model));
+        //}
+
         [HttpPost]
         public ActionResult Save(SpecialityViewModel editedModel)
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
+            if (specialityManager.IsExists(mappedModel))
+                return Json(false);
             var result = specialityManager.TrySave(mappedModel);
             return Json(result);
+        }
+
+        [HttpPost]
+        public ActionResult AddSpeciality()
+        {
+            return PartialView(new SpecialityViewModel());
         }
 
         public ActionResult EditSpeciality()

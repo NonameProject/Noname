@@ -26,7 +26,7 @@
 </div>
 
 <div id="addNew" class="card col-md-4 boxShadow17">
-    <span>@LocalizationResx.AddSpeciality</span>
+    <span>@LocalizationResx.NewSpeciality</span>
 </div>
 <section class="wrapperButton">
     @foreach (var item in Model)
@@ -45,38 +45,5 @@
 
 @section Scripts
 {
-   <script>
-
-       $(function () {
-           $(document).ajaxStart(function () {
-               $("body").toggleClass("loading");
-           }).ajaxStop(function () {
-               $("body").toggleClass("loading");
-           })
-
-           $('.specButton').click(function (event) {
-               $("#inner").html(null);
-               $("#partialView").show(0);
-               event.stopPropagation();
-               $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
-                   $("#inner").html(data);                   
-               });
-           });
-           $(document).click(function (event) {
-               if ($(event.target).closest('#inner').length) return;
-               $('#partialView').hide();
-               event.stopPropagation();
-           });           
-       });
-
-       $('.card:not(#addNew)').on("mouseover", function () {
-           $(this.children[0]).show();
-       });
-
-       $(".card:not(#addNew)").mouseout(function () {
-           $(this.children[0]).hide();
-       });
-       
-
-    </script>
+   @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
 }

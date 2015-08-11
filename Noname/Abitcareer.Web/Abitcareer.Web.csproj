@@ -272,6 +272,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\SpecialitiesEditor.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -282,6 +283,7 @@
     <Content Include="Views\BackOffice\Specialities.cshtml" />
     <Content Include="Views\BackOffice\EditSpeciality.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
+    <Content Include="Views\BackOffice\AddSpeciality.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

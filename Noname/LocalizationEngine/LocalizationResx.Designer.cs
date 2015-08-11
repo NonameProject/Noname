@@ -61,7 +61,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Додати нову.
+        ///   Looks up a localized string similar to Додати  спеціальність.
         /// </summary>
         public static string AddSpeciality {
             get {
@@ -264,6 +264,15 @@ namespace CultureEngine {
         public static string NameUA {
             get {
                 return ResourceManager.GetString("NameUA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Додати нову.
+        /// </summary>
+        public static string NewSpeciality {
+            get {
+                return ResourceManager.GetString("NewSpeciality", resourceCulture);
             }
         }
         

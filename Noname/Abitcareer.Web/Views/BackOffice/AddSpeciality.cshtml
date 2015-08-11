@@ -1,0 +1,85 @@
+﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("Save", "BackOffice", FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+     <input type="button" id="exit"/>
+        @Html.HiddenFor(x => x.Id)   
+    
+        <h3>@LocalizationResx.AddSpeciality</h3>
+        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
+        
+        @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
+        @Html.EditorFor(m => m.Name)
+        <br />
+        @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
+        @Html.EditorFor(m => m.EnglishName)
+        
+        <h4>@LocalizationResx.Salaries.ToUpper()</h4>
+    
+        <ul class="salaries">
+            @foreach (var item in Model.Salaries)
+            {
+                string yearEnding = LocalizationResx.EndAfterFour;
+                <li>
+                    @if (item.Key < 10 || item.Key > 20)
+                    {
+                        switch (item.Key % 10)
+                        {
+                            case 1:
+                                yearEnding = LocalizationResx.FirstEnd;
+                                break;
+                            case 2:
+                                yearEnding = LocalizationResx.SecondEnd;
+                                break;
+                            case 3:
+                                yearEnding = LocalizationResx.ThirdEnd;
+                                break;
+                            default:
+                                yearEnding = LocalizationResx.EndAfterFour;
+                                break;
+                        }
+                    }
+                    @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
+                    @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                </li>
+            }
+            </ul>
+
+       <div class="row">            
+            <button type="submit" class="btn btn-default right">@LocalizationResx.Save</button>
+            <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
+        </div>
+}
+
+<script>
+    $("#editor").submit(function (event) {
+        var data = $(this).serialize();
+        var url = $(this).attr("action");
+        $.post(url, data, function (d) {
+            if (d)
+            {
+                alert("Success");
+                $('#partialView').hide();
+                $('#' + '@Model.Id').addClass("edited");
+                setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
+            }
+            else
+                alert("Failed");
+        });
+        event.preventDefault();
+    });
+
+    $('#exitButton').click(function () {
+        $('#partialView').hide();
+    });
+
+    $('#exit').click(function () {
+        $('#partialView').hide();
+    });
+</script>

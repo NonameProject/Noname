@@ -26,7 +26,13 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[5] = 0;
             Salaries[10] = 0;
             Salaries[20] = 0;
-            Name = "Default";
+            Name = " Ім'я по замовчуванню";
+
+            EnglishName = "Default";
+
+            Id = Guid.NewGuid().ToString();
+
+
         }
     }
 }

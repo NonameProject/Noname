@@ -31,10 +31,18 @@ namespace Abitcareer.Business.Components.Managers
             this.provider = provider;
         }
 
-        public void Create(Speciality model)
+        public bool Create(Speciality model)
         {
             ClearCache();
-            provider.Create(model);
+            try
+            {
+                provider.Create(model);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public IList<Speciality> GetList() 
         {
@@ -61,6 +69,13 @@ namespace Abitcareer.Business.Components.Managers
                 result = false;
             }
             return result;
+        }
+
+        public bool IsExists(Speciality model)
+        {
+            if (provider.GetByName(model.Name) != null)
+                return true;
+            return false;
         }
 
         public Speciality GetById(string id)
