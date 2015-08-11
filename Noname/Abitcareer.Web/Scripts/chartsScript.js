@@ -212,11 +212,20 @@ function Chart() {
                     }
                 },
                 yAxis: {
+                    tickPositioner: function (min, max) {
+                        var positions = [],
+                            tick;
+
+                        for (tick = min; tick - this.tickInterval <= this.dataMax; tick += this.tickInterval) {
+                            positions.push(tick);
+                        }
+                        return positions;
+                    },
                     title: {
                         enabled: true,
                         text: yAxisCaption
                     },
-                    endOnTick: false,
+                    //endOnTick: false,
                     //max: max + Math.round(max * 0.1),
                     min: 0,
                     labels: {                
