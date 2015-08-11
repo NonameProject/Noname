@@ -3,6 +3,7 @@
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/Notifications.js"></script>
 
 @using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post)) {
     @Html.AntiForgeryToken()
@@ -64,13 +65,13 @@
         $.post(url, data, function (d) {
             if (d)
             {
-                alert("Success");
+                Notificate("Success");
                 $('#partialView').hide();
                 $('#' + '@Model.Id').addClass("edited");
                 setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
             }
             else
-                alert("Failed");
+                Notificate("Failed");
         });
         event.preventDefault();
     });
@@ -82,4 +83,5 @@
     $('#exit').click(function () {
         $('#partialView').hide();
     });
+
 </script>

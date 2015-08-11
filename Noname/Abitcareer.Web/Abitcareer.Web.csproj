@@ -150,6 +150,7 @@
     <Content Include="Content\Images\elementsSprite.png" />
     <Content Include="Content\Images\Flags\UA.png" />
     <Content Include="Content\Images\Flags\US.png" />
+    <Content Include="Content\Images\notificationImage.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Specialities.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -264,6 +265,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\Notifications.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
