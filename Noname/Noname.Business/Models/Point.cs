@@ -14,12 +14,22 @@ namespace Abitcareer.Business.Models
 
         public int y;
 
-        public static List<Point> GetZeroList(uint count)
+        public static List<Point> InitList(uint count)
         {
             var list = new List<Point>((int)count);
             for (var i = 0; i < count; i++)
             {
                 list.Add(new Point(i));
+            }
+            return list;
+        }
+
+        public static List<Point> InitList(int[] arr)
+        {
+            var list = new List<Point>(arr.Length);
+            for (var i = 0; i < arr.Length; i++)
+            {
+                list.Add(new Point(i, arr[i]));
             }
             return list;
         }

@@ -10,25 +10,25 @@ namespace Abitcareer.Business.Components
         private double[] UnknownCoef;
         private int Polinom;
         private double[,] Matrix;
-        private double[] x;
-        private double[] y;
+        private int[] x;
+        private int[] y;
 
-        public Approximator(double[] x, double[] y, short polinom)
+        public Approximator(List<int> x, List<int> y, short polinom)
         {
-            if (x.Length != y.Length)
+            if (x.Count != y.Count)
             {
                 throw new ArgumentException("different arrays length", "x y");
             }
-            if (polinom >= x.Length)
+            if (polinom >= x.Count)
             {
                 throw new ArgumentException("can't solve: polinom power to large", "polinom");
             }
-            Matrix = new double[x.Length, y.Length];
+            Matrix = new double[x.Count, y.Count];
             Polinom = polinom;
             UnknownCoef = new double[polinom + 1];
             Coef = new double[polinom + 1];
-            this.x = x;
-            this.y = y;
+            this.x = x.ToArray();
+            this.y = y.ToArray();
             GetCoef();
         }
 

@@ -36,8 +36,8 @@ namespace Abitcareer.Mvc
 
             routes.MapRoute(
                 "GetData",
-                "getdata/{polinom}",
-             new { controller = "Home", action = "GetData", polinom = UrlParameter.Optional}
+                "getdata/{id}/{polinom}",
+             new { controller = "Home", action = "GetData", id = UrlParameter.Optional, polinom = UrlParameter.Optional }
             );
 
             routes.MapLocalizedRoute(

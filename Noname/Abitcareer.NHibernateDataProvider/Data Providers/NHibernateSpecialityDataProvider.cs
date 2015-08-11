@@ -21,5 +21,15 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                     .UniqueResult<Speciality>();
             });
         }
+
+        public void ClearSalaries( )
+        {
+            var list = GetList().AsParallel();
+            foreach(var spec in list){
+                for (int i = 0; i < spec.Salaries.Keys.Count; i++ )
+                    spec.Salaries[spec.Salaries.Keys.ElementAt(i)] = 0;
+                Update(spec);
+            }
+        }
     }
 }

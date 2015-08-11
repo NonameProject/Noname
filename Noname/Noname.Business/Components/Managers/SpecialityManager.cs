@@ -44,6 +44,12 @@ namespace Abitcareer.Business.Components.Managers
                 return false;
             }
         }
+
+        public void ClearSalaries( )
+        {
+            provider.ClearSalaries();
+        }
+
         public IList<Speciality> GetList() 
         {
             ClearCache();
