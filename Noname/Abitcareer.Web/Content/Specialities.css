@@ -13,6 +13,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 100;
 }
 
 #inner {
@@ -117,7 +118,7 @@ form {
     margin: 30px;
     background-color: white;
     text-align: center;
-    z-index: -1;
+    display: inline-block;
 }
 
 .card:hover
@@ -196,12 +197,19 @@ form {
     background-color: transparent;
     width: 300px;
 }
-
+.wrapperButton{
+    display: inline;
+}
 #wrapper {
-    width: 99%;
-    margin: 0 auto;
+    display: inline-block;
 }
 label[for="Name"], label[for="EnglishName"]
 {
     min-width: 90px;
+}
+@media (max-width: 992px) {
+    #addNew{ /*Dirty hack, but it seems like it is only way to fix this shit*/
+        position: relative;
+        top: -18px;
+    }
 }
