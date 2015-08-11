@@ -51,8 +51,6 @@ namespace Abitcareer.Web.Components
         public ActionResult Save(SpecialityViewModel editedModel)
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
-            if (specialityManager.IsExists(mappedModel))
-                return Json(false);
             var result = specialityManager.TrySave(mappedModel);
             return Json(result);
         }
