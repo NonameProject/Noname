@@ -124,7 +124,7 @@
     <value>Витрати</value>
   </data>
   <data name="PaymentsCaption" xml:space="preserve">
-    <value>Рівень оплати за навчання та рівень зарплати</value>
+    <value>Момент, коли зарплата рівна витратам</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Плата за навчання в</value>
@@ -148,7 +148,7 @@
     <value>Середній</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
-    <value>Сумарні витрати i заробіток</value>
+    <value>Момент, коли сумарний заробіток рівний сумарним витратам</value>
   </data>
   <data name="SummaryGraphCaption" xml:space="preserve">
     <value>Рівень зарплати</value>

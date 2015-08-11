@@ -26,24 +26,22 @@
 </div>-->
 
 <div id="wrapper">
-<div id="addNew" class="card col-md-4 boxShadow17">
-    <span>@LocalizationResx.NewSpeciality</span>
-</div>
-<section class="wrapperButton">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 card boxShadow17 specButton" id="@item.Id">
-            <div class="ttip"><span>@LocalizationResx.PressToEdit</span></div>
-            <div class="name">
-                @item.Name
-            </div>
-            <div class="salary-wrapper">
-                <h4>@item.Salaries.Min(x => x.Value) - @item.Salaries.Max(x => x.Value)</h4>
-            </div>
+        <div id="addNew" class="card col-md-4 boxShadow17">
+            <span>@LocalizationResx.NewSpeciality</span>
         </div>
-    }
-</section>
-    </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 card boxShadow17 specButton" id="@item.Id">
+                <div class="ttip"><span>@LocalizationResx.PressToEdit</span></div>
+                <div class="name">
+                    @item.Name
+                </div>
+                <div class="salary-wrapper">
+                    <h4>@item.Salaries.Min(x => x.Value) - @item.Salaries.Max(x => x.Value)</h4>
+                </div>
+            </div>
+        }
+</div>
 
 @section Scripts
 {

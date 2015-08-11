@@ -94,6 +94,12 @@ li a.changeLanguage
     margin-top:-10px;
 }
 
+.collapsed-logout *
+{
+    color: white;
+    padding-right: 10px;
+}
+
 @media (min-width: 768px) {
     .mobile-localization-changer{
         display: none;

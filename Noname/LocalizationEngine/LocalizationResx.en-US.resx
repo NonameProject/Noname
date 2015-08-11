@@ -124,7 +124,7 @@
     <value>Costs</value>
   </data>
   <data name="PaymentsCaption" xml:space="preserve">
-    <value>The level of tuition fees and wages</value>
+    <value>Break even</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Tuition fee in</value>
@@ -148,7 +148,7 @@
     <value>Middle</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
-    <value>Total costs and earnings</value>
+    <value>Moment when total revenue equal total cost</value>
   </data>
   <data name="SummaryGraphCaption" xml:space="preserve">
     <value>Salary</value>

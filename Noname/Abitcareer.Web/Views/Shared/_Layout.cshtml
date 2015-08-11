@@ -26,6 +26,12 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <div class="right mobile-localization-changer">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <span class="collapsed-logout">
+                        @Html.ActionLink(@LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                    </span>
+                    }
                     @{
                         if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
                         {
