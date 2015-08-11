@@ -1,10 +1,11 @@
-﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
+@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
 @using System.Web
 @using System.Globalization
 @using System.Web.Mvc
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
+<script src="~/Scripts/Notifications.js"></script>
 
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
@@ -66,7 +67,7 @@
         $.post(url, data, function (d) {
             if (d)
             {
-                alert("Success");
+                Notificate("Success");
                 var culture = getCulture();
                 var newName;
                 if (culture == 'en-us')
@@ -78,7 +79,7 @@
                 setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
             }
             else
-                alert("Failed");
+                Notificate("Failed");
         });
         event.preventDefault();
     });

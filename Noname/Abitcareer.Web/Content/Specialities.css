@@ -201,3 +201,7 @@ form {
     width: 99%;
     margin: 0 auto;
 }
+label[for="Name"], label[for="EnglishName"]
+{
+    min-width: 90px;
+}
