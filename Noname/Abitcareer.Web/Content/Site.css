@@ -105,3 +105,9 @@ li a.changeLanguage
         box-shadow: none;
     }
 }
+
+.link
+{
+    margin-top: 17px;
+    font-family: myriad;
+}

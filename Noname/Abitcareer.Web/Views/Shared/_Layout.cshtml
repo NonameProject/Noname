@@ -58,7 +58,16 @@
                 <a class="navbar-brand" href="#">AbitCareer</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
                 <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                @Html.ActionLink(@LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                            </li>
+                        }
+                    }
                     <li>
                         @{
                             if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")

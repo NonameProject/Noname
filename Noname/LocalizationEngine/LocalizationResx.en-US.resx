@@ -285,4 +285,7 @@
   <data name="ValidationNameCannotBeEmpty" xml:space="preserve">
     <value>Name cannot be empty</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
 </root>
