@@ -10,13 +10,13 @@ function Chart() {
 
     var getLineIntersection = function (p0, p1, p2, p3) {
         var p0_x = p0.x,
-        p0_y = p0.y,
-        p1_x = p1.x,
-        p1_y = p1.y,
-        p2_x = p2.x,
-        p2_y = p2.y,
-        p3_x = p3.x,
-        p3_y = p3.y;
+            p0_y = p0.y,
+            p1_x = p1.x,
+            p1_y = p1.y,
+            p2_x = p2.x,
+            p2_y = p2.y,
+            p3_x = p3.x,
+            p3_y = p3.y;
 
         var s1_x, s1_y, s2_x, s2_y;
         s1_x = p1_x - p0_x; s1_y = p1_y - p0_y;
@@ -132,8 +132,12 @@ function Chart() {
             var mx = -100;
             for (i = 1; i < n0; i++) {
                 for (j = 1; j < n1; j++) {
-                    if (linePoints1[i - 1].y > mx) mx = linePoints1[i - 1].y;
-                    if (linePoints1[i].y > mx) mx = linePoints1[i].y;
+                    if (linePoints1[i - 1].x === 0)
+                        continue;
+                    if (linePoints1[i - 1].y > mx)
+                        mx = linePoints1[i - 1].y;
+                    if (linePoints1[i].y > mx)
+                        mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
                         linePointsTo.addPoint(isect, true, false);

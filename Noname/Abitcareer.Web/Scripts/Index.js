@@ -1,6 +1,36 @@
 ﻿function DataProvider() {
+    var getYearSumm = function (data) {
+        var res = [0];
+        for (var i = 0; i < data.length; i++)
+            if (typeof data[i].y === 'number')
+                res.push(res[i] + data[i].y * 12);
+            else res.push(res[i] + data[i] * 12);
+        return res;
+    };
+
     this.getData = function () {
-        return JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
+        var res = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
+
+        if (!res[2].data.length)
+            res[2].data = getYearSumm(res[0].data);
+        if (!res[3].data.length)
+            res[3].data = getYearSumm(res[1].data);
+
+        var length = res[3].data.length - 1;
+        if (typeof res[3].pointStart === 'numder')
+            length += res[3].pointStart;
+        res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1] });
+
+        return res;
+    };
+
+    this.MultiplieData = function (data, coef) {
+        var data2 = [];
+        for (var i = 0; i < data.length; i++) {
+            var y2 = data[i] * coef;
+            data2.push(y2);
+        }
+        return data2;
     };
 
     var specialities = {
@@ -15,17 +45,17 @@
     },
     {
         name: textStrings.summaryAxis,
-        data: [0, 0, 800, 3000, 5000, 7000], //will be overrided
+        data: [0, 0, 1500, 2800, 4000, 5200], //will be overrided
         color: "green"
     },
     {
         name: textStrings.summaryCosts,
-        data: [0, 3416, 5124, 6832, 8540, 11040],
+        data: [],
         color: "blue"
     },
     {
         name: textStrings.summarySalary,
-        data: [0, 0, 9600, 36000, 60000, 84000],
+        data: [],
         color: "green"
     }];
 
@@ -41,12 +71,12 @@
     },
     {
         name: textStrings.summaryCosts,
-        data: [1300, 2600, 3900, 5200, 6500, 8000],
+        data: [],
         color: "blue"
     },
     {
         name: textStrings.summarySalary,
-        data: [0, 0, 9600, 36000, 60000, 84000],
+        data: [],
         color: "green"
     }];
 
@@ -61,17 +91,17 @@
         color: "green"
     },
     {
-        name: textStrings.summarySalary,
-        data: [0, 0, 9600, 36000, 60000, 84000],
-        color: "green"
+        name: textStrings.summaryCosts,
+        data: [],
+        color: "blue"
     },
     {
-        name: textStrings.summaryCosts,
-        data: [0, 0, 1200, 2900, 4900, 7400],
-        color: "blue"
+        name: textStrings.summarySalary,
+        data: [],
+        color: "green"
     }];
     $.post(textStrings.UrlGet, { polinom: 3 }, function (data) {
-        specialities["pi"][1].data = data;
+        specialities["ki"][3].data = getYearSumm(data);
     });
 }
 
@@ -106,22 +136,15 @@ $(function () {
         data2 = {
             name: textStrings.payment2Name,
             color: 'blue',
-            data: [],
+            data: provider.MultiplieData(data1.data, 0.8),
             stack: 'payment'
         };
         data3 = {
             name: textStrings.payment3Name,
             color: 'royalblue',
-            data: [],
+            data: provider.MultiplieData(data1.data, 0.6),
             stack: 'payment'
         };
-
-        for (var i = 0; i < data1.data.length; i++) {
-            var y2 = data1.data[i] * 0.8;
-            var y3 = data1.data[i] * 0.6;
-            data2.data.push(y2);
-            data3.data.push(y3);
-        }
 
         $("#input").fadeToggle(500);
         $("#chart-container").fadeToggle(500);
@@ -129,7 +152,7 @@ $(function () {
         window.location.hash = $("#spec").val();
         var chart = new Chart();
         $('#selectedSpeciality').html($("#spec option:selected").html());
-        chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+        chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);        
         chart.draw("#summary-container", [selectedSpec[2], selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes);
 
         setHash();
