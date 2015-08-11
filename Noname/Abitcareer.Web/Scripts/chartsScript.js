@@ -198,6 +198,7 @@ function Chart() {
 
             $(conteiner).highcharts({
                 chart: {
+                    backgroundColor: 'transparent',
                     type: 'spline',
                     zoomtype: "xy"
                 },
