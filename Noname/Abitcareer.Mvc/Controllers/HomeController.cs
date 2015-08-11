@@ -16,11 +16,11 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult GetData(short polinom = 3)
         {
             var x = new double[] { 1, 2, 3, 4, 5};
-            var y = new double[] { 0, 1500, 2800, 4000, 5200 };
+            var y = new double[] { 0, 1200, 1700, 2000, 2500 };
             var aproximator = new Approximator(x, y, polinom);
             //x = new double[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             var list = Point.GetZeroList(2);
-            list.AddRange(aproximator.CalcY(2, 15));
+            list.AddRange(aproximator.CalcY(2, 8));
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }

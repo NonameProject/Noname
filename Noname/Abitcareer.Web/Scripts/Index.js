@@ -2,15 +2,19 @@
     var getYearSumm = function (data) {
         var res = [0];
         for (var i = 0; i < data.length; i++)
-            res.push(res[i] + data[i] * 12);
+            if (typeof data[i].y === 'number')
+                res.push(res[i] + data[i].y * 12);
+            else res.push(res[i] + data[i] * 12);
         return res;
     };
 
     this.getData = function () {
         var res = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
 
-        res[2].data = getYearSumm(res[0].data);
-        res[3].data = getYearSumm(res[1].data);
+        if (!res[2].data.length)
+            res[2].data = getYearSumm(res[0].data);
+        if (!res[3].data.length)
+            res[3].data = getYearSumm(res[1].data);
 
         var length = res[3].data.length - 1;
         if (typeof res[3].pointStart === 'numder')
@@ -97,7 +101,7 @@
         color: "green"
     }];
     $.post(textStrings.UrlGet, { polinom: 3 }, function (data) {
-        //specialities["pi"][3].data = data;
+        specialities["ki"][3].data = getYearSumm(data);
     });
 }
 
