@@ -164,7 +164,10 @@ function Chart() {
     };
 
     return {
-        draw: function (conteiner, dataObj, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, out) {
+        draw: function (conteiner, dataObj, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, out, colors) {
+            if (colors != undefined && colors != null)
+                plotColors = colors;
+
             var max = 0;
             for(var i = 0; i < dataObj.length; i++){
                 var data = dataObj[i].data;
