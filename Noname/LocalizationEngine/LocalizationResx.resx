@@ -287,5 +287,16 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Вихід</value>
+  <data name="SpecialityAdditingFailed" xml:space="preserve">
+    <value>При додаванні спеціальності виникла помилка</value>
+  </data>
+  <data name="SpecialityAdditingSuccess" xml:space="preserve">
+    <value>Спеціальність успішно додана</value>
+  </data>
+  <data name="SpecialityAditingFailed" xml:space="preserve">
+    <value>При редагуванні спеціальності виникла помилка</value>
+  </data>
+  <data name="SpecialityAditingSuccess" xml:space="preserve">
+    <value>Спеціальність успішно відредагована</value>
   </data>
 </root>

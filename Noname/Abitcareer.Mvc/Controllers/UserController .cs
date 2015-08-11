@@ -27,7 +27,7 @@ namespace Abitcareer.Mvc.Controllers
         {
             if (UserContext.Current.IsLoggedIn)
             {
-                return RedirectToRoute("Home");
+                return RedirectToRoute("specialities");
             }
             return View();
         }
@@ -52,7 +52,7 @@ namespace Abitcareer.Mvc.Controllers
             }
             else
             {
-                ModelState.AddModelError("AuthError", LocalizationResx.LoginIncorrect);
+                ModelState.AddModelError("Password", LocalizationResx.LoginIncorrect);
             }
 
             return View(user);

@@ -66,7 +66,7 @@
         $.post(url, data, function (d) {
             if (d)
             {
-                alert("Success");
+                Notificate("@LocalizationResx.SpecialityAditingSuccess");
                 var culture = getCulture();
                 var newName;
                 if (culture == 'en-us')
@@ -75,14 +75,13 @@
                 $('#partialView').hide();
                 $('#@Model.Id').addClass("edited");
                 $('#@Model.Id div.name').html(newName);
-                setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
+                setTimeout(function () { $('#@Model.Id').removeClass("edited"); }, 5000);
             }
             else
-                alert("Failed");
+                Notificate("@LocalizationResx.SpecialityAditingFailed");
         });
         event.preventDefault();
     });
-
     $('#exitButton').click(function () {
         $('#partialView').hide();
     });
