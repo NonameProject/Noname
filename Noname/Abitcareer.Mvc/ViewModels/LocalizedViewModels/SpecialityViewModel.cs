@@ -26,7 +26,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[5] = 0;
             Salaries[10] = 0;
             Salaries[20] = 0;
-            Name = " Ім'я по замовчуванню";
+            Name = " Ім'я за замовчуванням";
 
             EnglishName = "Default";
 
