@@ -38,7 +38,7 @@
                 @item.Name
             </div>
             <div class="salary-wrapper">
-                <h4>@item.Salaries.First().Value - @item.Salaries.Last().Value</h4>
+                <h4>@item.Salaries.Min(x => x.Value) - @item.Salaries.Max(x => x.Value)</h4>
             </div>
         </div>
     }
