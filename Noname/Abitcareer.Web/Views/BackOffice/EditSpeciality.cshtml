@@ -67,8 +67,14 @@
             if (d)
             {
                 alert("Success");
+                var culture = getCulture();
+                var newName;
+                if (culture == 'en-us')
+                    newName = $('#EnglishName').val();
+                else newName = $('#Name').val();
                 $('#partialView').hide();
-                $('#' + '@Model.Id').addClass("edited");
+                $('#@Model.Id').addClass("edited");
+                $('#@Model.Id div.name').html(newName);
                 setTimeout(function () { $('#' + '@Model.Id').removeClass("edited"); }, 5000);
             }
             else
