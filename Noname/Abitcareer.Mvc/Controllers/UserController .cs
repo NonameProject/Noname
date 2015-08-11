@@ -48,7 +48,7 @@ namespace Abitcareer.Mvc.Controllers
                 {
                     return Redirect(returnUrl);
                 }
-                return RedirectToRoute("Default");
+                return RedirectToRoute("specialities");
             }
             else
             {
