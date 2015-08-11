@@ -45,7 +45,7 @@ nav{
 .navbar.navbar-default
 {
     background: black;  
-    height: 80px;
+    height: 60px;
     line-height: 80px;
 
 }
@@ -84,8 +84,15 @@ li a.changeLanguage
     font-family: marckScript;
     font-size: 30px;
 }
+.error-text
+{
+    color: red;
+}
 
-
+.container-fluid 
+{
+    margin-top:-10px;
+}
 
 @media (min-width: 768px) {
     .mobile-localization-changer{

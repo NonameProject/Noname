@@ -282,4 +282,7 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ValidationNameCannotBeEmpty" xml:space="preserve">
+    <value>Name cannot be empty</value>
+  </data>
 </root>

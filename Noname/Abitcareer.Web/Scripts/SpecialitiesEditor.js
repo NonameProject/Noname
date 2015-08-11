@@ -34,7 +34,6 @@
         event.stopPropagation();
         $.ajax(
             {
-                type: "POST",
                 url: "specialities/add",
                 success: function(data)
                 {

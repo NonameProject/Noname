@@ -21,10 +21,11 @@
     </div>
 </div>
 
-<div class="search">
+<!--<div class="search">
     <input placeholder="@LocalizationResx.Search"/>
-</div>
+</div>-->
 
+<div id="wrapper">
 <div id="addNew" class="card col-md-4 boxShadow17">
     <span>@LocalizationResx.NewSpeciality</span>
 </div>
@@ -37,11 +38,12 @@
                 @item.Name
             </div>
             <div class="salary-wrapper">
-                <h4>@item.Salaries.First().Value - @item.Salaries.Last().Value</h4>
+                <h4>@item.Salaries.Min(x => x.Value) - @item.Salaries.Max(x => x.Value)</h4>
             </div>
         </div>
     }
 </section>
+    </div>
 
 @section Scripts
 {

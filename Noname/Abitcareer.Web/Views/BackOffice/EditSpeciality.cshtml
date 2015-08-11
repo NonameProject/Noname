@@ -12,13 +12,13 @@
         @Html.HiddenFor(x => x.Id)
         <h3>@LocalizationResx.EditSpeciality</h3>
         <h4>@LocalizationResx.Speciality.ToUpper()</h4>
-        
         @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
-        
+        <br />
+        <span id="js-validation" class="error-text"></span>
         <h4>@LocalizationResx.Salaries.ToUpper()</h4>
         
         <ul class="salaries">
@@ -55,6 +55,12 @@
     }
 <script>
     $("#editor").submit(function (event) {
+        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0)
+        {
+            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
+            event.preventDefault();
+            return false;
+        }
         var data = $(this).serialize();
         var url = $(this).attr("action");
         $.post(url, data, function (d) {

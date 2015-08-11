@@ -82,7 +82,7 @@ select
 
 .customLegend {
     position:relative;
-    top: -4px;
+    top: -5px;
 }
 
     .customLegend legend {
@@ -130,3 +130,14 @@ select
         float:left;
         margin-left:25%;
     }
+
+#chart-container {
+    max-height: 620px;
+}
+.serieName {
+    font-size: 0.8em;
+}
+
+#input {
+    max-height: 620px;
+}
