@@ -84,7 +84,10 @@ li a.changeLanguage
     font-family: marckScript;
     font-size: 30px;
 }
-
+.error-text
+{
+    color: red;
+}
 
 
 @media (min-width: 768px) {
