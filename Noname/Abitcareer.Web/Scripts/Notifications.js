@@ -8,6 +8,6 @@
     new Notification("AbitCareer", {
         tag: "ache-mail",
         body: text,
-        icon: document.location.host + "/Content/Images/notificationImage.png"
+        icon: "~/Content/Images/notificationImage.png"
     });
 }

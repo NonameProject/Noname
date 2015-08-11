@@ -5,7 +5,7 @@
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
-
+<script src="~/Scripts/Notifications.js"></script>
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <input type="button" id="exit"/>
