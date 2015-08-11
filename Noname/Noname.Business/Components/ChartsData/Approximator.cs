@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Abitcareer.Business.Components
+namespace Abitcareer.Business.Components.ChartsData
 {
     public class Approximator
     {
@@ -31,6 +31,27 @@ namespace Abitcareer.Business.Components
             this.y = y.ToArray();
             GetCoef();
         }
+
+        public double CalcY(double x)
+        {
+            double y = 0, mult = 1; ;
+            foreach (var coef in UnknownCoef)
+            {
+                y += coef * mult;
+                mult *= x;
+            }
+            return y;
+        }        
+
+#region private
+        private double[] GetCoef( )
+        {
+            InitMatrix();
+            Diagonal();
+            ProcessRows();
+            FindCoef();
+            return UnknownCoef;
+        }        
 
         private void InitMatrix()
         {
@@ -115,50 +136,7 @@ namespace Abitcareer.Business.Components
                 }
                 UnknownCoef[i] = (Coef[i] - s) / Matrix[i, i];
             }
-        }
-
-        public double[] GetCoef()
-        {
-            InitMatrix();
-            Diagonal();
-            ProcessRows();
-            FindCoef();
-            return UnknownCoef;
-        }
-
-        public double CalcY(double x)
-        {
-            double y = 0, mult = 1;;
-            foreach(var coef in UnknownCoef)
-            {
-                y += coef * mult;
-                mult *= x;
-            }
-            return y;
-        }
-
-        public List<Point> CalcY(List<double> x)
-        {
-            var res = new List<Point>(x.Count);
-            foreach (var m in x)
-            {
-                res.Add(new Point(m, CalcY(m)));
-            }
-            return res;
-        }
-
-        public List<Point> CalcY(double fromX, double toX)
-        {
-            if (toX < fromX)
-            {
-                throw new ArgumentException("uncorrect range");
-            }
-            var res = new List<Point>((int)(toX - fromX));
-            for (; fromX <= toX; fromX++)
-            {
-                res.Add(new Point(fromX, CalcY(fromX)));
-            }
-            return res;
-        }
+        }        
+#endregion
     }
 }

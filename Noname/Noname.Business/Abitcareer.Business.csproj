@@ -62,7 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
-    <Compile Include="Components\Approximator.cs" />
+    <Compile Include="Components\ChartsData\Approximator.cs" />
+    <Compile Include="Components\ChartsData\ChartsDataProvider.cs" />
     <Compile Include="Components\Extensions\StringExtensions.cs" />
     <Compile Include="Components\Extensions\DictonaryExtensions.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
