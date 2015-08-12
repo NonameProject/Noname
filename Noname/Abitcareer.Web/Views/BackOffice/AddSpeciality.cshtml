@@ -69,10 +69,13 @@
                 {
                     Notificate("@LocalizationResx.SpecialityAdditingSuccess");
                     $('#partialView').hide();
-                  
+                    $("#addNew").after(d);
                 }
                 else
+                {
                     Notificate("@LocalizationResx.SpecialityAdditingFailed");
+                }
+
         });
         event.preventDefault();
     }

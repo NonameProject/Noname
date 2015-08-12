@@ -9,7 +9,7 @@ $(function () {
         $("body").toggleClass("loading");
     })
 
-    $('.specButton').click(function (event) {
+    $('body').on("click", ".specButton", function (event) {
         $("#inner").empty();
         $("#partialView").show(0);
         event.stopPropagation();
@@ -23,11 +23,11 @@ $(function () {
         event.stopPropagation();
     });
 
-    $('.card:not(#addNew)').on("mouseover", function () {
+    $('body').on("mouseover", ".card:not(#addNew)", function () {
         $(this.children[0]).show();
     });
 
-    $(".card:not(#addNew)").mouseout(function () {
+    $("body").on("mouseout", ".card:not(#addNew)", function () {
         $(this.children[0]).hide();
     });
 

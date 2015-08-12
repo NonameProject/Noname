@@ -1,0 +1,12 @@
+﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
+
+<div class="col-md-4 card boxShadow17 specButton" id="@Model.Id">
+    <div class="ttip"><span>@LocalizationResx.PressToEdit</span></div>
+    <div class="name">
+        @Model.Name
+    </div>
+    <div class="salary-wrapper">
+        <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
+    </div>
+</div>
+
