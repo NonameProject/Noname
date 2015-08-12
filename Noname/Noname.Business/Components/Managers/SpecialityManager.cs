@@ -1,8 +1,10 @@
 ﻿using Abitcareer.Business.Data_Providers_Contracts;
 using Abitcareer.Business.Interfaces;
 using Abitcareer.Business.Models;
+using CultureEngine;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,13 +54,13 @@ namespace Abitcareer.Business.Components.Managers
 
         public IList<Speciality> GetList() 
         {
-            ClearCache();
-            var list = provider.GetList();
+            var list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
             var newList = new List<Speciality>(list.Count);
             foreach (var item in list)
             {
                 newList.Add((Speciality)GetBaseModel(item));
             }
+
             return newList;
         }
 
@@ -89,6 +91,19 @@ namespace Abitcareer.Business.Components.Managers
         public Speciality GetById(string id)
         {
             return provider.GetById(id);
+        }
+
+        private IList<Speciality> SortBasedOnCurrentCulture(IEnumerable<Speciality> list, LCID languageId)
+        {
+            switch (languageId)
+            {
+                case LCID.English:
+                    return list.OrderBy(x => x.EnglishName).ToList();
+                case LCID.Ukrainian:
+                    return list.OrderBy(x => x.Name).ToList();
+                default:
+                    return list.OrderBy(x => x.Name).ToList();
+            }
         }
     }
 }

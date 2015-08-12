@@ -101,7 +101,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LocalizationEngine\Abitcareer.CultureEngine.csproj">
+      <Project>{25f4500e-2bc2-41a0-a266-d377de8faf07}</Project>
+      <Name>Abitcareer.CultureEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
