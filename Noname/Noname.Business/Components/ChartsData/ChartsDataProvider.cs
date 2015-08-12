@@ -11,7 +11,7 @@ namespace Abitcareer.Business.Components.ChartsData
     {        
         public List<List<Point>> PrepareData(Speciality speciality, short polinom)
         {                        
-            const int startOfWorking = 3;
+            const int startOfWorking = 1;
             const int maxYears = 45;
             int i = 0;
 
