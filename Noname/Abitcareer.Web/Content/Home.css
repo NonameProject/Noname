@@ -27,7 +27,7 @@
     height: 100%;
     left: 0;
     margin: 0;
-    padding-top: 60px;
+    padding-top: 30px;
     position: absolute;
     text-align: center;
     top: 0;
@@ -140,6 +140,7 @@ select
 
 #chart-container {
     max-height: 86%;
+    top: 160px;
 }
 .serieName {
     font-size: 0.8em;

@@ -34,7 +34,7 @@ namespace Abitcareer.Mvc.Controllers
             if (speciality == null)
                 return Json(false);
 
-            return Json(new ChartsDataProvider().PrepareData(speciality, polinom), JsonRequestBehavior.AllowGet);
+            return Json(new ChartsDataProvider().PrepareData(speciality, polinom));
         }
     }
 }

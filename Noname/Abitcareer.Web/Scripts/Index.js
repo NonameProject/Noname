@@ -97,32 +97,18 @@ $(function () {
             window.location.hash = $("#spec").val();
             var chart = new Chart();
             //$('#selectedSpeciality').html($("#spec option:selected").html());
-            $('#js-changeInput').val($("#spec option:selected").html());
 
             butt.prop('disabled', false);
-            $("#input").fadeToggle(500);
-            $("#chart-container").fadeToggle(500);
+            if ($("#commit").css("display") != "none") {
+                $(".toFade").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
+            }
 
             chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
 
-            data1 = {
-                name: textStrings.payment1Name,
-                color: 'darkblue',
-                data: selectedSpec[2].data,
-                stack: 'payment'
-            };
-            data2 = {
-                name: textStrings.payment2Name,
-                color: 'blue',
-                data: provider.MultiplieData(data1.data, 0.8),
-                stack: 'payment'
-            };
-            data3 = {
-                name: textStrings.payment3Name,
-                color: 'royalblue',
-                data: provider.MultiplieData(data1.data, 0.6),
-                stack: 'payment'
-            };
+            data1.data = selectedSpec[2].data;
+            data2.data = provider.MultiplieData(data1.data, 0.8);
+            data3.data = provider.MultiplieData(data1.data, 0.6);
 
             chart.draw("#summary-container", [data1, data2, data3, selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
 
@@ -140,12 +126,10 @@ $(function () {
             draw();
         }
     }
-
-    $("#js-changeInput").click(function () {
-        window.location.hash = '';
-        setHash();
-        $("#input").fadeToggle(500);
-        $("#chart-container").fadeToggle(500);
+    
+    $("#spec").on("change", function () {
+        if ($("#commit").css("display") == "none")
+            draw();
     });
 
     $("#commit").on("click", draw);
