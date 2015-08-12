@@ -84,7 +84,9 @@ function Chart() {
             var retData = [],
                 length = chart.series.length;
             for (var i = 0; i < length-1; i++) {
-                var data = addPointToLine(chart.series[length-1].points, chart.series[i].points, chart.series[length - 1]);
+                var data = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
+                if (!data.saveIsect)
+                    continue;
                 retData.push(data);
                 selectPoint(chart.series[length-1], data);
             }
@@ -116,6 +118,8 @@ function Chart() {
         };
 
         var selectPoint = function (line, retData) {
+            if (!retData.saveIsect)
+                return;
             for (var p = 0; p < line.data.length; p++) {
                 if (line.data[p].x == retData.saveIsect.x && line.data[p].y == retData.saveIsect.y) {
                     line.data[p].select(true,true);
@@ -196,7 +200,7 @@ function Chart() {
 
             if ($(conteiner).highcharts()) {
                 $(conteiner).highcharts().destroy();
-                $(conteiner).html('');
+                $(conteiner).empty();
             }
 
             $(conteiner).highcharts({
