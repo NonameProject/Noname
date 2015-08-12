@@ -10,7 +10,7 @@ $(function () {
     })
 
     $('.specButton').click(function (event) {
-        $("#inner").html(null);
+        $("#inner").empty();
         $("#partialView").show(0);
         event.stopPropagation();
         $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
@@ -33,7 +33,7 @@ $(function () {
 
     $("#addNew").on("click", function(event)
     {
-        $("#inner").html(null);
+        $("#inner").empty();
         event.stopPropagation();
         $.ajax(
             {
