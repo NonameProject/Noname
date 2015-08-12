@@ -45,7 +45,7 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-            //MiniProfiler.Start();//if you need to connect the included miniProfiler
+            MiniProfiler.Start();//if you need to connect the included miniProfiler
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
             RewriteViewEngines();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -13,10 +13,12 @@
 
         if (!res[2].data.length)
             res[2].data = getYearSumm(res[0].data);
+
         if (!res[3].data.length)
             res[3].data = getYearSumm(res[1].data);
 
         var length = res[3].data.length - 1;
+
         if (typeof res[3].pointStart === 'numder')
             length += res[3].pointStart;
         res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1] });
