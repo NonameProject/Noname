@@ -124,7 +124,7 @@
     <value>Витрати</value>
   </data>
   <data name="PaymentsCaption" xml:space="preserve">
-    <value>Момент, коли зарплата рівна витратам</value>
+    <value>Cамостійна оплата навчання</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Плата за навчання в</value>
@@ -148,7 +148,7 @@
     <value>Середній</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
-    <value>Момент, коли сумарний заробіток рівний сумарним витратам</value>
+    <value>Коли освіта окупиться</value>
   </data>
   <data name="SummaryGraphCaption" xml:space="preserve">
     <value>Рівень зарплати</value>
@@ -181,7 +181,7 @@
     <value>Шановний абітурієнте!</value>
   </data>
   <data name="SummaryCosts" xml:space="preserve">
-    <value>Cумарні витрати</value>
+    <value>Cумарні витрати на навчання</value>
   </data>
   <data name="SummarySalary" xml:space="preserve">
     <value>Сумарний заробіток</value>
