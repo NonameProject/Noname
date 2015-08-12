@@ -144,7 +144,8 @@ $(function () {
 
             window.location.hash = $("#spec").val();
             var chart = new Chart();
-            $('#selectedSpeciality').html($("#spec option:selected").html());
+            //$('#selectedSpeciality').html($("#spec option:selected").html());
+            $('#js-changeInput').val($("#spec option:selected").html());
             chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
 
             data1 = {
