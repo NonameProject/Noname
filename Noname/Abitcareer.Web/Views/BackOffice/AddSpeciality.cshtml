@@ -60,6 +60,7 @@
 }
 
 <script>
+    $("ul.salaries li input").attr("min", 0);
     var customSubmit = function (event) {
             var data = $("#editor").serialize();
             var url = $("#editor").attr("action");
@@ -68,7 +69,7 @@
                 {
                     Notificate("@LocalizationResx.SpecialityAdditingSuccess");
                     $('#partialView').hide();
-                    document.location.reload();
+                  
                 }
                 else
                     Notificate("@LocalizationResx.SpecialityAdditingFailed");
