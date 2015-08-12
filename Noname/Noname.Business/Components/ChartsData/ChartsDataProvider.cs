@@ -12,6 +12,7 @@ namespace Abitcareer.Business.Components.ChartsData
         public List<List<Point>> PrepareData(Speciality speciality, short polinom)
         {                        
             const int startOfWorking = 3;
+            const int maxYears = 45;
             int i = 0;
 
             var aproximator = initAproximator(speciality, polinom);
@@ -28,9 +29,9 @@ namespace Abitcareer.Business.Components.ChartsData
             {
                 var newPoint = new Point(i + 1, res[2][i++].y + 12 * point.y);
                 res[2].Add(newPoint);
-            }            
+            }
 
-            for (i = startOfWorking; res[0].Count > i || res[3][i].y <= res[2][res[2].Count - 1].y; i++)
+            for (i = startOfWorking; ( res[0].Count > i || res[3][i].y <= res[2][res[2].Count - 1].y ) && i < maxYears; i++)
             {
                 var val = aproximator.CalcY(i);
                 if (val < 0)
