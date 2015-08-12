@@ -11,9 +11,9 @@
 
             var length = res[3].data.length - 1;
             if (typeof res[3].pointStart === 'numder') {
-                length += res[3].pointStart;
-                res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1] });
+                length += res[3].pointStart;                
             }
+            res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1].y });
 
             callback(res);
         });
