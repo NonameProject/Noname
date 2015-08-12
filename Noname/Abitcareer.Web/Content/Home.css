@@ -93,7 +93,7 @@ select
 
     .customLegend .item {
         clear: both;
-        display: inline-block;
+        display: inline-table;
         height: 18px;
         margin: 0 10px 0 0;   
     }
@@ -106,31 +106,33 @@ select
         border-radius: 50%;
         cursor: pointer;
         float: left;
-        height: 16px;
-        margin-right: 6px;
-        width: 16px;
+        height: 8px;
+        margin-right: 4px;
+        margin-top: 5px;
+        width: 8px;
         -webkit-border-radius: 50%;
     }
     .customLegend .serieName {
         cursor: pointer;
         float: left;
         line-height: 16px;
+        word-break:normal;
+        word-wrap:break-word;
     }
 
 .payment {    
     display: inline-block;
-    width: 50%;
+    width: 40%;
 }
 
 .payment+.item {
     float: right;
     padding-top: 26px;
-    padding-right: 20%;
+    padding-right: 5%;
 }
 
     .payment .item {
         float:left;
-        margin-left:25%;
     }
 
 #chart-container {
