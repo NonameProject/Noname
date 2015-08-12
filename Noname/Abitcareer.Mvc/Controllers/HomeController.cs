@@ -5,6 +5,7 @@ using Abitcareer.Business.Models;
 using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.Business.Components.Managers;
 using Abitcareer.Business.Components.ChartsData;
+using System.Linq;
 
 namespace Abitcareer.Mvc.Controllers
 {
@@ -19,7 +20,10 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var list = from spec in specialityManager.GetList()
+                         where spec.Salaries.Max(x => x.Value) > 0
+                         select spec;
+            return View(AutoMapper.Mapper.Map<List<SpecialityViewModel>>(list));
         }
 
         public ActionResult GetData(string id, short polinom = 3)

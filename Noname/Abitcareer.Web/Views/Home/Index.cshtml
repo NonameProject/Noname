@@ -3,6 +3,8 @@
 }
     
 @using CultureEngine
+@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
+@model IEnumerable<SpecialityViewModel>
 @section styles
 {
     @Styles.Render("~/Content/Home.css")
@@ -19,6 +21,12 @@
             <option value="pi">Програмна інженерія</option>
             <option value="ki">Комп'ютерна інженерія</option>
             <option value="ci">Системна інженерія</option>
+            @if(Model != null){
+                foreach (var item in Model)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
         </select>
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
