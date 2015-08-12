@@ -76,7 +76,10 @@
         event.preventDefault();
     }
 
-    document.getElementById("editor").onsubmit = function (e) { customSubmit(e); return false; }
+    document.getElementById("editor").onsubmit = function (e) {
+        customSubmit(e);
+        return false;
+    }
 
     $('#exitButton').click(function () {
         $('#partialView').hide();
@@ -85,5 +88,4 @@
     $('#exit').click(function () {
         $('#partialView').hide();
     });
-
 </script>

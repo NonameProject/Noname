@@ -17,6 +17,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
         public virtual int Code { get; set; }
 
         public Dictionary<int, int> Salaries = new Dictionary<int, int>();
+
         public SpecialityViewModel()
         {
             Salaries[1] = 0;
@@ -27,12 +28,8 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[10] = 0;
             Salaries[20] = 0;
             Name = " Ім'я за замовчуванням";
-
             EnglishName = "Default";
-
             Id = Guid.NewGuid().ToString();
-
-
         }
     }
 }

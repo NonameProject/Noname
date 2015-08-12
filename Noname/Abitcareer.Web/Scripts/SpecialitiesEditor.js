@@ -34,7 +34,6 @@ $(function () {
     $("#addNew").on("click", function(event)
     {
         $("#inner").html(null);
-
         event.stopPropagation();
         $.ajax(
             {
