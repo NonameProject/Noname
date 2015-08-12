@@ -54,7 +54,7 @@ function Chart() {
                 legend.append(fieldsets);
 
             $.each(chart.series, function (j, data) {
-                item = '<div class="item"><div class="serieName" id=""><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div>' + data.name + '</div></div>';
+                item = '<div class="item serieName"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div>' + data.name + '</div>';
                 if (data.options.stack === 'payment' && payment.length)
                     payment.append(item);
                 else
