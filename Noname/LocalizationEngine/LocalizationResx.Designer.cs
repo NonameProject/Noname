@@ -529,6 +529,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сумарні витрати на навчання в.
+        /// </summary>
+        public static string SummaryPayment {
+            get {
+                return ResourceManager.GetString("SummaryPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сумарний заробіток.
         /// </summary>
         public static string SummarySalary {

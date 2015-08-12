@@ -300,4 +300,7 @@
   <data name="SpecialityAditingSuccess" xml:space="preserve">
     <value>Speciality successfully edited</value>
   </data>
+  <data name="SummaryPayment" xml:space="preserve">
+    <value>Total cost in</value>
+  </data>
 </root>

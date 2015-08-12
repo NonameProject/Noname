@@ -300,4 +300,7 @@
   <data name="SpecialityAditingSuccess" xml:space="preserve">
     <value>Спеціальність успішно відредагована</value>
   </data>
+  <data name="SummaryPayment" xml:space="preserve">
+    <value>Сумарні витрати на навчання в</value>
+  </data>
 </root>
