@@ -26,7 +26,7 @@ namespace Abitcareer.Mvc.Controllers
             return View(AutoMapper.Mapper.Map<List<SpecialityViewModel>>(list));
         }
 
-        public ActionResult GetData(string id, short polinom = 3)
+        public ActionResult GetData(string id, short polinom = 5)
         {
             if (string.IsNullOrEmpty(id))
                 return Json(false);
