@@ -14,6 +14,7 @@
                 length += res[3].pointStart;                
             }
             res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1].y });
+            res[0].data.push({ x: res[0].data[res[0].data.length - 1].x, y: 0 });
 
             callback(res);
         });
