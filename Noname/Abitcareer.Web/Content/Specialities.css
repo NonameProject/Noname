@@ -207,6 +207,9 @@ label[for="Name"], label[for="EnglishName"]
 {
     min-width: 90px;
 }
+#editor {
+background-color:inherit;
+}
 @media (max-width: 992px) {
     #addNew{ /*Dirty hack, but it seems like it is only way to fix this shit*/
         position: relative;
