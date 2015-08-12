@@ -33,6 +33,8 @@ namespace Abitcareer.Business.Components.ChartsData
             for (i = startOfWorking; res[0].Count > i || res[3][i].y <= res[2][res[2].Count - 1].y; i++)
             {
                 var val = aproximator.CalcY(i);
+                if (val < 0)
+                    val = 0;
                 Point newPoint;
                 newPoint = new Point(i, val);
                 res[1].Add(newPoint);
