@@ -46,14 +46,6 @@ namespace team2project.Components
             }
         }
 
-        public override bool IsAdmin
-        {
-            get
-            {
-                return IsPrincipalAvailable() && WebUser.IsInRole("Admin");
-            }
-        }
-
         public override User User
         {
             get

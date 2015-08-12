@@ -63,7 +63,6 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult LogOut()
         {
             SignOut();
-
             return RedirectToRoute("Default");
         }
 

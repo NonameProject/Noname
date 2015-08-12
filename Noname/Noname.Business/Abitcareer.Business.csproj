@@ -75,6 +75,8 @@
     <Compile Include="Components\Managers\UserManager.cs" />
     <Compile Include="Components\Translation\Translator.cs" />
     <Compile Include="Components\UserContext.cs" />
+    <Compile Include="Components\XmlServices\DataImportXmlService.cs" />
+    <Compile Include="Components\XmlServices\Entities\NodeModel.cs" />
     <Compile Include="Data Providers Contracts\ICityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IFacultiesToSpecialitiesDataProvider.cs" />

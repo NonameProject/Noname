@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,24 @@ namespace Abitcareer.Core
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             base.OnAuthorization(filterContext);
+
             if (filterContext.Result is HttpUnauthorizedResult)
             {
+                string language = null;
+
+                if (HttpContext.Current.Request.UserLanguages.Any())
+                {
+                    language = HttpContext.Current.Request.UserLanguages[0];
+                }
+                else
+                {
+                    language = CultureInfo.DefaultThreadCurrentCulture.ToString();
+                }
+
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                 {
-                    { "language", HttpContext.Current.Request.UserLanguages[0] },
+                    { "language", language },
                     { "controller", "User" },
                     { "action", "LogIn" },
                     { "ReturnUrl", filterContext.HttpContext.Request.RawUrl }

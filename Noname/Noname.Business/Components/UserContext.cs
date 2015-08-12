@@ -20,8 +20,6 @@ namespace Events.Business.Components
 
         public abstract bool IsLoggedIn { get; }
 
-        public abstract bool IsAdmin { get; }
-
         public abstract User User { get; }
     }
 }
