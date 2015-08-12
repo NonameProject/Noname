@@ -164,7 +164,7 @@ function Chart() {
     };
 
     return {
-        draw: function (conteiner, dataObj, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, out, colors) {
+        draw: function (conteiner, dataObj, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, colors, out) {
             if (colors != undefined && colors != null)
                 plotColors = colors;
 
