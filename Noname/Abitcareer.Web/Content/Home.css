@@ -139,8 +139,11 @@ select
     }
 
 #chart-container {
-    max-height: 86%;
+    padding: 0;
+    height: calc(100% - 170px);
+    max-height: 85%;
     top: 160px;
+    margin-top: -35px;
 }
 .serieName {
     font-size: 0.8em;
