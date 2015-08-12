@@ -114,7 +114,7 @@ $(function () {
     var provider = new DataProvider();
 
     var draw = function () {
-        if ($("#spec").val() === "noData")
+        if ($("#spec").val() === "noData" || $("#commit").hasOwnProperty("disabled"))
             return false;
         var butt = $('#commit');
         butt.prop('disabled', true);
