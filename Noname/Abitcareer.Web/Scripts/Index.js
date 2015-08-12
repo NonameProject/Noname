@@ -180,8 +180,12 @@ $(function () {
     };
 
     if (window.location.hash) {
-        $("#spec").val(window.location.hash.slice(1));
-        draw();
+        var spec = $("#spec"),
+            hash = window.location.hash.slice(1);
+        if (spec.find('option[value="' + hash + '"]').length) {
+            spec.val(hash);
+            draw();
+        }
     }
 
     $("#js-changeInput").click(function () {
