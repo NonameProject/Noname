@@ -1,9 +1,9 @@
 ﻿function DataProvider() {
 
     this.getData = function (callback) {
-        var res = JSON.parse(JSON.stringify(specialities[$("#spec").val()]));
+        var res = JSON.parse(JSON.stringify(specialities));
 
-        $.post(textStrings.UrlGet, { id: '45d38cf2-e76c-4b7f-bd16-9e61a77eccfa' }, function (data) {
+        $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
             res[0].data = data[0];
             res[1].data = data[1];
             res[2].data = data[2];
@@ -29,19 +29,14 @@
         return data2;
     };
 
-    var specialities = {
-        "ki": {},
-        "pi": {},
-        "ci": {}
-    };
-    specialities["pi"] = [{
+    var specialities = [{
         name: textStrings.paymentsAxis,
-        data: [1708, 1708, 1708, 1708, 2500],
+        data: [],
         color: "#990033"// was red,        
     },
     {
         name: textStrings.summaryAxis,
-        data: [0, 0, 1500, 2800, 4000, 5200], //will be overrided
+        data: [],
         color: "green"
     },
     {
@@ -54,48 +49,6 @@
         data: [],
         color: "green"
     }];
-
-    specialities["ci"] = [{
-        name: textStrings.paymentsAxis,
-        data: [1300, 1300, 1300, 1300, 1300, 1500],
-        color: "#990033"// was red
-    },
-    {
-        name: textStrings.summaryAxis,
-        data: [0, 0, 800, 3000, 5000, 7000],
-        color: "green"
-    },
-    {
-        name: textStrings.summaryCosts,
-        data: [],
-        color: "blue"
-    },
-    {
-        name: textStrings.summarySalary,
-        data: [],
-        color: "green"
-    }];
-
-    specialities["ki"] = [{
-        name: textStrings.paymentsAxis,
-        data: [1200, 1200, 1200, 1200, 1200, 1400],
-        color: "#990033"
-    },
-    {
-        name: textStrings.summaryAxis,
-        data: [0, 0, 1200, 1700, 2000, 2500],
-        color: "green"
-    },
-    {
-        name: textStrings.summaryCosts,
-        data: [],
-        color: "blue"
-    },
-    {
-        name: textStrings.summarySalary,
-        data: [],
-        color: "green"
-    }];    
 }
 
 $(function () {
