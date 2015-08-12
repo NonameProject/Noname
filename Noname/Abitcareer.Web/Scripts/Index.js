@@ -116,6 +116,8 @@ $(function () {
     var draw = function () {
         if ($("#spec").val() === "noData")
             return false;
+        var butt = $('#commit');
+        butt.prop('disabled', true);
 
         provider.getData(function (selectedSpec) {
             var data1, data2, data3;
@@ -137,15 +139,17 @@ $(function () {
                 color: 'royalblue',
                 data: provider.MultiplieData(data1.data, 0.6),
                 stack: 'payment'
-            };
-
-            $("#input").fadeToggle(500);
-            $("#chart-container").fadeToggle(500);
+            };            
 
             window.location.hash = $("#spec").val();
             var chart = new Chart();
             //$('#selectedSpeciality').html($("#spec option:selected").html());
             $('#js-changeInput').val($("#spec option:selected").html());
+
+            butt.prop('disabled', false);
+            $("#input").fadeToggle(500);
+            $("#chart-container").fadeToggle(500);
+
             chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
 
             data1 = {
