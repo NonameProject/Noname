@@ -313,7 +313,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Момент, коли зарплата рівна витратам.
+        ///   Ищет локализованную строку, похожую на Cамостійна оплата навчання.
         /// </summary>
         public static string PaymentsCaption {
             get {
@@ -502,7 +502,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Момент, коли сумарний заробіток рівний сумарним витратам.
+        ///   Ищет локализованную строку, похожую на Коли освіта окупиться.
         /// </summary>
         public static string SummaryCaption {
             get {
@@ -511,7 +511,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Cумарні витрати.
+        ///   Ищет локализованную строку, похожую на Cумарні витрати на навчання.
         /// </summary>
         public static string SummaryCosts {
             get {

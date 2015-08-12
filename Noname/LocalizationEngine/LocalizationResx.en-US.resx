@@ -124,7 +124,7 @@
     <value>Costs</value>
   </data>
   <data name="PaymentsCaption" xml:space="preserve">
-    <value>Break even</value>
+    <value>Education self-sufficiency</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Tuition fee in</value>
@@ -148,7 +148,7 @@
     <value>Middle</value>
   </data>
   <data name="SummaryCaption" xml:space="preserve">
-    <value>Moment when total revenue equal total cost</value>
+    <value>Education payback period</value>
   </data>
   <data name="SummaryGraphCaption" xml:space="preserve">
     <value>Salary</value>
@@ -181,7 +181,7 @@
     <value>Dear graduate!</value>
   </data>
   <data name="SummaryCosts" xml:space="preserve">
-    <value>Total costs</value>
+    <value>Total education expenses</value>
   </data>
   <data name="SummarySalary" xml:space="preserve">
     <value>Total Salary</value>
@@ -262,13 +262,13 @@
     <value>Login data is incorrect</value>
   </data>
   <data name="FirstPaymentName" xml:space="preserve">
-    <value>top university</value>
+    <value>top-rank university</value>
   </data>
   <data name="SecondPaymentName" xml:space="preserve">
-    <value>middle university</value>
+    <value>middle-rank university</value>
   </data>
   <data name="ThirdPaymentName" xml:space="preserve">
-    <value>unprestigious university</value>
+    <value>low-rank university</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
     <value>Add new speciality</value>
