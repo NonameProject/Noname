@@ -23,17 +23,21 @@
     <a href="#" id="commit" class="btn btn-default">@LocalizationResx.Calculate</a>
 </div>
 <div id="chart-container" class="panel" style="display: none">
-    <input type="button" id="js-changeInput" class="btn btn-default" value="@LocalizationResx.SelectAnotherInput"/>
-    <h3 id="selectedSpeciality"></h3>
-    <div class="chartWrapper right">
-        <div id="summary-container"></div>
-        <div class="customLegend"></div>
-    </div>
-    <div class="chartWrapper right">
+    <input type="button" id="js-changeInput" class="btn btn-default" value=""/>
+    @*<h3 id="selectedSpeciality"></h3>*@
+    <div class="chartWrapper">
         <div id="payments-container"></div>
         <div class="customLegend">
             <fieldset class="payment">
                 <legend>@LocalizationResx.Payment</legend>
+            </fieldset>
+        </div>
+    </div>
+    <div class="chartWrapper right">
+        <div id="summary-container"></div>
+        <div class="customLegend">
+            <fieldset class="payment">
+                <legend>@LocalizationResx.SummaryPayment</legend>
             </fieldset>
         </div>
     </div>
