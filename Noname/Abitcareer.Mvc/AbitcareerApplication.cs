@@ -47,23 +47,12 @@ namespace Abitcareer.Mvc
         {
             MiniProfiler.Start();//if you need to connect the included miniProfiler
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
-            RewriteViewEngines();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
 
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
-        }
-
-        private void RewriteViewEngines()
-        {
-            var copy = ViewEngines.Engines.ToList();
-            ViewEngines.Engines.Clear();
-            foreach (var item in copy)
-            {
-                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
-            }
         }
 
         private void Application_Error(Object sender, EventArgs args)
