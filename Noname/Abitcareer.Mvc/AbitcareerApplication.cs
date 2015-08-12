@@ -31,7 +31,14 @@ namespace Abitcareer.Mvc
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(SpecialityViewModel), new SpecialityBinder());
             DefaultModelBinder.ResourceClassKey = "LocalizationResx";
-
+            GlobalFilters.Filters.Add(new ProfilingActionFilter());
+            var copy = ViewEngines.Engines.ToList();
+            ViewEngines.Engines.Clear();
+            foreach (var item in copy)
+            {
+                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
+            }
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
 
         public void ErrorMail_Filtering(object sender, ExceptionFilterEventArgs e)
@@ -45,9 +52,7 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-            MiniProfiler.Start();//if you need to connect the included miniProfiler
-            GlobalFilters.Filters.Add(new ProfilingActionFilter());
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            MiniProfiler.Start();
         }
 
         protected void Application_EndRequest()
