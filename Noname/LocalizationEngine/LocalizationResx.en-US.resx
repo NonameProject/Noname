@@ -303,4 +303,13 @@
   <data name="SummaryPayment" xml:space="preserve">
     <value>Total cost in</value>
   </data>
+  <data name="SpecialityRemoveFailed" xml:space="preserve">
+    <value>Failed to remove specialty</value>
+  </data>
+  <data name="SpecialityRemoveSuccess" xml:space="preserve">
+    <value>Specialty successfully removed</value>
+  </data>
+  <data name="SpecialityOpenFailed" xml:space="preserve">
+    <value>Specialty been removed or edited. Refresh the page</value>
+  </data>
 </root>

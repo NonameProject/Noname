@@ -122,8 +122,12 @@
             data: {id : '@Model.Id'},
             success: function()
             {
+                Notificate("@LocalizationResx.SpecialityRemoveSuccess")
                 $('#partialView').hide();
                 $("#@Model.Id").remove();
+            },
+            error: function () {
+                Notificate("@LocalizationResx.SpecialityRemoveFailed")
             }
         });
     });
