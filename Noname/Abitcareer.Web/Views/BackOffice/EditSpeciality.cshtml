@@ -113,9 +113,11 @@
         {
             url: "deletespeciality",
             type: "POST",
-            data: "@Model.Id",
+            data: {id : '@Model.Id'},
             success: function()
             {
+                $('#partialView').hide();
+                $("#@Model.Id").remove();
             }
         });
     });

@@ -115,7 +115,13 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
         {
             Execute(session =>
                 {
-                    session.Delete(session.Load(typeof(Speciality), id));
+                    using (var transaction = session.BeginTransaction())
+                    {
+                        session.Delete(session.Load(typeof(Speciality), id));
+                        session.Flush();
+                        transaction.Commit();
+                    }
+
                 });
         }
     }

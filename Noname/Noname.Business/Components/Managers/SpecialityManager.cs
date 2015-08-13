@@ -83,7 +83,9 @@ namespace Abitcareer.Business.Components.Managers
 
         public void Delete(string id)
         {
-            provider.Delete(id);
+            ClearCache();
+            if(provider.GetById(id) != null)
+                provider.Delete(id);
         }
 
         public bool IsExists(Speciality model)
