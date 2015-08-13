@@ -2,21 +2,46 @@
     return document.location.href.split('/')[3].toLowerCase();
 };
 
-deleteSpeciality = function(id) {
-    $.ajax(
-        {
-            url: "deletespeciality",
-            type: "POST",
-            data: { id: id },
-            success: function () {
-                Notificate(LocalizationRemoveSuccess)
-                $("#"+id).remove();
-            },
-            error: function () {
-                Notificate(LocalizationRemoveFailed)
-            }
-        });
+var id;
+
+deleteSpeciality = function (Id) {
+    id = Id;
+    $("#dialog-confirm").dialog('open');
 };
+
+$("#dialog-confirm").dialog({
+    zIndex: 10000,
+    autoOpen: false,
+    resizable: false,
+    width: 400,
+    height: 200,
+    modal: true,
+    buttons: [{
+        text: SpecialityDeleteAgreeConfirm,
+        click: function () {
+            $.ajax(
+            {
+                url: "deletespeciality",
+                type: "POST",
+                data: { id: id },
+                success: function () {
+                    Notificate(LocalizationRemoveSuccess)
+                    $("#" + id).remove();
+                },
+                error: function () {
+                    Notificate(LocalizationRemoveFailed)
+                }
+            });
+            $(this).dialog("close");
+        }
+    },
+    {
+        text: SpecialityDeleteCancelConfirm,
+        click: function () {
+            $(this).dialog("close");
+        }
+    }]
+});
 
 $(function () {
     $(document).ajaxStart(function () {
@@ -39,6 +64,7 @@ $(function () {
         }
         );
     });
+
     $(document).click(function (event) {
         if ($(event.target).closest('#inner').length) return;
         $('#partialView').hide();

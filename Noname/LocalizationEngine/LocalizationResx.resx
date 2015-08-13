@@ -318,4 +318,16 @@
   <data name="PageLogin" xml:space="preserve">
     <value>Логін</value>
   </data>
+  <data name="SpecialityDeleteAgreeConfirm" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="SpecialityDeleteCancelConfirm" xml:space="preserve">
+    <value>Відмінити</value>
+  </data>
+  <data name="SpecialityDeleteTextConfirm" xml:space="preserve">
+    <value>Ця спеціальність буде остаточно видалена. Ви впевнені?</value>
+  </data>
+  <data name="SpecialityDeleteTitleConfirm" xml:space="preserve">
+    <value>Видалити цю спеціальність?</value>
+  </data>
 </root>

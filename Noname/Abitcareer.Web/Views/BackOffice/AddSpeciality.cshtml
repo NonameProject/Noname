@@ -58,7 +58,6 @@
 <script>
     $("ul.salaries li input").attr("min", 0);
     $("#editor").submit(function (event) {
-        debugger;
         if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
             $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
             event.preventDefault();

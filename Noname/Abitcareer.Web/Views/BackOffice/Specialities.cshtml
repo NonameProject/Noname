@@ -13,6 +13,7 @@
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Specialities.css")
     @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/themes/base/jquery-ui.css")
 }
 
 <h2>@LocalizationResx.Specialities</h2>
@@ -36,16 +37,22 @@
             { Html.RenderPartial("SpecialityPartial", item); }
         }
 </div>
+<div id="dialog-confirm" title="@LocalizationResx.SpecialityDeleteTitleConfirm" style="display: none;">
+            @LocalizationResx.SpecialityDeleteTextConfirm
+</div>
 <script>
     var LocalizationForRemove = "@LocalizationResx.SpecialityOpenFailed";
     var LocalizationRemoveSuccess = '@LocalizationResx.SpecialityRemoveSuccess';
     var LocalizationRemoveFailed = '@LocalizationResx.SpecialityRemoveFailed';
+    var SpecialityDeleteCancelConfirm = "@LocalizationResx.SpecialityDeleteCancelConfirm";
+    var SpecialityDeleteAgreeConfirm = "@LocalizationResx.SpecialityDeleteAgreeConfirm";
 </script>
 
 @section Scripts
 {
-   @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
-@Scripts.Render("~/Scripts/search.js")
-@Scripts.Render("~/Scripts/Notifications.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.11.4.min.js")
+    @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
+    @Scripts.Render("~/Scripts/search.js")
+    @Scripts.Render("~/Scripts/Notifications.js")
 
 }
