@@ -115,6 +115,15 @@ namespace Abitcareer.Mvc
                 {
                 });
 
+            routes.MapLocalizedRoute(
+               name: "DeleteSpeciality",
+               url: "deletespeciality",
+               defaults: new { controller = "BackOffice", action = "DeleteSpeciality" },
+               setupConstraints:
+               (dynamic constraints) =>
+               {
+               });
+
 
             routes.MapRoute(
                 "NotFound",

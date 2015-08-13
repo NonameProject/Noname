@@ -11,6 +11,8 @@ namespace Abitcareer.Business.Data_Providers_Contracts
     {
         Speciality GetByName(string name);
 
+        void Delete(string id);
+
         void ClearSalaries( );
     }
 }
