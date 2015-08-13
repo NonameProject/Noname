@@ -110,5 +110,13 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                 session.Flush();
             });
         }
+
+        public void Delete(string id)
+        {
+            Execute(session =>
+                {
+                    session.Delete(session.Load(typeof(Speciality), id));
+                });
+        }
     }
 }
