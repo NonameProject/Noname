@@ -84,15 +84,14 @@
 
                 var arrayOfSalaries = [];
                 for (var i = 1; i <= 5; i++) {
-                    debugger;
-                    var a = parseInt(changeToString($('input[name="Salaries[' + i + ']"]').val()));
-                    arrayOfSalaries.push(a);
+                    var salary = parseInt(changeToString($('input[name="Salaries[' + i + ']"]').val()));
+                    arrayOfSalaries.push(salary);
                 }
-                var a1 = parseInt(changeToString($('input[name="Salaries[10]"]').val()));
-                arrayOfSalaries.push(a1);
+                salary = parseInt(changeToString($('input[name="Salaries[10]"]').val()));
+                arrayOfSalaries.push(salary);
 
-                var a2 = parseInt(changeToString($('input[name="Salaries[20]"]').val()));
-                arrayOfSalaries.push(a2);
+                salary = parseInt(changeToString($('input[name="Salaries[20]"]').val()));
+                arrayOfSalaries.push(salary);
 
                 arrayOfSalaries.sort(compareNumeric);
                  
