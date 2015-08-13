@@ -69,10 +69,6 @@ $(function () {
                 }
             });
     });
-
-    $(".delete").click(function () {
-        
-    });
 });
 
 
