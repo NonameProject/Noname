@@ -81,6 +81,13 @@ namespace Abitcareer.Business.Components.Managers
             return result;
         }
 
+        public void Delete(string id)
+        {
+            ClearCache();
+            if(provider.GetById(id) != null)
+                provider.Delete(id);
+        }
+
         public bool IsExists(Speciality model)
         {
             if (provider.GetByName(model.Name) != null)

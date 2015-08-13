@@ -142,7 +142,7 @@ function Chart() {
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
-                        if (isect.x === 0)
+                        if (linePoints1[i - 1].x === 0)
                             continue;
                         linePointsTo.addPoint(isect, true, false);
                         saveIsect = isect;

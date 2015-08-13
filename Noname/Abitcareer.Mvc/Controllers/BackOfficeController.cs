@@ -60,6 +60,13 @@ namespace Abitcareer.Web.Components
             return Json(result);
         }
 
+        [HttpPost]
+        public ActionResult DeleteSpeciality(string id)
+        {
+            specialityManager.Delete(id);
+            return Json(true);
+        }
+
         [HttpGet]
         public ActionResult AddSpeciality()
         {
