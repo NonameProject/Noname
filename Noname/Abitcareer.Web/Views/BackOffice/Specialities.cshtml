@@ -34,9 +34,14 @@
             { Html.RenderPartial("SpecialityPartial", item); }
         }
 </div>
+<script>
+    var LocalizationForRemove = "@LocalizationResx.SpecialityOpenFailed"
+</script>
 
 @section Scripts
 {
    @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
-   @Scripts.Render("~/Scripts/search.js")
+@Scripts.Render("~/Scripts/search.js")
+@Scripts.Render("~/Scripts/Notifications.js")
+
 }

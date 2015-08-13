@@ -303,4 +303,13 @@
   <data name="SummaryPayment" xml:space="preserve">
     <value>Сумарні витрати на навчання в</value>
   </data>
+  <data name="SpecialityRemoveFailed" xml:space="preserve">
+    <value>При видаленні спеціальності виникла помилка</value>
+  </data>
+  <data name="SpecialityRemoveSuccess" xml:space="preserve">
+    <value>Спеціальність успішно видалена</value>
+  </data>
+  <data name="SpecialityOpenFailed" xml:space="preserve">
+    <value>Спеціальність була видалена чи редагована. Оновіть сторінку</value>
+  </data>
 </root>

@@ -10,12 +10,18 @@ $(function () {
     })
 
     $('body').on("click", ".specButton", function (event) {
-        $("#inner").empty();
-        $("#partialView").show(0);
         event.stopPropagation();
         $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
-            $("#inner").html(data);
-        });
+            if (!data) {
+                Notificate(LocalizationForRemove);
+            }
+            else {
+                $("#inner").empty();
+                $("#partialView").show(0);
+                $("#inner").html(data);
+            }
+        }
+        );
     });
     $(document).click(function (event) {
         if ($(event.target).closest('#inner').length) return;

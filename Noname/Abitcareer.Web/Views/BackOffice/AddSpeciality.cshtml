@@ -1,11 +1,6 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
-<script src="~/Scripts/jquery-1.8.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Scripts/Notifications.js"></script>
-
-@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor"}))
+@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -21,7 +16,8 @@
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
-        
+        <br />
+        <span id="js-validation" class="error-text"></span> 
         <h4>@LocalizationResx.Salaries.ToUpper()</h4>
     
         <ul class="salaries">
@@ -61,29 +57,28 @@
 
 <script>
     $("ul.salaries li input").attr("min", 0);
-    var customSubmit = function (event) {
-            var data = $("#editor").serialize();
-            var url = $("#editor").attr("action");
-            $.post(url, data, function (d) {
-                if (d)
-                {
-                    Notificate("@LocalizationResx.SpecialityAdditingSuccess");
-                    $('#partialView').hide();
-                    $("#addNew").after(d);
-                }
-                else
-                {
-                    Notificate("@LocalizationResx.SpecialityAdditingFailed");
-                }
+    $("#editor").submit(function (event) {
+        debugger;
+        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
+            event.preventDefault();
+            return false;
+        }
+        var data = $("#editor").serialize();
+        var url = $("#editor").attr("action");
+        $.post(url, data, function (d) {
+            if (d) {
+                Notificate("@LocalizationResx.SpecialityAdditingSuccess");
+                $('#partialView').hide();
+                $("#addNew").after(d);
+            }
+            else {
+                Notificate("@LocalizationResx.SpecialityAdditingFailed");
+            }
 
         });
         event.preventDefault();
-    }
-
-    document.getElementById("editor").onsubmit = function (e) {
-        customSubmit(e);
-        return false;
-    }
+    });
 
     $('#exitButton').click(function () {
         $('#partialView').hide();
@@ -92,4 +87,5 @@
     $('#exit').click(function () {
         $('#partialView').hide();
     });
+
 </script>
