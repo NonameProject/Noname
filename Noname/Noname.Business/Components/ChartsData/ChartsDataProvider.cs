@@ -37,9 +37,12 @@ namespace Abitcareer.Business.Components.ChartsData
                 if (val < 0)
                     val = 0;
                 Point newPoint;
-                newPoint = new Point(i, val);
-                res[1].Add(newPoint);
-                newPoint = new Point(i + 1, res[3][res[3].Count - 1].y + 12 * val);
+                if (res[0].Count >= i)
+                {
+                    newPoint = new Point(i, val);
+                    res[1].Add(newPoint);
+                }
+                newPoint = new Point(i + 1, res[3].Last().y + 12 * val);
                 res[3].Add(newPoint);
             }
 
