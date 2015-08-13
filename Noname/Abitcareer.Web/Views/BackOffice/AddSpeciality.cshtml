@@ -16,7 +16,8 @@
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
-        
+        <br />
+        <span id="js-validation" class="error-text"></span> 
         <h4>@LocalizationResx.Salaries.ToUpper()</h4>
     
         <ul class="salaries">
@@ -56,8 +57,13 @@
 
 <script>
     $("ul.salaries li input").attr("min", 0);
-
     $("#editor").submit(function (event) {
+        debugger;
+        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
+            event.preventDefault();
+            return false;
+        }
         var data = $("#editor").serialize();
         var url = $("#editor").attr("action");
         $.post(url, data, function (d) {
@@ -65,7 +71,6 @@
                 Notificate("@LocalizationResx.SpecialityAdditingSuccess");
                 $('#partialView').hide();
                 $("#addNew").after(d);
-                $("ul.salaries li input").attr("min", 0);
             }
             else {
                 Notificate("@LocalizationResx.SpecialityAdditingFailed");
