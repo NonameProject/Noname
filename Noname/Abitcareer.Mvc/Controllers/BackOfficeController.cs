@@ -11,6 +11,7 @@ using Abitcareer.Business.Components.Translation;
 using System.Threading;
 using System.Linq;
 using Abitcareer.Core;
+using Abitcareer.Business.Components.Lucene;
 
 namespace Abitcareer.Web.Components
 {
@@ -18,6 +19,8 @@ namespace Abitcareer.Web.Components
     public class BackOfficeController : Controller
     {
         SpecialityManager specialityManager;
+
+
 
         public BackOfficeController(SpecialityManager manager)
         {
@@ -76,6 +79,20 @@ namespace Abitcareer.Web.Components
         public ActionResult EditSpeciality()
         {
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult SearchForSpeaciality(string name)
+        {
+            var list = specialityManager.Search(name);
+            return Json(list);
+        }
+
+        public ActionResult IndexSpecialities()
+        {
+            var list = specialityManager.GetList();
+            specialityManager.Index(list);
+            return RedirectToRoute("specialities");
         }
     }
 }

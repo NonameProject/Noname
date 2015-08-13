@@ -9,6 +9,8 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.ComponentModel.DataAnnotations;
 using Abitcareer.Business.Components.Extensions;
+using Lucene.Net.Documents;
+using Abitcareer.Business.Components.Lucene.Attributes;
 
 namespace Abitcareer.Business.Models
 {
@@ -19,10 +21,11 @@ namespace Abitcareer.Business.Models
 
     public class BaseModel
     {
-        
+        [Storable]
         public virtual string Id { get; set; }
 
         [LocalizableField]
+        [Storable(Type=Field.Index.ANALYZED)]
         public virtual string Name { get; set; }
 
         public virtual Dictionary<string, string> Fields { get; set; }

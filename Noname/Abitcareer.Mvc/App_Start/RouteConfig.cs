@@ -124,6 +124,24 @@ namespace Abitcareer.Mvc
                {
                });
 
+            routes.MapLocalizedRoute(
+             name: "IndexSpecialities",
+             url: "indexspecialities",
+             defaults: new { controller = "BackOffice", action = "IndexSpecialities" },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
+
+             routes.MapLocalizedRoute(
+             name: "SearchForSpeaciality",
+             url: "searchforspeaciality",
+             defaults: new { controller = "BackOffice", action = "SearchForSpeaciality" },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
+
 
             routes.MapRoute(
                 "NotFound",

@@ -1,10 +1,12 @@
-﻿using Abitcareer.Business.Data_Providers_Contracts;
+﻿using Abitcareer.Business.Components.Lucene;
+using Abitcareer.Business.Data_Providers_Contracts;
 using Abitcareer.Business.Interfaces;
 using Abitcareer.Business.Models;
 using CultureEngine;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,6 +102,34 @@ namespace Abitcareer.Business.Components.Managers
             return provider.GetById(id);
         }
 
+        public void Index(IEnumerable<Speciality> list)
+        {
+            var languageSegment = CultureInfo.CurrentCulture;
+
+            var searcher = new MySearcher<Speciality>(Path.Combine("./", languageSegment.ToString(), "lucene_index"));
+
+            searcher.AddUpdateIndex(list);
+        }
+
+        public IList<string> Search(string name)
+        {
+            var languageSegment = CultureInfo.CurrentCulture;
+
+            var searcher = new MySearcher<Speciality>(Path.Combine("./", languageSegment.ToString(), "lucene_index"));
+
+            var list = searcher.Search(name).ToList();
+
+            var result = new List<string>();
+
+            foreach (var item in list)
+            {
+                if(!result.Contains(item.Id))
+                    result.Add(item.Id);
+            }
+
+            return result;
+        }
+
         private IList<Speciality> SortBasedOnCurrentCulture(IEnumerable<Speciality> list, LCID languageId)
         {
             switch (languageId)
@@ -112,5 +142,6 @@ namespace Abitcareer.Business.Components.Managers
                     return list.OrderBy(x => x.Name).ToList();
             }
         }
+
     }
 }

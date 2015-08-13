@@ -72,6 +72,9 @@
     <Compile Include="Components\ChartsData\ChartsDataProvider.cs" />
     <Compile Include="Components\Extensions\StringExtensions.cs" />
     <Compile Include="Components\Extensions\DictonaryExtensions.cs" />
+    <Compile Include="Components\Lucene\Attributes\Storable.cs" />
+    <Compile Include="Components\Lucene\MyBaseSearcher.cs" />
+    <Compile Include="Components\Lucene\MySearcher.cs" />
     <Compile Include="Components\Managers\BaseManager.cs" />
     <Compile Include="Components\Managers\SpecialityManager.cs" />
     <Compile Include="Components\Managers\FacultyManager.cs" />
@@ -113,9 +116,7 @@
       <Name>Abitcareer.CultureEngine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\Lucene.net\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
