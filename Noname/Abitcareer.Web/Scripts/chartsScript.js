@@ -207,7 +207,12 @@ function Chart() {
                 chart: {
                     backgroundColor: 'transparent',
                     type: 'spline',
-                    zoomtype: "xy"
+                    zoomtype: "xy",
+                    events: {
+                        click: function () {
+                            this.tooltip.hide();
+                        }
+                    }
                 },
                 legend: {
                     enabled:false
