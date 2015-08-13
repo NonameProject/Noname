@@ -48,7 +48,8 @@
                 </li>
             }
             </ul>
-        <div class="row">            
+        <div class="row">
+            <button type="button" class="btn btn-danger left" id="delete">Удалить</button>            
             <button type="submit" class="btn btn-default right">@LocalizationResx.Save</button>
             <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
         </div>
@@ -105,6 +106,18 @@
     });
     $('#exitButton').click(function () {
         $('#partialView').hide();
+    });
+
+    $("#delete").click(function () {
+        $.ajax(
+        {
+            url: "deletespeciality",
+            type: "POST",
+            data: "@Model.Id",
+            success: function()
+            {
+            }
+        });
     });
 
     $('#exit').click(function () {
