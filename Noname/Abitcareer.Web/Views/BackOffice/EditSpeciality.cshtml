@@ -5,7 +5,6 @@
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
-<script src="~/Scripts/Notifications.js"></script>
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <input type="button" id="exit"/>
@@ -72,19 +71,26 @@
                     if (a < b) return -1;
                     if (a == b) return 0;
                 }
+                function changeToString(a)
+                {
+                    if (!a)
+                        a = '0';
+                    return a;
+                }
                 Notificate("@LocalizationResx.SpecialityAditingSuccess");
                 var culture = getCulture();
                 var newName;
 
                 var arrayOfSalaries = [];
                 for (var i = 1; i <= 5; i++) {
-                    var a = parseInt($('input[name="Salaries[' + i + ']"]').val());
+                    debugger;
+                    var a = parseInt(changeToString($('input[name="Salaries[' + i + ']"]').val()));
                     arrayOfSalaries.push(a);
                 }
-                var a1 = parseInt($('input[name="Salaries[10]"]').val());
+                var a1 = parseInt(changeToString($('input[name="Salaries[10]"]').val()));
                 arrayOfSalaries.push(a1);
 
-                var a2 = parseInt($('input[name="Salaries[20]"]').val());
+                var a2 = parseInt(changeToString($('input[name="Salaries[20]"]').val()));
                 arrayOfSalaries.push(a2);
 
                 arrayOfSalaries.sort(compareNumeric);
@@ -109,5 +115,5 @@
 
     $('#exit').click(function () {
         $('#partialView').hide();
-    })  ;
+    });
 </script>
