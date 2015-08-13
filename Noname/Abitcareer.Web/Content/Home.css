@@ -145,6 +145,15 @@ select
     top: 160px;
     margin-top: -35px;
 }
+#js-loading-screen.active
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255, 0.75);
+}
+
 .serieName {
     font-size: 0.8em;
 }
