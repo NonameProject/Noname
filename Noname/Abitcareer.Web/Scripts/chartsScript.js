@@ -135,15 +135,15 @@ function Chart() {
             var saveIsect;
             var mx = -100;
             for (i = 1; i < n0; i++) {
-                for (j = 1; j < n1; j++) {
-                    if (linePoints1[i - 1].x === 0)
-                        continue;
+                for (j = 1; j < n1; j++) {                    
                     if (linePoints1[i - 1].y > mx)
                         mx = linePoints1[i - 1].y;
                     if (linePoints1[i].y > mx)
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
+                        if (isect.x === 0)
+                            continue;
                         linePointsTo.addPoint(isect, true, false);
                         saveIsect = isect;
                     }
