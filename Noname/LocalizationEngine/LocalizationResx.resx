@@ -312,4 +312,10 @@
   <data name="SpecialityOpenFailed" xml:space="preserve">
     <value>Спеціальність була видалена чи редагована. Оновіть сторінку</value>
   </data>
+  <data name="PageBackoffice" xml:space="preserve">
+    <value>Керування спеціальностями</value>
+  </data>
+  <data name="PageLogin" xml:space="preserve">
+    <value>Логін</value>
+  </data>
 </root>

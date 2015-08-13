@@ -62,19 +62,18 @@ form {
 }
 
 #exit {
-    background-color: inherit;
-    background-image: url("Images/elementsSprite.png");
-    background-position: -38px -148px;
-    background-repeat: no-repeat;
-    background-size: 52px 244px;
-    border-radius: 20%;
-    border-style: none;
+    opacity: 0.6;
+    color: gray;
     float: right;
     height: 15px;
     margin-right: 10px;
     margin-top: 10px;
     padding: 0;
     width: 15px;
+}
+#exit:hover{
+    color: red;
+    opacity: 0.8;
 }
 
 .table {
@@ -209,6 +208,23 @@ label[for="Name"], label[for="EnglishName"]
 }
 #editor {
 background-color:inherit;
+}
+#addNew{
+    background: rgba(4, 165, 35, 0.8);
+}
+#addNew span{
+    color: white;
+}
+#addNew:hover{
+    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px, inset rgba(0,0,0,.8) 0 3px 8px -3px;
+    background: rgba(0, 111, 21, 0.8);
+}
+.delete
+{
+    position: absolute;
+    left: 5px;
+    color: red !important;
+    z-index: 500;
 }
 @media (max-width: 992px) {
     #addNew{ /*Dirty hack, but it seems like it is only way to fix this shit*/

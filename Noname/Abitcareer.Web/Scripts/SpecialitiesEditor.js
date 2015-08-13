@@ -2,6 +2,22 @@
     return document.location.href.split('/')[3].toLowerCase();
 };
 
+deleteSpeciality = function(id) {
+    $.ajax(
+        {
+            url: "deletespeciality",
+            type: "POST",
+            data: { id: id },
+            success: function () {
+                Notificate(LocalizationRemoveSuccess)
+                $("#"+id).remove();
+            },
+            error: function () {
+                Notificate(LocalizationRemoveFailed)
+            }
+        });
+};
+
 $(function () {
     $(document).ajaxStart(function () {
         $("body").toggleClass("loading");
@@ -37,25 +53,26 @@ $(function () {
         $(this.children[0]).hide();
     });
 
-    $("#addNew").on("click", function(event)
-    {
+    $("#addNew").on("click", function (event) {
         $("#inner").empty();
         event.stopPropagation();
         $.ajax(
             {
                 url: "specialities/add",
-                success: function(data)
-                {
+                success: function (data) {
                     $("#inner").html(data);
                     $("#partialView").show(0);
-                    
+
                 },
-                error: function(e)
-                {
+                error: function (e) {
                     alert("error" + e.status);
-                }          
+                }
             });
-    })
+    });
+
+    $(".delete").click(function () {
+        
+    });
 });
 
 

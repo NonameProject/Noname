@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
-     <input type="button" id="exit"/>
+        <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         @Html.HiddenFor(x => x.Id)   
     
         <h3>@LocalizationResx.AddSpeciality</h3>
@@ -50,7 +50,7 @@
             </ul>
 
        <div class="row">            
-            <button type="submit" class="btn btn-default right">@LocalizationResx.Save</button>
+            <button type="submit" class="btn btn-primary right">@LocalizationResx.Save</button>
             <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
         </div>
 }

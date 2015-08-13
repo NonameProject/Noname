@@ -312,4 +312,10 @@
   <data name="SpecialityOpenFailed" xml:space="preserve">
     <value>Specialty been removed or edited. Refresh the page</value>
   </data>
+  <data name="PageBackoffice" xml:space="preserve">
+    <value>Specialities management</value>
+  </data>
+  <data name="PageLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
 </root>

@@ -149,6 +149,7 @@
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\closegray.png" />
     <Content Include="Content\Images\elementsSprite.png" />
+    <Content Include="Content\Images\favicon.png" />
     <Content Include="Content\Images\Flags\UA.png" />
     <Content Include="Content\Images\Flags\US.png" />
     <Content Include="Content\Images\notificationImage.png" />
