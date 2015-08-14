@@ -43,6 +43,22 @@
     background-repeat: no-repeat;
 }
 
+#inner h2 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+#inner h4 {
+    margin-bottom: 16px;
+}
+
+#inner label {
+    margin-left: 5px;
+}
+#inner li label {
+    margin-left: 0;
+}
+
 form {
     padding: 3px;
 }
