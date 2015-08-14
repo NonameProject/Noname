@@ -112,6 +112,12 @@ li a.changeLanguage
     }
 }
 
+@media (max-width:530px) {
+    .navbar-brand{
+        display: none;
+    }
+}
+
 .link
 {
     margin-top: 17px;

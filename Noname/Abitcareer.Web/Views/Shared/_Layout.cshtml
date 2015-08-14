@@ -30,7 +30,10 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                     <span class="collapsed-logout">
-                        @Html.ActionLink(@LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                        @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                    </span>
+                    <span class="collapsed-logout">
+                        @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
                     </span>
                     }
                     @{
@@ -71,10 +74,13 @@
                         if (User.Identity.IsAuthenticated)
                         {
                             <li>
-                                @Html.ActionLink(@LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                                @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
+                            </li>
+                            <li>
+                                @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", System.Globalization.CultureInfo.CurrentCulture.ToString(), htmlAttributes: new { @class = "link" })
                             </li>
                         }
-                    }
+                     }
                     <li>
                         @{
                             if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
