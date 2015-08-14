@@ -2,7 +2,7 @@
 
     this.getData = function (callback) {
         var res = JSON.parse(JSON.stringify(specialities));
-        $("#js-loading-screen").toggleClass("active");
+        $("#js-loading-screen").addClass("active");
         $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
             res[0].data = data[0];
             res[1].data = data[1];
@@ -15,7 +15,7 @@
             }
             res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1].y });
             res[0].data.push({ x: res[0].data[res[0].data.length - 1].x, y: 0 });
-            $("#js-loading-screen").toggleClass("active");
+            $("#js-loading-screen").removeClass("active");
             callback(res);
         });
     };
