@@ -13,13 +13,25 @@
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Specialities.css")
     @Styles.Render("~/Content/Site.css")
-    @Styles.Render("~/Content/themes/base/jquery-ui.css")
 }
 
 <h2>@LocalizationResx.Specialities</h2>
 
 <div id="partialView">
     <div id="inner">
+        
+    </div>
+</div>
+
+<div id="deleteConfirm">
+    <div id="delete-inner">
+        <button id="delete-confirm-exit" type="button" class="deleteDiscard close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4>@LocalizationResx.SpecialityDeleteTitleConfirm</h4>
+        @LocalizationResx.SpecialityDeleteTextConfirm<br>
+        <div class="deleteControls">
+            <button class="btn btn-default deleteDiscard">@LocalizationResx.Cancel</button>
+            <button class="btn btn-danger deleteSubmit" onclick="deleteSpeciality()">@LocalizationResx.Delete</button>
+        </div>
         
     </div>
 </div>
@@ -37,9 +49,6 @@
             { Html.RenderPartial("SpecialityPartial", item); }
         }
 </div>
-<div id="dialog-confirm" title="@LocalizationResx.SpecialityDeleteTitleConfirm" style="display: none;">
-            @LocalizationResx.SpecialityDeleteTextConfirm
-</div>
 <script>
     var LocalizationForRemove = "@LocalizationResx.SpecialityOpenFailed";
     var LocalizationRemoveSuccess = '@LocalizationResx.SpecialityRemoveSuccess';
@@ -50,7 +59,6 @@
 
 @section Scripts
 {
-    @Scripts.Render("~/Scripts/jquery-ui-1.11.4.min.js")
     @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
     @Scripts.Render("~/Scripts/search.js")
     @Scripts.Render("~/Scripts/Notifications.js")
