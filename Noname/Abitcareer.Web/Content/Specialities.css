@@ -27,8 +27,15 @@
 }
 #delete-inner{
     text-align: center;
+    min-height: 180px;
     padding: 20px;
     line-height: 24px;
+    width: 380px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -90px;
+    margin-left: -190px;
 }
 .loading #inner {
     background-image: url("Images/ajax-loader.gif");
