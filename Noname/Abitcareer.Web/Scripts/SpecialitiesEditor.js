@@ -20,11 +20,11 @@ deleteSpeciality = function () {
             type: "POST",
             data: { id: id },
             success: function () {
-                Notificate(LocalizationRemoveSuccess)
+                Notificate(Localization.LocalizationRemoveSuccess)
                 $("#" + id).remove();
             },
             error: function () {
-                Notificate(LocalizationRemoveFailed)
+                Notificate(Localization.LocalizationRemoveFailed)
             }
         });
     $("#deleteConfirm").hide(0);
@@ -41,7 +41,7 @@ $(function () {
         event.stopPropagation();
         $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
             if (!data) {
-                Notificate(LocalizationForRemove);
+                Notificate(Localization.LocalizationForRemove);
             }
             else {
                 $("#inner").empty();
