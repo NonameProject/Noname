@@ -1,5 +1,5 @@
 ﻿var id =0;
-$("#search").keypress(function () {
+$("#search").keydown(function () {
     clearTimeout(id);
     id = setTimeout(function () {
         var value = $('#search').val();
