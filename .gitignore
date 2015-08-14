@@ -220,3 +220,9 @@ pip-log.txt
 
 error-*
 *.cache
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/segments.gen
+Noname/Abitcareer.Web/App_Data/en-US/lucene_index/segments.gen
+Noname/Abitcareer.Web/App_Data/en-US/lucene_index/segments_2
+Noname/Abitcareer.Web/App_Data/en-US/lucene_index/_0.cfs
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/segments_2
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/_0.cfs
