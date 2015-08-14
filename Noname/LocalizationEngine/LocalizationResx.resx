@@ -330,4 +330,7 @@
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="PageCharts" xml:space="preserve">
+    <value>Графіки</value>
+  </data>
 </root>

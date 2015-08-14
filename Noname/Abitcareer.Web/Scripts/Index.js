@@ -68,6 +68,7 @@ $(function () {
     var provider = new DataProvider();
 
     var draw = function () {
+        $("title").html("AbitCareer | " + textStrings.localizationPageCharts);
         if ($("#spec").val() === "noData" || $("#commit").hasOwnProperty("disabled"))
             return false;
         var butt = $('#commit');

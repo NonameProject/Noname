@@ -304,6 +304,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Графіки.
+        /// </summary>
+        public static string PageCharts {
+            get {
+                return ResourceManager.GetString("PageCharts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Логін.
         /// </summary>
         public static string PageLogin {

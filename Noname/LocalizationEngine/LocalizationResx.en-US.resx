@@ -330,4 +330,7 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="PageCharts" xml:space="preserve">
+    <value>Charts</value>
+  </data>
 </root>

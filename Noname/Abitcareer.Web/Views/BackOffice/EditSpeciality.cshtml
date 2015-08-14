@@ -53,6 +53,10 @@
         </div>
     }
 <script>
+    $("#Name, #EnglishName").keypress(function (event) {
+        if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
+            return false;
+    });
     $("ul.salaries li input").attr("min", 0);
     $("#editor").submit(function (event) {
         if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0 )
