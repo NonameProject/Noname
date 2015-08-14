@@ -14,6 +14,7 @@ using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.Mvc.Components;
 using CultureEngine;
 using System.Text.RegularExpressions;
+using Abitcareer.Business.Components.Managers;
 
 namespace Abitcareer.Mvc
 {
@@ -52,6 +53,8 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
+
+
             MiniProfiler.Start();
         }
 

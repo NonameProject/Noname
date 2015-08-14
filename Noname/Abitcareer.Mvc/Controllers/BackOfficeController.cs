@@ -98,7 +98,7 @@ namespace Abitcareer.Web.Components
         public ActionResult IndexSpecialities()
         {
             var list = specialityManager.GetList();
-            specialityManager.Index(list);
+            specialityManager.Index();
             return RedirectToRoute("specialities");
         }
     }

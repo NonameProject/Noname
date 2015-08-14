@@ -17,6 +17,14 @@ namespace Abitcareer.Business.Components.Managers
     {
         ISpecialityDataProvider provider;
 
+        private string luceneDirectory
+        {
+            get
+            {
+                return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "App_Data", CultureInfo.CurrentCulture.ToString(), "lucene_index");
+            }
+        }
+
         protected override string Name
         {
             get
@@ -102,20 +110,25 @@ namespace Abitcareer.Business.Components.Managers
             return provider.GetById(id);
         }
 
-        public void Index(IEnumerable<Speciality> list)
+        public void Index()
         {
+            var list = provider.GetList();
+
             var languageSegment = CultureInfo.CurrentCulture;
 
-            var searcher = new MySearcher<Speciality>(Path.Combine("./", languageSegment.ToString(), "lucene_index"));
+            var searcher = new MySearcher<Speciality>(luceneDirectory);
 
             searcher.AddUpdateIndex(list);
         }
 
         public IList<string> Search(string name)
         {
+            if (!Directory.Exists(luceneDirectory))
+                Index();
+
             var languageSegment = CultureInfo.CurrentCulture;
 
-            var searcher = new MySearcher<Speciality>(Path.Combine("./", languageSegment.ToString(), "lucene_index"));
+            var searcher = new MySearcher<Speciality>(luceneDirectory);
 
             var list = searcher.Search(name).ToList();
 
@@ -142,6 +155,5 @@ namespace Abitcareer.Business.Components.Managers
                     return list.OrderBy(x => x.Name).ToList();
             }
         }
-
     }
 }
