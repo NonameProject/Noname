@@ -287,6 +287,7 @@ function Chart() {
                         color: '#669999',
                         width: 1
                     }],
+                    hideDelay: 0,
                     formatter: function () {
 
                         var header = '<strong>' + this.series.name + '</strong><br/>';
