@@ -137,7 +137,7 @@
     <Compile Include="Extensions\RouteExtensions.cs" />
     <Compile Include="MiniProfilers\ProfilingActionFilter.cs" />
     <Compile Include="MiniProfilers\ProfilingViewEngine.cs" />
-    <Compile Include="Moduls\LocalizationHttpModule.cs" />
+    <Compile Include="Modules\LocalizationHttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Authorize\UserViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\BaseViewModel.cs" />

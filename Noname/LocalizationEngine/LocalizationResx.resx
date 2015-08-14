@@ -330,4 +330,7 @@
   <data name="SpecialityDeleteTitleConfirm" xml:space="preserve">
     <value>Видалити цю спеціальність?</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
 </root>
