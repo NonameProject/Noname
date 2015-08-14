@@ -2,46 +2,33 @@
     return document.location.href.split('/')[3].toLowerCase();
 };
 
-var id;
 
-deleteSpeciality = function (Id) {
-    id = Id;
-    $("#dialog-confirm").dialog('open');
+requestDeletion = function (id) {
+    window.event.stopPropagation();
+    $(".deleteSubmit").data("target", id);
+    $("#deleteConfirm").show(0);
+    /*setTimeout(function () {
+        $("#partialView").hide(0)
+    }, 200);*/
 };
 
-$("#dialog-confirm").dialog({
-    zIndex: 10000,
-    autoOpen: false,
-    resizable: false,
-    width: 400,
-    height: 200,
-    modal: true,
-    buttons: [{
-        text: SpecialityDeleteAgreeConfirm,
-        click: function () {
-            $.ajax(
-            {
-                url: "deletespeciality",
-                type: "POST",
-                data: { id: id },
-                success: function () {
-                    Notificate(LocalizationRemoveSuccess)
-                    $("#" + id).remove();
-                },
-                error: function () {
-                    Notificate(LocalizationRemoveFailed)
-                }
-            });
-            $(this).dialog("close");
-        }
-    },
-    {
-        text: SpecialityDeleteCancelConfirm,
-        click: function () {
-            $(this).dialog("close");
-        }
-    }]
-});
+deleteSpeciality = function () {
+    var id = $(".deleteSubmit").data("target");
+    $.ajax(
+        {
+            url: "deletespeciality",
+            type: "POST",
+            data: { id: id },
+            success: function () {
+                Notificate(LocalizationRemoveSuccess)
+                $("#" + id).remove();
+            },
+            error: function () {
+                Notificate(LocalizationRemoveFailed)
+            }
+        });
+    $("#deleteConfirm").hide(0);
+};
 
 $(function () {
     $(document).ajaxStart(function () {
@@ -63,6 +50,10 @@ $(function () {
             }
         }
         );
+    });
+
+    $(".deleteDiscard").click(function () {
+        $("#deleteConfirm").hide(0);
     });
 
     $(document).click(function (event) {
