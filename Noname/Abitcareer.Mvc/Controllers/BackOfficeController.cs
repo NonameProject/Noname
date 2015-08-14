@@ -12,6 +12,7 @@ using System.Threading;
 using System.Linq;
 using Abitcareer.Core;
 using Abitcareer.Business.Components.Lucene;
+using System.IO;
 
 namespace Abitcareer.Web.Components
 {

@@ -63,8 +63,8 @@ namespace Abitcareer.Business.Components.Managers
         }
 
         public IList<Speciality> GetList() 
-        {
-            var list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
+        {   
+            var  list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
             var newList = new List<Speciality>(list.Count);
             foreach (var item in list)
             {
@@ -112,7 +112,7 @@ namespace Abitcareer.Business.Components.Managers
 
         public void Index()
         {
-            var list = provider.GetList();
+            var list = this.GetList();
 
             var languageSegment = CultureInfo.CurrentCulture;
 
