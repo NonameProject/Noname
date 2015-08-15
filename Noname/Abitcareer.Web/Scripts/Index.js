@@ -55,6 +55,10 @@
 $(function () {
     setHash();
 
+    $('a.changeLanguage:not([href*="#"])').click(function () {
+        $("#js-loading-screen").addClass("active");
+    });
+
     var valueTypes = {
         costs: textStrings.Costs,
         year: textStrings.Year,
