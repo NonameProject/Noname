@@ -14,7 +14,7 @@ namespace Abitcareer.Business.Components
     {
         protected ICacheManager CacheManager { get; private set; }
 
-        protected abstract string Name { get; set; }
+        protected abstract string Name { get;}
 
         public BaseManager(ICacheManager cacheManager)
         {
@@ -49,28 +49,25 @@ namespace Abitcareer.Business.Components
 
         private string Localize(BaseModel model, string keyPrefix, int languageId, string defaultValue)
         {
-            //remove this
-            if (languageId != 1058) languageId = 1058;
-            else languageId--;
-
-
             var key = string.Format("<{0}>_<{1}>", languageId, keyPrefix);
-           // key = HttpUtility.HtmlEncode(key);
-            //key = string.Format("key=\"{0}\"", key);// it must be without key
+
             string localizedValue;
+
             if (model.Fields.TryGetValue(key, out localizedValue))
             {
                 if (!string.IsNullOrEmpty(localizedValue.ToString()))
                 {
-                    //remove this
                     if (localizedValue.Length > 8)
                     {
                         localizedValue.Replace(@"\&quot;", "");
-                        localizedValue = localizedValue.Substring(1); // first "
+
+                        localizedValue = localizedValue.Substring(1);
+
                         if (localizedValue[localizedValue.Length - 1] == '"')
                             localizedValue = localizedValue.Substring(0, localizedValue.Length-1);
-                      localizedValue = localizedValue.Replace("\\\"", "\"");
-                        //
+
+                        localizedValue = localizedValue.Replace("\\\"", "\"");
+
                         return localizedValue;
                     }
                 }

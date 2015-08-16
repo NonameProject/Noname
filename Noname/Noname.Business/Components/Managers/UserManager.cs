@@ -21,10 +21,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "User";
             }
-
-            set
-            {
-            }
         }
 
         public UserManager(ICacheManager manager, IUserDataProvider provider)
@@ -64,21 +60,15 @@ namespace Abitcareer.Business.Components.Managers
             var user = provider.GetByEmail(email);
             if(user != null)
             {
-                if (String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt)))
-                {
-                    return true;
-                }
+                return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
             }
             return false;
         }
 
         public bool IsUserExists(string email)
         {
-            if(provider.GetByEmail(email) != null)
-            {
-                return true;
-            }
-            return false;
+            return provider.GetByEmail(email) != null;
+
         }
     }
 }

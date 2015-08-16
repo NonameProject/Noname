@@ -35,7 +35,9 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult ChangeCulture(string culture, string routeName, string anchor = "")
         {
             if(string.IsNullOrEmpty(anchor))
+            {
                 return RedirectToRoute(routeName, new { locale = culture });
+            }
             return Redirect(Url.RouteUrl(routeName, new { locale = culture }) + "#" + anchor);            
         }
 

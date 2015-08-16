@@ -19,10 +19,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Faculty";
             }
-
-            set
-            {
-            }
         }
 
         public FacultyManager(ICacheManager manager, IFacultyDataProvider provider)

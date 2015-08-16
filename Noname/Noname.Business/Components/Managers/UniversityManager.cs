@@ -20,10 +20,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "University";
             }
-
-            set
-            {
-            }
         }
 
         public UniversityManager(ICacheManager manager, IUniversityDataProvider provider)

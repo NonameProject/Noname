@@ -81,24 +81,17 @@ namespace Abitcareer.Mvc.Controllers
             {
                 var facultyToSpeciality = new FacultyToSpeciality();
 
-                try
+                var spec = specialityManager.GetByName(node.Speciality.Name);
+
+                var fac = facultyManager.GetByName(node.Faculty.Name);
+
+                if (fac != null && spec != null)
                 {
-                    var spec = specialityManager.GetByName(node.Speciality.Name);
+                    facultyToSpeciality.Faculty = facultyManager.GetByName(node.Faculty.Name);
 
-                    var fac = facultyManager.GetByName(node.Faculty.Name);
+                    facultyToSpeciality.Speciality = specialityManager.GetByName(node.Speciality.Name);
 
-                    if (fac != null && spec != null)
-                    {
-                        facultyToSpeciality.Faculty = facultyManager.GetByName(node.Faculty.Name);
-
-                        facultyToSpeciality.Speciality = specialityManager.GetByName(node.Speciality.Name);
-
-                        facToSpecProvider.Create(facultyToSpeciality);
-                    }
-                }
-                catch
-                {
-                    ;
+                    facToSpecProvider.Create(facultyToSpeciality);
                 }
             }
         }

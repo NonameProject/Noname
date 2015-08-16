@@ -31,10 +31,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Speciality";
             }
-
-            set
-            {
-            }
         }
 
         public SpecialityManager(ICacheManager manager, ISpecialityDataProvider provider)

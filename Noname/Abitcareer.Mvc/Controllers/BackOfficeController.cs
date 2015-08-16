@@ -30,7 +30,7 @@ namespace Abitcareer.Web.Components
 
         public ActionResult Specialities()
         {
-            var spec = specialityManager.GetList() as List<Speciality>;
+            var spec = specialityManager.GetList();
             var tmp = spec.Where(x =>
                 !string.IsNullOrEmpty(x.Name) && !string.IsNullOrEmpty(x.Id)).ToList();
             var result = AutoMapper.Mapper.Map<List<SpecialityViewModel>>(tmp);
@@ -45,7 +45,7 @@ namespace Abitcareer.Web.Components
                 if (!String.IsNullOrEmpty(model.EnglishName)) model.EnglishName = model.EnglishName.Trim('"');
                 return PartialView("EditSpeciality", model);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return Json(false);
             }

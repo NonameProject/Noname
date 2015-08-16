@@ -29,8 +29,12 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult GetData(string id, short polinom = 3)
         {
             if (string.IsNullOrEmpty(id))
+            {
                 return Json(false);
+            }
+
             var speciality = specialityManager.GetById(id);
+
             if (speciality == null)
                 return Json(false);
 

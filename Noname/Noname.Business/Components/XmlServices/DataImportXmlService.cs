@@ -38,8 +38,6 @@ namespace Abitcareer.Business.Components.XmlServices
 
         private List<string> specialityList = new List<string>();
 
-        private int count = 0;
-
         public List<NodeModel> Parse()
         {
             if (!OpenDataFile(filePath))

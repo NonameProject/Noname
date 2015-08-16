@@ -19,10 +19,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Region";
             }
-
-            set
-            { 
-            }
         }
 
         public RegionManager(ICacheManager manager, IRegionDataProvider provider)

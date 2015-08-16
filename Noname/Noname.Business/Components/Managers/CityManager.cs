@@ -19,10 +19,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "City";
             }
-
-            set
-            { 
-            }
         }
 
         public CityManager(ICacheManager manager, ICityDataProvider provider)
