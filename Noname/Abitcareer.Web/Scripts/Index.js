@@ -77,9 +77,10 @@ $(function () {
 
     var draw = function () {
         $("#js-loading-screen").removeClass("active");
-        $("title").html("AbitCareer | " + textStrings.localizationPageCharts);
-        if ($("#spec").val() === "noData" || $("#commit").hasOwnProperty("disabled"))
-            return false;
+        var spec = $("#spec");
+        if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))
+            return false;        
+        $("title").html(spec.find('option:selected').html() + ' - AbitCareer');
         var butt = $('#commit');
         butt.prop('disabled', true);
 

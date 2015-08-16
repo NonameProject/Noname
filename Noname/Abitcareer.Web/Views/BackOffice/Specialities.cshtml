@@ -1,18 +1,11 @@
 ﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
-@using System.Web
-@using System.Globalization
-@using System.Web.Mvc
-@using System.Text.RegularExpressions
-@using System.Globalization
 @model List<SpecialityViewModel>
 @{
-    ViewBag.Title = "AbitCareer | " + LocalizationResx.PageBackoffice;
+    ViewBag.Title = LocalizationResx.PageBackoffice + " - AbitCareer";
 }
 @section styles
 {
-    @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Specialities.css")
-    @Styles.Render("~/Content/Site.css")
 }
 
 <h2>@LocalizationResx.Specialities</h2>
