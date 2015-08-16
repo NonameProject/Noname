@@ -55,6 +55,10 @@
 $(function () {
     setHash();
 
+    var urlContainsSpecialityHash = /[\w\s]*([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12})/gi.test(document.location.href.split('#')[1]);
+    if (!urlContainsSpecialityHash)
+        $("#js-loading-screen").removeClass("active");
+
     $('a.changeLanguage:not([href*="#"])').click(function () {
         $("#js-loading-screen").addClass("active");
     });
@@ -72,6 +76,7 @@ $(function () {
     var provider = new DataProvider();
 
     var draw = function () {
+        $("#js-loading-screen").removeClass("active");
         $("title").html("AbitCareer | " + textStrings.localizationPageCharts);
         if ($("#spec").val() === "noData" || $("#commit").hasOwnProperty("disabled"))
             return false;

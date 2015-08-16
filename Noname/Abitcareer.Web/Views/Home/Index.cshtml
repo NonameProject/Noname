@@ -9,7 +9,7 @@
 {
     @Styles.Render("~/Content/Home.css")
 }
-
+<div id="js-loading-screen" class="active"></div>
 <div id="input" class="panel left">
     <div id="greeting" class="toFade">
         <h3>@LocalizationResx.GreetingHeader</h3>
@@ -28,7 +28,7 @@
     <a href="#" id="commit" class="btn btn-default toFade">@LocalizationResx.Calculate</a>
 </div>
 <div id="chart-container" class="panel" style="display: none">
-    <div id="js-loading-screen"></div>
+    
     <div class="chartWrapper">
         <div id="payments-container"></div>
         <div class="customLegend">
