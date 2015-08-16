@@ -36,5 +36,10 @@ namespace Abitcareer.Business.Components.Managers
             ClearCache();
             provider.Create(model);
         }
+
+        public Faculty GetByName(string name)
+        {
+            return provider.GetByName(name);
+        }
     }
 }

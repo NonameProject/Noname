@@ -1,5 +1,6 @@
 ﻿using Abitcareer.Business.Components.Translation;
 using Abitcareer.Business.Components.XmlServices.Entities;
+using Abitcareer.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Abitcareer.Business.Components.XmlServices
 
         private string filePath = null;
 
-        private int LCID_EN = 1033;
+        private readonly int LCID_EN = 1033;
 
         public DataImportXmlService(string filePath)
         {
@@ -27,52 +28,108 @@ namespace Abitcareer.Business.Components.XmlServices
             this.filePath = filePath;
         }
 
+        private List<string> regionList = new List<string>();
+
+        private List<string> cityList = new List<string>();
+
+        private List<string> universityList = new List<string>();
+
+        private List<string> facultyList = new List<string>();
+
+        private List<string> specialityList = new List<string>();
+
+        private int count = 0;
+
         public List<NodeModel> Parse()
         {
             if (!OpenDataFile(filePath))
                 return null;
 
-            var results = new List<NodeModel>();
+            var results = new List<NodeModel>();           
 
             foreach(XElement region in document.Root.Elements())
             {
-                var node = new NodeModel();
+                if (String.IsNullOrEmpty(region.Attribute("name").Value) || regionList.Contains(region.Attribute("name").Value))
+                    continue;
 
-                node.Region.Name = region.Attribute("name").Value;
-                
-                node.Region.Fields.Add(GetKey(), translator.Translate(node.Region.Name, Translator.Languages.Uk, Translator.Languages.En));
+                var regionModel = new Region();
+
+                regionList.Add(region.Attribute("name").Value);
+
+                regionModel.Name = region.Attribute("name").Value;
+
+                regionModel.Fields.Add(GetKey(), translator.Translate(regionModel.Name, Translator.Languages.Uk, Translator.Languages.En));
                 
                 foreach(XElement city in region.Elements())
                 {
-                    node.City.Name = city.Attribute("name").Value;
-                    
-                    node.City.Region = node.Region;
-                    
-                    node.City.Fields.Add(GetKey(), translator.Translate(node.City.Name, Translator.Languages.Uk, Translator.Languages.En));
+                    if (String.IsNullOrEmpty(city.Attribute("name").Value) || cityList.Contains(city.Attribute("name").Value))
+                        continue;
+
+                    var cityModel = new City();
+
+                    cityList.Add(city.Attribute("name").Value);
+
+                    cityModel.Name = city.Attribute("name").Value;
+
+                    cityModel.Region = regionModel;
+
+                    cityModel.Fields.Add(GetKey(), translator.Translate(cityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
 
                     foreach (XElement university in city.Elements())
                     {
-                        node.University.Name = university.Attribute("name").Value;
-                        
-                        node.University.City = node.City;
-                        
-                        node.University.Fields.Add(GetKey(), translator.Translate(node.University.Name, Translator.Languages.Uk, Translator.Languages.En));
+                        if (String.IsNullOrEmpty(university.Attribute("name").Value) || universityList.Contains(university.Attribute("name").Value))
+                            continue;
+
+                        var universityModel = new University();
+
+                        universityList.Add(university.Attribute("name").Value);
+
+                        universityModel.Name = university.Attribute("name").Value;
+
+                        universityModel.City = cityModel;
+
+                        universityModel.Fields.Add(GetKey(), translator.Translate(universityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
 
                         foreach (XElement faculty in university.Elements())
                         {
-                            node.Faculty.Name = faculty.Attribute("name").Value;
-                            
-                            node.Faculty.Fields.Add(GetKey(), translator.Translate(node.Faculty.Name, Translator.Languages.Uk, Translator.Languages.En));
+                            if (String.IsNullOrEmpty(faculty.Attribute("name").Value))
+                                continue;
+
+                            var facultyModel = new Faculty();
+
+                            facultyModel.University = universityModel;
+
+                            facultyModel.Name = faculty.Attribute("name").Value;
+
+                            facultyModel.Fields.Add(GetKey(), translator.Translate(facultyModel.Name, Translator.Languages.Uk, Translator.Languages.En));
 
                             foreach(XElement speciality in faculty.Elements())
                             {
-                                node.Speciality.Name = speciality.Attribute("name").Value;
-                                
-                                node.Speciality.Fields.Add(GetKey(), translator.Translate(node.Speciality.Name, Translator.Languages.Uk, Translator.Languages.En));
-                                
-                                node.FacultyToSpeciality.SpecialityId = node.Speciality.Id;
-                               
-                                node.FacultyToSpeciality.FacultyId = node.Faculty.Id;
+
+                                if (String.IsNullOrEmpty(speciality.Attribute("name").Value))
+                                    continue;
+
+                                var specialityModel = new Speciality();
+
+                                var facultyToSpecialityModel = new FacultyToSpeciality();
+
+                                specialityModel.Name = speciality.Attribute("name").Value;
+
+                                specialityModel.Fields.Add(GetKey(), translator.Translate(specialityModel.Name, Translator.Languages.Uk, Translator.Languages.En));
+
+                                facultyToSpecialityModel.Speciality = specialityModel;
+
+                                facultyToSpecialityModel.Faculty = facultyModel;
+
+                                var node = new NodeModel
+                                {
+                                    Region = regionModel,
+                                    City = cityModel,
+                                    University = universityModel,
+                                    Faculty = facultyModel,
+                                    Speciality = specialityModel,
+                                    FacultyToSpeciality = facultyToSpecialityModel
+                                };
 
                                 results.Add(node);
                             }
@@ -83,7 +140,7 @@ namespace Abitcareer.Business.Components.XmlServices
 
             return results;
         }
-       
+
         private bool OpenDataFile(string filePath)
         {
             try

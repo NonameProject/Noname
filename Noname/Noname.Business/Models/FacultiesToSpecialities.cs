@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Models
 {
-    public class FacultiesToSpecialities : BaseModel
+    public class FacultyToSpeciality : BaseModel
     {
-        public virtual string FacultyId { get; set; }
+        public virtual Faculty Faculty { get; set; }
 
-        public virtual string SpecialityId { get; set; }
+        public virtual Speciality Speciality { get; set; }
+
+        public virtual Decimal Price { get; set; }
     }
 }

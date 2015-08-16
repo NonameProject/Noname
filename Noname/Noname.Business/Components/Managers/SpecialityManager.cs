@@ -143,6 +143,11 @@ namespace Abitcareer.Business.Components.Managers
             return result;
         }
 
+        public Speciality GetByName(string name)
+        {
+            return provider.GetByName(name);
+        }
+
         private IList<Speciality> SortBasedOnCurrentCulture(IEnumerable<Speciality> list, LCID languageId)
         {
             switch (languageId)

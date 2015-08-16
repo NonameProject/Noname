@@ -83,7 +83,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
            {
                using (var transaction = session.BeginTransaction())
                {
-                   session.Save(model);
+                   session.SaveOrUpdate(model);
                    transaction.Commit();
                }
            });

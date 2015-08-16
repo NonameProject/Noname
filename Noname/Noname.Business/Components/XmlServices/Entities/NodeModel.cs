@@ -19,7 +19,7 @@ namespace Abitcareer.Business.Components.XmlServices.Entities
 
         public Speciality Speciality { get; set; }
 
-        public FacultiesToSpecialities FacultyToSpeciality { get; set; }
+        public FacultyToSpeciality FacultyToSpeciality { get; set; }
         
         public NodeModel()
         {
@@ -33,7 +33,7 @@ namespace Abitcareer.Business.Components.XmlServices.Entities
 
             Speciality = new Speciality();
 
-            FacultyToSpeciality = new FacultiesToSpecialities();
+            FacultyToSpeciality = new FacultyToSpeciality();
         }
     }
 }

@@ -142,6 +142,15 @@ namespace Abitcareer.Mvc
              {
              });
 
+             routes.MapLocalizedRoute(
+             name: "Import",
+             url: "import",
+             defaults: new { controller = "DataImport", action = "Import" },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
+
 
             routes.MapRoute(
                 "NotFound",

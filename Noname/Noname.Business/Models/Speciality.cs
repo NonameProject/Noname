@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abitcareer.Business.Components.Extensions;
+using System;
 
 namespace Abitcareer.Business.Models
 {
@@ -11,6 +12,29 @@ namespace Abitcareer.Business.Models
 
         public virtual Dictionary<int, int> Salaries { get; set; }
 
+        public virtual Dictionary<string, Decimal> Prices { get; set; }
+
+        public Speciality()
+        {
+            Salaries = new Dictionary<int, int>();
+
+            Prices = new Dictionary<string, Decimal>();
+
+            Salaries[1] = 0;
+            Salaries[2] = 0;
+            Salaries[3] = 0;
+            Salaries[4] = 0;
+            Salaries[5] = 0;
+            Salaries[10] = 0;
+            Salaries[20] = 0;
+
+            Prices["TopUniversityPrice"] = 0;
+
+            Prices["MiddleUniversityPrice"] = 0;
+
+            Prices["LowUniversityPrice"] = 0;
+        }
+
         public virtual string CompressedSalaries
         {
             get
@@ -20,6 +44,18 @@ namespace Abitcareer.Business.Models
             set
             {
                 Salaries = value.ToDictionary<int, int>();
+            }
+        }
+
+        public virtual string CompressedPrices
+        {
+            get
+            {
+                return Prices.ToXmlString<string, Decimal>();
+            }
+            set
+            {
+                Prices = value.ToDictionary<string, Decimal>();
             }
         }
 
@@ -38,5 +74,6 @@ namespace Abitcareer.Business.Models
                 Fields["<1058>_<Name>"] = value;
             }
         }
+
     }
 }

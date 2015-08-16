@@ -8,7 +8,7 @@ using Abitcareer.Business.Data_Providers_Contracts;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
-    public class NHibernateFacultiesToSpecialitiesDataProvider : NHibernateDataProviderBase<FacultiesToSpecialities>, IFacultiesToSpecialitiesDataProvider
+    public class NHibernateFacultiesToSpecialitiesDataProvider : NHibernateDataProviderBase<FacultyToSpeciality>, IFacultiesToSpecialitiesDataProvider
     {
     }
 }

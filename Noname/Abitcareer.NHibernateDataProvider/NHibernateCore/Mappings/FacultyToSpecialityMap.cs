@@ -8,16 +8,18 @@ using FluentNHibernate.Mapping;
 
 namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 {
-    class FacultiesToSpecialitiesMap : ClassMap<FacultiesToSpecialities>
+    class FacultyToSpecialityMap : ClassMap<FacultyToSpeciality>
     {
-        public FacultiesToSpecialitiesMap()
+        public FacultyToSpecialityMap()
         {
 
             Id(x => x.Id);
 
-            Map(x => x.FacultyId);
+            References(x => x.Faculty);
 
-            Map(x => x.SpecialityId);
+            References(x => x.Speciality);
+
+            Map(x => x.Price);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Abitcareer.Mvc.Controllers
 
         RegionManager regionManager;
 
-        public DataImportController(CityManager cityManager ,RegionManager regionManager,UniversityManager universityManager,FacultyManager facultyManager, SpecialityManager specialityManager,
+        public DataImportController(CityManager cityManager, RegionManager regionManager, UniversityManager universityManager, FacultyManager facultyManager, SpecialityManager specialityManager,
             IFacultiesToSpecialitiesDataProvider facToSpecProvider)
         {
             this.facultyManager = facultyManager;
@@ -43,13 +43,17 @@ namespace Abitcareer.Mvc.Controllers
             this.universityManager = universityManager;
         }
 
-        public void  Import()
+        public void Import()
         {
             var service = new DataImportXmlService(Server.MapPath("~/App_Data/Data.xml"));
 
             var importingData = service.Parse();
 
-            foreach(var node in importingData)
+            var specialityList = new List<string>();
+
+            var facultyList = new List<string>();
+
+            foreach (var node in importingData)
             {
                 regionManager.Create(node.Region);
 
@@ -57,11 +61,45 @@ namespace Abitcareer.Mvc.Controllers
 
                 universityManager.Create(node.University);
 
-                facultyManager.Create(node.Faculty);
+                if (!string.IsNullOrEmpty(node.Faculty.Name) && !facultyList.Contains(node.Faculty.Name))
+                {
+                    facultyManager.Create(node.Faculty);
 
-                specialityManager.Create(node.Speciality);
+                    facultyList.Add(node.Faculty.Name);
+                }
 
-                facToSpecProvider.Create(node.FacultyToSpeciality);
+                if (!string.IsNullOrEmpty(node.Speciality.Name) && !specialityList.Contains(node.Speciality.Name))
+                {
+                    specialityManager.Create(node.Speciality);
+
+                    specialityList.Add(node.Speciality.Name);
+                }
+
+            }
+
+            foreach (var node in importingData)
+            {
+                var facultyToSpeciality = new FacultyToSpeciality();
+
+                try
+                {
+                    var spec = specialityManager.GetByName(node.Speciality.Name);
+
+                    var fac = facultyManager.GetByName(node.Faculty.Name);
+
+                    if (fac != null && spec != null)
+                    {
+                        facultyToSpeciality.Faculty = facultyManager.GetByName(node.Faculty.Name);
+
+                        facultyToSpeciality.Speciality = specialityManager.GetByName(node.Speciality.Name);
+
+                        facToSpecProvider.Create(facultyToSpeciality);
+                    }
+                }
+                catch
+                {
+                    ;
+                }
             }
         }
     }

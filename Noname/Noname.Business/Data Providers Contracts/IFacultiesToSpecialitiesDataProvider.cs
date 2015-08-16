@@ -7,7 +7,7 @@ using Abitcareer.Business.Models;
 
 namespace Abitcareer.Business.Data_Providers_Contracts
 {
-    public interface IFacultiesToSpecialitiesDataProvider : IDataProvider<FacultiesToSpecialities>
+    public interface IFacultiesToSpecialitiesDataProvider : IDataProvider<FacultyToSpeciality>
     {
         
     }
