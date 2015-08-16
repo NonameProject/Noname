@@ -170,11 +170,11 @@ form {
 
 .card span
 {
-    margin-top: 35px;
-    display: block;
     color: green;
-    font-size: 24px;
+    display: block;
     font-family: myriad;
+    font-size: 24px;
+    margin-top: 42px;
 }
 
 .salary-wrapper
