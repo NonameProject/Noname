@@ -56,7 +56,7 @@ namespace Abitcareer.Mvc.App_Start
                 .As<IUserDataProvider>();
 
             builder.RegisterType<NHibernateFacultiesToSpecialitiesDataProvider>()
-                .As<IFacultiesToSpecialitiesDataProvider>();
+                .As<IFacultyToSpecialityDataProvider>();
 
             builder.RegisterType<RuntimeCacheManager>()
                 .As<ICacheManager>();

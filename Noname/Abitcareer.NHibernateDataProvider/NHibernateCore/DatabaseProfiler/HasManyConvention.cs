@@ -14,7 +14,6 @@ namespace Abitcareer.Business.Components.Miniprofiler
         {
             instance.Key.Column(instance.EntityType.Name + "Fk");
 
-            //This line is added as new
             instance.BatchSize(5);
 
             instance.Cascade.All();

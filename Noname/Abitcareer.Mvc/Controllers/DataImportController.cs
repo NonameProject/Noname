@@ -19,7 +19,7 @@ namespace Abitcareer.Mvc.Controllers
 
         SpecialityManager specialityManager;
 
-        IFacultiesToSpecialitiesDataProvider facToSpecProvider;
+        IFacultyToSpecialityDataProvider facToSpecProvider;
 
         UniversityManager universityManager;
 
@@ -28,7 +28,7 @@ namespace Abitcareer.Mvc.Controllers
         RegionManager regionManager;
 
         public DataImportController(CityManager cityManager, RegionManager regionManager, UniversityManager universityManager, FacultyManager facultyManager, SpecialityManager specialityManager,
-            IFacultiesToSpecialitiesDataProvider facToSpecProvider)
+            IFacultyToSpecialityDataProvider facToSpecProvider)
         {
             this.facultyManager = facultyManager;
 

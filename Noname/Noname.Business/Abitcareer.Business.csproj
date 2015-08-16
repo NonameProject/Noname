@@ -88,7 +88,7 @@
     <Compile Include="Components\XmlServices\Entities\NodeModel.cs" />
     <Compile Include="Data Providers Contracts\ICityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IDataProvider.cs" />
-    <Compile Include="Data Providers Contracts\IFacultiesToSpecialitiesDataProvider.cs" />
+    <Compile Include="Data Providers Contracts\IFacultyToSpecialityDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IFacultyDataProvider.cs" />
     <Compile Include="Data Providers Contracts\IRegionDataProvider.cs" />
     <Compile Include="Data Providers Contracts\ISpecialityDataProvider.cs" />

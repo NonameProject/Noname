@@ -9,6 +9,5 @@ namespace Abitcareer.Business.Data_Providers_Contracts
 {
     public interface IFacultyDataProvider : IDataProvider<Faculty>
     {
-        Faculty GetByName(string name);
     }
 }

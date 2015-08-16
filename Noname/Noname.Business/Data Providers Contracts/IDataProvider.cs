@@ -12,6 +12,8 @@ namespace Abitcareer.Business.Data_Providers_Contracts
 
         T GetById(string id);
 
+        T GetByName(string name);
+
         void Create(T model);
 
         void Update(T model);
