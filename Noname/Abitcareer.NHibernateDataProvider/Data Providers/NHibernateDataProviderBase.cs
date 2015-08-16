@@ -75,6 +75,17 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
             });
         }
 
+        public TEntity GetByName(string name)
+        {
+            return Execute(session =>
+            {
+                return session
+                    .CreateCriteria(typeof(TEntity))
+                    .Add(Restrictions.Eq("Name", name))
+                    .UniqueResult<TEntity>();
+            });
+        }
+
        
 
         public void Create(TEntity model)

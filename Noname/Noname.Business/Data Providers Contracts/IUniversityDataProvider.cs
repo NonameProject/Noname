@@ -7,16 +7,8 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Data_Providers_Contracts
 {
-    public interface IUniversityDataProvider
+    public interface IUniversityDataProvider : IDataProvider<University>
     {
-        IList<University> GetList();
 
-        University GetById(string id);
-
-        void Create(University model);
-
-        void Update(University model);
-
-        void Delete(University model);
     }
 }

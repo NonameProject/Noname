@@ -9,8 +9,6 @@ namespace Abitcareer.Business.Data_Providers_Contracts
 {
     public interface ISpecialityDataProvider : IDataProvider<Speciality>
     {
-        Speciality GetByName(string name);
-
         void Delete(string id);
 
         void ClearSalaries( );
