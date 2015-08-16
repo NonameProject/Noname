@@ -19,7 +19,7 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
 
             References(x => x.Speciality);
 
-            Map(x => x.Price);
+            //Map(x => x.Price);
         }
     }
 }
