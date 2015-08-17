@@ -368,7 +368,8 @@ background-color:inherit;
 }
 @media (max-width: 991px) {
     #addCard{ /*Dirty hack, but it seems like it is only way to fix this shit*/
+        margin-bottom: -29px;
         position: relative;
-        top: -29px;
+        top: -28px;
     }
 }
