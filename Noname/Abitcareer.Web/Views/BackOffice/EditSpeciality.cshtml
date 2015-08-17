@@ -18,15 +18,18 @@
         @Html.EditorFor(m => m.EnglishName)
         <br />
         <span id="js-validation" class="error-text"></span>
-        <h4>@LocalizationResx.Salaries.ToUpper()</h4>
-        
-        <ul class="salaries">
-            @foreach (var item in Model.Salaries)
-            {
-                string yearEnding = LocalizationResx.EndAfterFour;
-                <li>
-                    @if(item.Key < 10 || item.Key > 20){
-                        switch(item.Key%10){
+        <article class="left">
+            <h4>@LocalizationResx.Salaries.ToUpper()</h4>
+    
+            <ul class="salaries">
+                @foreach (var item in Model.Salaries)
+                {
+                    string yearEnding = LocalizationResx.EndAfterFour;
+                    <li>
+                        @if (item.Key < 10 || item.Key > 20)
+                        {
+                            switch (item.Key % 10)
+                            {
                             case 1:
                                 yearEnding = LocalizationResx.FirstEnd;
                                 break;
@@ -39,14 +42,15 @@
                             default:
                                 yearEnding = LocalizationResx.EndAfterFour;
                                 break;
+                            }
                         }
-                    }
-
-                    @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                    @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control", min=0})
-                </li>
-            }
-            </ul>
+                        @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
+                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                    </li>
+                }
+                </ul>
+            </article>
+        <div class="clear"></div>
         <div class="row">        
             <button type="submit" class="btn btn-primary right">@LocalizationResx.Save</button>
             <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
