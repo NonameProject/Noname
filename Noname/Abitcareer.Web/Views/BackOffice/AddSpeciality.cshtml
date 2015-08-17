@@ -56,6 +56,9 @@
 }
 
 <script>
+    $("#Name").attr("placeholder", "Назва спеціальності");
+    $("#EnglishName").attr("placeholder", "Name of speciality");
+
     $("#Name, #EnglishName").keypress(function (event) {
         if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
             return false;
