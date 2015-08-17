@@ -188,9 +188,9 @@ SpecialityEditor = (function(){
                 });
 
                 settings.search.keydown(function () {
-                    clearTimeout(id);
+                    clearTimeout(searchItemId);
                     $(this).removeClass('success', 100);
-                    id = setTimeout(function () {
+                    searchItemId = setTimeout(function () {
                         var value = settings.search.val();
                         if (!value && !value.trim()) {
                             $(".cardWrapper").show(0);
