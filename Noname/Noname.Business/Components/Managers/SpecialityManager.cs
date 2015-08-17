@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Abitcareer.Business.Components.Managers
 {
@@ -94,9 +95,19 @@ namespace Abitcareer.Business.Components.Managers
                 provider.Delete(id);
         }
 
-        public bool IsSpecialityNameAvailable(string name)
+
+       public bool IsSpecialityNameAvailable(string name)
         {
             return provider.GetByName(name) == null;
+        }
+
+        public bool IsSpecialityEnglishNameAvailable(string name)
+        {
+            var translator = new Translation.Translator();
+
+            var value = translator.Translate(name, Translation.Translator.Languages.En, Translation.Translator.Languages.Uk).Replace("\"",String.Empty);
+
+            return provider.GetByName(value) == null;
         }
 
         public Speciality GetById(string id)

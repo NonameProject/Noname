@@ -17,6 +17,7 @@
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
+        @Html.ValidationMessageFor(x => x.EnglishName)
         <br />
         <span id="js-validation" class="error-text"></span>
         <!--<article class="right">
@@ -95,9 +96,9 @@
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
-            SpecialityAdditingSuccess: "@LocalizationResx.SpecialityAdditingSuccess",
+            SpecialityChangeSuccess: "@LocalizationResx.SpecialityAddingSuccess",
 
-            SpecialityAdditingFailed: "@LocalizationResx.SpecialityAditingFailed"
+            SpecialityChangeFailed: "@LocalizationResx.SpecialityAddingFailed"
         });
     });
 </script>

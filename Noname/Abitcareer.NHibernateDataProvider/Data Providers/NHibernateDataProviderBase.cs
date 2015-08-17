@@ -11,6 +11,7 @@ using StackExchange.Profiling;
 using Abitcareer.Business.Components;
 using Elmah;
 using NHibernate.Criterion;
+using System.Xml.Linq;
 
 namespace Abitcareer.NHibernateDataProvider.Data_Providers
 {
@@ -85,8 +86,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                     .UniqueResult<TEntity>();
             });
         }
-
-       
+      
 
         public void Create(TEntity model)
         {
@@ -129,7 +129,7 @@ namespace Abitcareer.NHibernateDataProvider.Data_Providers
                     using (var transaction = session.BeginTransaction())
                     {
                         session.Delete(session.Load(typeof(Speciality), id));
-                        session.Flush();
+                        //session.Flush();
                         transaction.Commit();
                     }
 

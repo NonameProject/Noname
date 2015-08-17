@@ -232,6 +232,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\User.css" />
     <Content Include="Data.xml" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -277,6 +278,10 @@
     <Content Include="Content\fonts\fontello.svg" />
     <Content Include="Content\fonts\fontello.ttf" />
     <Content Include="Content\fonts\fontello.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
@@ -352,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="fonts\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <PropertyGroup>

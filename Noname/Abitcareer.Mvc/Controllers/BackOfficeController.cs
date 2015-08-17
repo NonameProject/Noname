@@ -68,6 +68,11 @@ namespace Abitcareer.Web.Components
             return Json(specialityManager.IsSpecialityNameAvailable(name), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult IsSpecialityEnglishNameAvailable(string englishName)
+        {
+            return Json(specialityManager.IsSpecialityEnglishNameAvailable(englishName), JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult Save(SpecialityViewModel editedModel)
         {
@@ -79,8 +84,9 @@ namespace Abitcareer.Web.Components
         [HttpPost]
         public ActionResult DeleteSpeciality(string id)
         {
+            var model = specialityManager.GetById(id);
             specialityManager.Delete(id);
-            return Json(true);
+            return Json(model.Name);
         }
 
         [HttpGet]

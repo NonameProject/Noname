@@ -43,6 +43,15 @@ namespace Abitcareer.Mvc
               {
               });
 
+            routes.MapLocalizedRoute(
+             name: "IsSpecialityEnglishNameAvailable",
+             url: "IsSpecialityEnglishNameAvailable",
+             defaults: new { controller = "BackOffice", action = "IsSpecialityEnglishNameAvailable" },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
+
 
 
             routes.MapRoute(

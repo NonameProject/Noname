@@ -285,29 +285,29 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
-  <data name="SpecialityAdditingFailed" xml:space="preserve">
-    <value>Error occured while adding speciality</value>
+  <data name="SpecialityAddingFailed" xml:space="preserve">
+    <value>Error occured while adding the speciality</value>
   </data>
-  <data name="SpecialityAdditingSuccess" xml:space="preserve">
-    <value>Speciality successfuly added</value>
+  <data name="SpecialityAddingSuccess" xml:space="preserve">
+    <value>Speciality has been successfuly added</value>
   </data>
-  <data name="SpecialityAditingFailed" xml:space="preserve">
-    <value>When editing the specialty error</value>
+  <data name="SpecialityEditingFailed" xml:space="preserve">
+    <value>Error occured while  editing the speciality</value>
   </data>
-  <data name="SpecialityAditingSuccess" xml:space="preserve">
-    <value>Speciality successfully edited</value>
+  <data name="SpecialityEditingSuccess" xml:space="preserve">
+    <value>The speciality has been successfully edited</value>
   </data>
   <data name="SummaryPayment" xml:space="preserve">
     <value>Total cost in</value>
   </data>
   <data name="SpecialityRemoveFailed" xml:space="preserve">
-    <value>Failed to remove specialty</value>
+    <value>Failed to remove the specialty</value>
   </data>
   <data name="SpecialityRemoveSuccess" xml:space="preserve">
-    <value>Specialty successfully removed</value>
+    <value>The specialty has been successfully removed</value>
   </data>
   <data name="SpecialityOpenFailed" xml:space="preserve">
-    <value>This pecialty has been removed or edited. Refresh the page</value>
+    <value>This specialty has been removed or edited. Refresh the page</value>
   </data>
   <data name="PageBackoffice" xml:space="preserve">
     <value>Specialities management</value>

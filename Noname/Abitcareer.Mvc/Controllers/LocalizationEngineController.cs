@@ -15,23 +15,6 @@ namespace Abitcareer.Mvc.Controllers
 {
     public class LocalizationEngineController : Controller
     {
-        UniversityManager universityManager;
-        RegionManager regionManager;
-        CityManager cityManager;
-        FacultyManager facultyManager;
-        SpecialityManager specialityManager;
-        Translator translator = new Translator();
-
-        public LocalizationEngineController(UniversityManager universityManager, RegionManager regionManager,
-            SpecialityManager specialityManager, CityManager cityManager, FacultyManager facultyManager)
-        {
-            this.universityManager = universityManager;
-            this.regionManager = regionManager;
-            this.facultyManager = facultyManager;
-            this.specialityManager = specialityManager;
-            this.cityManager = cityManager;
-        }
-
         public ActionResult ChangeCulture(string culture, string routeName, string anchor = "")
         {
             if(string.IsNullOrEmpty(anchor))
@@ -39,13 +22,6 @@ namespace Abitcareer.Mvc.Controllers
                 return RedirectToRoute(routeName, new { locale = culture });
             }
             return Redirect(Url.RouteUrl(routeName, new { locale = culture }) + "#" + anchor);            
-        }
-
-        public ActionResult TestDb()
-        {
-
-            var list = AutoMapper.Mapper.Map<List<UniversityViewModel>>(universityManager.GetList());
-            return View(list);
         }
     }
 }

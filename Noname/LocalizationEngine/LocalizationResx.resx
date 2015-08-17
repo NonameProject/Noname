@@ -285,16 +285,16 @@
   <data name="Logout" xml:space="preserve">
     <value>Вихід</value>
   </data>
-  <data name="SpecialityAdditingFailed" xml:space="preserve">
+  <data name="SpecialityAddingFailed" xml:space="preserve">
     <value>При додаванні спеціальності виникла помилка</value>
   </data>
-  <data name="SpecialityAdditingSuccess" xml:space="preserve">
+  <data name="SpecialityAddingSuccess" xml:space="preserve">
     <value>Спеціальність успішно додана</value>
   </data>
-  <data name="SpecialityAditingFailed" xml:space="preserve">
+  <data name="SpecialityEditingFailed" xml:space="preserve">
     <value>При редагуванні спеціальності виникла помилка</value>
   </data>
-  <data name="SpecialityAditingSuccess" xml:space="preserve">
+  <data name="SpecialityEditingSuccess" xml:space="preserve">
     <value>Спеціальність успішно відредагована</value>
   </data>
   <data name="SummaryPayment" xml:space="preserve">

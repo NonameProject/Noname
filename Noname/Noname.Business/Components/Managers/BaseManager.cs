@@ -57,8 +57,6 @@ namespace Abitcareer.Business.Components
             {
                 if (!string.IsNullOrEmpty(localizedValue.ToString()))
                 {
-                    if (localizedValue.Length > 8)
-                    {
                         localizedValue.Replace(@"\&quot;", "");
 
                         localizedValue = localizedValue.Substring(1);
@@ -69,7 +67,6 @@ namespace Abitcareer.Business.Components
                         localizedValue = localizedValue.Replace("\\\"", "\"");
 
                         return localizedValue;
-                    }
                 }
             }
             return defaultValue;
