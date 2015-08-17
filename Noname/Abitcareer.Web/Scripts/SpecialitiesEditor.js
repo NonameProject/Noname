@@ -88,7 +88,7 @@ SpecialityEditor = (function(){
 
                 settings.deleteSubmit = $(".deleteSubmit");
 
-                settings.addButton = $("#addNew");
+                settings.addButton = $("#addCard");
 
                 settings.names = $("#Name, EnglishName");
 
