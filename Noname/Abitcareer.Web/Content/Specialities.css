@@ -165,12 +165,11 @@ form {
 }
 
 .cardWrapper {
-    box-sizing:border-box;
-    display:inline-block;
+    box-sizing: border-box;
+    display: inline-block;
     max-width: 440px;
-    min-width: 220px;
+    min-width: 265px;
     padding: 15px;
-    width: 250px; 
 }
 
 .card
