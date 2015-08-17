@@ -55,12 +55,17 @@ namespace Abitcareer.Web.Components
         public ActionResult AddSpeciality(SpecialityViewModel viewModel)
         {
             var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
-            if (!specialityManager.IsExists(model))
+            if (!specialityManager.IsSpecialityNameAvailable(model.Name))
             {
                 specialityManager.Create(model);
                 return PartialView("SpecialityPartial", viewModel);
             }
             return Json(false);
+        }
+
+        public JsonResult IsSpecialityNameAvailable(string name)
+        {
+            return Json(specialityManager.IsSpecialityNameAvailable(name), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

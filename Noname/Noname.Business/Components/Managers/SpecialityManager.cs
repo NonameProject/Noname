@@ -94,11 +94,9 @@ namespace Abitcareer.Business.Components.Managers
                 provider.Delete(id);
         }
 
-        public bool IsExists(Speciality model)
+        public bool IsSpecialityNameAvailable(string name)
         {
-            if (provider.GetByName(model.Name) != null)
-                return true;
-            return false;
+            return provider.GetByName(name) == null;
         }
 
         public Speciality GetById(string id)

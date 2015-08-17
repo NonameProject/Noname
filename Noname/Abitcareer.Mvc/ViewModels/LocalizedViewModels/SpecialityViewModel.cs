@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
     public class SpecialityViewModel : BaseViewModel
     {
+        [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ")]
         public string EnglishName { get; set; }
         [ScaffoldColumn(false)]
         public virtual int DirectionCode { get; set; }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
@@ -13,6 +14,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
         [ScaffoldColumn(false)]
         public virtual string Id { get; set; }
 
+        [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ")]
         public virtual string Name { get; set; }
     }
 }

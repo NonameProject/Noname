@@ -9,6 +9,7 @@ SpecialityEditor = (function(){
 
     var partialView = $('#partialView'),
         inner = $('#inner');
+
     $(document).scroll(function (e) {
         if (partialView.css('display') == 'none') return;
         
@@ -28,9 +29,30 @@ SpecialityEditor = (function(){
         inner.css('top', pos);
     });
 
+    var onRemoteComplete = function()
+    {
+        $('#Name').rules().remote.complete = function (xhr) {
+            $("span[data-valmsg-for='Name']").removeClass();
+            if (xhr.status == 200 && xhr.responseText === 'true') {
+                $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
+            }
+            else {
+                $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure"); 
+            }
+        };
+
+        $('#EnglishName').rules().remote.complete = function (xhr) {
+            $("span[data-valmsg-for='Name']").removeClass();
+            if (xhr.status == 200 && xhr.responseText === 'true') {
+                $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-ok success");
+            }
+            else {
+                $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-remove failure");
+            }
+        };
+    }
+
     return {
-
-
             resizeCards: function () {
                 var wrapperWidth = $('#wrapper').width();
                 if (Math.abs(wrapperWidth - oldWidth) < 5) return;
@@ -157,7 +179,9 @@ SpecialityEditor = (function(){
                             success: function (data) {
                                 settings.inner.html(data);
                                 settings.partialView.show(0);
-
+                                SpecialityEditor.resizeCards();
+                                $.validator.unobtrusive.parse('#editor');
+                                onRemoteComplete();
                             },
                             error: function (e) {
                                 alert("error" + e.status);

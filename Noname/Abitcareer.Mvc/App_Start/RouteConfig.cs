@@ -34,6 +34,17 @@ namespace Abitcareer.Mvc
                 {
                 });
 
+            routes.MapLocalizedRoute(
+              name: "IsSpecialityNameAvailable",
+              url: "IsSpecialityNameAvailable",
+              defaults: new { controller = "BackOffice", action = "IsSpecialityNameAvailable" },
+              setupConstraints:
+              (dynamic constraints) =>
+              {
+              });
+
+
+
             routes.MapRoute(
                 "GetData",
                 "getdata/{id}/{polinom}",

@@ -13,6 +13,7 @@
         
         @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(x => x.Name)
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
