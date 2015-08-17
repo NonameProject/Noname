@@ -307,7 +307,7 @@
     <value>Specialty successfully removed</value>
   </data>
   <data name="SpecialityOpenFailed" xml:space="preserve">
-    <value>Specialty been removed or edited. Refresh the page</value>
+    <value>This pecialty has been removed or edited. Refresh the page</value>
   </data>
   <data name="PageBackoffice" xml:space="preserve">
     <value>Specialities management</value>
