@@ -12,6 +12,6 @@ namespace Abitcareer.Business.Models
 
         public virtual Speciality Speciality { get; set; }
 
-        //public virtual Decimal Price { get; set; }
+        public virtual Decimal Price { get; set; }
     }
 }

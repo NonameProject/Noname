@@ -98,7 +98,7 @@
     <Compile Include="Components\Cache\ICacheManager.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\City.cs" />
-    <Compile Include="Models\FacultiesToSpecialities.cs" />
+    <Compile Include="Models\FacultyToSpeciality.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Region.cs" />
