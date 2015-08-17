@@ -1,4 +1,17 @@
-﻿.highcharts-title
+﻿body
+{
+    overflow-y: hidden;
+}
+
+@media (max-height: 550px)
+{
+    body
+    {
+        overflow-y: scroll;
+    }
+}
+
+.highcharts-title
 {
     font-size: small !important;
 }
@@ -155,10 +168,10 @@ select
 #js-loading-screen.active
 {
     position: fixed;
-    top: 60px;
+    top: -60px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 200%;
     z-index: 1000;
     background: rgba(255,255,255, 0.75);
 }

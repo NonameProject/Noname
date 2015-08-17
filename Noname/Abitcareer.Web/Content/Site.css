@@ -2,7 +2,7 @@
 {
     min-width: 320px;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     background-image: url(Images/subtle_dots.png);
 
 }

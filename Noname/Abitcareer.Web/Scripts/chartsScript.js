@@ -24,7 +24,7 @@ function Chart() {
 
         var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
             t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
-
+        
         if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
             return {
                 x: p0_x + (t * s1_x),
@@ -84,11 +84,16 @@ function Chart() {
             var retData = [],
                 length = chart.series.length;
             for (var i = 0; i < length-1; i++) {
-                var data = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
-                if (!data.saveIsect)
-                    continue;
-                retData.push(data);
-                selectPoint(chart.series[length-1], data);
+                var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
+                for (var q = 0; q < tmpData.length; q++) {
+                    retData.push(tmpData[q]);
+
+                    selectPoint(chart.series[length - 1], tmpData[q]);
+                }
+                //if (!data.saveIsect)
+                //    continue;
+                //retData.push(data);
+                //selectPoint(chart.series[length-1], data);
             }
 
             retData.sort(function (a, b) {
@@ -102,7 +107,7 @@ function Chart() {
             for (var i = 0; i < retData.length; i++) {
                 ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
-                addPlotChart(retData[i], plotColors[i] || '#FFEFD5');
+                addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length-1]);
             }
             chart.xAxis[0].update({ additionalTicks: ticks });
             chart.redraw();
@@ -132,6 +137,7 @@ function Chart() {
             var n0 = linePoints1.length,
             n1 = linePoints2.length;
             var i, j, isect, isect2;
+            var ret = [];
             var saveIsect;
             var mx = -100;
             for (i = 1; i < n0; i++) {
@@ -142,16 +148,19 @@ function Chart() {
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
-                        if (linePoints1[i - 1].x === 0)
+                        var tmp = new Object();
+                        if (isect.x === 0)
                             continue;
                         linePointsTo.addPoint(isect, true, false);
-                        saveIsect = isect;
+                        
+                        tmp.saveIsect = isect;
+                        tmp.mx = mx;
+
+
+                        ret.push(tmp);
                     }
                 }
             }
-            var ret = new Object();
-            ret.saveIsect = saveIsect;
-            ret.mx = mx;
             return ret;
         };        
 
