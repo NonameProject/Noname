@@ -271,7 +271,7 @@
     <value>low-rank university</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
-    <value>New speciality</value>
+    <value>Add speciality</value>
   </data>
   <data name="PressToEdit" xml:space="preserve">
     <value>Click To Edit</value>
