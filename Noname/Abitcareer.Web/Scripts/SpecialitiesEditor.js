@@ -30,6 +30,8 @@ deleteSpeciality = function () {
     $("#deleteConfirm").hide(0);
 };
 
+var initialCss = {};
+
 $(function () {
     $(document).ajaxStart(function () {
         $("body").toggleClass("loading");
@@ -86,6 +88,22 @@ $(function () {
                 }
             });
     });
+
+    initialCss.width = $('.card').width();
 });
+function resizeCards() {
+    var card = $('.cardWrapper'),
+        maxWidth = parseInt(card.css('maxWidth')),
+        minWidth = parseInt(card.css('minWidth')),
+        width = card.innerWidth(),
+        wrapperWidth = $('#wrapper').width();
 
+    var maxCount = Math.floor(wrapperWidth / minWidth),
+        minCount = Math.floor(wrapperWidth / maxWidth);
 
+    var computedWidth = wrapperWidth / maxCount;
+    if (computedWidth > maxWidth) computedWidth = maxWidth;
+    card.width(computedWidth);
+}
+
+$(window).resize(resizeCards);

@@ -1,5 +1,5 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
-
+<article class="cardWrapper">
 <div class="col-md-4 card boxShadow17 specButton" id="@Model.Id">
     <div class="ttip">
         <button type="button" class="left delete close" onclick="requestDeletion('@Model.Id')">×</button>    
@@ -11,7 +11,5 @@
     <div class="salary-wrapper">
         <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
     </div>
-
-    
 </div>
-
+</article>
