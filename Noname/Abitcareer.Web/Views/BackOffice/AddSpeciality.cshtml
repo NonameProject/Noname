@@ -56,39 +56,13 @@
 }
 
 <script>
-    $("#Name, #EnglishName").keypress(function (event) {
-        if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
-            return false;
-    });
-    $("ul.salaries li input").attr("min", 0);
-    $("#editor").submit(function (event) {
-        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
-            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
-            event.preventDefault();
-            return false;
-        }
-        var data = $("#editor").serialize();
-        var url = $("#editor").attr("action");
-        $.post(url, data, function (d) {
-            if (d) {
-                Notificate("@LocalizationResx.SpecialityAdditingSuccess");
-                $('#partialView').hide();
-                $("#addNew").after(d);
-            }
-            else {
-                Notificate("@LocalizationResx.SpecialityAdditingFailed");
-            }
+   $(document).ready(function () {
+        SpecialityEditor.init({
+            ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
+            SpecialityAdditingSuccess: "@LocalizationResx.SpecialityAdditingSuccess",
+
+            SpecialityAdditingFailed: "@LocalizationResx.SpecialityAditingFailed"
         });
-        event.preventDefault();
     });
-
-    $('#exitButton').click(function () {
-        $('#partialView').hide();
-    });
-
-    $('#exit').click(function () {
-        $('#partialView').hide();
-    });
-
 </script>

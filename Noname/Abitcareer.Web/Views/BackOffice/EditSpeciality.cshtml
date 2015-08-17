@@ -53,70 +53,13 @@
         </div>
     }
 <script>
-    $("#Name, #EnglishName").keypress(function (event) {
-        if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
-            return false;
-    });
-    $("ul.salaries li input").attr("min", 0);
-    $("#editor").submit(function (event) {
-        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0 )
-        {
-            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
-            event.preventDefault();
-            return false;
-        }
-        var data = $(this).serialize();
-        var url = $(this).attr("action");
-        $.post(url, data, function (d) {
-            if (d)
-            {
-                function compareNumeric(a, b) {
-                    if (a > b) return 1;
-                    if (a < b) return -1;
-                    if (a == b) return 0;
-                }
-                function changeToString(a)
-                {
-                    if (!a)
-                        a = '0';
-                    return a;
-                }
-                Notificate("@LocalizationResx.SpecialityAditingSuccess");
-                var culture = getCulture();
-                var newName;
+    $(document).ready(function () {
+        SpecialityEditor.init({
+            ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
-                var arrayOfSalaries = [];
-                for (var i = 1; i <= 5; i++) {
-                    var salary = parseInt(changeToString($('input[name="Salaries[' + i + ']"]').val()));
-                    arrayOfSalaries.push(salary);
-                }
-                salary = parseInt(changeToString($('input[name="Salaries[10]"]').val()));
-                arrayOfSalaries.push(salary);
+            SpecialityAdditingSuccess: "@LocalizationResx.SpecialityAdditingSuccess",
 
-                salary = parseInt(changeToString($('input[name="Salaries[20]"]').val()));
-                arrayOfSalaries.push(salary);
-
-                arrayOfSalaries.sort(compareNumeric);
-                 
-                if (culture == 'en-us')
-                    newName = $('#EnglishName').val();
-                else newName = $('#Name').val();
-                $('#partialView').hide();
-                $('#@Model.Id').addClass("edited");
-                $('#@Model.Id div.name').html(newName);
-                $('#@Model.Id div.salary-wrapper').html('<h4>' + arrayOfSalaries[0] + '-' + arrayOfSalaries[6] + '<h4>');
-                setTimeout(function () { $('#@Model.Id').removeClass("edited"); }, 5000);
-            }
-            else
-                Notificate("@LocalizationResx.SpecialityAditingFailed");
+            SpecialityAdditingFailed: "@LocalizationResx.SpecialityAditingFailed"
         });
-        event.preventDefault();
-    });
-    $('#exitButton').click(function () {
-        $('#partialView').hide();
-    });
-
-    $('#exit').click(function () {
-        $('#partialView').hide();
     });
 </script>

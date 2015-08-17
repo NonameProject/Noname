@@ -15,6 +15,8 @@ namespace Abitcareer.Mvc
             
         }
 
+        
+
         public void Init(HttpApplication context)
         {
             context.BeginRequest += new EventHandler(OnBeginRequest);

@@ -23,7 +23,7 @@
         @LocalizationResx.SpecialityDeleteTextConfirm<br>
         <div class="deleteControls">
             <button class="btn btn-default deleteDiscard">@LocalizationResx.Cancel</button>
-            <button class="btn btn-danger deleteSubmit" onclick="deleteSpeciality()">@LocalizationResx.Delete</button>
+            <button class="btn btn-danger deleteSubmit">@LocalizationResx.Delete</button>
         </div>
         
     </div>
@@ -42,6 +42,8 @@
             { Html.RenderPartial("SpecialityPartial", item); }
         }
 </div>
+
+
 <script>
     var Localization = new Object();
     Localization.LocalizationForRemove = "@LocalizationResx.SpecialityOpenFailed";
@@ -54,5 +56,4 @@
     @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
     @Scripts.Render("~/Scripts/search.js")
     @Scripts.Render("~/Scripts/Notifications.js")
-
 }

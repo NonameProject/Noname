@@ -19,7 +19,7 @@
     @Scripts.Render("~/Scripts/errorhandler.js")
     @Scripts.Render("~/Scripts/googleAnalytics.js")
     <script type="text/javascript">
-        Logger.getUrl('@Url.Action("LogJavaScriptError", "Error")');
+        Logger.init('@Url.Action("LogJavaScriptError", "Error")');
     </script>
 </head>
 <body>

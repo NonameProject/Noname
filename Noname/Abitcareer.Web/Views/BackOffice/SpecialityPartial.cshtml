@@ -2,7 +2,7 @@
 
 <div class="col-md-4 card boxShadow17 specButton" id="@Model.Id">
     <div class="ttip">
-        <button type="button" class="left delete close" onclick="requestDeletion('@Model.Id')">×</button>    
+        <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id')" id="close">×</button>    
         <span>@LocalizationResx.PressToEdit</span>
     </div>
     <div class="name">

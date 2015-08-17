@@ -1,91 +1,197 @@
-﻿getCulture = function () {
-    return document.location.href.split('/')[3].toLowerCase();
-};
+﻿
+SpecialityEditor = (function(){
 
+    var settings = {};
 
-requestDeletion = function (id) {
-    window.event.stopPropagation();
-    $(".deleteSubmit").data("target", id);
-    $("#deleteConfirm").show(0);
-    /*setTimeout(function () {
-        $("#partialView").hide(0)
-    }, 200);*/
-};
+    var localStrings = {};
 
-deleteSpeciality = function () {
-    var id = $(".deleteSubmit").data("target");
-    $.ajax(
-        {
-            url: "deletespeciality",
-            type: "POST",
-            data: { id: id },
-            success: function () {
-                Notificate(Localization.LocalizationRemoveSuccess)
-                $("#" + id).remove();
+    var searchItemId = 0;
+   
+    return {       
+            getCulture: function () {
+                return document.location.href.split('/')[3].toLowerCase();
             },
-            error: function () {
-                Notificate(Localization.LocalizationRemoveFailed)
-            }
-        });
-    $("#deleteConfirm").hide(0);
-};
 
-$(function () {
-    $(document).ajaxStart(function () {
-        $("body").toggleClass("loading");
-    }).ajaxStop(function () {
-        $("body").toggleClass("loading");
-    })
+            requestDeletion:  function (id) {
+            window.event.stopPropagation();
+            settings.deleteSubmit.data("target", id);
+            settings.deleteConfirm.show(0);
+        },
 
-    $('body').on("click", ".specButton", function (event) {
-        event.stopPropagation();
-        $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
-            if (!data) {
-                Notificate(Localization.LocalizationForRemove);
-            }
-            else {
-                $("#inner").empty();
-                $("#partialView").show(0);
-                $("#inner").html(data);
-            }
+            deleteSpeciality: function () {
+            var id = settings.deleteSubmit.data("target");
+            $.ajax(
+                {
+                    url: "deletespeciality",
+                    type: "POST",
+                    data: { id: id },
+                    success: function () {
+                        Notificate(Localization.LocalizationRemoveSuccess)
+                        $("#" + id).remove();
+                    },
+                    error: function () {
+                        Notificate(Localization.LocalizationRemoveFailed)
+                    }
+                });
+            settings.deleteConfirm.hide(0);
+        },
+
+            init: function (localResourses) {
+
+                settings.inner = $("#inner");
+
+                settings.partialView = $("#partialView");
+
+                settings.deleteDiscard = $(".deleteDiscard");
+
+                settings.deleteConfirm = $("#deleteConfirm");
+
+                settings.deleteSubmit = $(".deleteSubmit");
+
+                settings.addButton = $("#addNew");
+
+                settings.names = $("#Name, EnglishName");
+
+                settings.editor = $("#editor");
+
+                settings.exitButton = $("#exitButton");
+
+                settings.exit = $("#exit");
+
+                settings.search = $("#search");
+
+                localStrings = localResourses;
+
+                this.bindUIActions();
+            },
+
+            bindUIActions: function () {
+
+                $(document).ajaxStart(function () {
+                    $("body").toggleClass("loading");
+
+                }).ajaxStop(function () {
+                    $("body").toggleClass("loading");
+                })
+
+                $('body').on("click", ".specButton", function (event) {
+                    event.stopPropagation();
+                    $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
+                        if (!data) {
+                            Notificate(Localization.LocalizationForRemove);
+                        }
+                        else {
+                            settings.inner.empty();
+                            settings.partialView.show(0);
+                            settings.inner.html(data);
+                        }
+                    }
+                    );
+                });
+
+                settings.deleteDiscard.click(function () {
+                    settings.deleteConfirm.hide(0);
+                });
+
+                $(document).click(function (event) {
+                    if ($(event.target).closest(settings.inner).length) return;
+                    settings.partialView.hide();
+                    event.stopPropagation();
+                });
+
+                $('body').on("mouseover", ".card:not(#addNew)", function () {
+                    $(this.children[0]).show();
+                });
+
+                $("body").on("mouseout", ".card:not(#addNew)", function () {
+                    $(this.children[0]).hide();
+                });
+
+                settings.addButton.on("click", function (event) {
+                    settings.inner.empty();
+                    event.stopPropagation();
+                    $.ajax(
+                        {
+                            url: "specialities/add",
+                            success: function (data) {
+                                settings.inner.html(data);
+                                settings.partialView.show(0);
+
+                            },
+                            error: function (e) {
+                                alert("error" + e.status);
+                            }
+                        });
+                });
+
+                settings.deleteSubmit.on('click', function () {
+                    SpecialityEditor.deleteSpeciality();
+                });
+
+                settings.names.keypress(function (event) {
+                    if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
+                        return false;
+                });
+
+                $("ul.salaries li input").attr("min", 0);
+
+                settings.editor.submit(function (event) {
+                    if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+                        $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
+                        event.preventDefault();
+                        return false;
+                    }
+                    var data = settings.editor.serialize();
+                    var url = settings.editor.attr("action");
+                    $.post(url, data, function (d) {
+                        if (d) {
+                            Notificate(localStrings.SpecialityAdditingSuccess);
+                            settings.partialView.hide();
+                            settings.addButton.after(d);
+                        }
+                        else {
+                            Notificate(localStrings.SpecialityAdditingFailed);
+                        }
+
+                    });
+                    event.preventDefault();
+                });
+
+                settings.exitButton.click(function () {
+                    settings.partialView.hide();
+                });
+
+                settings.exit.on("click", function () {
+                    settings.partialView.hide();
+                });
+
+                settings.search.keydown(function () {
+                    clearTimeout(searchItemId);
+                    searchItemId = setTimeout(function () {
+                        var value = settings.search.val();
+                        if (!value && !value.trim()) {
+                            $(".card").show(0);
+                            return;
+                        }
+                        $.ajax(
+                            {
+                                url: "searchforspeaciality",
+                                type: "POST",
+                                data: { name: settings.search.val() },
+                                success: function (result) {
+                                    $(".card:not(#addNew)").hide(0);
+                                    for (var i = 0; i < result.length; i++) {
+                                        $("#" + result[i]).show(0);
+                                    }
+                                }
+                            });
+                    }, 500);
+                });
+            },
         }
-        );
-    });
+    })();
+    
+SpecialityEditor.init();
 
-    $(".deleteDiscard").click(function () {
-        $("#deleteConfirm").hide(0);
-    });
-
-    $(document).click(function (event) {
-        if ($(event.target).closest('#inner').length) return;
-        $('#partialView').hide();
-        event.stopPropagation();
-    });
-
-    $('body').on("mouseover", ".card:not(#addNew)", function () {
-        $(this.children[0]).show();
-    });
-
-    $("body").on("mouseout", ".card:not(#addNew)", function () {
-        $(this.children[0]).hide();
-    });
-
-    $("#addNew").on("click", function (event) {
-        $("#inner").empty();
-        event.stopPropagation();
-        $.ajax(
-            {
-                url: "specialities/add",
-                success: function (data) {
-                    $("#inner").html(data);
-                    $("#partialView").show(0);
-
-                },
-                error: function (e) {
-                    alert("error" + e.status);
-                }
-            });
-    });
-});
-
+    
 
