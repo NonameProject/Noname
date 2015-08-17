@@ -1,4 +1,17 @@
-﻿.highcharts-title
+﻿body
+{
+    overflow-y: hidden;
+}
+
+@media (max-height: 550px)
+{
+    body
+    {
+        overflow-y: scroll;
+    }
+}
+
+.highcharts-title
 {
     font-size: small !important;
 }

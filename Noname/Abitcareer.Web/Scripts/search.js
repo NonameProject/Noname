@@ -4,7 +4,7 @@ $("#search").keydown(function () {
     id = setTimeout(function () {
         var value = $('#search').val();
         if (!value && !value.trim()) {
-            $(".card").show(0);
+            $(".cardWrapper").show(0);
             return;
         }
         $.ajax(
@@ -13,7 +13,7 @@ $("#search").keydown(function () {
                 type: "POST",
                 data: { name: $("#search").val() },
                 success: function (result) {
-                    $(".card:not(#addNew)").hide(0);
+                    $(".cardWrapper:not(#addCard)").hide(0);
                     for (var i = 0; i < result.length; i++) {
                         $("#" + result[i]).show(0);
                     }
