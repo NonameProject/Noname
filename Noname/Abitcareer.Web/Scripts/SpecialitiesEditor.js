@@ -1,14 +1,32 @@
 ﻿
 SpecialityEditor = (function(){
 
-    var settings = {};
+    var settings = {},
+        localStrings = {},
+        searchItemId = 0,
+        oldWidth = 0,
+        prevTop = 0;
+    var partialView = $('#partialView'),
+        inner = $('#inner');
+    $(document).scroll(function (e) {
+        if (partialView.css('display') == 'none') return;
+        
+        var currentTop = $(this).scrollTop();
+        if (currentTop == prevTop) return;
+        
+        var containerHeight = partialView.height(),
+            height = inner.innerHeight();
+        if (height <= containerHeight) return;
 
-    var localStrings = {};
+        var pos = parseInt(inner.css('top'));
+        pos -= currentTop - prevTop;
+        if(pos>0) pos = 0;
+        else if(height + pos <= containerHeight) pos = containerHeight - height;
 
-    var searchItemId = 0;
+        prevTop = currentTop;
+        inner.css('top', pos);
+    });
 
-    var oldWidth = 0;
-   
     return {
 
 
@@ -188,9 +206,9 @@ SpecialityEditor = (function(){
                 });
 
                 settings.search.keydown(function () {
-                    clearTimeout(searchItemId);
+                    clearTimeout(id);
                     $(this).removeClass('success', 100);
-                    searchItemId = setTimeout(function () {
+                    id = setTimeout(function () {
                         var value = settings.search.val();
                         if (!value && !value.trim()) {
                             $(".cardWrapper").show(0);
@@ -218,6 +236,4 @@ SpecialityEditor = (function(){
 SpecialityEditor.init();
 
 SpecialityEditor.resizeCards();
-
-    
 

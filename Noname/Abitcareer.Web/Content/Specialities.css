@@ -74,6 +74,8 @@ h2 {
     min-width: 525px;
     padding-bottom: 1%;
     padding-left: 2%;
+    position: relative;
+    top: 0;
     width: 70%;
 }
 #delete-inner{
