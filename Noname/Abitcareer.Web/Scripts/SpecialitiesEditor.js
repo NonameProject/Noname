@@ -30,8 +30,7 @@ deleteSpeciality = function () {
     $("#deleteConfirm").hide(0);
 };
 
-var initialCss = {};
-
+var oldWidth = 0;
 $(function () {
     $(document).ajaxStart(function () {
         $("body").toggleClass("loading");
@@ -39,7 +38,7 @@ $(function () {
         $("body").toggleClass("loading");
     })
 
-    $('body').on("click", ".specButton", function (event) {
+    $('body').on("click", ".cardWrapper", function (event) {
         event.stopPropagation();
         $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
             if (!data) {
@@ -89,19 +88,22 @@ $(function () {
             });
     });
 
-    initialCss.width = $('.card').width();
+    resizeCards();
 });
 function resizeCards() {
+    var wrapperWidth = $('#wrapper').width();
+    if (Math.abs(wrapperWidth - oldWidth) < 5) return;
+    oldWidth = wrapperWidth;
+    wrapperWidth -= 20;
     var card = $('.cardWrapper'),
         maxWidth = parseInt(card.css('maxWidth')),
         minWidth = parseInt(card.css('minWidth')),
-        width = card.innerWidth(),
-        wrapperWidth = $('#wrapper').width();
+        borderWidth = card.innerWidth() - card.width();
 
-    var maxCount = Math.floor(wrapperWidth / minWidth),
+    var maxCount = Math.floor(wrapperWidth / (borderWidth + minWidth)),
         minCount = Math.floor(wrapperWidth / maxWidth);
 
-    var computedWidth = wrapperWidth / maxCount;
+    var computedWidth = Math.floor((wrapperWidth - maxCount * borderWidth) / maxCount);
     if (computedWidth > maxWidth) computedWidth = maxWidth;
     card.width(computedWidth);
 }
