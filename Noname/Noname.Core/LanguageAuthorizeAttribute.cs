@@ -32,7 +32,6 @@ namespace Abitcareer.Core
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                 {
-                    { "language", language },
                     { "controller", "User" },
                     { "action", "LogIn" },
                     { "ReturnUrl", filterContext.HttpContext.Request.RawUrl }

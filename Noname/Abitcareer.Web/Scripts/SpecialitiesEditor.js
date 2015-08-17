@@ -6,8 +6,30 @@ SpecialityEditor = (function(){
     var localStrings = {};
 
     var searchItemId = 0;
+
+    var oldWIdth = 0;
    
-    return {       
+    return {
+
+
+            resizeCards: function () {
+                var wrapperWidth = $('#wrapper').width();
+                if (Math.abs(wrapperWidth - oldWidth) < 5) return;
+                oldWidth = wrapperWidth;
+                wrapperWidth -= 20;
+                var card = $('.cardWrapper'),
+                    maxWidth = parseInt(card.css('maxWidth')),
+                    minWidth = parseInt(card.css('minWidth')),
+                    borderWidth = card.innerWidth() - card.width();
+
+                var maxCount = Math.floor(wrapperWidth / (borderWidth + minWidth)),
+                    minCount = Math.floor(wrapperWidth / maxWidth);
+
+                var computedWidth = Math.floor((wrapperWidth - maxCount * borderWidth) / maxCount);
+                if (computedWidth > maxWidth) computedWidth = maxWidth;
+                card.width(computedWidth)
+            },
+
             getCulture: function () {
                 return document.location.href.split('/')[3].toLowerCase();
             },
@@ -74,7 +96,7 @@ SpecialityEditor = (function(){
                     $("body").toggleClass("loading");
                 })
 
-                $('body').on("click", ".specButton", function (event) {
+                $('body').on("click", ".cardWrapper", function (event) {
                     event.stopPropagation();
                     $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
                         if (!data) {
@@ -166,20 +188,22 @@ SpecialityEditor = (function(){
                 });
 
                 settings.search.keydown(function () {
-                    clearTimeout(searchItemId);
-                    searchItemId = setTimeout(function () {
+                    clearTimeout(id);
+                    $(this).removeClass('success', 100);
+                    id = setTimeout(function () {
                         var value = settings.search.val();
                         if (!value && !value.trim()) {
-                            $(".card").show(0);
+                            $(".cardWrapper").show(0);
                             return;
                         }
                         $.ajax(
                             {
                                 url: "searchforspeaciality",
                                 type: "POST",
-                                data: { name: settings.search.val() },
+                                data: { name: value },
                                 success: function (result) {
-                                    $(".card:not(#addNew)").hide(0);
+                                    $('#search').addClass('success');
+                                    $(".cardWrapper:not(#addCard)").hide(0);
                                     for (var i = 0; i < result.length; i++) {
                                         $("#" + result[i]).show(0);
                                     }
@@ -192,6 +216,8 @@ SpecialityEditor = (function(){
     })();
     
 SpecialityEditor.init();
+
+SpecialityEditor.resizeCards();
 
     
 

@@ -39,9 +39,9 @@ namespace Abitcareer.Business.Components.Lucene
                 var terms = input.Trim().Replace("-", " ").Replace("_", "-").Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => {
                         string t = x.Trim();
-                        return string.Format("({0}*)^2 {0}~0.6", t);
+                        return string.Format("(({0}*)^2 {0}~0.6)", t);
                     });
-                input = string.Join(" ", terms);
+                input = string.Join("AND", terms);
             }
             return search(input, fieldName);
         }

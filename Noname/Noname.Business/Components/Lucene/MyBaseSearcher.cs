@@ -94,7 +94,8 @@ namespace Abitcareer.Business.Components.Lucene
             try
             {
                 query = parser.Parse(searchQuery.Trim());
-            } catch (ParseException)
+            }
+            catch (ParseException)
             {
                 query = parser.Parse(QueryParser.Escape(searchQuery.Trim()));
             }

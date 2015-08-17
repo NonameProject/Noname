@@ -2,7 +2,7 @@
 {
     min-width: 320px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     background-image: url(Images/subtle_dots.png);
 
 }
@@ -60,7 +60,7 @@ li a.changeLanguage
 {
     line-height: 55px;
         height: 55px;
-    font-family: myriad;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -101,6 +101,7 @@ li a.changeLanguage
 }
 
 @media (min-width: 768px) {
+
     .mobile-localization-changer{
         display: none;
     }
@@ -121,5 +122,5 @@ li a.changeLanguage
 .link
 {
     margin-top: 17px;
-    font-family: myriad;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }

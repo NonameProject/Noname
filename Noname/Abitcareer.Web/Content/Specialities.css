@@ -1,4 +1,15 @@
-﻿.edited {
+﻿@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?5759098');
+  src: url('fonts/fontello.eot?5759098#iefix') format('embedded-opentype'),
+       url('fonts/fontello.woff?5759098') format('woff'),
+       url('fonts/fontello.ttf?5759098') format('truetype'),
+       url('fonts/fontello.svg?5759098#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.edited {
     -webkit-box-shadow: 0px 0px 10px 2px rgba(8,170,0,1) !important;
     -moz-box-shadow: 0px 0px 10px 2px rgba(8,170,0,1) !important;
     box-shadow: 0px 0px 10px 2px rgba(8,170,0,1) !important;
@@ -12,12 +23,23 @@ h2 {
     width: 100px;
 }
 
-#search:focus{
-    border-bottom: 1px solid rgba(0,102,255,1);
-    -webkit-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
-    -moz-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
-    box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+#search {
+    border-bottom: 1px solid rgba(0,102,255, .9);
 }
+
+    #search.success {
+        border-bottom: 1px solid rgba(0,250,102,1) !important;
+        box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important;
+        -webkit-box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important;
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important; 
+    }
+
+    #search:focus{
+        border-bottom: 1px solid rgba(0,102,255,1);
+        box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+        -webkit-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);    
+    }
 
 #partialView, #deleteConfirm {
     background-color: rgba(32, 32, 32, 0.81);
@@ -153,20 +175,59 @@ form {
     padding: 1%;
 }
 
+.cardWrapper {
+    box-sizing: content-box;
+    display: inline-block;
+    max-width: 440px;
+    min-width: 240px;
+    padding: 15px;
+}
+
 .card
 {
-    width: 250px;
-    height: 120px;
-    margin: 15px;
     background-color: white;
-    text-align: center;
+    box-sizing: border-box;
     display: inline-block;
+    height: 120px;
+    max-width: 300px;
+    min-width: 100px;
+    text-align: center;
+    width: 100%;
 }
 
 .card:hover
 {
     cursor: pointer;
 }
+
+    .card h4::before {
+        font-family: "fontello";
+        font-style: normal;
+        font-size: 16px;
+        font-weight: normal;
+        speak: none;
+        display: inline-block;
+        text-decoration: inherit;
+        width: 1em;
+        margin-right: .2em;
+        text-align: center;
+        /* opacity: .8; */
+        /* For safety - reset parent styles, that can break glyph codes*/
+        font-variant: normal;
+        text-transform: none;
+        /* fix buttons height, for twitter bootstrap */
+        line-height: 1em;
+        /* Animation center compensation - margins should be symmetric */
+        /* remove if not needed */
+        margin-left: .2em;
+        /* You can be more comfortable with increased icons size */
+        /* font-size: 120%; */
+        /* Font smoothing. That was taken from TWBS */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Uncomment for 3D effect */
+        /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
 
 .card span
 {
@@ -177,13 +238,29 @@ form {
     margin-top: 42px;
 }
 
-.salary-wrapper
+.salary-wrapper, .payment-wrapper
 {
-    margin-top: 30px;
-}
+    margin-top: 16px;
+}    
+    .salary-wrapper h4 {
+        color: #044004;
+    }
+        .salary-wrapper h4::before {
+            color: #003000;
+            content: '';
+            position: relative;
+            top: -1px;
+        }
+    .payment-wrapper h4 {
+        color: #200404;
+    }
 
-
-
+    .payment-wrapper  h4::before {
+            color: #160000;
+            content: '';
+            position: relative;
+            top: -1px;
+        }
 .name
 {
     overflow: hidden;
@@ -196,15 +273,17 @@ form {
 
 .ttip
 {
-    display: none;
-    width: 250px;
-    height: 120px;
-    position: absolute;
     background-color: lightgrey;
-    text-align: center;
+    border-radius: 3px;
+    display: none;
+    height: 120px;
     left: 0;
-    top: 0;
     opacity: 0.9;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .ttip span
