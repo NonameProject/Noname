@@ -34,9 +34,11 @@
 </div>
 
 <div id="wrapper">
+    <article class="cardWrapper">
         <div id="addNew" class="card col-md-4 boxShadow17">
             <span>@LocalizationResx.AddSpeciality</span>
         </div>
+    </article>
         @foreach (var item in Model)
         {
             { Html.RenderPartial("SpecialityPartial", item); }
