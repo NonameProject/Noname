@@ -7,7 +7,7 @@ SpecialityEditor = (function(){
 
     var searchItemId = 0;
 
-    var oldWIdth = 0;
+    var oldWidth = 0;
    
     return {
 

@@ -50,7 +50,7 @@
             
             window.onerror = function (msg, url, line) {
                 if (arguments != null && arguments.callee != null && arguments.callee.trace)
-                    this.logError(msg, arguments.callee.trace());
+                    Logger.logError(msg, arguments.callee.trace());
             }
         },
 
