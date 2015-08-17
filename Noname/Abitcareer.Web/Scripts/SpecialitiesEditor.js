@@ -53,8 +53,8 @@ SpecialityEditor = (function(){
                 return document.location.href.split('/')[3].toLowerCase();
             },
 
-            requestDeletion:  function (id) {
-            window.event.stopPropagation();
+            requestDeletion:  function (id, event) {
+            event.stopPropagation();
             settings.deleteSubmit.data("target", id);
             settings.deleteConfirm.show(0);
         },
