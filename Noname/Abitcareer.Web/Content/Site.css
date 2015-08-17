@@ -2,7 +2,7 @@
 {
     min-width: 320px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     background-image: url(Images/subtle_dots.png);
 
 }
@@ -101,6 +101,7 @@ li a.changeLanguage
 }
 
 @media (min-width: 768px) {
+
     .mobile-localization-changer{
         display: none;
     }
