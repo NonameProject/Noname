@@ -6,6 +6,7 @@ SpecialityEditor = (function(){
         searchItemId = 0,
         oldWidth = 0,
         prevTop = 0;
+
     var partialView = $('#partialView'),
         inner = $('#inner');
     $(document).scroll(function (e) {
@@ -206,9 +207,9 @@ SpecialityEditor = (function(){
                 });
 
                 settings.search.keydown(function () {
-                    clearTimeout(id);
+                    clearTimeout(searchItemId);
                     $(this).removeClass('success', 100);
-                    id = setTimeout(function () {
+                    searchItemId = setTimeout(function () {
                         var value = settings.search.val();
                         if (!value && !value.trim()) {
                             $(".cardWrapper").show(0);
