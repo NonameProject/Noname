@@ -12,13 +12,13 @@ namespace Abitcareer.Business.Models
 
         public virtual Dictionary<int, int> Salaries { get; set; }
 
-        //public virtual Dictionary<string, Decimal> Prices { get; set; }
+        public virtual Dictionary<string, Decimal> Prices { get; set; }
 
         public Speciality()
         {
             Salaries = new Dictionary<int, int>();
 
-            //Prices = new Dictionary<string, Decimal>();
+            Prices = new Dictionary<string, Decimal>();
 
             Salaries[1] = 0;
             Salaries[2] = 0;
@@ -28,11 +28,11 @@ namespace Abitcareer.Business.Models
             Salaries[10] = 0;
             Salaries[20] = 0;
 
-            //Prices["TopUniversityPrice"] = 0;
+            Prices["TopUniversityPrice"] = 0;
 
-            //Prices["MiddleUniversityPrice"] = 0;
+            Prices["MiddleUniversityPrice"] = 0;
 
-            //Prices["LowUniversityPrice"] = 0;
+            Prices["LowUniversityPrice"] = 0;
         }
 
         public virtual string CompressedSalaries
@@ -47,31 +47,27 @@ namespace Abitcareer.Business.Models
             }
         }
 
-        //public virtual string CompressedPrices
-        //{
-        //    get
-        //    {
-        //        return Prices.ToXmlString<string, Decimal>();
-        //    }
-        //    set
-        //    {
-        //        Prices = value.ToDictionary<string, Decimal>();
-        //    }
-        //}
+        public virtual string CompressedPrices
+        {
+            get
+            {
+                return Prices.ToXmlString<string, Decimal>();
+            }
+            set
+            {
+                Prices = value.ToDictionary<string, Decimal>();
+            }
+        }
 
         public virtual string EnglishName
         {
             get
             {
-                if (!Fields.ContainsKey("<1058>_<Name>"))
-                    Fields.Add("<1058>_<Name>", null);
-                return Fields["<1058>_<Name>"];
+                return Fields["<1033>_<Name>"];
             }
             set
             {
-                if (!Fields.ContainsKey("<1058>_<Name>"))
-                    Fields.Add("<1058>_<Name>", null);
-                Fields["<1058>_<Name>"] = value;
+                Fields["<1033>_<Name>"] = value;
             }
         }
 

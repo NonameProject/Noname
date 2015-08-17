@@ -15,11 +15,17 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         [ScaffoldColumn(false)]
         public virtual int Code { get; set; }
-       
-        public Dictionary<int, int> Salaries = new Dictionary<int, int>();
+
+        public Dictionary<int, int> Salaries { get; set; }
+
+       public virtual Dictionary<string, Decimal> Prices { get; set; }
 
         public SpecialityViewModel()
         {
+            Salaries = new Dictionary<int, int>();
+
+            Prices = new Dictionary<string, Decimal>();
+
             Salaries[1] = 0;
             Salaries[2] = 0;
             Salaries[3] = 0;
@@ -27,6 +33,13 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[5] = 0;
             Salaries[10] = 0;
             Salaries[20] = 0;
+
+            Prices["TopUniversityPrice"] = 0;
+
+            Prices["MiddleUniversityPrice"] = 0;
+
+            Prices["LowUniversityPrice"] = 0;
+
             Id = Guid.NewGuid().ToString();
         }
     }
