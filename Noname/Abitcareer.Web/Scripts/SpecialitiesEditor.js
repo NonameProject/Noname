@@ -10,9 +10,12 @@ SpecialityEditor = (function(){
     var partialView = $('#partialView'),
         inner = $('#inner');
     $(document).scroll(function (e) {
-        if (partialView.css('display') == 'none') return;
-        
         var currentTop = $(this).scrollTop();
+        if (partialView.css('display') == 'none') {
+            prevTop = currentTop;
+            return;
+        }
+        
         if (currentTop == prevTop) return;
         
         var containerHeight = partialView.height(),
@@ -27,27 +30,30 @@ SpecialityEditor = (function(){
         prevTop = currentTop;
         inner.css('top', pos);
     });
+    var resizeCards = function () {
+        var wrapperWidth = $('#wrapper').width();
+        if (Math.abs(wrapperWidth - oldWidth) < 5) return;
+        oldWidth = wrapperWidth;
+        wrapperWidth -= 20;
+        var card = $('.cardWrapper'),
+            maxWidth = parseInt(card.css('maxWidth')),
+            minWidth = parseInt(card.css('minWidth')),
+            borderWidth = card.innerWidth() - card.width();
 
+        var maxCount = Math.floor(wrapperWidth / (borderWidth + minWidth)),
+            minCount = Math.floor(wrapperWidth / maxWidth);
+
+        var computedWidth = Math.floor((wrapperWidth - maxCount * borderWidth) / maxCount);
+        if (computedWidth > maxWidth) computedWidth = maxWidth;
+        card.width(computedWidth)
+    };
+    resizeCards.reset = function(){
+        oldWidth = 0;
+    }
     return {
 
 
-            resizeCards: function () {
-                var wrapperWidth = $('#wrapper').width();
-                if (Math.abs(wrapperWidth - oldWidth) < 5) return;
-                oldWidth = wrapperWidth;
-                wrapperWidth -= 20;
-                var card = $('.cardWrapper'),
-                    maxWidth = parseInt(card.css('maxWidth')),
-                    minWidth = parseInt(card.css('minWidth')),
-                    borderWidth = card.innerWidth() - card.width();
-
-                var maxCount = Math.floor(wrapperWidth / (borderWidth + minWidth)),
-                    minCount = Math.floor(wrapperWidth / maxWidth);
-
-                var computedWidth = Math.floor((wrapperWidth - maxCount * borderWidth) / maxCount);
-                if (computedWidth > maxWidth) computedWidth = maxWidth;
-                card.width(computedWidth)
-            },
+            resizeCards: resizeCards,
 
             getCulture: function () {
                 return document.location.href.split('/')[3].toLowerCase();
@@ -124,6 +130,7 @@ SpecialityEditor = (function(){
                         else {
                             settings.inner.empty();
                             settings.partialView.show(0);
+                            settings.inner.css('top', 0);
                             settings.inner.html(data);
                         }
                     }
@@ -157,7 +164,7 @@ SpecialityEditor = (function(){
                             success: function (data) {
                                 settings.inner.html(data);
                                 settings.partialView.show(0);
-
+                                settings.inner.css('top', 0);
                             },
                             error: function (e) {
                                 alert("error" + e.status);
@@ -182,13 +189,19 @@ SpecialityEditor = (function(){
                         event.preventDefault();
                         return false;
                     }
-                    var data = settings.editor.serialize();
-                    var url = settings.editor.attr("action");
+                    var data = settings.editor.serialize(),
+                        url = settings.editor.attr("action"),
+                        id = $('#Id').val(),
+                        resize = resizeCards;
                     $.post(url, data, function (d) {
                         if (d) {
                             Notificate(localStrings.SpecialityAdditingSuccess);
                             settings.partialView.hide();
-                            settings.addButton.after(d);
+                            var card = $('#' + id);
+                            if (card.length) card.replaceWith(d);
+                            else settings.addButton.after(d);
+                            resize.reset();
+                            resize();
                         }
                         else {
                             Notificate(localStrings.SpecialityAdditingFailed);
