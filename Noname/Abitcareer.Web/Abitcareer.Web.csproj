@@ -273,6 +273,10 @@
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
     <Content Include="packages.config" />
+    <Content Include="Content\fonts\fontello.eot" />
+    <Content Include="Content\fonts\fontello.svg" />
+    <Content Include="Content\fonts\fontello.ttf" />
+    <Content Include="Content\fonts\fontello.woff" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
