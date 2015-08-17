@@ -2,7 +2,7 @@
 <article class="cardWrapper" id="@Model.Id">
 <div class="col-md-4 card boxShadow17 specButton">
     <div class="ttip">
-        <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id')" id="close">×</button>    
+        <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>    
         <span>@LocalizationResx.PressToEdit</span>
     </div>
     <div class="name">
