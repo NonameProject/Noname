@@ -43,6 +43,7 @@ namespace Abitcareer.Web.Components
             {
                 var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
                 if (!String.IsNullOrEmpty(model.EnglishName)) model.EnglishName = model.EnglishName.Trim('"');
+                specialityManager.Index();
                 return PartialView("EditSpeciality", model);
             }
             catch(Exception)
