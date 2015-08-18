@@ -4,17 +4,22 @@
         var res = JSON.parse(JSON.stringify(specialities));
         $("#js-loading-screen").addClass("active");
         $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
-            res[0].data = data[0];
-            res[1].data = data[1];
-            res[2].data = data[2];
-            res[3].data = data[3];
-
-            var length = res[3].data.length - 1;
-            if (typeof res[3].pointStart === 'numder') {
-                length += res[3].pointStart;                
+            
+            for (var i = 0; i < data.length; i++) {
+                res[i].data = data[i];
             }
-            res[2].data.push({ x: length, y: res[2].data[res[2].data.length - 1].y });
-            res[0].data.push({ x: res[0].data[res[0].data.length - 1].x, y: 0 });
+
+            var length = res[data.length - 1].data.length - 1;
+
+            for (var i = 0; i < data.length - 2; i++) {
+                if (i < 3) {
+                    res[i].data.push({ x: res[i].data[res[i].data.length - 1].x, y: 0 });
+                }
+                else {
+                    res[i].data.push({ x: length, y: res[i].data[res[i].data.length - 1].y });
+                }
+            }
+
             $("#js-loading-screen").removeClass("active");
             callback(res);
         });
@@ -36,14 +41,34 @@
         color: "#990033"// was red,        
     },
     {
-        name: textStrings.summaryAxis,
+        name: textStrings.paymentsAxis,
         data: [],
-        color: "green"
+        color: "#990033"// was red,        
+    },
+    {
+        name: textStrings.paymentsAxis,
+        data: [],
+        color: "#990033"// was red,        
     },
     {
         name: textStrings.summaryCosts,
         data: [],
         color: "blue"
+    },
+    {
+        name: textStrings.summaryCosts,
+        data: [],
+        color: "blue"
+    },
+    {
+        name: textStrings.summaryCosts,
+        data: [],
+        color: "blue"
+    },
+    {
+        name: textStrings.summaryAxis,
+        data: [],
+        color: "green"
     },
     {
         name: textStrings.summarySalary,
@@ -85,7 +110,7 @@ $(function () {
         butt.prop('disabled', true);
 
         provider.getData(function (selectedSpec) {
-            var data1, data2, data3;
+            var length = selectedSpec.length;
 
             data1 = {
                 name: textStrings.payment1Name,
@@ -96,15 +121,15 @@ $(function () {
             data2 = {
                 name: textStrings.payment2Name,
                 color: 'blue',
-                data: provider.MultiplieData(data1.data, 0.8),
+                data: selectedSpec[1].data,
                 stack: 'payment'
             };
             data3 = {
                 name: textStrings.payment3Name,
                 color: 'royalblue',
-                data: provider.MultiplieData(data1.data, 0.6),
+                data: selectedSpec[2].data,
                 stack: 'payment'
-            };            
+            };
 
             window.location.hash = $("#spec").val();
             var chart = new Chart();
@@ -116,13 +141,13 @@ $(function () {
                 $("#chart-container").fadeToggle(500);
             }
 
-            chart.draw("#payments-container", [data1, data2, data3, selectedSpec[1]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+            chart.draw("#payments-container", [data1, data2, data3, selectedSpec[length - 2]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
 
-            data1.data = selectedSpec[2].data;
-            data2.data = provider.MultiplieData(data1.data, 0.8);
-            data3.data = provider.MultiplieData(data1.data, 0.6);
+            data1.data = selectedSpec[3].data;
+            data2.data = selectedSpec[4].data;
+            data3.data = selectedSpec[5].data;
 
-            chart.draw("#summary-container", [data1, data2, data3, selectedSpec[3]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+            chart.draw("#summary-container", [data1, data2, data3, selectedSpec[length - 1]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
 
             setHash();
         });

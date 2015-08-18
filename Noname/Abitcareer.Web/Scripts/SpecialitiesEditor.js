@@ -28,16 +28,22 @@
 
         prevTop = currentTop;
         inner.css('top', pos);
-    };    
+    };
 
     var onRemoteComplete = function () {
+
+        var res = false;
+
         $('#Name').rules().remote.complete = function (xhr) {
             $("span[data-valmsg-for='Name']").removeClass();
             if (xhr.status == 200 && xhr.responseText === 'true') {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
+                res = true;
             }
             else {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure");
+                res = false;
+                $("#createSpeciality").prop("disabled", true);
             }
         };
 
@@ -45,9 +51,11 @@
             $("span[data-valmsg-for='EnglishName']").removeClass();
             if (xhr.status == 200 && xhr.responseText === 'true') {
                 $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-ok success");
+                if(res) $("#createSpeciality").prop("disabled", false);
             }
             else {
                 $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-remove failure");
+                $("#createSpeciality").prop("disabled", true);
             }
         };
     }
