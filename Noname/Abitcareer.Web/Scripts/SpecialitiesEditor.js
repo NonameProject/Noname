@@ -8,7 +8,7 @@
 
     var partialView = $('#partialView'),
         inner = $('#inner');
-    $(document).scroll(function (e) {
+    var onDocScroll = function (e) {
         var currentTop = $(this).scrollTop();
         if (partialView.css('display') == 'none') {
             prevTop = currentTop;
@@ -28,7 +28,7 @@
 
         prevTop = currentTop;
         inner.css('top', pos);
-    });
+    };    
 
     var onRemoteComplete = function () {
         $('#Name').rules().remote.complete = function (xhr) {
@@ -149,6 +149,7 @@
         },
 
         bindUIActions: function () {
+            $(document).scroll(onDocScroll);
 
             $(document).ajaxStart(function () {
                 $("body").toggleClass("loading");
