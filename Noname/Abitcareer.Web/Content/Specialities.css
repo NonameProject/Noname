@@ -129,6 +129,10 @@ form {
         margin-right: 30px;
         width:15%;
     }
+        form button:disabled {
+            background-color: #ccc;
+            border-color: #bbb;
+        }
 
 #exitButton {
     width:15%;
