@@ -137,6 +137,10 @@ $(function () {
             spec.val(hash);
             draw();
         }
+        else
+        {
+            $("#js-loading-screen").removeClass("active");
+        }
     }
     
     $("#spec").on("change", function () {
