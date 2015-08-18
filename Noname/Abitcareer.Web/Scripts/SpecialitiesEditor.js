@@ -8,7 +8,7 @@
 
     var partialView = $('#partialView'),
         inner = $('#inner');
-    $(document).scroll(function (e) {
+    var onDocScroll = function (e) {
         var currentTop = $(this).scrollTop();
         if (partialView.css('display') == 'none') {
             prevTop = currentTop;
@@ -28,7 +28,7 @@
 
         prevTop = currentTop;
         inner.css('top', pos);
-    });
+    };    
 
     var onRemoteComplete = function () {
         $('#Name').rules().remote.complete = function (xhr) {
@@ -99,7 +99,7 @@
                         $("#" + id).remove();
                     },
                     error: function () {
-                        Notificate(Localization.LocalizationRemoveFailed)
+                        Notificate("["+name+"] - " + Localization.LocalizationRemoveFailed)
                     }
                 });
             settings.deleteConfirm.hide(0);
@@ -131,10 +131,25 @@
 
             localStrings = localResourses;
 
+            this.unbindUIActions();
             this.bindUIActions();
         },
 
+        unbindUIActions: function () {
+            $(document).off();
+            $('body').off();
+            settings.deleteDiscard.off();
+            settings.addButton.off();
+            settings.deleteSubmit.off();
+            settings.names.off();
+            settings.editor.off();
+            settings.exitButton.off();
+            settings.exit.off();
+            settings.search.off();
+        },
+
         bindUIActions: function () {
+            $(document).scroll(onDocScroll);
 
             $(document).ajaxStart(function () {
                 $("body").toggleClass("loading");
@@ -159,11 +174,11 @@
                 );
             });
 
-            settings.deleteDiscard.click(function () {
+            settings.deleteDiscard.on('click', function () {
                 settings.deleteConfirm.hide(0);
             });
 
-            $(document).click(function (event) {
+            $(document).on('click', function (event) {
                 if ($(event.target).closest(settings.inner).length) return;
                 settings.partialView.hide();
                 event.stopPropagation();
@@ -197,7 +212,7 @@
                 SpecialityEditor.deleteSpeciality();
             });
 
-            settings.names.keypress(function (event) {
+            settings.names.on('keypress', function (event) {
                 if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
                     return false;
             });
@@ -207,6 +222,7 @@
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+                    specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
                     event.preventDefault();
                     return false;
@@ -214,10 +230,14 @@
                 var data = settings.editor.serialize(),
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),
-                    resize = resizeCards;
+                    resize = resizeCards,
+                    specialityName = '';
+                if (!settings.editor.hasClass('addForm')) {
+                    specialityName = "[" + $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
+                }
                 $.post(url, data, function (d) {
                     if (d) {
-                        Notificate(localStrings.SpecialityChangeSuccess);
+                        Notificate(specialityName + localStrings.SpecialityChangeSuccess);
                         settings.partialView.hide();
                         var card = $('#' + id);
                         if (card.length) card.replaceWith(d);
@@ -226,7 +246,7 @@
                         resize();
                     }
                     else {
-                        Notificate(localStrings.SpecialityChangeFailed);
+                        Notificate(specialityName + localStrings.SpecialityChangeFailed);
                     }
 
                 });
@@ -272,5 +292,3 @@
 SpecialityEditor.init();
 
 SpecialityEditor.resizeCards();
-
-

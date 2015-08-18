@@ -78,16 +78,16 @@ h2 {
     width: 70%;
 }
 #delete-inner{
-    text-align: center;
+    left: 45%;
+    line-height: 24px;
+    margin-left: -190px;
+    margin-top: -90px;
     min-height: 180px;
     padding: 20px;
-    line-height: 24px;
-    width: 380px;
     position: absolute;
+    text-align: center;
     top: 50%;
-    left: 50%;
-    margin-top: -90px;
-    margin-left: -190px;
+    width: 380px;
 }
 .loading #inner {
     background-image: url("Images/ajax-loader.gif");
@@ -289,7 +289,7 @@ form {
 .ttip
 {
     background-color: lightgrey;
-    border-radius: 3px;
+    border-radius: 2px;
     display: none;
     height: 120px;
     left: 0;
@@ -310,12 +310,8 @@ form {
 
 
 .boxShadow17 {
- 
-  border-radius: 3px;
-  box-shadow:
-     inset rgba(0,0,0,.6) 0 -3px 5px,
-   inset rgba(252,255,255,.7) 0 3px 8px,
-   rgba(0,0,0,.8) 0 3px 8px -3px;
+  border-radius: 2px;
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2), 0 6px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search
@@ -353,7 +349,7 @@ background-color:inherit;
     color: white;
 }
 #addNew:hover{
-    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px, inset rgba(0,0,0,.8) 0 3px 8px -3px;
+    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px,  rgba(0,0,0,.8) 0 3px 8px -3px;
     background: rgba(0, 111, 21, 0.8);
 }
 .delete
@@ -373,4 +369,14 @@ background-color:inherit;
         position: relative;
         top: -28px;
     }
+}
+
+.btn-default {
+    background-color: transparent;
+    border: none;
+}
+.btn-default:hover {
+    background-color: transparent;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    border: none;
 }
