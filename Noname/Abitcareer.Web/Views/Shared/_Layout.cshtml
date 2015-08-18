@@ -122,6 +122,9 @@
     @Scripts.Render("~/Scripts/jquery.validate.js")
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @RenderSection("scripts", required: false)
-    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    @if(User.Identity.IsAuthenticated)
+    {
+        @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    }
 </body>
 </html>
