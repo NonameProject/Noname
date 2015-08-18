@@ -7,18 +7,31 @@ using System.Runtime.Caching;
 using System.Threading;
 using System.Reflection;
 using System.Web;
+using Abitcareer.Business.Data_Providers_Contracts;
 
 namespace Abitcareer.Business.Components
 {
-    public abstract class BaseManager
+    public abstract class BaseManager<T, TProvider>
+        where T : BaseModel
+        where TProvider : IDataProvider<T>
     {
         protected ICacheManager CacheManager { get; private set; }
 
         protected abstract string Name { get;}
 
-        public BaseManager(ICacheManager cacheManager)
+        protected TProvider provider;
+
+        public BaseManager(ICacheManager cacheManager, TProvider provider)
         {
             this.CacheManager = cacheManager;
+
+            this.provider = provider;
+        }
+
+        public void Create(T model)
+        {
+            ClearCache();
+            provider.Create(model);
         }
 
         protected TValue FromCache<TValue>(string name, Func<TValue> function)

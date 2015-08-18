@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class CityManager : BaseManager
+    public class CityManager : BaseManager<City, ICityDataProvider>
     {
-        ICityDataProvider provider;
+        public CityManager(ICacheManager manager, ICityDataProvider provider) : base(manager, provider) { }
 
         protected override string Name
         {
@@ -19,18 +19,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "City";
             }
-        }
-
-        public CityManager(ICacheManager manager, ICityDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
-        }
-
-        public void Create(City model)
-        {
-            ClearCache();
-            provider.Create(model);
         }
     }
 }

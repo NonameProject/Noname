@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class FacultyManager : BaseManager
+    public class FacultyManager : BaseManager<Faculty, IFacultyDataProvider>
     {
-        IFacultyDataProvider provider;
+
+        public FacultyManager(ICacheManager manager, IFacultyDataProvider provider) : base(manager, provider) { }
 
         protected override string Name
         {
@@ -19,18 +20,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Faculty";
             }
-        }
-
-        public FacultyManager(ICacheManager manager, IFacultyDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
-        }
-
-        public void Create(Faculty model)
-        {
-            ClearCache();
-            provider.Create(model);
         }
 
         public Faculty GetByName(string name)

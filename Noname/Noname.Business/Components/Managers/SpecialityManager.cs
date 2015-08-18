@@ -14,9 +14,9 @@ using System.Xml.Linq;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class SpecialityManager : BaseManager
+    public class SpecialityManager : BaseManager<Speciality, ISpecialityDataProvider>
     {
-        ISpecialityDataProvider provider;
+        public SpecialityManager(ICacheManager manager, ISpecialityDataProvider provider) : base(manager, provider) {}
 
         private string luceneDirectory
         {
@@ -32,12 +32,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Speciality";
             }
-        }
-
-        public SpecialityManager(ICacheManager manager, ISpecialityDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
         }
 
         public bool Create(Speciality model)

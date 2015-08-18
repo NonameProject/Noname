@@ -11,9 +11,9 @@ using SimpleCrypto;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class UserManager : BaseManager
+    public class UserManager : BaseManager<User, IUserDataProvider>
     {
-        IUserDataProvider provider;
+        public UserManager(ICacheManager manager, IUserDataProvider provider) : base(manager, provider) { } 
 
         protected override string Name
         {
@@ -21,12 +21,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "User";
             }
-        }
-
-        public UserManager(ICacheManager manager, IUserDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
         }
 
         public void Create(User model)
