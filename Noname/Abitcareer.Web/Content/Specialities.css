@@ -57,6 +57,7 @@ h2 {
 
 #search {
     border-bottom: 1px solid rgba(0,102,255, .9);
+    padding-right: 20px;
 }
 
     #search.success {
