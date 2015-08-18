@@ -99,7 +99,7 @@
                         $("#" + id).remove();
                     },
                     error: function () {
-                        Notificate(Localization.LocalizationRemoveFailed)
+                        Notificate("["+name+"] - " + Localization.LocalizationRemoveFailed)
                     }
                 });
             settings.deleteConfirm.hide(0);
@@ -206,6 +206,7 @@
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+                    specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
                     event.preventDefault();
                     return false;
@@ -213,10 +214,11 @@
                 var data = settings.editor.serialize(),
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),
-                    resize = resizeCards;
+                    resize = resizeCards,
+                    specialityName = $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "");
                 $.post(url, data, function (d) {
                     if (d) {
-                        Notificate(localStrings.SpecialityChangeSuccess);
+                        Notificate("[" + specialityName + "] - " + localStrings.SpecialityChangeSuccess);
                         settings.partialView.hide();
                         var card = $('#' + id);
                         if (card.length) card.replaceWith(d);
@@ -225,7 +227,7 @@
                         resize();
                     }
                     else {
-                        Notificate(localStrings.SpecialityChangeFailed);
+                        Notificate("[" + specialityName + "] - " + localStrings.SpecialityChangeFailed);
                     }
 
                 });
