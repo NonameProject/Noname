@@ -203,6 +203,7 @@
             });
 
             $("ul.salaries li input").attr("min", 0);
+            $("ul.salaries li input").attr("max", 10000000);
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
