@@ -177,7 +177,27 @@ function Chart() {
     };
 
     return {
-        draw: function (conteiner, dataObj, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, colors, out) {
+        draw: function (conteiner, dataInput, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, colors, out) {
+            var dataObj = [];
+            
+            for (var i = 0; i < dataInput.length; i++) {
+                var numberOfZeros = 0;
+                for (var j = 0; j < dataInput[i].data.length - 1; j++) {
+                    if (dataInput[i].data[j].y == 0 && dataInput[i].stack) 
+                    {
+                        numberOfZeros++;
+                    }
+                }
+                if (conteiner == "#payments-container")
+                {
+                    if (numberOfZeros == 0)
+                        dataObj.push(dataInput[i]);
+                } 
+                else
+                    if (numberOfZeros < 6) dataObj.push(dataInput[i]);
+
+            }
+            
             if (colors != undefined && colors != null)
                 plotColors = colors;
 
