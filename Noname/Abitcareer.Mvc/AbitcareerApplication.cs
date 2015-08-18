@@ -53,8 +53,6 @@ namespace Abitcareer.Mvc
 
         protected void Application_BeginRequest()
         {
-
-
             MiniProfiler.Start();
         }
 
