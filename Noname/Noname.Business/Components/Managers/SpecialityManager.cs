@@ -73,19 +73,10 @@ namespace Abitcareer.Business.Components.Managers
 
         public bool TrySave(Speciality editedModel)
         {
-            bool result;
-            try
-            {
-                if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
-                    throw new ArgumentException("One of the names is unacceptable");
-                provider.Update(editedModel);
-                result = true;
-            }
-            catch
-            {
-                result = false;
-            }
-            return result;
+            if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
+                return false;
+            provider.Update(editedModel);
+            return true;
         }
 
         public void Delete(string id)
@@ -119,8 +110,6 @@ namespace Abitcareer.Business.Components.Managers
         {
             var list = this.GetList();
 
-            var languageSegment = CultureInfo.CurrentCulture;
-
             var searcher = new MySearcher<Speciality>(luceneDirectory);
 
             searcher.AddUpdateIndex(list);
@@ -130,8 +119,6 @@ namespace Abitcareer.Business.Components.Managers
         {
             if (!Directory.Exists(luceneDirectory))
                 Index();
-
-            var languageSegment = CultureInfo.CurrentCulture;
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
 

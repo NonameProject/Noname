@@ -493,7 +493,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to При додаванні спеціальності виникла помилка.
+        ///   Looks up a localized string similar to Спеціальність з такою назвою вже існує.
         /// </summary>
         public static string SpecialityAddingFailed {
             get {

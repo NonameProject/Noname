@@ -286,7 +286,7 @@
     <value>Вихід</value>
   </data>
   <data name="SpecialityAddingFailed" xml:space="preserve">
-    <value>При додаванні спеціальності виникла помилка</value>
+    <value>Спеціальність з такою назвою вже існує</value>
   </data>
   <data name="SpecialityAddingSuccess" xml:space="preserve">
     <value>Спеціальність успішно додана</value>

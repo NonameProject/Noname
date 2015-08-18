@@ -286,7 +286,7 @@
     <value>Logout</value>
   </data>
   <data name="SpecialityAddingFailed" xml:space="preserve">
-    <value>Error occured while adding the speciality</value>
+    <value>Speciality with the same name is already exists</value>
   </data>
   <data name="SpecialityAddingSuccess" xml:space="preserve">
     <value>Speciality has been successfuly added</value>
