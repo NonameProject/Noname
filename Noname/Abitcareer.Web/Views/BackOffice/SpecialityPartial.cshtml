@@ -1,4 +1,13 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
+@{
+    decimal payment;
+    if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
+        payment = System.Math.Floor(payment/12);
+    }
+    else{
+        payment = 0;
+    }
+}
 <article class="cardWrapper" id="@Model.Id">
 <div class="col-md-4 card boxShadow17 specButton">
     <div class="ttip">
@@ -12,7 +21,7 @@
         <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
     </div>
     <div class="payment-wrapper">
-        <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
+        <h4>@payment</h4>
     </div>
 </div>
 </article>
