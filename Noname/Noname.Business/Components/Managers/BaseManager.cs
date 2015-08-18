@@ -68,7 +68,7 @@ namespace Abitcareer.Business.Components
 
             if (model.Fields.TryGetValue(key, out localizedValue))
             {
-                if (!string.IsNullOrEmpty(localizedValue.ToString()))
+                if (!string.IsNullOrEmpty(localizedValue))
                 {
                         localizedValue.Replace(@"\&quot;", "");
 
