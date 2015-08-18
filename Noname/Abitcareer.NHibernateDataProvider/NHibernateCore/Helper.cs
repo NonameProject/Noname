@@ -29,7 +29,7 @@ namespace Events.NHibernateDataProvider.NHibernateCore
                 .Database(MsSqlConfiguration.MsSql2012
                               .Driver(typeof(StackExchange.Profiling.NHibernate.Drivers.MiniProfilerSql2008ClientDriver).AssemblyQualifiedName)
                               .ConnectionString(
-                                  @"Server=tcp:ead9qcxrdo.database.windows.net,1433;Database=abitcareer;User ID=abitcareer@ead9qcxrdo;Password=ISMabit3;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
+                                  @"Server=tcp:ead9qcxrdo.database.windows.net,1433;Database=abitcareerTest;User ID=abitcareer@ead9qcxrdo;Password=ISMabit3;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;")
                               .ShowSql()
                 )
                 .Mappings(m =>
