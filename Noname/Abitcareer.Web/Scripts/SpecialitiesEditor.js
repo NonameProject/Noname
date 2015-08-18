@@ -83,10 +83,14 @@
 
     var find = function () {
         clearTimeout(searchItemId);
+        if (settings.search.val().trim()) $("#searchclear").prop('disabled', true);
+        else
+            $("#searchclear").prop('disabled', false);
         $(this).removeClass('success', 100);
         searchItemId = setTimeout(function () {
             var value = settings.search.val();
             if (!value && !value.trim()) {
+                $('#search').addClass('success');
                 $(".cardWrapper").show(0);
                 return;
             }
