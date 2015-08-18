@@ -1,6 +1,6 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
-@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false" }))
+@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false", @class = "addForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
