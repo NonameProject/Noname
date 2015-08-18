@@ -231,10 +231,13 @@
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),
                     resize = resizeCards,
-                    specialityName = $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "");
+                    specialityName = '';
+                if (!settings.editor.hasClass('addForm')) {
+                    specialityName = "[" + $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
+                }
                 $.post(url, data, function (d) {
                     if (d) {
-                        Notificate("[" + specialityName + "] - " + localStrings.SpecialityChangeSuccess);
+                        Notificate(specialityName + localStrings.SpecialityChangeSuccess);
                         settings.partialView.hide();
                         var card = $('#' + id);
                         if (card.length) card.replaceWith(d);
@@ -243,7 +246,7 @@
                         resize();
                     }
                     else {
-                        Notificate("[" + specialityName + "] - " + localStrings.SpecialityChangeFailed);
+                        Notificate(specialityName + localStrings.SpecialityChangeFailed);
                     }
 
                 });
