@@ -80,6 +80,32 @@
     resizeCards.reset = function () {
         oldWidth = 0;
     }
+
+    var find = function () {
+        clearTimeout(searchItemId);
+        $(this).removeClass('success', 100);
+        searchItemId = setTimeout(function () {
+            var value = settings.search.val();
+            if (!value && !value.trim()) {
+                $(".cardWrapper").show(0);
+                return;
+            }
+            $.ajax(
+                {
+                    url: "searchforspeaciality",
+                    type: "POST",
+                    data: { name: value },
+                    success: function (result) {
+                        $('#search').addClass('success');
+                        $(".cardWrapper:not(#addCard)").hide(0);
+                        for (var i = 0; i < result.length; i++) {
+                            $("#" + result[i]).show(0);
+                        }
+                    }
+                });
+        }, 500);
+    }
+
     return {
 
 
@@ -269,30 +295,12 @@
                 settings.partialView.hide();
             });
 
-            settings.search.keydown(function () {
-                clearTimeout(searchItemId);
-                $(this).removeClass('success', 100);
-                searchItemId = setTimeout(function () {
-                    var value = settings.search.val();
-                    if (!value && !value.trim()) {
-                        $(".cardWrapper").show(0);
-                        return;
-                    }
-                    $.ajax(
-                        {
-                            url: "searchforspeaciality",
-                            type: "POST",
-                            data: { name: value },
-                            success: function (result) {
-                                $('#search').addClass('success');
-                                $(".cardWrapper:not(#addCard)").hide(0);
-                                for (var i = 0; i < result.length; i++) {
-                                    $("#" + result[i]).show(0);
-                                }
-                            }
-                        });
-                }, 500);
+            $("#searchclear").click(function () {
+                $("#search").val('');
+                find();
             });
+
+            settings.search.keydown(find);
         },
     }
 })();
