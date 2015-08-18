@@ -58,6 +58,7 @@ namespace Abitcareer.Web.Components
             if (specialityManager.IsSpecialityNameAvailable(model.Name))
             {
                 specialityManager.Create(model);
+                specialityManager.Index();
                 return PartialView("SpecialityPartial", viewModel);
             }
             return Json(false);
@@ -78,6 +79,7 @@ namespace Abitcareer.Web.Components
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
             var result = specialityManager.TrySave(mappedModel);
+            specialityManager.Index();
             return PartialView("SpecialityPartial", editedModel);
         }
 
