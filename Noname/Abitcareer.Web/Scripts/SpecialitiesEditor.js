@@ -131,7 +131,21 @@
 
             localStrings = localResourses;
 
+            this.unbindUIActions();
             this.bindUIActions();
+        },
+
+        unbindUIActions: function () {
+            $(document).off();
+            $('body').off();
+            settings.deleteDiscard.off();
+            settings.addButton.off();
+            settings.deleteSubmit.off();
+            settings.names.off();
+            settings.editor.off();
+            settings.exitButton.off();
+            settings.exit.off();
+            settings.search.off();
         },
 
         bindUIActions: function () {
@@ -159,11 +173,11 @@
                 );
             });
 
-            settings.deleteDiscard.click(function () {
+            settings.deleteDiscard.on('click', function () {
                 settings.deleteConfirm.hide(0);
             });
 
-            $(document).click(function (event) {
+            $(document).on('click', function (event) {
                 if ($(event.target).closest(settings.inner).length) return;
                 settings.partialView.hide();
                 event.stopPropagation();
@@ -197,12 +211,13 @@
                 SpecialityEditor.deleteSpeciality();
             });
 
-            settings.names.keypress(function (event) {
+            settings.names.on('keypress', function (event) {
                 if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
                     return false;
             });
 
             $("ul.salaries li input").attr("min", 0);
+            $("ul.salaries li input").attr("max", 10000000);
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
@@ -273,5 +288,3 @@
 SpecialityEditor.init();
 
 SpecialityEditor.resizeCards();
-
-
