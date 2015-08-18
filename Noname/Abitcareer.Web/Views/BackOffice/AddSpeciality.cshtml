@@ -93,6 +93,8 @@
 
 <script>
     $(document).ready(function () {
+        $("#Name").attr("placeholder", "Назва(українська)");
+        $("#EnglishName").attr("placeholder", "Name(english)");
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
