@@ -1,142 +1,69 @@
 ﻿using Abitcareer.Business.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Abitcareer.Business.Components.ChartsData
 {
     public class Approximator
     {
-        private double[] Coef;
-        private double[] UnknownCoef;
-        private int Polinom;
-        private double[,] Matrix;
-        private int[] x;
-        private int[] y;
-
-        public Approximator(List<int> x, List<int> y, short polinom)
+        private float avgDelta { get; set; }
+        public List<int> data { get; set; }
+        private void CalcDelta()
         {
-            if (x.Count != y.Count)
+            if (data.Count == 1)
+                avgDelta = data[0];
+            avgDelta = data[0] - data[1];
+            for (int i = 1; i < data.Count - 1; i++)
             {
-                throw new ArgumentException("different arrays length", "x y");
-            }
-            if (polinom >= x.Count)
-            {
-                throw new ArgumentException("can't solve: polinom power to large", "polinom");
-            }
-            Matrix = new double[x.Count, y.Count];
-            Polinom = polinom;
-            UnknownCoef = new double[polinom + 1];
-            Coef = new double[polinom + 1];
-            this.x = x.ToArray();
-            this.y = y.ToArray();
-            GetCoef();
-        }
-
-        public double CalcY(double x)
-        {
-            double y = 0, mult = 1; ;
-            foreach (var coef in UnknownCoef)
-            {
-                y += coef * mult;
-                mult *= x;
-            }
-            return y;
-        }        
-
-#region private
-        private double[] GetCoef( )
-        {
-            InitMatrix();
-            Diagonal();
-            ProcessRows();
-            FindCoef();
-            return UnknownCoef;
-        }        
-
-        private void InitMatrix()
-        {
-            for (var i = 0; i < Polinom + 1; i++)
-            {
-                for (var j = 0; j < Polinom + 1; j++)
-                {
-                    Matrix[i, j] = 0;
-                    for (var k = 0; k < x.Length; k++)
-                    {
-                        Matrix[i, j] += Math.Pow(x[k], i + j);
-                    }
-                }
-            }
-
-            for (var i = 0; i < Polinom + 1; i++)
-            {
-                for (var k = 0; k < x.Length; k++)
-                {
-                    Coef[i] += Math.Pow(x[k], i) * y[k];
-                }
+                var localDelta = (data[i] - data[i + 1]);
+                avgDelta = (avgDelta - localDelta) / 2;
             }
         }
-
-        private void Diagonal()
+        public Approximator(int[] input)
         {
-            int i, j, k;
-            double temp = 0;
-            for (i = 0; i < Polinom + 1; i++)
+            data = new List<int>(input);
+            CalcDelta();
+        }
+        public Approximator(List<int> x, List<int> y)
+        {
+            data = new List<int>();
+            var counter = 0;
+            foreach (var item in x)
             {
-                if (Matrix[i, i] != 0)
-                    continue;        
-                for (j = 0; j < Polinom + 1; j++)
+                var multiplier = 1;
+                var step = y[counter] / item;
+                while (data.Count + 1 < item)
                 {
-                    if (j == i)
-                        continue;
-                    if (Matrix[j, i] != 0 && Matrix[i, j] != 0)
-                    {
-                        for (k = 0; k < Polinom + 1; k++)
-                        {
-                            temp = Matrix[j, k];
-                            Matrix[j, k] = Matrix[i, k];
-                            Matrix[i, k] = temp;
-                        }
-                        temp = Coef[j];
-                        Coef[j] = Coef[i];
-                        Coef[i] = temp;
-                        break;
-                    }
+                    data.Add(step * multiplier);
+                    multiplier++;
                 }
+                data.Add(y[counter]);
+                counter++;
+            }
+            CalcDelta();
+        }
+        public int CalcY(int pos = -1)
+        {
+            if (pos == -1)
+            {
+                var lastDelta = data.LastOrDefault() - data[data.Count - 2];
+                var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / lastDelta));
+                data.Add(data.LastOrDefault() + (int)Math.Floor(shift));
+                CalcDelta();
+                return data.LastOrDefault();
+            }
+            else
+            {
+                while (pos > data.Count)
+                {
+                    var lastDelta = data.LastOrDefault() - data[data.Count - 2];
+                    var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / lastDelta));
+                    data.Add(data.LastOrDefault() + (int)Math.Floor(shift));
+                    CalcDelta();
+                }
+                return data[pos - 1];
             }
         }
-
-        private void ProcessRows()
-        {
-            for (var k = 0; k < Polinom + 1; k++)
-            {
-                for (var i = k + 1; i < Polinom + 1; i++)
-                {
-                    if (Matrix[k, k] == 0)
-                    {
-                        return;
-                    }
-                    double M = Matrix[i, k] / Matrix[k, k];
-                    for (var j = k; j < Polinom + 1; j++)
-                    {
-                        Matrix[i, j] -= M * Matrix[k, j];
-                    }
-                    Coef[i] -= M * Coef[k];
-                }
-            }
-        }
-
-        private void FindCoef()
-        {
-            for (var i = Polinom; i >= 0; --i)
-            {
-                double s = 0;
-                for (var j = i; j < Polinom + 1; j++)
-                {
-                    s = s + Matrix[i, j] * UnknownCoef[j];
-                }
-                UnknownCoef[i] = (Coef[i] - s) / Matrix[i, i];
-            }
-        }        
-#endregion
     }
 }

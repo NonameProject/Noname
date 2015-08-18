@@ -71,7 +71,7 @@ namespace Abitcareer.Business.Components.ChartsData
             if (polinom + 1 >= x.Count)
                 polinom = (short)( x.Count - 1 );
 
-            return new Approximator(x, y, polinom);
+            return new Approximator(x, y);
         }
         
     }
