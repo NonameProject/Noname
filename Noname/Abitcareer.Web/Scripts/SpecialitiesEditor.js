@@ -83,9 +83,11 @@
 
     var find = function () {
         clearTimeout(searchItemId);
-        if (settings.search.val().trim()) $("#searchclear").prop('disabled', true);
-        else
-            $("#searchclear").prop('disabled', false);
+        setTimeout(function (settings) {
+            if (!settings.search.val().trim()) $("#searchclear").hide();
+            else
+                $("#searchclear").show();
+        }, 10, settings);
         $(this).removeClass('success', 100);
         searchItemId = setTimeout(function () {
             var value = settings.search.val();
