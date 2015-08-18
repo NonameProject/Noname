@@ -21,7 +21,8 @@ namespace Abitcareer.Mvc.Controllers
         public ActionResult Index()
         {
             var list = from spec in specialityManager.GetList()
-                         where spec.Salaries.Max(x => x.Value) > 0
+                         where (spec.Salaries.Max(x => x.Value) > 0 &&
+                            spec.Prices["TopUniversityPrice"] > 0)
                          select spec;
             return View(AutoMapper.Mapper.Map<List<SpecialityViewModel>>(list));
         }
