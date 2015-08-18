@@ -10,17 +10,17 @@
 }
 
 #searchclear {
-    bottom: 0;
     border-radius: 45%;
+    bottom: 0;
     color: #dcc;
     cursor: pointer;
     display: none;
     font-size: 14px;
     height: 20px;
-    right: 20px;
+    line-height: 20px;
+    margin-left: -20px;
     top: 0;
     width: 20px;
-    line-height: 20px;
 }
     #searchclear:hover {
         background-color: rgba(255, 153, 153, .6);
