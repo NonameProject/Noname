@@ -120,8 +120,12 @@ li a.changeLanguage
 
 .link
 {
-    margin-top: 17px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-top: 17px !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+nav ul a
+{
+    font-size: 13px !important;
 }
 
 .success

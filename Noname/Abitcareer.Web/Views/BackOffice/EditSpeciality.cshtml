@@ -5,12 +5,17 @@
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
+@{
+    Model.Prices["TopUniversityPrice"] /= 12;
+    Model.Prices["MiddleUniversityPrice"] /= 12;
+    Model.Prices["LowUniversityPrice"] /= 12;
+    
+}
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         @Html.HiddenFor(x => x.Id)
         <h2>@LocalizationResx.EditSpeciality</h2>
-        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
         <br />

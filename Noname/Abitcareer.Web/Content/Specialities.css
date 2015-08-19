@@ -9,6 +9,14 @@
   font-style: normal;
 }
 
+.salaries li input
+{
+    width: 25%;
+    margin-left: 47px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding-left: 7px;
+}
 #searchclear {
     border-radius: 45%;
     bottom: 0;
@@ -59,6 +67,7 @@ h2 {
 #search {
     border-bottom: 1px solid rgba(0,102,255, .9);
     padding-right: 20px;
+    font-size: 16px;
 }
 
     #search.success {
@@ -81,7 +90,7 @@ h2 {
     display: none;
     height: 100%;
     padding-left: 25%;
-    padding-top: 8%;
+    padding-top: 6%;
     position: fixed;
     top: 0;
     width: 100%;
@@ -135,27 +144,31 @@ form {
     padding: 3px;
 }
 
-    form input {
-        margin-left: 5px;
-        max-width: 75%;
-        padding: 1px 2px;
-        width: 70%;
-    }
+form input {
+    margin-left: 5px;
+    max-width: 75%;
+    padding: 1px 2px;
+    width: 70%;
+    font-size: 15px !important;
+    padding-left: 7px !important;
+}
 
-    form input:focus {
-        border-style: solid;
-        border-color: rgba(0, 153, 153, .4);
-    }
+form input:focus {
+         box-shadow: 0 10px 14px -5px rgba(0, 158, 5, 0.2) !important;
+        -webkit-box-shadow: 0px 10px 14px -5pxrgba(0, 158, 5, 0.2) !important;
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0, 255, 5, 0.2) !important; 
+}
 
-    form button {
-        margin-left:2%;
-        margin-right: 30px;
-        width:15%;
-    }
-        form button:disabled {
-            background-color: #ccc;
-            border-color: #bbb;
-        }
+form button {
+    margin-left:2%;
+    margin-right: 30px;
+    width:15%;
+}
+
+form button:disabled {
+    background-color: #ccc;
+    border-color: #bbb;
+}
 
 #exitButton {
     width:15%;
@@ -164,6 +177,7 @@ form {
 .row {
     margin-top:2%;
     margin-right:2%;
+    margin-bottom: 0px;
 }
 
 #exit, #delete-confirm-exit {
