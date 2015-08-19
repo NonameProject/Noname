@@ -333,4 +333,7 @@
   <data name="PageCharts" xml:space="preserve">
     <value>Графіки</value>
   </data>
+  <data name="ListOfSpecialities" xml:space="preserve">
+    <value>Список спеціальностей</value>
+  </data>
 </root>

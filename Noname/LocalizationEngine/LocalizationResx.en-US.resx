@@ -333,4 +333,7 @@
   <data name="PageCharts" xml:space="preserve">
     <value>Charts</value>
   </data>
+  <data name="ListOfSpecialities" xml:space="preserve">
+    <value>List of specialities</value>
+  </data>
 </root>
