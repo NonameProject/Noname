@@ -11,11 +11,30 @@
 
 .salaries li input
 {
-    width: 25%;
-    margin-left: 47px;
+    width: 140px;
+    margin-left: 45px;
     margin-bottom: 5px;
     font-size: 16px;
     padding-left: 7px;
+}
+
+.tuition-fee
+{
+    width: 55%;
+    float: right;
+}
+.tuition-fee li input
+{
+    width: 140px;
+    margin-left: 23px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding-left: 7px;
+}
+
+.tuition-fee label
+{
+    min-width: 136px;
 }
 #searchclear {
     border-radius: 45%;
@@ -222,6 +241,8 @@ form button:disabled {
     margin: 0;
     padding: 0;
     min-width: 250px;
+    width: 45%;
+    float: left;
 }
 
 .salaries label {

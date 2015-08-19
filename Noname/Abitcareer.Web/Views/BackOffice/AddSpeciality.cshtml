@@ -9,7 +9,6 @@
         @Html.HiddenFor(x => x.Id)   
     
         <h2>@LocalizationResx.AddSpeciality</h2>
-        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         
         @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
@@ -53,9 +52,9 @@
                 </ul>
             </article>-->
         <article class="left">
-            <h4>@LocalizationResx.Salaries.ToUpper()</h4>
     
             <ul class="salaries">
+                <h4>@LocalizationResx.Salaries.ToUpper()</h4>
                 @foreach (var item in Model.Salaries)
                 {
                     string yearEnding = LocalizationResx.EndAfterFour;
@@ -84,14 +83,17 @@
                 }
                 </ul>
                 <ul class="tuition-fee">
+                    <h4>@LocalizationResx.Payment</h4>
                     <li>
-                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.FirstPaymentName)
+                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
                         @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
-
-                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.SecondPaymentName)
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
                         @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
-
-                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.ThirdPaymentName)
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
                 </ul>
