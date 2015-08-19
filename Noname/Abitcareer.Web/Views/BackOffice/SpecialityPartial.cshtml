@@ -10,7 +10,7 @@
     bool isAuthenticated = User.Identity.IsAuthenticated;
 }
 <article class="cardWrapper" id="@Model.Id" data-isclickable="@isAuthenticated">
-    <div class="col-md-4 card boxShadow17 specButton">
+    <div class="col-md-4 card z-depth-2 specButton">
         @if (isAuthenticated)
         {
             <div class="ttip">
