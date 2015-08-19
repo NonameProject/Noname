@@ -83,7 +83,7 @@
                 }
                 </ul>
                 <ul class="tuition-fee">
-                    <h4>@LocalizationResx.Payment</h4>
+                    <h4>@LocalizationResx.Payment.ToUpper()</h4>
                     <li>
                         @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.PaymentForYear + " " + LocalizationResx.FirstPaymentName)
                         @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
