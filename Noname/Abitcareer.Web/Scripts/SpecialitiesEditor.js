@@ -199,11 +199,13 @@
             })
 
             $('body').on("click", ".cardWrapper", function (event) {
+                event.stopPropagation();
+                if (event.target === this)
+                    return;
                 if ($(this).data('isauthenticated') === 'False') {
                     window.location.assign($('.navbar-brand').attr('href') + '#' + $(this).attr('id'));
                     return;
                 }
-                event.stopPropagation();
                 $.post('specialities/edit', { id: $(this).attr('id') }, function (data) {
                     if (!data) {
                         Notificate(Localization.LocalizationForRemove);
