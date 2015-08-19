@@ -113,7 +113,6 @@ namespace Abitcareer.Business.Components.ChartsData
                 newPoint = new Point(i, result[summarySalaryIndex].Last().y + 12 * val);
                 result[summarySalaryIndex].Add(newPoint);
             }
-            //result[summarySalaryIndex].Remove(result[summarySalaryIndex].First());
         }
 
         private Approximator InitAproximator(Speciality speciality, short polinom)
