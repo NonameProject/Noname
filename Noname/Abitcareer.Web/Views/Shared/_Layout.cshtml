@@ -43,10 +43,10 @@
                         <span class="collapsed-logout">
                             @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
                         </span>
-                        <span class="collapsed-logout">
-                            @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                        </span>
-                    }                    
+                    }
+                    <span class="collapsed-logout">
+                        @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
+                    </span>              
                     <a class="changeLanguage" href="@langLinkUS">
                         <img src="@Url.Content("~/Content/Images/Flags/US.png")" />
                     </a>
@@ -65,10 +65,10 @@
                             <li>
                                 @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
                             </li>
+                        }
                             <li>
                                 @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
                             </li>
-                        }
                      }
                     <li>
                         <a class="changeLanguage" href="@langLinkUS">
