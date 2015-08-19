@@ -51,15 +51,15 @@
         <ul class="tuition-fee">
                     <h4>@LocalizationResx.Payment.ToUpper()</h4>
                     <li>
-                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"],LocalizationResx.PaymentForYear + " " + LocalizationResx.FirstPaymentName)
+                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
                         @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
                     </li>
                     <li>
-                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"],LocalizationResx.PaymentForYear + " " + LocalizationResx.SecondPaymentName)
+                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
                         @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
                     </li>
                     <li>
-                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.PaymentForYear + " " + LocalizationResx.ThirdPaymentName)
+                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"],  LocalizationResx.ThirdPaymentName)
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
                 </ul>
