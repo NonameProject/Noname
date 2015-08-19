@@ -1,11 +1,12 @@
 ﻿function DataProvider() {
 
     this.getData = function (callback) {
-        var res = JSON.parse(JSON.stringify(specialities));
         $("#js-loading-screen").addClass("active");
         $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
-            
+            var res = [];
+
             for (var i = 0; i < data.length; i++) {
+                res[i] = {};
                 res[i].data = data[i];
             }
 
@@ -34,47 +35,6 @@
         }
         return data2;
     };
-
-    var specialities = [{
-        name: textStrings.paymentsAxis,
-        data: [],
-        color: "#990033"// was red,        
-    },
-    {
-        name: textStrings.paymentsAxis,
-        data: [],
-        color: "#990033"// was red,        
-    },
-    {
-        name: textStrings.paymentsAxis,
-        data: [],
-        color: "#990033"// was red,        
-    },
-    {
-        name: textStrings.summaryCosts,
-        data: [],
-        color: "blue"
-    },
-    {
-        name: textStrings.summaryCosts,
-        data: [],
-        color: "blue"
-    },
-    {
-        name: textStrings.summaryCosts,
-        data: [],
-        color: "blue"
-    },
-    {
-        name: textStrings.summaryAxis,
-        data: [],
-        color: "green"
-    },
-    {
-        name: textStrings.summarySalary,
-        data: [],
-        color: "green"
-    }];
 }
 
 $(function () {
@@ -130,10 +90,14 @@ $(function () {
                 data: selectedSpec[2].data,
                 stack: 'payment'
             };
+            data4 = {
+                name: textStrings.summaryAxis,
+                color: 'green',
+                data: selectedSpec[length - 2].data
+            };
 
             window.location.hash = $("#spec").val();
             var chart = new Chart();
-            //$('#selectedSpeciality').html($("#spec option:selected").html());
 
             butt.prop('disabled', false);
             if ($("#commit").css("display") != "none") {
@@ -141,13 +105,15 @@ $(function () {
                 $("#chart-container").fadeToggle(500);
             }
 
-            chart.draw("#payments-container", [data1, data2, data3, selectedSpec[length - 2]], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+            chart.draw("#payments-container", [data1, data2, data3, data4], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
 
             data1.data = selectedSpec[3].data;
             data2.data = selectedSpec[4].data;
             data3.data = selectedSpec[5].data;
+            data4.data = selectedSpec[length - 1].data;
+            data4.name = textStrings.summarySalary;
 
-            chart.draw("#summary-container", [data1, data2, data3, selectedSpec[length - 1]], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+            chart.draw("#summary-container", [data1, data2, data3, data4], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
 
             setHash();
         });

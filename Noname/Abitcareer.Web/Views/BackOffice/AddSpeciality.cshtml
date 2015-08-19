@@ -83,18 +83,18 @@
                     </li>
                 }
                 </ul>
-            <ul>
-                <li>
-                    @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.FirstPaymentName)
-                    @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
+                <ul class="tuition-fee">
+                    <li>
+                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.FirstPaymentName)
+                        @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
 
-                    @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.SecondPaymentName)
-                    @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
+                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.SecondPaymentName)
+                        @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
 
-                    @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.ThirdPaymentName)
-                    @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
-                </li>
-            </ul>
+                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.Payment + ' ' + LocalizationResx.ThirdPaymentName)
+                        @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
+                    </li>
+                </ul>
             </article>
     <div class="clear"></div>
        <div class="row">            

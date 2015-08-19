@@ -1,8 +1,8 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 @{
-    decimal payment;
+     int payment;
     if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
-        payment = System.Math.Floor(payment/12);
+        payment = payment/12;
     }
     else{
         payment = 0;

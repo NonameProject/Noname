@@ -20,13 +20,13 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public Dictionary<int, int> Salaries { get; set; }
 
-       public  Dictionary<string, Decimal> Prices { get; set; }
+       public  Dictionary<string, int> Prices { get; set; }
 
         public SpecialityViewModel()
         {
             Salaries = new Dictionary<int, int>();
 
-            Prices = new Dictionary<string, Decimal>();
+            Prices = new Dictionary<string, int>();
 
             Salaries[1] = 0;
             Salaries[2] = 0;
