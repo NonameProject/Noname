@@ -11,6 +11,15 @@
     {
         langLinkUS = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
     }
+    string listOfSpecialities;
+    if (User.Identity.IsAuthenticated)
+    {
+        listOfSpecialities = LocalizationResx.PageBackoffice;
+    }
+    else
+    {
+        listOfSpecialities = LocalizationResx.ListOfSpecialities;        
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -43,17 +52,10 @@
                         <span class="collapsed-logout">
                             @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
                         </span>
-<<<<<<< HEAD
-                        <span class="collapsed-logout">
-                            @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                        </span>
-                    }
-=======
                     }
                     <span class="collapsed-logout">
-                        @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                    </span>              
->>>>>>> origin/master
+                        @Html.ActionLink(listOfSpecialities, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
+                    </span>
                     <a class="changeLanguage" href="@langLinkUS">
                         <img src="@Url.Content("~/Content/Images/Flags/US.png")" />
                     </a>
@@ -66,17 +68,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
                 <ul class="nav navbar-nav navbar-right">
-                    @{
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
-                            </li>
-                        }
-                            <li>
-                                @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                            </li>
-                     }
+                    @{if (User.Identity.IsAuthenticated)
+                      {
+                        <li>
+                            @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
+                        </li>
+                      }
+                    }
+                    <li>
+                        @Html.ActionLink(listOfSpecialities, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
+                    </li>
                     <li>
                         <a class="changeLanguage" href="@langLinkUS">
                             <img src="@Url.Content("~/Content/Images/Flags/US.png")" /> English

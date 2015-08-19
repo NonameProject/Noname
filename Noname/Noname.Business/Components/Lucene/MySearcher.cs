@@ -56,8 +56,9 @@ namespace Abitcareer.Business.Components.Lucene
                 {
                     addToLuceneIndex(TValue, writer);
                 }
-                analyzer.Close();
+                writer.Flush(true, true, true);
             }
+            analyzer.Close();
         }
 
         public void AddUpdateIndex(T TValue)
@@ -84,7 +85,12 @@ namespace Abitcareer.Business.Components.Lucene
         private void addToLuceneIndex(T TValue, IndexWriter writer)
         {
             var doc = MapTValueToDoc(TValue);
-
+            string id = doc.GetField("Id").StringValue;
+            if (!string.IsNullOrEmpty(id))
+            {
+                var searchQuery = new TermQuery(new Term("Id", id));
+                writer.UpdateDocument(searchQuery.Term, doc);
+            }
             writer.AddDocument(doc);
         }
 
@@ -102,7 +108,6 @@ namespace Abitcareer.Business.Components.Lucene
 
                 doc.Add(new Field(fieldName, fieldValue.ToString(), Field.Store.YES, attr.Type));
             }
-
             return doc;
         }
 

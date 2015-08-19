@@ -23,19 +23,6 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public void Create(User model)
-        {
-            ClearCache();
-
-            var crypto = new SimpleCrypto.PBKDF2();
-
-            model.PasswordSalt = crypto.GenerateSalt();
-
-            model.Password = crypto.Compute(model.Password,model.PasswordSalt);
-
-            provider.Create(model);
-        }
-
         public IList<User> GetList()
         {
             return FromCache<IList<User>>(Thread.CurrentThread.CurrentUICulture.LCID + "_list", () =>
@@ -57,12 +44,6 @@ namespace Abitcareer.Business.Components.Managers
                 return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
             }
             return false;
-        }
-
-        public bool IsUserExists(string email)
-        {
-            return provider.GetByEmail(email) != null;
-
         }
     }
 }

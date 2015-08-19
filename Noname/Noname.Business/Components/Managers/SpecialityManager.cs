@@ -34,18 +34,14 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public bool Create(Speciality model)
+        public bool TryCreate(Speciality model)
         {
-            ClearCache();
-            try
+            if (IsSpecialityNameAvailable(model.Name))
             {
-                provider.Create(model);
+                Create(model);
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
         public void ClearSalaries( )
@@ -70,6 +66,7 @@ namespace Abitcareer.Business.Components.Managers
             if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
                 return false;
             provider.Update(editedModel);
+            new MySearcher<Speciality>(luceneDirectory).AddUpdateIndex(editedModel);
             return true;
         }
 
@@ -105,7 +102,7 @@ namespace Abitcareer.Business.Components.Managers
             var list = this.GetList();
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
-
+            searcher.ClearIndex();
             searcher.AddUpdateIndex(list);
         }
 
