@@ -1,6 +1,6 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
-@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false" }))
+@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false", @class = "addForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -9,26 +9,28 @@
         @Html.HiddenFor(x => x.Id)   
     
         <h2>@LocalizationResx.AddSpeciality</h2>
-        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         
         @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(x => x.Name)
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
+        @Html.ValidationMessageFor(x => x.EnglishName)
         <br />
-        <span id="js-validation" class="error-text"></span> 
-        <h4>@LocalizationResx.Salaries.ToUpper()</h4>
+        <span id="js-validation" class="error-text"></span>
+        <!--<article class="right">
+            <h4>@LocalizationResx.Salaries.ToUpper()</h4>
     
-        <ul class="salaries">
-            @foreach (var item in Model.Salaries)
-            {
-                string yearEnding = LocalizationResx.EndAfterFour;
-                <li>
-                    @if (item.Key < 10 || item.Key > 20)
-                    {
-                        switch (item.Key % 10)
+            <ul class="salaries">
+                @foreach (var item in Model.Salaries)
+                {
+                    string yearEnding = LocalizationResx.EndAfterFour;
+                    <li>
+                        @if (item.Key < 10 || item.Key > 20)
                         {
+                            switch (item.Key % 10)
+                            {
                             case 1:
                                 yearEnding = LocalizationResx.FirstEnd;
                                 break;
@@ -41,57 +43,76 @@
                             default:
                                 yearEnding = LocalizationResx.EndAfterFour;
                                 break;
+                            }
                         }
-                    }
-                    @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                    @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
-                </li>
-            }
-            </ul>
-
+                        @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
+                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                    </li>
+                }
+                </ul>
+            </article>-->
+        <article class="left">
+    
+            <ul class="salaries">
+                <h4>@LocalizationResx.Salaries.ToUpper()</h4>
+                @foreach (var item in Model.Salaries)
+                {
+                    string yearEnding = LocalizationResx.EndAfterFour;
+                    <li>
+                        @if (item.Key < 10 || item.Key > 20)
+                        {
+                            switch (item.Key % 10)
+                            {
+                            case 1:
+                                yearEnding = LocalizationResx.FirstEnd;
+                                break;
+                            case 2:
+                                yearEnding = LocalizationResx.SecondEnd;
+                                break;
+                            case 3:
+                                yearEnding = LocalizationResx.ThirdEnd;
+                                break;
+                            default:
+                                yearEnding = LocalizationResx.EndAfterFour;
+                                break;
+                            }
+                        }
+                        @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
+                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                    </li>
+                }
+                </ul>
+                <ul class="tuition-fee">
+                    <h4>@LocalizationResx.Payment</h4>
+                    <li>
+                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
+                        @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
+                        @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
+                        @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
+                    </li>
+                </ul>
+            </article>
+    <div class="clear"></div>
        <div class="row">            
-            <button type="submit" class="btn btn-primary right">@LocalizationResx.Save</button>
+            <button type="submit" id="createSpeciality" class="btn btn-primary right">@LocalizationResx.Save</button>
             <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
         </div>
 }
 
 <script>
-    $("#Name").attr("placeholder", "Назва спеціальності");
-    $("#EnglishName").attr("placeholder", "Name of speciality");
+    $(document).ready(function () {
+        SpecialityEditor.init({
+            ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
-    $("#Name, #EnglishName").keypress(function (event) {
-        if (String.fromCharCode(event.charCode) == '<' || String.fromCharCode(event.charCode) == '>')
-            return false;
-    });
-    $("ul.salaries li input").attr("min", 0);
-    $("#editor").submit(function (event) {
-        if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
-            $("#js-validation").html('@LocalizationResx.ValidationNameCannotBeEmpty');
-            event.preventDefault();
-            return false;
-        }
-        var data = $("#editor").serialize();
-        var url = $("#editor").attr("action");
-        $.post(url, data, function (d) {
-            if (d) {
-                Notificate("@LocalizationResx.SpecialityAdditingSuccess");
-                $('#partialView').hide();
-                $("#addCard").after(d);
-            }
-            else {
-                Notificate("@LocalizationResx.SpecialityAdditingFailed");
-            }
+            SpecialityChangeSuccess: "@LocalizationResx.SpecialityAddingSuccess",
 
+            SpecialityChangeFailed: "@LocalizationResx.SpecialityAddingFailed"
         });
-        event.preventDefault();
     });
-
-    $('#exitButton').click(function () {
-        $('#partialView').hide();
-    });
-
-    $('#exit').click(function () {
-        $('#partialView').hide();
-    });
-
 </script>

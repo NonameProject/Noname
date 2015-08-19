@@ -9,6 +9,54 @@
   font-style: normal;
 }
 
+.salaries li input
+{
+    width: 140px;
+    margin-left: 45px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding-left: 7px;
+}
+
+.tuition-fee
+{
+    width: 55%;
+    float: right;
+}
+.tuition-fee li input
+{
+    width: 140px;
+    margin-left: 23px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding-left: 7px;
+}
+
+.tuition-fee label
+{
+    min-width: 136px;
+}
+#searchclear {
+    border-radius: 45%;
+    bottom: 0;
+    color: #dcc;
+    cursor: pointer;
+    display: none;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: -20px;
+    top: 0;
+    width: 20px;
+}
+    #searchclear:hover {
+        background-color: rgba(255, 153, 153, .6);
+        color: #931E00;
+    }
+    #searchclear:disabled {
+        display: none;
+    }
+
 .edited {
     -webkit-box-shadow: 0px 0px 10px 2px rgba(8,170,0,1) !important;
     -moz-box-shadow: 0px 0px 10px 2px rgba(8,170,0,1) !important;
@@ -19,23 +67,49 @@ h2 {
     text-align: center;
 }
 
+.clear {
+    clear: both;
+}
+
+#editor article {
+    width: 100%;
+}
+
+#editor li {
+    display: block;
+}
+
 #editor .row *{
     width: 100px;
 }
 
-#search:focus{
-    border-bottom: 1px solid rgba(0,102,255,1);
-    -webkit-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
-    -moz-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
-    box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+#search {
+    border-bottom: 1px solid rgba(0,102,255, .9);
+    padding-right: 20px;
+    font-size: 16px;
 }
+
+    #search.success {
+        border-bottom: 1px solid rgba(0, 250, 102, 1) !important;
+        box-shadow: 0 10px 14px -5px rgba(0, 160, 250, 0.25) !important;
+        color: inherit;
+        -webkit-box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important;
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important; 
+    }
+
+    #search:focus{
+        border-bottom: 1px solid rgba(0,102,255,1);
+        box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+        -webkit-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);    
+    }
 
 #partialView, #deleteConfirm {
     background-color: rgba(32, 32, 32, 0.81);
     display: none;
     height: 100%;
     padding-left: 25%;
-    padding-top: 8%;
+    padding-top: 6%;
     position: fixed;
     top: 0;
     width: 100%;
@@ -46,22 +120,25 @@ h2 {
     background-color: white;
     border-radius: 3px;
     margin: 0;
+    min-height: 20%;
+    min-width: 525px;
     padding-bottom: 1%;
     padding-left: 2%;
-    min-height:20%;
+    position: relative;
+    top: 0;
     width: 70%;
 }
 #delete-inner{
-    text-align: center;
+    left: 45%;
+    line-height: 24px;
+    margin-left: -190px;
+    margin-top: -90px;
     min-height: 180px;
     padding: 20px;
-    line-height: 24px;
-    width: 380px;
     position: absolute;
+    text-align: center;
     top: 50%;
-    left: 50%;
-    margin-top: -90px;
-    margin-left: -190px;
+    width: 380px;
 }
 .loading #inner {
     background-image: url("Images/ajax-loader.gif");
@@ -86,22 +163,31 @@ form {
     padding: 3px;
 }
 
-    form input {
-        margin-left: 5px;
-        max-width: 75%;
-        padding: 1px 2px;
-        width: 70%;
-    }
+form input {
+    margin-left: 5px;
+    max-width: 75%;
+    padding: 1px 2px;
+    width: 70%;
+    font-size: 15px !important;
+    padding-left: 7px !important;
+}
 
-    form input:focus {
-        border-style: solid;
-        border-color: rgba(0, 153, 153, .4);
-    }
+form input:focus {
+         box-shadow: 0 10px 14px -5px rgba(0, 158, 5, 0.2) !important;
+        -webkit-box-shadow: 0px 10px 14px -5pxrgba(0, 158, 5, 0.2) !important;
+        -moz-box-shadow: 0px 10px 14px -5px rgba(0, 255, 5, 0.2) !important; 
+}
 
-    form button {
-        width:15%;
-        margin-left:2%;
-    }
+form button {
+    margin-left:2%;
+    margin-right: 30px;
+    width:15%;
+}
+
+form button:disabled {
+    background-color: #ccc;
+    border-color: #bbb;
+}
 
 #exitButton {
     width:15%;
@@ -110,6 +196,7 @@ form {
 .row {
     margin-top:2%;
     margin-right:2%;
+    margin-bottom: 0px;
 }
 
 #exit, #delete-confirm-exit {
@@ -153,7 +240,9 @@ form {
     list-style: outside none none;
     margin: 0;
     padding: 0;
-    width: 70%;
+    min-width: 250px;
+    width: 45%;
+    float: left;
 }
 
 .salaries label {
@@ -184,15 +273,15 @@ form {
     width: 100%;
 }
 
-.card:hover
+.card:hover .ttip
 {
-    cursor: pointer;
+    display:block;
 }
 
     .card h4::before {
         font-family: "fontello";
         font-style: normal;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: normal;
         speak: none;
         display: inline-block;
@@ -229,19 +318,23 @@ form {
 
 .salary-wrapper, .payment-wrapper
 {
-    margin-top: 20px;
+    margin-top: 16px;
 }    
     .salary-wrapper h4 {
-        color: #004000;
+        color: #044004;
     }
         .salary-wrapper h4::before {
-            color: #004000;
+            color: #003000;
             content: '';
             position: relative;
             top: -1px;
         }
+    .payment-wrapper h4 {
+        color: #200404;
+    }
+
     .payment-wrapper  h4::before {
-            color: #004000;
+            color: #160000;
             content: '';
             position: relative;
             top: -1px;
@@ -258,15 +351,18 @@ form {
 
 .ttip
 {
-    display: none;
-    width: 100%;
-    height: 120px;
-    position: absolute;
     background-color: lightgrey;
-    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    height: 120px;
     left: 0;
-    top: 0;
     opacity: 0.9;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 50;
 }
 
 .ttip span
@@ -278,12 +374,8 @@ form {
 
 
 .boxShadow17 {
- 
-  border-radius: 3px;
-  box-shadow:
-     inset rgba(0,0,0,.6) 0 -3px 5px,
-   inset rgba(252,255,255,.7) 0 3px 8px,
-   rgba(0,0,0,.8) 0 3px 8px -3px;
+  border-radius: 2px;
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2), 0 6px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search
@@ -316,12 +408,13 @@ background-color:inherit;
 }
 #addNew{
     background: rgba(4, 165, 35, 0.8);
+    cursor: pointer;
 }
 #addNew span{
     color: white;
 }
 #addNew:hover{
-    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px, inset rgba(0,0,0,.8) 0 3px 8px -3px;
+    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px,  rgba(0,0,0,.8) 0 3px 8px -3px;
     background: rgba(0, 111, 21, 0.8);
 }
 .delete
@@ -335,9 +428,20 @@ background-color:inherit;
 {
     margin-top: 10px;
 }
-@media (max-width: 992px) {
-    #addNew{ /*Dirty hack, but it seems like it is only way to fix this shit*/
+@media (max-width: 991px) {
+    #addCard{ /*Dirty hack, but it seems like it is only way to fix this shit*/
+        margin-bottom: -29px;
         position: relative;
-        top: -18px;
+        top: -28px;
     }
+}
+
+.btn-default {
+    background-color: transparent;
+    border: none;
+}
+.btn-default:hover {
+    background-color: transparent;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    border: none;
 }

@@ -9,8 +9,6 @@ namespace Abitcareer.Business.Models
 {
     public class User : BaseModel
     {
-        public virtual string Id { get; set; }
-
         public virtual string Email { get; set; }
 
         public virtual string PasswordSalt { get; set; }

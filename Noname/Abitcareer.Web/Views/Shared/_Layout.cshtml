@@ -1,7 +1,25 @@
 ﻿@using Abitcareer.Mvc.Extensions
 @{
     var routeName = Request.RequestContext.RouteData.GetRouteName();
-    var langLink = "#";
+    var langLinkUS = "#";
+    var langLinkUA = "#";
+    if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
+    {
+        langLinkUA = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName });
+    }
+    else
+    {
+        langLinkUS = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
+    }
+    string listOfSpecialities;
+    if (User.Identity.IsAuthenticated)
+    {
+        listOfSpecialities = LocalizationResx.PageBackoffice;
+    }
+    else
+    {
+        listOfSpecialities = LocalizationResx.ListOfSpecialities;        
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -10,6 +28,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="@Url.Content("~/Content/Images/favicon.png")" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/materialize/css/materialize.min.css")
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Site.css")
@@ -18,8 +37,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/errorhandler.js")
     @Scripts.Render("~/Scripts/googleAnalytics.js")
+    @Scripts.Render("~/Scripts/materialize/materialize.min.js")
     <script type="text/javascript">
-        Logger.getUrl('@Url.Action("LogJavaScriptError", "Error")');
+        Logger.init('@Url.Action("LogJavaScriptError", "Error")');
     </script>
 </head>
 <body>
@@ -29,39 +49,17 @@
                 <div class="right mobile-localization-changer">
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <span class="collapsed-logout">
-                        @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
-                    </span>
-                    <span class="collapsed-logout">
-                        @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                    </span>
+                        <span class="collapsed-logout">
+                            @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
+                        </span>
                     }
-                    @{
-                        if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
-                        {
-                            langLink = "#";
-                        }
-                        else
-                        {
-                            langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
-                            langLink = langLink + "&anchor=True";
-                        }
-                    }
-                    <a class="changeLanguage" href="@langLink">
+                    <span class="collapsed-logout">
+                        @Html.ActionLink(listOfSpecialities, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
+                    </span>
+                    <a class="changeLanguage" href="@langLinkUS">
                         <img src="@Url.Content("~/Content/Images/Flags/US.png")" />
                     </a>
-                    @{
-                        if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "uk-UA")
-                        {
-                            langLink = "#";
-                        }
-                        else
-                        {
-                            langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName, anchor = "" });
-                            langLink += "&anchor=True";
-                        }
-                    }
-                    <a class="changeLanguage" href="@langLink">
+                    <a class="changeLanguage" href="@langLinkUA">
                         <img src="@Url.Content("~/Content/Images/Flags/UA.png")" />
                     </a>
                 </div>
@@ -70,44 +68,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               
                 <ul class="nav navbar-nav navbar-right">
-                    @{
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
-                            </li>
-                            <li>
-                                @Html.ActionLink(LocalizationResx.PageBackoffice, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
-                            </li>
-                        }
-                     }
+                    @{if (User.Identity.IsAuthenticated)
+                      {
+                        <li>
+                            @Html.ActionLink(LocalizationResx.Logout, "LogOut", "User", null, htmlAttributes: new { @class = "link" })
+                        </li>
+                      }
+                    }
                     <li>
-                        @{
-                            if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en-US")
-                            {
-                                langLink = "#";
-                            }
-                            else
-                            {
-                                langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "en-US", routeName = routeName });
-                            }
-                        }
-                        <a class="changeLanguage" href="@langLink">
+                        @Html.ActionLink(listOfSpecialities, "Specialities", "BackOffice", null, htmlAttributes: new { @class = "link" })
+                    </li>
+                    <li>
+                        <a class="changeLanguage" href="@langLinkUS">
                             <img src="@Url.Content("~/Content/Images/Flags/US.png")" /> English
                         </a>
                     </li>
                     <li>
-                        @{
-                            if (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "uk-UA")
-                            {
-                                langLink = "#";
-                            }
-                            else
-                            {
-                                langLink = Url.HttpRouteUrl("ChangeCulture", new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name, culture = "uk-UA", routeName = routeName });
-                            }
-                        }
-                        <a class="changeLanguage" href="@langLink">
+                        <a class="changeLanguage" href="@langLinkUA">
                             <img src="@Url.Content("~/Content/Images/Flags/UA.png")" /> Українська
                         </a>
                     </li>

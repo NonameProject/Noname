@@ -21,13 +21,12 @@ namespace Abitcareer.Web.Components
     {
         SpecialityManager specialityManager;
 
-
-
         public BackOfficeController(SpecialityManager manager)
         {
             specialityManager = manager;
         }
 
+        [AllowAnonymous]
         public ActionResult Specialities()
         {
             var spec = specialityManager.GetList();
@@ -43,6 +42,7 @@ namespace Abitcareer.Web.Components
             {
                 var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
                 if (!String.IsNullOrEmpty(model.EnglishName)) model.EnglishName = model.EnglishName.Trim('"');
+                specialityManager.Index();
                 return PartialView("EditSpeciality", model);
             }
             catch(Exception)
@@ -55,12 +55,23 @@ namespace Abitcareer.Web.Components
         public ActionResult AddSpeciality(SpecialityViewModel viewModel)
         {
             var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
-            if (!specialityManager.IsExists(model))
+            if (specialityManager.IsSpecialityNameAvailable(model.Name))
             {
-                specialityManager.Create(model);
+                specialityManager.TryCreate(model);
+                specialityManager.Index();
                 return PartialView("SpecialityPartial", viewModel);
             }
             return Json(false);
+        }
+
+        public JsonResult IsSpecialityNameAvailable(string name)
+        {
+            return Json(specialityManager.IsSpecialityNameAvailable(name), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsSpecialityEnglishNameAvailable(string englishName)
+        {
+            return Json(specialityManager.IsSpecialityEnglishNameAvailable(englishName), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -68,14 +79,16 @@ namespace Abitcareer.Web.Components
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
             var result = specialityManager.TrySave(mappedModel);
-            return Json(result);
+            specialityManager.Index();
+            return PartialView("SpecialityPartial", editedModel);
         }
 
         [HttpPost]
         public ActionResult DeleteSpeciality(string id)
         {
+            var model = specialityManager.GetById(id);
             specialityManager.Delete(id);
-            return Json(true);
+            return Json(model.Name);
         }
 
         [HttpGet]
@@ -89,6 +102,7 @@ namespace Abitcareer.Web.Components
             return PartialView();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchForSpeaciality(string name)
         {

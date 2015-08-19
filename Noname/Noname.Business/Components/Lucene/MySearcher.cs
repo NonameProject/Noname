@@ -83,8 +83,6 @@ namespace Abitcareer.Business.Components.Lucene
 
         private void addToLuceneIndex(T TValue, IndexWriter writer)
         {
-            //var searchQuery = new TermQuery(new Term("Id", TValue.Id.ToString()));
-            //writer.DeleteDocuments(searchQuery);
             var doc = MapTValueToDoc(TValue);
 
             writer.AddDocument(doc);
@@ -141,12 +139,10 @@ namespace Abitcareer.Business.Components.Lucene
                 var analyzer = new StandardAnalyzer(Version.LUCENE_30);
                 QueryParser parser;
 
-                // search by single field
                 if (!string.IsNullOrEmpty(searchField))
                 {
                     parser = new QueryParser(Version.LUCENE_30, searchField, analyzer);
                 }
-                // search by multiple properties
                 else
                 {
                     

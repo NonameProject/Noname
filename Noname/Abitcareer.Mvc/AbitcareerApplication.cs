@@ -51,11 +51,12 @@ namespace Abitcareer.Mvc
             }
         }
 
-        protected void Application_BeginRequest()
+        protected void Application_AuthenticateRequest()
         {
-
-
-            MiniProfiler.Start();
+            if (User != null && User.Identity.IsAuthenticated)
+            {
+                MiniProfiler.Start();
+            }
         }
 
         protected void Application_EndRequest()

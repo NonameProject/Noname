@@ -23,7 +23,7 @@
         @LocalizationResx.SpecialityDeleteTextConfirm<br>
         <div class="deleteControls">
             <button class="btn btn-default deleteDiscard">@LocalizationResx.Cancel</button>
-            <button class="btn btn-danger deleteSubmit" onclick="deleteSpeciality()">@LocalizationResx.Delete</button>
+            <button class="btn btn-danger deleteSubmit">@LocalizationResx.Delete</button>
         </div>
         
     </div>
@@ -31,24 +31,30 @@
 
 <div class="search">
     <input  type="search" placeholder="@LocalizationResx.Search" id="search"/>
+    <span id="searchclear" class="glyphicon glyphicon-remove"></span>
 </div>
 
 <div id="wrapper">
-    <article class="cardWrapper" id="addCard">
-        <div id="addNew" class="card col-md-4 boxShadow17">
-            <span>@LocalizationResx.AddSpeciality</span>
-        </div>
-    </article>
+    @if(User.Identity.IsAuthenticated){
+        <article class="cardWrapper" id="addCard">
+            <div id="addNew" class="card col-md-4 boxShadow17">
+                <span>@LocalizationResx.AddSpeciality</span>
+            </div>
+        </article>
+    }
         @foreach (var item in Model)
         {
             { Html.RenderPartial("SpecialityPartial", item); }
         }
 </div>
+
+
 <script>
     var Localization = new Object();
     Localization.LocalizationForRemove = "@LocalizationResx.SpecialityOpenFailed";
     Localization.LocalizationRemoveSuccess = '@LocalizationResx.SpecialityRemoveSuccess';
     Localization.LocalizationRemoveFailed = '@LocalizationResx.SpecialityRemoveFailed';
+
 </script>
 
 @section Scripts
@@ -56,5 +62,4 @@
     @Scripts.Render("~/Scripts/SpecialitiesEditor.js")
     @Scripts.Render("~/Scripts/search.js")
     @Scripts.Render("~/Scripts/Notifications.js")
-
 }

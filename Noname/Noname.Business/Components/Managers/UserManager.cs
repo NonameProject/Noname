@@ -11,9 +11,9 @@ using SimpleCrypto;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class UserManager : BaseManager
+    public class UserManager : BaseManager<User, IUserDataProvider>
     {
-        IUserDataProvider provider;
+        public UserManager(ICacheManager manager, IUserDataProvider provider) : base(manager, provider) { } 
 
         protected override string Name
         {
@@ -21,25 +21,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "User";
             }
-        }
-
-        public UserManager(ICacheManager manager, IUserDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
-        }
-
-        public void Create(User model)
-        {
-            ClearCache();
-
-            var crypto = new SimpleCrypto.PBKDF2();
-
-            model.PasswordSalt = crypto.GenerateSalt();
-
-            model.Password = crypto.Compute(model.Password,model.PasswordSalt);
-
-            provider.Create(model);
         }
 
         public IList<User> GetList()
@@ -63,12 +44,6 @@ namespace Abitcareer.Business.Components.Managers
                 return String.Equals(user.Password, new PBKDF2().Compute(password, user.PasswordSalt));
             }
             return false;
-        }
-
-        public bool IsUserExists(string email)
-        {
-            return provider.GetByEmail(email) != null;
-
         }
     }
 }

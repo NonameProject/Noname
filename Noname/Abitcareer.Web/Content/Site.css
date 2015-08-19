@@ -1,10 +1,9 @@
 ﻿body
 {
-    min-width: 320px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    min-width: 330px;
+    overflow-x: auto;
+    overflow-y: auto;
     background-image: url(Images/subtle_dots.png);
-
 }
 #content
 {
@@ -37,7 +36,7 @@
   padding: 12px;
 }
 nav{
-    min-width: 320px;
+    min-width: 330px;
     z-index: 1000;
     margin: 0 !important;
 }
@@ -121,6 +120,24 @@ li a.changeLanguage
 
 .link
 {
-    margin-top: 17px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-top: 17px !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+nav ul a
+{
+    font-size: 13px !important;
+}
+
+.success
+{
+    color: green;
+
+    margin-left: 15px;
+}
+
+.failure
+{
+    color: red;
+
+    margin-left: 15px;
 }

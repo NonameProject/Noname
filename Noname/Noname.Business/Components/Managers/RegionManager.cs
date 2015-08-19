@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class RegionManager : BaseManager
+    public class RegionManager : BaseManager<Region, IRegionDataProvider>
     {
-        IRegionDataProvider provider;
+        public RegionManager(ICacheManager manager, IRegionDataProvider provider) : base(manager, provider) { }
 
         protected override string Name
         {
@@ -19,18 +19,6 @@ namespace Abitcareer.Business.Components.Managers
             {
                 return "Region";
             }
-        }
-
-        public RegionManager(ICacheManager manager, IRegionDataProvider provider)
-            : base(manager)
-        {
-            this.provider = provider;
-        }
-
-        public void Create(Region model)
-        {
-            ClearCache();
-            provider.Create(model);
         }
     }
 }

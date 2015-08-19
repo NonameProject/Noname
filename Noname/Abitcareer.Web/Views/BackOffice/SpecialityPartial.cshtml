@@ -1,15 +1,34 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
-<article class="cardWrapper" id="@Model.Id">
-<div class="col-md-4 card boxShadow17 specButton">
-    <div class="ttip">
-        <button type="button" class="left delete close" onclick="requestDeletion('@Model.Id')">×</button>    
-        <span>@LocalizationResx.PressToEdit</span>
+@{
+    int payment;
+    if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
+        payment = payment/12;
+    }
+    else{
+        payment = 0;
+    }
+}
+<article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
+    <div class="col-md-4 card boxShadow17 specButton">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="ttip">
+                <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>    
+                <span>@LocalizationResx.PressToEdit</span>
+            </div>
+        } else{
+            <div class="ttip">
+                <span>@LocalizationResx.ToChart</span>
+            </div>
+        }
+        <div class="name">
+            @Model.Name
+        </div>
+        <div class="salary-wrapper">
+            <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
+        </div>
+        <div class="payment-wrapper">
+            <h4>@payment</h4>
+        </div>
     </div>
-    <div class="name">
-        @Model.Name
-    </div>
-    <div class="salary-wrapper">
-        <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value)</h4>
-    </div>
-</div>
 </article>

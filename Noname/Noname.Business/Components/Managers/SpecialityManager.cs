@@ -10,12 +10,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Abitcareer.Business.Components.Managers
 {
-    public class SpecialityManager : BaseManager
+    public class SpecialityManager : BaseManager<Speciality, ISpecialityDataProvider>
     {
-        ISpecialityDataProvider provider;
+        public SpecialityManager(ICacheManager manager, ISpecialityDataProvider provider) : base(manager, provider) {}
 
         private string luceneDirectory
         {
@@ -33,24 +34,14 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public SpecialityManager(ICacheManager manager, ISpecialityDataProvider provider)
-            : base(manager)
+        public bool TryCreate(Speciality model)
         {
-            this.provider = provider;
-        }
-
-        public bool Create(Speciality model)
-        {
-            ClearCache();
-            try
+            if (IsSpecialityNameAvailable(model.Name))
             {
-                provider.Create(model);
+                Create(model);
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
         public void ClearSalaries( )
@@ -72,19 +63,10 @@ namespace Abitcareer.Business.Components.Managers
 
         public bool TrySave(Speciality editedModel)
         {
-            bool result;
-            try
-            {
-                if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
-                    throw new ArgumentException("One of the names is unacceptable");
-                provider.Update(editedModel);
-                result = true;
-            }
-            catch
-            {
-                result = false;
-            }
-            return result;
+            if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
+                return false;
+            provider.Update(editedModel);
+            return true;
         }
 
         public void Delete(string id)
@@ -94,11 +76,19 @@ namespace Abitcareer.Business.Components.Managers
                 provider.Delete(id);
         }
 
-        public bool IsExists(Speciality model)
+
+       public bool IsSpecialityNameAvailable(string name)
         {
-            if (provider.GetByName(model.Name) != null)
-                return true;
-            return false;
+            return provider.GetByName(name) == null;
+        }
+
+        public bool IsSpecialityEnglishNameAvailable(string name)
+        {
+            var translator = new Translation.Translator();
+
+            var value = translator.Translate(name, Translation.Translator.Languages.En, Translation.Translator.Languages.Uk).Replace("\"",String.Empty);
+
+            return provider.GetByName(value) == null;
         }
 
         public Speciality GetById(string id)
@@ -110,8 +100,6 @@ namespace Abitcareer.Business.Components.Managers
         {
             var list = this.GetList();
 
-            var languageSegment = CultureInfo.CurrentCulture;
-
             var searcher = new MySearcher<Speciality>(luceneDirectory);
 
             searcher.AddUpdateIndex(list);
@@ -121,8 +109,6 @@ namespace Abitcareer.Business.Components.Managers
         {
             if (!Directory.Exists(luceneDirectory))
                 Index();
-
-            var languageSegment = CultureInfo.CurrentCulture;
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
 

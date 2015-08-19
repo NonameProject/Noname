@@ -271,7 +271,7 @@
     <value>малопрестижному ВНЗ</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
-    <value>Нова спеціальність</value>
+    <value>Додати спеціальність</value>
   </data>
   <data name="PressToEdit" xml:space="preserve">
     <value>Натисни для редагування</value>
@@ -285,16 +285,16 @@
   <data name="Logout" xml:space="preserve">
     <value>Вихід</value>
   </data>
-  <data name="SpecialityAdditingFailed" xml:space="preserve">
-    <value>При додаванні спеціальності виникла помилка</value>
+  <data name="SpecialityAddingFailed" xml:space="preserve">
+    <value>Спеціальність з такою назвою вже існує</value>
   </data>
-  <data name="SpecialityAdditingSuccess" xml:space="preserve">
+  <data name="SpecialityAddingSuccess" xml:space="preserve">
     <value>Спеціальність успішно додана</value>
   </data>
-  <data name="SpecialityAditingFailed" xml:space="preserve">
+  <data name="SpecialityEditingFailed" xml:space="preserve">
     <value>При редагуванні спеціальності виникла помилка</value>
   </data>
-  <data name="SpecialityAditingSuccess" xml:space="preserve">
+  <data name="SpecialityEditingSuccess" xml:space="preserve">
     <value>Спеціальність успішно відредагована</value>
   </data>
   <data name="SummaryPayment" xml:space="preserve">
@@ -332,5 +332,11 @@
   </data>
   <data name="PageCharts" xml:space="preserve">
     <value>Графіки</value>
+  </data>
+  <data name="ListOfSpecialities" xml:space="preserve">
+    <value>Список спеціальностей</value>
+  </data>
+  <data name="ToChart" xml:space="preserve">
+    <value>Натисни для переходу</value>
   </data>
 </root>
