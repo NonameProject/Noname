@@ -35,11 +35,13 @@
 </div>
 
 <div id="wrapper">
-    <article class="cardWrapper" id="addCard">
-        <div id="addNew" class="card col-md-4 boxShadow17">
-            <span>@LocalizationResx.AddSpeciality</span>
-        </div>
-    </article>
+    @if(User.Identity.IsAuthenticated){
+        <article class="cardWrapper" id="addCard">
+            <div id="addNew" class="card col-md-4 boxShadow17">
+                <span>@LocalizationResx.AddSpeciality</span>
+            </div>
+        </article>
+    }
         @foreach (var item in Model)
         {
             { Html.RenderPartial("SpecialityPartial", item); }

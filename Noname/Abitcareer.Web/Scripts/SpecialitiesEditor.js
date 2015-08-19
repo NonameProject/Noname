@@ -199,6 +199,7 @@
             })
 
             $('body').on("click", ".cardWrapper", function (event) {
+                if ($(this).data('isclickable') === 'False') return;
                 event.stopPropagation();
                 $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
                     if (!data) {
@@ -222,14 +223,6 @@
                 if ($(event.target).closest(settings.inner).length) return;
                 settings.partialView.hide();
                 event.stopPropagation();
-            });
-
-            $('body').on("mouseover", ".card:not(#addNew)", function () {
-                $(this.children[0]).show();
-            });
-
-            $("body").on("mouseout", ".card:not(#addNew)", function () {
-                $(this.children[0]).hide();
             });
 
             settings.addButton.on("click", function (event) {

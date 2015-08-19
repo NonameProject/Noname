@@ -21,13 +21,12 @@ namespace Abitcareer.Web.Components
     {
         SpecialityManager specialityManager;
 
-
-
         public BackOfficeController(SpecialityManager manager)
         {
             specialityManager = manager;
         }
 
+        [AllowAnonymous]
         public ActionResult Specialities()
         {
             var spec = specialityManager.GetList();
