@@ -102,6 +102,7 @@ namespace Abitcareer.Web.Components
             return PartialView();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SearchForSpeaciality(string name)
         {
