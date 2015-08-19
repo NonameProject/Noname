@@ -20,7 +20,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public Dictionary<int, int> Salaries { get; set; }
 
-       public virtual Dictionary<string, Decimal> Prices { get; set; }
+       public  Dictionary<string, Decimal> Prices { get; set; }
 
         public SpecialityViewModel()
         {

@@ -24,6 +24,11 @@ namespace Abitcareer.Mvc.Components
                 dict[item.Key] = tmp;
             }
             model.Salaries = dict;
+            var newDict = new Dictionary<string, Decimal>();
+            newDict["TopUniversityPrice"] = 0;
+            newDict["MiddleUniversityPrice"] = 0;
+            newDict["LowUniversityPrice"] = 0;
+            model.Prices = newDict;
             return model;
         }
     }
