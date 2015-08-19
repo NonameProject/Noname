@@ -339,4 +339,7 @@
   <data name="ToChart" xml:space="preserve">
     <value>See more</value>
   </data>
+  <data name="PaymentForYear" xml:space="preserve">
+    <value>Tuition fee for year in</value>
+  </data>
 </root>
