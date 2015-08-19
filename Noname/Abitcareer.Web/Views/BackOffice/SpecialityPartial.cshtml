@@ -1,17 +1,16 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 @{
-     int payment;
+    int payment;
     if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
         payment = payment/12;
     }
     else{
         payment = 0;
     }
-    bool isAuthenticated = User.Identity.IsAuthenticated;
 }
-<article class="cardWrapper" id="@Model.Id" data-isauthenticated="@isAuthenticated">
+<article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
     <div class="col-md-4 card boxShadow17 specButton">
-        @if (isAuthenticated)
+        @if (User.Identity.IsAuthenticated)
         {
             <div class="ttip">
                 <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>    
