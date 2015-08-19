@@ -35,16 +35,25 @@ namespace Abitcareer.Business.Components.ChartsData
             Deltas = new List<float>();
             data = new List<int>();
             var counter = 0;
+            var previous = 0;
             foreach (var item in x)
             {
-                var multiplier = 1;
-                var step = y[counter] / item;
-                while (data.Count + 1 < item)
+                var delta = 0; 
+                if (y.Count < 2 || counter == 0)
                 {
-                    data.Add((int)(step*1.5) + step * multiplier);
-                    multiplier++;
+                    delta = y[counter];
                 }
-                data.Add(y[counter]);
+                else
+                {
+                    delta = y[counter] - y[counter - 1];
+                    
+                }
+                var step = delta / (item-counter);
+                while (data.Count < item)
+                {
+                    data.Add(previous + step);
+                    previous = previous + step;
+                }
                 counter++;
             }
             CalcDelta();
