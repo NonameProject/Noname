@@ -238,9 +238,9 @@ form {
     width: 100%;
 }
 
-.card:hover
+.card:hover .ttip
 {
-    cursor: pointer;
+    display:block;
 }
 
     .card h4::before {
@@ -318,6 +318,7 @@ form {
 {
     background-color: lightgrey;
     border-radius: 2px;
+    cursor: pointer;
     display: none;
     height: 120px;
     left: 0;
@@ -372,6 +373,7 @@ background-color:inherit;
 }
 #addNew{
     background: rgba(4, 165, 35, 0.8);
+    cursor: pointer;
 }
 #addNew span{
     color: white;
