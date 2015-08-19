@@ -226,3 +226,14 @@ Noname/Abitcareer.Web/App_Data/en-US/lucene_index/segments_2
 Noname/Abitcareer.Web/App_Data/en-US/lucene_index/_0.cfs
 Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/segments_2
 Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/_0.cfs
+*.frq
+*.fdx
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/segments_d
+*.cfs
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/_a.tii
+*.fdt
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/_a.fnm
+*.nrm
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/_a.prx
+*.tis
+Noname/Abitcareer.Web/App_Data/uk-UA/lucene_index/segments_e

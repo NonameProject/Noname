@@ -38,6 +38,12 @@ namespace Abitcareer.Business.Components.ChartsData
             var previous = 0;
             foreach (var item in x)
             {
+                if (data.Count + 1 == item)
+                {
+                    data.Add(y[counter]);
+                    counter++;
+                    continue;
+                }
                 var delta = 0; 
                 if (y.Count < 2 || counter == 0)
                 {
@@ -58,29 +64,17 @@ namespace Abitcareer.Business.Components.ChartsData
             }
             CalcDelta();
         }
-        public int CalcY(int pos = -1)
+        public int CalcY(int pos)
         {
-            if (pos == -1)
+            while (pos > data.Count)
             {
-                var lastDelta = data.LastOrDefault() - data[data.Count - 2];
-                var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / lastDelta));
+                var lastDelta = (data.Count - 2 >= 0) ? data.LastOrDefault() - data[data.Count - 2] : 0;
+                var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / (avgDelta + lastDelta)));
                 Deltas.Add(shift);
                 data.Add(data.LastOrDefault() + (int)Math.Floor(shift));
                 CalcDelta();
-                return data.LastOrDefault();
             }
-            else
-            {
-                while (pos > data.Count)
-                {
-                    var lastDelta = (data.Count - 2 >=0) ? data.LastOrDefault() - data[data.Count - 2] : 0;
-                    var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / (avgDelta + lastDelta)));
-                    Deltas.Add(shift);
-                    data.Add(data.LastOrDefault() + (int)Math.Floor(shift));
-                    CalcDelta();
-                }
-                return data[pos - 1];
-            }
+            return data[pos - 1];
         }
     }
 }
