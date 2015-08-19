@@ -199,6 +199,7 @@
             })
 
             $('body').on("click", ".cardWrapper", function (event) {
+                if ($(this).data('isclickable') === 'False') return;
                 event.stopPropagation();
                 $.post("specialities/edit", { id: $(this).attr("id") }, function (data) {
                     if (!data) {
@@ -222,14 +223,6 @@
                 if ($(event.target).closest(settings.inner).length) return;
                 settings.partialView.hide();
                 event.stopPropagation();
-            });
-
-            $('body').on("mouseover", ".card:not(#addNew)", function () {
-                $(this.children[0]).show();
-            });
-
-            $("body").on("mouseout", ".card:not(#addNew)", function () {
-                $(this.children[0]).hide();
             });
 
             settings.addButton.on("click", function (event) {
@@ -257,8 +250,8 @@
                     return false;
             });
 
-            $("ul.salaries li input").attr("min", 0);
-            $("ul.salaries li input").attr("max", 10000000);
+            $("ul.salaries li input, ul.tuition-fee li input").prop("min", 0);
+            $("ul.salaries li input, ul.tuition-fee li input").prop("max", 10000000);
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {

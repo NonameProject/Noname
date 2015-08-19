@@ -24,6 +24,16 @@ namespace Abitcareer.Mvc.Components
                 dict[item.Key] = tmp;
             }
             model.Salaries = dict;
+
+            var newDict = new Dictionary<string, int>();
+            foreach (var item in model.Prices)
+            {
+                int tmp = 0;
+                int.TryParse(bindingContext.ValueProvider.GetValue("Prices[" + item.Key + "]").AttemptedValue, out tmp);
+                tmp *= 12;
+                newDict[item.Key] = tmp;
+            }
+            model.Prices = newDict;
             return model;
         }
     }

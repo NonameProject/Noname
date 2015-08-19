@@ -1,19 +1,23 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 @{
-    decimal payment;
+     int payment;
     if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
-        payment = System.Math.Floor(payment/12);
+        payment = payment/12;
     }
     else{
         payment = 0;
     }
+    bool isAuthenticated = User.Identity.IsAuthenticated;
 }
-<article class="cardWrapper" id="@Model.Id">
+<article class="cardWrapper" id="@Model.Id" data-isclickable="@isAuthenticated">
     <div class="col-md-4 card boxShadow17 specButton">
-        <div class="ttip">
-            <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>    
-            <span>@LocalizationResx.PressToEdit</span>
-        </div>
+        @if (isAuthenticated)
+        {
+            <div class="ttip">
+                <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>    
+                <span>@LocalizationResx.PressToEdit</span>
+            </div>
+        }
         <div class="name">
             @Model.Name
         </div>
