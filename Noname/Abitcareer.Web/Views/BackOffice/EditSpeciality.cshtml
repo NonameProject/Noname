@@ -10,7 +10,6 @@
         <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         @Html.HiddenFor(x => x.Id)
         <h2>@LocalizationResx.EditSpeciality</h2>
-        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
         <br />

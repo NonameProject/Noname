@@ -9,7 +9,6 @@
         @Html.HiddenFor(x => x.Id)   
     
         <h2>@LocalizationResx.AddSpeciality</h2>
-        <h4>@LocalizationResx.Speciality.ToUpper()</h4>
         
         @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
@@ -93,8 +92,6 @@
 
 <script>
     $(document).ready(function () {
-        $("#Name").attr("placeholder", "Назва(українська)");
-        $("#EnglishName").attr("placeholder", "Name(english)");
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
