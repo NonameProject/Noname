@@ -186,7 +186,7 @@ form input:focus {
 
 form button {
     margin-left:2%;
-    margin-right: 30px;
+    margin-right: -3px;
 }
 
 form button:disabled {
@@ -205,7 +205,7 @@ form button:disabled {
     color: gray;
     float: right;
     height: 15px;
-    margin-right: 10px;
+    margin-right: -23px;
     margin-top: 10px;
     padding: 0;
     width: 15px;
@@ -443,7 +443,7 @@ background-color:inherit;
 }
 .deleteControls
 {
-    margin-top: 10px;
+    margin-top: 34px;
 }
 @media (max-width: 991px) {
     #addCard{ /*Dirty hack, but it seems like it is only way to fix this shit*/
