@@ -664,6 +664,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Натисни для переходу.
+        /// </summary>
+        public static string ToChart {
+            get {
+                return ResourceManager.GetString("ToChart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на грн..
         /// </summary>
         public static string UAH {

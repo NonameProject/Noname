@@ -336,4 +336,7 @@
   <data name="ListOfSpecialities" xml:space="preserve">
     <value>List of specialities</value>
   </data>
+  <data name="ToChart" xml:space="preserve">
+    <value>Click to move</value>
+  </data>
 </root>
