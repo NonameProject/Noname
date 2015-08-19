@@ -88,7 +88,7 @@ function Chart() {
                 for (var q = 0; q < tmpData.length; q++) {
                     retData.push(tmpData[q]);
 
-                    selectPoint(chart.series[length - 1], tmpData[q]);
+                    
                 }
                 //if (!data.saveIsect)
                 //    continue;
@@ -103,8 +103,15 @@ function Chart() {
                     return 0;                
                 return -1;
             });
+            /*var arr = chart.series[length - 1].data.sort(function (a, b) {
+                if(!a || !b) return 1
+                if (a.x - b.x) return a.x - b.x;
+                return a.y - b.y;
+            });
+            chart.series[length - 1].setData(arr, true, false);*/
             var ticks = [];
             for (var i = 0; i < retData.length; i++) {
+                selectPoint(chart.series[length - 1], tmpData[i]);
                 ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
                 addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length-1]);
@@ -151,13 +158,18 @@ function Chart() {
                         var tmp = new Object();
                         if (isect.x === 0)
                             continue;
-                        linePointsTo.addPoint(isect, true, false);
-                        
+                        linePointsTo.addPoint(isect);
                         tmp.saveIsect = isect;
                         tmp.mx = mx;
-
-
                         ret.push(tmp);
+
+                        var point = linePointsTo.data[linePointsTo.data.length - 1];
+                        linePointsTo.data.sort(function (a, b) {
+                            if (!a || !b) return 1
+                            if (a.x - b.x) return a.x - b.x;
+                            return a.y - b.y;
+                        });
+                        point.update();
                     }
                 }
             }

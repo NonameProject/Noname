@@ -22,9 +22,9 @@ namespace Abitcareer.Business.Components.ChartsData
         {
             result = new List<List<Point>>();
             monthPriceIndex = 0;
-            monthSalaryIndex = 0;
-            summaryPriceIndex = 0;
-            summarySalaryIndex = 0;
+            summaryPriceIndex = 3;
+            monthSalaryIndex = 6;
+            summarySalaryIndex = 7;
         }
 
         public List<List<Point>> PrepareData(Speciality speciality, short polinom)
@@ -43,16 +43,16 @@ namespace Abitcareer.Business.Components.ChartsData
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(1));
-            result.Add(Point.InitList(startOfWorking)); //salaries per month
-            result.Add(Point.InitList(startOfWorking)); //salaries summary
+            result.Add(new List<Point>(yearsOfStudying)); //salaries per month
+            result.Add(new List<Point>(yearsOfStudying)); //salaries summary
+
+            Point point = new Point(startOfWorking);
+            result[monthSalaryIndex].Add(point);
+            result[summarySalaryIndex].Add(point);
 
             InitPointsOnPayments(0, 3);
             InitPointsOnPayments(1, 4);
             InitPointsOnPayments(2, 5);
-            monthPriceIndex = 0;
-            summaryPriceIndex = 3;
-            monthSalaryIndex = 6;
-            summarySalaryIndex = 7;
 
             InitSalaries(speciality, polinom);
 
@@ -125,7 +125,7 @@ namespace Abitcareer.Business.Components.ChartsData
             {
                 int val;
                 speciality.Salaries.TryGetValue(key, out val);
-                if (val > 0 || key == 1)
+                if (val > 0)
                 {
                     x.Add(key);
                     y.Add(val);
