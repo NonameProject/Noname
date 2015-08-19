@@ -24,10 +24,14 @@ namespace Abitcareer.Mvc.Components
                 dict[item.Key] = tmp;
             }
             model.Salaries = dict;
-            var newDict = new Dictionary<string, Decimal>();
-            newDict["TopUniversityPrice"] = 0;
-            newDict["MiddleUniversityPrice"] = 0;
-            newDict["LowUniversityPrice"] = 0;
+
+            var newDict = new Dictionary<string, int>();
+            foreach (var item in model.Prices)
+            {
+                int tmp = 0;
+                int.TryParse(bindingContext.ValueProvider.GetValue("Prices[" + item.Key + "]").AttemptedValue, out tmp);
+                newDict[item.Key] = tmp;
+            }
             model.Prices = newDict;
             return model;
         }

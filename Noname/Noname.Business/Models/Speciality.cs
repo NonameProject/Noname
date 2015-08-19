@@ -12,13 +12,13 @@ namespace Abitcareer.Business.Models
 
         public virtual Dictionary<int, int> Salaries { get; set; }
 
-        public virtual Dictionary<string, Decimal> Prices { get; set; }
+        public virtual Dictionary<string, int> Prices { get; set; }
 
         public Speciality()
         {
             Salaries = new Dictionary<int, int>();
 
-            Prices = new Dictionary<string, Decimal>();
+            Prices = new Dictionary<string, int>();
 
             Salaries[1] = 0;
             Salaries[2] = 0;
@@ -51,11 +51,11 @@ namespace Abitcareer.Business.Models
         {
             get
             {
-                return Prices.ToXmlString<string, Decimal>();
+                return Prices.ToXmlString<string, int>();
             }
             set
             {
-                Prices = value.ToDictionary<string, Decimal>();
+                Prices = value.ToDictionary<string, int>();
             }
         }
 
