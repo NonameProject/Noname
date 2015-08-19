@@ -44,7 +44,7 @@ namespace Abitcareer.Business.Components.ChartsData
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(startOfWorking)); //salaries per month
-            result.Add(Point.InitList(startOfWorking + 1)); //salaries summary
+            result.Add(Point.InitList(startOfWorking)); //salaries summary
 
             InitPointsOnPayments(0, 3);
             InitPointsOnPayments(1, 4);
@@ -66,9 +66,10 @@ namespace Abitcareer.Business.Components.ChartsData
             var i = 0;
             foreach (var point in result[monthPaymentsIndex])
             {
-                var newPoint = new Point(i + 1, result[summaryPaymentsIndex][i++].y + 12 * point.y);
+                var newPoint = new Point(i+1, result[summaryPaymentsIndex][i++].y + 12 * point.y);
                 result[summaryPaymentsIndex].Add(newPoint);
             }
+            result[summaryPaymentsIndex].Remove(result[summaryPaymentsIndex].Last());
         }
 
         private int[] GetMonthPayments(int price)
@@ -109,7 +110,7 @@ namespace Abitcareer.Business.Components.ChartsData
                     if (result[monthPriceIndex].Count == i && result[monthPriceIndex].Last().y >= val)
                         result[monthSalaryIndex].Add(newPoint);
                 }
-                newPoint = new Point(i + 1, result[summarySalaryIndex].Last().y + 12 * val);
+                newPoint = new Point(i, result[summarySalaryIndex].Last().y + 12 * val);
                 result[summarySalaryIndex].Add(newPoint);
             }
         }
