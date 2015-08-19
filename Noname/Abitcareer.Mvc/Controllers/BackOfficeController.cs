@@ -57,7 +57,7 @@ namespace Abitcareer.Web.Components
             var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
             if (specialityManager.IsSpecialityNameAvailable(model.Name))
             {
-                specialityManager.IsCreated(model);
+                specialityManager.TryCreate(model);
                 specialityManager.Index();
                 return PartialView("SpecialityPartial", viewModel);
             }

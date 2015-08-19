@@ -34,18 +34,14 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public bool IsCreated(Speciality model)
+        public bool TryCreate(Speciality model)
         {
-            ClearCache();
-            try
+            if (IsSpecialityNameAvailable(model.Name))
             {
-                provider.Create(model);
+                Create(model);
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
         public void ClearSalaries( )
