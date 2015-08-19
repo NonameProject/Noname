@@ -66,6 +66,7 @@ namespace Abitcareer.Business.Components.Managers
             if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
                 return false;
             provider.Update(editedModel);
+            new MySearcher<Speciality>(luceneDirectory).AddUpdateIndex(editedModel);
             return true;
         }
 
@@ -101,7 +102,7 @@ namespace Abitcareer.Business.Components.Managers
             var list = this.GetList();
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
-
+            searcher.ClearIndex();
             searcher.AddUpdateIndex(list);
         }
 

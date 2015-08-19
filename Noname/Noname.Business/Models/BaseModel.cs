@@ -21,7 +21,7 @@ namespace Abitcareer.Business.Models
 
     public class BaseModel
     {
-        [Storable]
+        [Storable(Type = Field.Index.NOT_ANALYZED)]
         public virtual string Id { get; set; }
 
         [LocalizableField]
