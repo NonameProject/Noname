@@ -127,7 +127,7 @@
     <value>Cамостійна оплата навчання</value>
   </data>
   <data name="Payment" xml:space="preserve">
-    <value>Плата за навчання в</value>
+    <value>Плата за навчання</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Виберіь якість ВНЗ</value>
@@ -262,13 +262,13 @@
     <value>Невірний пароль або електронна адреса</value>
   </data>
   <data name="FirstPaymentName" xml:space="preserve">
-    <value>топовому ВНЗ</value>
+    <value>В топовому ВНЗ</value>
   </data>
   <data name="SecondPaymentName" xml:space="preserve">
-    <value>середньому ВНЗ</value>
+    <value>В середньому ВНЗ</value>
   </data>
   <data name="ThirdPaymentName" xml:space="preserve">
-    <value>малопрестижному ВНЗ</value>
+    <value>В малопрестижному ВНЗ</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
     <value>Додати спеціальність</value>

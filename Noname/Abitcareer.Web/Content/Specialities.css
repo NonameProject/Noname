@@ -11,11 +11,12 @@
 
 .salaries li input
 {
-    width: 140px;
+    width: 80px;
     margin-left: 45px;
     margin-bottom: 5px;
     font-size: 16px;
     padding-left: 7px;
+    text-align: right;
 }
 
 .tuition-fee
@@ -23,18 +24,20 @@
     width: 55%;
     float: right;
 }
+
 .tuition-fee li input
 {
-    width: 140px;
-    margin-left: 23px;
+    width: 80px;
+    margin-left: 37px;
     margin-bottom: 5px;
     font-size: 16px;
     padding-left: 7px;
+    text-align: right;
 }
 
 .tuition-fee label
 {
-    min-width: 136px;
+    min-width: 146px;
 }
 #searchclear {
     border-radius: 45%;
@@ -71,16 +74,19 @@ h2 {
     clear: both;
 }
 
+.card:hover
+{
+    transition: 0.05s linear;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
 #editor article {
     width: 100%;
 }
 
 #editor li {
     display: block;
-}
-
-#editor .row *{
-    width: 100px;
 }
 
 #search {
@@ -108,8 +114,7 @@ h2 {
     background-color: rgba(32, 32, 32, 0.81);
     display: none;
     height: 100%;
-    padding-left: 25%;
-    padding-top: 6%;
+    padding-top: 100px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -119,14 +124,14 @@ h2 {
 #inner, #delete-inner {
     background-color: white;
     border-radius: 3px;
-    margin: 0;
+    margin: 0 auto;
     min-height: 20%;
     min-width: 525px;
     padding-bottom: 1%;
     padding-left: 2%;
     position: relative;
     top: 0;
-    width: 70%;
+    width: 600px;
 }
 #delete-inner{
     left: 45%;
@@ -169,7 +174,6 @@ form input {
     padding: 1px 2px;
     width: 70%;
     font-size: 15px !important;
-    padding-left: 7px !important;
 }
 
 form input:focus {
@@ -181,16 +185,11 @@ form input:focus {
 form button {
     margin-left:2%;
     margin-right: 30px;
-    width:15%;
 }
 
 form button:disabled {
     background-color: #ccc;
     border-color: #bbb;
-}
-
-#exitButton {
-    width:15%;
 }
 
 .row {
@@ -315,6 +314,18 @@ form button:disabled {
     font-size: 24px;
     margin-top: 42px;
 }
+
+#exitButton
+{
+    width: auto;
+}
+
+#saveButton, #createSpeciality
+{
+    background-color: rgba(4, 165, 35, 0.8);
+    border: none;
+}
+
 
 .salary-wrapper, .payment-wrapper
 {
