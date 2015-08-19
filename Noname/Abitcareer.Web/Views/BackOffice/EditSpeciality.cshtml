@@ -5,6 +5,12 @@
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
+@{
+    Model.Prices["TopUniversityPrice"] /= 12;
+    Model.Prices["MiddleUniversityPrice"] /= 12;
+    Model.Prices["LowUniversityPrice"] /= 12;
+    
+}
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

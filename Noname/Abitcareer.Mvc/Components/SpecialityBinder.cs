@@ -30,6 +30,7 @@ namespace Abitcareer.Mvc.Components
             {
                 int tmp = 0;
                 int.TryParse(bindingContext.ValueProvider.GetValue("Prices[" + item.Key + "]").AttemptedValue, out tmp);
+                tmp *= 12;
                 newDict[item.Key] = tmp;
             }
             model.Prices = newDict;
