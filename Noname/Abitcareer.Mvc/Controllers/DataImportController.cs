@@ -70,7 +70,7 @@ namespace Abitcareer.Mvc.Controllers
 
                 if (!string.IsNullOrEmpty(node.Speciality.Name) && !specialityList.Contains(node.Speciality.Name))
                 {
-                    specialityManager.Create(node.Speciality);
+                    specialityManager.IsCreated(node.Speciality);
 
                     specialityList.Add(node.Speciality.Name);
                 }

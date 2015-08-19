@@ -34,7 +34,7 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public bool Create(Speciality model)
+        public bool IsCreated(Speciality model)
         {
             ClearCache();
             try

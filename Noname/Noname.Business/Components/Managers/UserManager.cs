@@ -23,7 +23,7 @@ namespace Abitcareer.Business.Components.Managers
             }
         }
 
-        public void Create(User model)
+        public void IsCreated(User model)
         {
             ClearCache();
 
