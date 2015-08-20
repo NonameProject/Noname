@@ -29,9 +29,7 @@ namespace Abitcareer.Business.Models
             Salaries[20] = 0;
 
             Prices["TopUniversityPrice"] = 0;
-
             Prices["MiddleUniversityPrice"] = 0;
-
             Prices["LowUniversityPrice"] = 0;
         }
 

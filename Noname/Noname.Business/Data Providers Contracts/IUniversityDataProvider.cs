@@ -9,6 +9,5 @@ namespace Abitcareer.Business.Data_Providers_Contracts
 {
     public interface IUniversityDataProvider : IDataProvider<University>
     {
-
     }
 }
