@@ -6,6 +6,7 @@
 @section styles
 {
     @Styles.Render("~/Content/Specialities.css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 }
 
 <h2>@LocalizationResx.Specialities</h2>
@@ -38,7 +39,12 @@
     @if(User.Identity.IsAuthenticated){
         <article class="cardWrapper " id="addCard">
             <div id="addNew" class="card col-md-4 z-depth-2">
-                <span>@LocalizationResx.AddSpeciality</span>
+                <span>
+                    @LocalizationResx.AddSpeciality
+                </span>
+                <div class="name">
+                    <i class="material-icons dp48">playlist_add</i>
+                </div>
             </div>
         </article>
     }

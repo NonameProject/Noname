@@ -265,14 +265,16 @@ form button:disabled {
     min-width: 100px;
     text-align: center;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: 0px 1px 3px #C1C1C1;
     height: 167px;
 }
 
     .card:hover
     {
-        box-shadow: 0px 0px 6px 2px #4CB1FF;
+        -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -moz-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     }
 
 .card:hover .ttip
@@ -316,7 +318,17 @@ form button:disabled {
     display: block;
     font-family: myriad;
     font-size: 24px;
-    margin-top: 30px;
+    margin-top: 53px;
+}
+
+.material-icons
+{
+    font-size: 28px !important;
+}
+
+#addNew .name i
+{
+    display: block;
 }
 
 .detailName {
@@ -357,13 +369,14 @@ form button:disabled {
     {
         margin-top: 9px;
         margin-bottom: 6px;
+        font-weight: 600;
     }
 
     .salary-wrapper h4 {
         color: #044004;
     }
         .salary-wrapper::before {
-            color: #003000;
+            color: gray;
             content: '';
             position: relative;
             top: -1px;
@@ -374,7 +387,7 @@ form button:disabled {
     }
 
     .payment-wrapper::before {
-            color: #160000;
+            color: gray;
             content: '';
             position: relative;
             top: -1px;
@@ -394,6 +407,7 @@ form button:disabled {
     right: 0px;
     text-align: center;
     left: 0px;
+    font-weight: 500;
 }
 
 .ttip
@@ -458,16 +472,28 @@ label[for="Name"], label[for="EnglishName"]
 background-color:inherit;
 }
 #addNew{
-    background: rgba(4, 165, 35, 0.8);
     cursor: pointer;
+    border: 2px solid #00bfa5;
 }
-#addNew span{
-    color: white;
+
+    #addNew
+    {
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+        -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.16),0 4px 16px 0 rgba(0,0,0,0.12);
+    }
+
+#addNew:hover
+{
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -moz-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
-#addNew:hover{
-    box-shadow: rgba(0,0,0,.6) 0 -3px 5px, rgba(252,255,255,.7) 0 3px 8px,  rgba(0,0,0,.8) 0 3px 8px -3px;
-    background: rgba(0, 111, 21, 0.8);
+#addNew .name
+{
+    background-color: #00bfa5;
 }
+
 .delete
 {
     position: absolute;
