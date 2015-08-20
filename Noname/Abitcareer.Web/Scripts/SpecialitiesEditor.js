@@ -260,6 +260,7 @@
 
             settings.moneyInputs.prop("min", 0);
             settings.moneyInputs.prop("max", 10000000);
+            settings.editor.children('input').prop('maxlength', 300);
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
