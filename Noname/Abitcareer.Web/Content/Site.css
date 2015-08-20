@@ -5,6 +5,13 @@
     overflow-y: auto;
     background-color: #F9F9F9;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 #content
 {
     height: 100%;
