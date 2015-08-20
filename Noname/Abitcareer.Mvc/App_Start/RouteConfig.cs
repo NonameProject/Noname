@@ -16,6 +16,9 @@ namespace Abitcareer.Mvc
 
             routes.IgnoreRoute("elmah.axd");
 
+            routes.Add(new Route("handl/{pathInfo}", new PersonImageRouteHandler()));
+            routes.IgnoreRoute("handl/{*url}");
+
             routes.MapLocalizedRoute(
                 name: "Default",
                 url: "",

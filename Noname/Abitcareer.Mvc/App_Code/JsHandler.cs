@@ -16,7 +16,7 @@ public class JsHandler : IHttpHandler
         {
             { "Route", (name, context)=>{
                 var Url = new UrlHelper(context);
-                return Url.RouteUrl(name);
+                return Url.RouteUrl(name, new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name });
             }},
         };
     }
@@ -27,7 +27,7 @@ public class JsHandler : IHttpHandler
         var response = context.Response;
         var server = context.Server;
         string pattern = @"\[([A-Z]\w+):([A-z]\w+)\]";
-        using (var reader = new StreamReader(server.MapPath(Path.Combine("./", request.FilePath))))
+        using (var reader = new StreamReader(server.MapPath(Path.Combine("./", request.FilePath.Replace("handl", "Scripts")))))
         {
             var str = reader.ReadToEnd();
             foreach (Match match in Regex.Matches(str, pattern))

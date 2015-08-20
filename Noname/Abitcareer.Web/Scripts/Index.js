@@ -1,4 +1,5 @@
-﻿function DataProvider() {
+﻿alert([Route:Import]);
+function DataProvider() {
 
     this.getData = function (callback) {
         $("#js-loading-screen").addClass("active");
