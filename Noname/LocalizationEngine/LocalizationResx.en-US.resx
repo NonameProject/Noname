@@ -342,4 +342,10 @@
   <data name="PaymentForYear" xml:space="preserve">
     <value>Tuition fee for year in</value>
   </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

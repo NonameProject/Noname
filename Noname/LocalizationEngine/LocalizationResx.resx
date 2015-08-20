@@ -342,4 +342,10 @@
   <data name="PaymentForYear" xml:space="preserve">
     <value>Плата за навчання</value>
   </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Сторінка не знайдена</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
 </root>
