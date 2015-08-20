@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Abitcareer.Business.Components.MiniProfilers
+namespace Abitcareer.Mvc.MiniProfilers
 {
     public class ProfilingActionFilter : ActionFilterAttribute
     {
