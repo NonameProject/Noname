@@ -338,9 +338,14 @@ form button:disabled {
 {
     margin-top: 16px;
 }    
-    .salary-wrapper h4 {
-        color: #044004;
-    }
+
+.salary-wrapper h4 {
+    color: #044004;
+    font-family: myriad;
+}
+
+
+
         .salary-wrapper h4::before {
             color: #003000;
             content: '';
@@ -349,6 +354,7 @@ form button:disabled {
         }
     .payment-wrapper h4 {
         color: #200404;
+        font-family: myriad;
     }
 
     .payment-wrapper  h4::before {
