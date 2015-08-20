@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -50,14 +51,17 @@ namespace Abitcareer.Business.Components.Managers
         }
 
         public IList<Speciality> GetList() 
-        {   
-            var list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
-            var newList = new List<Speciality>(list.Count);
-            foreach (var item in list)
+        {
+            return FromCache<IList<Speciality>>(Thread.CurrentThread.CurrentUICulture.LCID + "_list", () =>
             {
-                newList.Add((Speciality)GetBaseModel(item));
-            }
-            return newList;
+                var list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
+                var newList = new List<Speciality>(list.Count);
+                foreach (var item in list)
+                {
+                    newList.Add((Speciality)GetBaseModel(item));
+                }
+                return newList;
+            });            
         }
 
         public bool TrySave(Speciality editedModel)
