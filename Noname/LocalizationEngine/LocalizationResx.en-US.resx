@@ -274,7 +274,7 @@
     <value>Add speciality</value>
   </data>
   <data name="PressToEdit" xml:space="preserve">
-    <value>Click To Edit</value>
+    <value>Click to edit</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -353,5 +353,11 @@
   </data>
   <data name="BanValuesBelowZero" xml:space="preserve">
     <value>Value must be above 0</value>
+  </data>
+  <data name="TextCardPayment" xml:space="preserve">
+    <value>Salary per month</value>
+  </data>
+  <data name="TextCardSalary" xml:space="preserve">
+    <value>Tuition fees a month</value>
   </data>
 </root>

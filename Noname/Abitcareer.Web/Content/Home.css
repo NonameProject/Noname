@@ -8,6 +8,7 @@
     body
     {
         overflow-y: scroll;
+        background-color: #F9F9F9;
     }
 }
 
@@ -45,8 +46,8 @@
     text-align: center;
     top: 0;
     width: 100%;
-    background-image: url(Images/subtle_dots.png);
     top: 40px;
+    background-color: transparent;
 }
 
 select

@@ -267,6 +267,7 @@ form button:disabled {
     width: 100%;
     border-radius: 6px;
     box-shadow: 0px 1px 3px #C1C1C1;
+    height: 167px;
 }
 
     .card:hover
@@ -279,10 +280,12 @@ form button:disabled {
     display:block;
 }
 
-    .card h4::before {
+    .card div::before {
+        margin-top: 10px;
+        margin-left: 16px;
         font-family: "fontello";
         font-style: normal;
-        font-size: 16px;
+        font-size: 25px;
         font-weight: normal;
         speak: none;
         display: inline-block;
@@ -298,7 +301,6 @@ form button:disabled {
         line-height: 1em;
         /* Animation center compensation - margins should be symmetric */
         /* remove if not needed */
-        margin-left: .2em;
         /* You can be more comfortable with increased icons size */
         /* font-size: 120%; */
         /* Font smoothing. That was taken from TWBS */
@@ -332,29 +334,30 @@ form button:disabled {
     border: none;
 }
 
-
-.salary-wrapper, .payment-wrapper
+.salary-wrapper
 {
-    margin-top: 16px;
-}    
+    border-bottom: 1px solid #F2F2F2;
+}  
     .salary-wrapper h4 {
         color: #044004;
     }
-        .salary-wrapper h4::before {
+        .salary-wrapper::before {
             color: #003000;
             content: '';
             position: relative;
             top: -1px;
+            float: left;
         }
     .payment-wrapper h4 {
         color: #200404;
     }
 
-    .payment-wrapper  h4::before {
+    .payment-wrapper::before {
             color: #160000;
             content: '';
             position: relative;
             top: -1px;
+            float: left;
         }
 .name
 {
@@ -378,7 +381,7 @@ form button:disabled {
     border-radius: 2px;
     cursor: pointer;
     display: none;
-    height: 120px;
+    height: 100%;
     left: 0;
     opacity: 0.9;
     position: absolute;

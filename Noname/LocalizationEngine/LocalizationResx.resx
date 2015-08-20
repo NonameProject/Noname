@@ -354,4 +354,10 @@
   <data name="BanValuesBelowZero" xml:space="preserve">
     <value>Значення повинно бути більше 0</value>
   </data>
+  <data name="TextCardPayment" xml:space="preserve">
+    <value>Зарплата за місяць</value>
+  </data>
+  <data name="TextCardSalary" xml:space="preserve">
+    <value>Оплата навчання за місяць</value>
+  </data>
 </root>
