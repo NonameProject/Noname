@@ -21,7 +21,7 @@
 
 .tuition-fee
 {
-    width: 51%;
+    width: 50%;
     float: right;
 }
 
@@ -198,7 +198,6 @@ form button:disabled {
     color: gray;
     float: right;
     height: 15px;
-    margin-right: -23px;
     margin-top: 10px;
     padding: 0;
     width: 15px;
@@ -235,7 +234,7 @@ form button:disabled {
     margin: 0;
     padding: 0;
     min-width: 250px;
-    width: 45%;
+    width: 50%;
     float: left;
 }
 
