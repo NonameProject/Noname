@@ -3,6 +3,7 @@ using Abitcareer.Business.Components.XmlServices.Entities;
 using Abitcareer.Business.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -141,20 +142,17 @@ namespace Abitcareer.Business.Components.XmlServices
 
         private bool OpenDataFile(string filePath)
         {
-            try
+            if (File.Exists(filePath))
             {
                 document = XDocument.Load(filePath);
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
         private string GetKey()
         {
-            return string.Format("<{0}>_<{1}>", LCID_EN, "Name");
+            return String.Format("<{0}>_<{1}>", LCID_EN, "Name");
         }
 
     }
