@@ -263,12 +263,18 @@
             settings.editor.children('input').prop('maxlength', 300);
 
             settings.editor.submit(function (event) {
-                var payments = $("ul.tuition-fee li input");
-                var salaries = $("ul.salaries li input");
+                
+                var payment = $("ul.tuition-fee li input");
+                var salary = $("ul.salaries li input");
                 
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
+                    event.preventDefault();
+                    return false;
+                }
+                if ( parseInt(payment.val()) < 0 || parseInt(salary.val()) < 0 ) {
+                    $("#validation-payment-salaries").html(localStrings.BanValuesBelowZero);
                     event.preventDefault();
                     return false;
                 }
