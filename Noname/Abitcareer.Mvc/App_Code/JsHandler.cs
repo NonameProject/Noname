@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CultureEngine;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -18,6 +19,9 @@ public class JsHandler : IHttpHandler
                 var Url = new UrlHelper(context);
                 return Url.RouteUrl(name, new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name });
             }},
+            { "Resx", (name, context)=>{
+                return LocalizationResx.GetString(name);
+            }}
         };
     }
 

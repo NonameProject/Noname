@@ -59,7 +59,12 @@ namespace CultureEngine {
                 resourceCulture = value;
             }
         }
-        
+
+        public static string GetString(string stringName)
+        {
+            return ResourceManager.GetString(stringName, resourceCulture);
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на Додати спеціальність.
         /// </summary>

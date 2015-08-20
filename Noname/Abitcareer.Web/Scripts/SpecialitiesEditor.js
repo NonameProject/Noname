@@ -19,7 +19,10 @@
 
         var containerHeight = partialView.height(),
             height = inner.innerHeight();
-        if (height <= containerHeight) return;
+        if (height <= containerHeight) {
+            inner.css('top', 0);
+            return;
+        }
 
         var pos = parseInt(inner.css('top'));
         pos -= currentTop - prevTop;
@@ -98,7 +101,7 @@
             }
             $.ajax(
                 {
-                    url: "searchforspeaciality",
+                    url: "[Route:SearchForSpeaciality]",
                     type: "POST",
                     data: { name: value },
                     success: function (result) {
@@ -131,15 +134,15 @@
             var id = settings.deleteSubmit.data("target");
             $.ajax(
                 {
-                    url: "deletespeciality",
+                    url: "[Route:DeleteSpeciality]",
                     type: "POST",
                     data: { id: id },
                     success: function (name) {
-                        Notificate("["+name+"] - "+Localization.LocalizationRemoveSuccess)
+                        Notificate("[" + name + "] - [Resx:SpecialityRemoveSuccess]");
                         $("#" + id).remove();
                     },
                     error: function () {
-                        Notificate("["+name+"] - " + Localization.LocalizationRemoveFailed)
+                        Notificate("[" + name + "] - [Resx:SpecialityRemoveFailed]");
                     }
                 });
             settings.deleteConfirm.hide(0);
@@ -207,9 +210,9 @@
                     window.location.assign($('.navbar-brand').attr('href') + '#' + $(this).attr('id'));
                     return;
                 }
-                $.post('specialities/edit', { id: $(this).attr('id') }, function (data) {
+                $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
                     if (!data) {
-                        Notificate(Localization.LocalizationForRemove);
+                        Notificate('[Resx:SpecialityOpenFailed]');
                     }
                     else {
                         settings.inner.empty();
@@ -236,7 +239,7 @@
                 event.stopPropagation();
                 $.ajax(
                     {
-                        url: "specialities/add",
+                        url: "[Route:addSpeciality]",
                         success: function (data) {
                             settings.inner.html(data);
                             settings.partialView.show(0);
