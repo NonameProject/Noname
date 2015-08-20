@@ -169,6 +169,8 @@
 
             settings.search = $("#search");
 
+            settings.moneyInputs = settings.editor.find("ul.salaries li input, ul.tuition-fee li input");
+
             localStrings = localResourses;
 
             this.unbindUIActions();
@@ -255,8 +257,9 @@
                     return false;
             });
 
-            $("ul.salaries li input, ul.tuition-fee li input").prop("min", 0);
-            $("ul.salaries li input, ul.tuition-fee li input").prop("max", 10000000);
+
+            settings.moneyInputs.prop("min", 0);
+            settings.moneyInputs.prop("max", 10000000);
 
             settings.editor.submit(function (event) {
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
