@@ -269,11 +269,6 @@
                     event.preventDefault();
                     return false;
                 }
-               if (parseInt(payments.val()) < 0 || parseInt(salaries.val()) < 0) {
-                    $("#validation-payments-salaries").html(localStrings.BanValuesBelowZero);
-                    event.preventDefault();
-                    return false;
-                }
                 var data = settings.editor.serialize(),
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),

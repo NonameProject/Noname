@@ -52,7 +52,10 @@
                             @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
                         }
                         else
-                        @Html.EditorFor(m => m.Salaries[item.Key], new { @value = "" })
+                        {
+                           @Html.EditorFor(m => m.Salaries[item.Key], new { @value = "" })
+                        }
+
                     </li>
                 }
                 </ul>
@@ -70,8 +73,7 @@
                         @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
-                </ul>
-            <span id="validation-payments-salaries" class="error-text"></span>
+                </ul>         
             </article>
     <div class="clear"></div>
        <div class="row">            
