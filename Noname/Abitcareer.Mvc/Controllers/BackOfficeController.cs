@@ -55,10 +55,14 @@ namespace Abitcareer.Web.Components
         [HttpPost]
         public ActionResult AddSpeciality(SpecialityViewModel viewModel)
         {
-            var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
+            var model = AutoMapper.Mapper.Map<Speciality>(viewModel);  
+       
             if (specialityManager.TryCreate(model))
-                return PartialView("SpecialityPartial", viewModel);
-                        
+            {
+                var localizedViewModel = AutoMapper.Mapper.Map<SpecialityViewModel>((Speciality)specialityManager.GetBaseModel(model));
+                return PartialView("SpecialityPartial", localizedViewModel);
+            }         
+      
             return Json(false);
         }
 
@@ -77,7 +81,8 @@ namespace Abitcareer.Web.Components
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
             var result = specialityManager.TrySave(mappedModel);
-            return PartialView("SpecialityPartial", editedModel);
+            var localizedViewModel = AutoMapper.Mapper.Map<SpecialityViewModel>((Speciality)specialityManager.GetBaseModel(mappedModel));
+            return PartialView("SpecialityPartial", localizedViewModel);
         }
 
         [HttpPost]
