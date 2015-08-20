@@ -1,5 +1,4 @@
 ﻿function DataProvider() {
-
     this.getData = function (callback) {
         $("#js-loading-screen").addClass("active");
         $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
