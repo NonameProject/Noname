@@ -68,14 +68,14 @@ namespace Abitcareer.Business.Components.Lucene
                 using (var writer = new IndexWriter(directory, analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED))
                 {
                     writer.DeleteAll();
-
                     analyzer.Close();
                 }
-            } catch
+                return true;
+            } 
+            catch
             {
                 return false;
-            }
-            return true;
+            }            
         }
 
         public void Optimize( )

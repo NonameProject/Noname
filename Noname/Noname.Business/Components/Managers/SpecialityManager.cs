@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -50,21 +51,24 @@ namespace Abitcareer.Business.Components.Managers
         }
 
         public IList<Speciality> GetList() 
-        {   
-            var  list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
-            var newList = new List<Speciality>(list.Count);
-            foreach (var item in list)
+        {
+            return FromCache<IList<Speciality>>(Thread.CurrentThread.CurrentUICulture.LCID + "_list", () =>
             {
-                newList.Add((Speciality)GetBaseModel(item));
-            }
-
-            return newList;
+                var list = SortBasedOnCurrentCulture(provider.GetList(), (LCID)CultureInfo.CurrentCulture.LCID);
+                var newList = new List<Speciality>(list.Count);
+                foreach (var item in list)
+                {
+                    newList.Add((Speciality)GetBaseModel(item));
+                }
+                return newList;
+            });            
         }
 
         public bool TrySave(Speciality editedModel)
         {
             if (String.IsNullOrEmpty(editedModel.EnglishName) || String.IsNullOrEmpty(editedModel.Name))
                 return false;
+
             provider.Update(editedModel);
             new MySearcher<Speciality>(luceneDirectory).AddUpdateIndex(editedModel);
             return true;
@@ -86,9 +90,7 @@ namespace Abitcareer.Business.Components.Managers
         public bool IsSpecialityEnglishNameAvailable(string name)
         {
             var translator = new Translation.Translator();
-
             var value = translator.Translate(name, Translation.Translator.Languages.En, Translation.Translator.Languages.Uk).Replace("\"",String.Empty);
-
             return provider.GetByName(value) == null;
         }
 
@@ -99,7 +101,7 @@ namespace Abitcareer.Business.Components.Managers
 
         public void Index()
         {
-            var list = this.GetList();
+            var list = GetList();
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
             searcher.ClearIndex();
@@ -112,9 +114,7 @@ namespace Abitcareer.Business.Components.Managers
                 Index();
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
-
             var list = searcher.Search(name).ToList();
-
             var result = new List<string>();
 
             foreach (var item in list)
@@ -122,7 +122,6 @@ namespace Abitcareer.Business.Components.Managers
                 if(!result.Contains(item.Id))
                     result.Add(item.Id);
             }
-
             return result;
         }
 

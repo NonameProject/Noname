@@ -75,7 +75,7 @@ namespace Abitcareer.Business.Components.ChartsData
             var payments = new int[yearsOfStudying];
             for (int i = 0; i < yearsOfStudying; i++)
             {
-                payments[i] = price / 12;
+                payments[i] = price / 10;
             }
             return payments;
         }

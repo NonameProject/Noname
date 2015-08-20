@@ -18,30 +18,33 @@ namespace Abitcareer.Business.Components.Lucene
         where T : new()
     {
         private string[] indexFields;
+        private const int maxResultCount = 999;
+
         public MySearcher( )
             : base()
         {
-            fillIndeFieldsList();
+            fillIndexFieldsList();
         }
 
         public MySearcher(string directoryPath)
             : base(directoryPath)
         {
-            fillIndeFieldsList();
+            fillIndexFieldsList();
         }
 
         #region public methods
         public IEnumerable<T> Search(string input, string fieldName = "")
         {
-            if (string.IsNullOrEmpty(input)) input = string.Format("Id:[0 TO {0}]", 999);
+            if (String.IsNullOrEmpty(input))
+                input = String.Format("Id:[0 TO {0}]", maxResultCount);
             else
             {
                 var terms = input.Trim().Replace("-", " ").Replace("_", "-").Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => {
                         string t = x.Trim();
-                        return string.Format("(({0}*)^2 {0}~0.6)", t);
+                        return String.Format("(({0}*)^2 {0}~0.6)", t);
                     });
-                input = string.Join("AND", terms);
+                input = String.Join("AND", terms);
             }
             return search(input, fieldName);
         }
@@ -70,13 +73,14 @@ namespace Abitcareer.Business.Components.Lucene
 
         #region private methods
 
-        private void fillIndeFieldsList( )
+        private void fillIndexFieldsList( )
         {
             List<string> list = new List<string>();
             foreach (PropertyInfo property in typeof(T).GetProperties())
             {
                 var attr = property.GetCustomAttribute<Storable>();
-                if (attr == null || attr.Type == Field.Index.NO) continue;
+                if (attr == null || attr.Type == Field.Index.NO) 
+                    continue;
                 list.Add(property.Name);
             }
             indexFields = list.ToArray();
@@ -86,7 +90,7 @@ namespace Abitcareer.Business.Components.Lucene
         {
             var doc = MapTValueToDoc(TValue);
             string id = doc.GetField("Id").StringValue;
-            if (!string.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(id))
             {
                 var searchQuery = new TermQuery(new Term("Id", id));
                 writer.UpdateDocument(searchQuery.Term, doc);
@@ -102,7 +106,8 @@ namespace Abitcareer.Business.Components.Lucene
             foreach (PropertyInfo property in properties)
             {
                 var attr = property.GetCustomAttribute<Storable>();
-                if (attr == null) continue;                
+                if (attr == null) 
+                    continue;                
                 string fieldName = property.Name;
                 object fieldValue = property.GetValue(TValue);
 
@@ -119,13 +124,13 @@ namespace Abitcareer.Business.Components.Lucene
             foreach (PropertyInfo property in properties)
             {
                 var attr = property.GetCustomAttribute<Storable>();
-                if (attr == null) continue;                
+                if (attr == null) 
+                    continue;                
                 string fieldName = property.Name;
                 var val = TypeDescriptor.GetConverter(property.PropertyType)
                             .ConvertFrom(doc.Get(fieldName));
                 property.SetValue(res, val);    
             }
-
             return res;
         }
 
@@ -144,13 +149,12 @@ namespace Abitcareer.Business.Components.Lucene
                 var analyzer = new StandardAnalyzer(Version.LUCENE_30);
                 QueryParser parser;
 
-                if (!string.IsNullOrEmpty(searchField))
+                if (!String.IsNullOrEmpty(searchField))
                 {
                     parser = new QueryParser(Version.LUCENE_30, searchField, analyzer);
                 }
                 else
-                {
-                    
+                {                    
                     parser = new MultiFieldQueryParser
                         (Version.LUCENE_30, indexFields, analyzer);
                 }

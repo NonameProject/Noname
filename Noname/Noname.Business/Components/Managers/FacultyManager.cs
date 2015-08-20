@@ -11,7 +11,6 @@ namespace Abitcareer.Business.Components.Managers
 {
     public class FacultyManager : BaseManager<Faculty, IFacultyDataProvider>
     {
-
         public FacultyManager(ICacheManager manager, IFacultyDataProvider provider) : base(manager, provider) { }
 
         protected override string Name
