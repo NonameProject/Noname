@@ -348,4 +348,7 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Помилка</value>
   </data>
+  <data name="CookiesOff" xml:space="preserve">
+    <value>У вас вимкнені cookies. Для користування усіма можливостями сайту, будь ласка, увімкніть їх у налаштуваннях браузера.</value>
+  </data>
 </root>

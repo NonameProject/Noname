@@ -348,4 +348,7 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="CookiesOff" xml:space="preserve">
+    <value>You have disabled cookies. To use all the features of the site, please enable them in your browser.</value>
+  </data>
 </root>
