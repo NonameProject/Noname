@@ -87,13 +87,7 @@ function Chart() {
                 var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
                 for (var q = 0; q < tmpData.length; q++) {
                     retData.push(tmpData[q]);
-
-                    
                 }
-                //if (!data.saveIsect)
-                //    continue;
-                //retData.push(data);
-                //selectPoint(chart.series[length-1], data);
             }
 
             retData.sort(function (a, b) {
@@ -103,15 +97,9 @@ function Chart() {
                     return 0;                
                 return -1;
             });
-            /*var arr = chart.series[length - 1].data.sort(function (a, b) {
-                if(!a || !b) return 1
-                if (a.x - b.x) return a.x - b.x;
-                return a.y - b.y;
-            });
-            chart.series[length - 1].setData(arr, true, false);*/
             var ticks = [];
             for (var i = 0; i < retData.length; i++) {
-                selectPoint(chart.series[length - 1], tmpData[i]);
+                selectPoint(chart.series[length - 1], retData[i]);
                 ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
                 addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length-1]);
@@ -135,7 +123,6 @@ function Chart() {
             for (var p = 0; p < line.data.length; p++) {
                 if (line.data[p].x == retData.saveIsect.x && line.data[p].y == retData.saveIsect.y) {
                     line.data[p].select(true,true);
-                    chart.redraw();
                 };
             }
         };
