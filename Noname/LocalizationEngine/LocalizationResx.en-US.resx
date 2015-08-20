@@ -127,7 +127,7 @@
     <value>Education self-sufficiency</value>
   </data>
   <data name="Payment" xml:space="preserve">
-    <value>Tuition fee in</value>
+    <value>Tuition fee for year</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Pick university's quality</value>
@@ -262,13 +262,13 @@
     <value>Login data is incorrect</value>
   </data>
   <data name="FirstPaymentName" xml:space="preserve">
-    <value>top-rank university</value>
+    <value>In top-rank university</value>
   </data>
   <data name="SecondPaymentName" xml:space="preserve">
-    <value>middle-rank university</value>
+    <value>In middle-rank university</value>
   </data>
   <data name="ThirdPaymentName" xml:space="preserve">
-    <value>low-rank university</value>
+    <value>In low-rank university</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
     <value>Add speciality</value>
@@ -338,5 +338,14 @@
   </data>
   <data name="ToChart" xml:space="preserve">
     <value>See more</value>
+  </data>
+  <data name="PaymentForYear" xml:space="preserve">
+    <value>Tuition fee for year in</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
   </data>
 </root>

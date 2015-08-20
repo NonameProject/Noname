@@ -87,13 +87,7 @@ function Chart() {
                 var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
                 for (var q = 0; q < tmpData.length; q++) {
                     retData.push(tmpData[q]);
-
-                    selectPoint(chart.series[length - 1], tmpData[q]);
                 }
-                //if (!data.saveIsect)
-                //    continue;
-                //retData.push(data);
-                //selectPoint(chart.series[length-1], data);
             }
 
             retData.sort(function (a, b) {
@@ -105,6 +99,7 @@ function Chart() {
             });
             var ticks = [];
             for (var i = 0; i < retData.length; i++) {
+                selectPoint(chart.series[length - 1], retData[i]);
                 ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
                 addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length-1]);
@@ -128,18 +123,33 @@ function Chart() {
             for (var p = 0; p < line.data.length; p++) {
                 if (line.data[p].x == retData.saveIsect.x && line.data[p].y == retData.saveIsect.y) {
                     line.data[p].select(true,true);
-                    chart.redraw();
                 };
             }
         };
 
         var addPointToLine = function (linePoints1, linePoints2, linePointsTo) {
             var n0 = linePoints1.length,
-            n1 = linePoints2.length;
-            var i, j, isect, isect2;
-            var ret = [];
-            var saveIsect;
-            var mx = -100;
+                n1 = linePoints2.length;
+            var i, j, isect, prev;
+            var ret = [],
+                saveIsect,
+                mx = -100;
+            var addIsect = function (isect) {
+                linePointsTo.addPoint(isect);
+                var tmp = {
+                    saveIsect: isect,
+                    mx: mx
+                };
+                ret.push(tmp);
+
+                var point = linePointsTo.data[linePointsTo.data.length - 1];
+                linePointsTo.data.sort(function (a, b) {
+                    if (!a || !b) return 1
+                    if (a.x - b.x) return a.x - b.x;
+                    return a.y - b.y;
+                });
+                point.update();
+            };
             for (i = 1; i < n0; i++) {
                 for (j = 1; j < n1; j++) {                    
                     if (linePoints1[i - 1].y > mx)
@@ -147,17 +157,14 @@ function Chart() {
                     if (linePoints1[i].y > mx)
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
-                                        linePoints2[j - 1], linePoints2[j])) {
-                        var tmp = new Object();
-                        if (isect.x === 0)
+                                        linePoints2[j - 1], linePoints2[j])) {                        
+                        if (isect.x === 0) {
+                            prev = isect;
                             continue;
-                        linePointsTo.addPoint(isect, true, false);
-                        
-                        tmp.saveIsect = isect;
-                        tmp.mx = mx;
-
-
-                        ret.push(tmp);
+                        }
+                        if (prev && prev.x === 0 && isect.y>prev.y)
+                            addIsect(prev);
+                        addIsect(isect);
                     }
                 }
             }

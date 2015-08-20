@@ -15,25 +15,24 @@ namespace Abitcareer.Mvc.Components
             var model = new SpecialityViewModel();
             model.Id = bindingContext.ValueProvider.GetValue("Id").AttemptedValue;
             model.Name = bindingContext.ValueProvider.GetValue("Name").AttemptedValue;
-            model.EnglishName = '"' + bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue + '"';
-            var dict = new Dictionary<int, int>();
+            model.EnglishName = String.Format("\"{0}\"", bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue);            
+            var dictionary = new Dictionary<int, int>();
             foreach (var item in model.Salaries)
             {
                 int tmp = 0;
                 int.TryParse(bindingContext.ValueProvider.GetValue("Salaries[" + item.Key + "]").AttemptedValue, out tmp);
-                dict[item.Key] = tmp;
+                dictionary[item.Key] = tmp;
             }
-            model.Salaries = dict;
+            model.Salaries = dictionary;
 
-            var newDict = new Dictionary<string, int>();
+            var newDictionary = new Dictionary<string, int>();
             foreach (var item in model.Prices)
             {
                 int tmp = 0;
                 int.TryParse(bindingContext.ValueProvider.GetValue("Prices[" + item.Key + "]").AttemptedValue, out tmp);
-                tmp *= 12;
-                newDict[item.Key] = tmp;
+                newDictionary[item.Key] = tmp;
             }
-            model.Prices = newDict;
+            model.Prices = newDictionary;
             return model;
         }
     }

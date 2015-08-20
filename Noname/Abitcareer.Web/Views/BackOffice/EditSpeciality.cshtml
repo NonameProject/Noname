@@ -5,12 +5,7 @@
 @using System.Text.RegularExpressions
 
 @model SpecialityViewModel
-@{
-    Model.Prices["TopUniversityPrice"] /= 12;
-    Model.Prices["MiddleUniversityPrice"] /= 12;
-    Model.Prices["LowUniversityPrice"] /= 12;
-    
-}
+
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
         <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -54,7 +49,7 @@
                 }
                 </ul>
         <ul class="tuition-fee">
-                    <h4>@LocalizationResx.Payment</h4>
+                    <h4>@LocalizationResx.Payment.ToUpper()</h4>
                     <li>
                         @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
                         @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
@@ -64,15 +59,15 @@
                         @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
                     </li>
                     <li>
-                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
+                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"],  LocalizationResx.ThirdPaymentName)
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
                 </ul>
             </article>
         <div class="clear"></div>
         <div class="row">        
-            <button type="submit" class="btn btn-primary right">@LocalizationResx.Save</button>
-            <input type="button" id="exitButton" class="btn btn-default right" value="@LocalizationResx.Cancel"/>
+            <button type="submit" id="saveButton" class="btn btn-primary right waves-effect waves-light teal accent-4">@LocalizationResx.Save</button>
+            <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
         </div>
     }
 <script>

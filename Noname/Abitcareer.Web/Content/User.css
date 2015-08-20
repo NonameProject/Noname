@@ -27,3 +27,8 @@
     list-style: none;
     color:red;
 }
+
+#Email, #Password
+{
+    font-size: 15px !important;
+}

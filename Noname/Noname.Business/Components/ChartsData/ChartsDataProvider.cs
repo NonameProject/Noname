@@ -23,9 +23,9 @@ namespace Abitcareer.Business.Components.ChartsData
         {
             result = new List<List<Point>>();
             monthPriceIndex = 0;
-            monthSalaryIndex = 0;
-            summaryPriceIndex = 0;
-            summarySalaryIndex = 0;
+            summaryPriceIndex = 3;
+            monthSalaryIndex = 6;
+            summarySalaryIndex = 7;
         }
 
         public List<List<Point>> PrepareData(Speciality speciality, short polinom)
@@ -37,23 +37,22 @@ namespace Abitcareer.Business.Components.ChartsData
             var middleSummaryPayments = GetSummaryPayments((int)speciality.Prices["MiddleUniversityPrice"]);
             var lowSummaryPayments = GetSummaryPayments((int)speciality.Prices["LowUniversityPrice"]);
 
-
             result.Add(Point.InitList(topMonthPayments));
             result.Add(Point.InitList(middleMonthPayments));
             result.Add(Point.InitList(lowMonthPayments));
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(1));
             result.Add(Point.InitList(1));
-            result.Add(Point.InitList(startOfWorking)); //salaries per month
-            result.Add(Point.InitList(startOfWorking)); //salaries summary
+            result.Add(new List<Point>(yearsOfStudying)); //salaries per month
+            result.Add(new List<Point>(yearsOfStudying)); //salaries summary
+
+            Point point = new Point(startOfWorking);
+            result[monthSalaryIndex].Add(point);
+            result[summarySalaryIndex].Add(point);
 
             InitPointsOnPayments(0, 3);
             InitPointsOnPayments(1, 4);
             InitPointsOnPayments(2, 5);
-            monthPriceIndex = 0;
-            summaryPriceIndex = 3;
-            monthSalaryIndex = 6;
-            summarySalaryIndex = 7;
 
             InitSalaries(speciality, polinom);
 
@@ -67,8 +66,7 @@ namespace Abitcareer.Business.Components.ChartsData
             var i = 0;
             foreach (var point in result[monthPaymentsIndex])
             {
-                var newPoint = new Point(i+1, result[summaryPaymentsIndex][i++].y + 12 * point.y);
-                result[summaryPaymentsIndex].Add(newPoint);
+                result[summaryPaymentsIndex].Add(new Point(i + 1, result[summaryPaymentsIndex][i++].y + 12 * point.y));
             }
             result[summaryPaymentsIndex].Remove(result[summaryPaymentsIndex].Last());
         }
@@ -78,7 +76,7 @@ namespace Abitcareer.Business.Components.ChartsData
             var payments = new int[yearsOfStudying];
             for (int i = 0; i < yearsOfStudying; i++)
             {
-                payments[i] = price / 12;
+                payments[i] = price / 10;
             }
             return payments;
         }
@@ -97,39 +95,36 @@ namespace Abitcareer.Business.Components.ChartsData
         {
             var aproximator = InitAproximator(speciality, polinom);
 
-            for (var i = startOfWorking; (result[monthPriceIndex].Count > i || result[summarySalaryIndex][i - 1].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
+            for (var i = startOfWorking; (result[monthPriceIndex].Count > i ||
+                result[summarySalaryIndex][i - 1].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
             {
-                var val = aproximator.CalcY(i);
-                if (val < 0)
-                    val = 0;
-                Point newPoint;
-                newPoint = new Point(i, val);
+                var value = aproximator.CalcY(i);
+                if (value < 0)
+                    value = 0;
+
+                var newPoint = new Point(i, value);
                 if (result[monthPriceIndex].Count > i)
                     result[monthSalaryIndex].Add(newPoint);
-                else
-                {
-                    if (result[monthPriceIndex].Count == i && result[monthPriceIndex].Last().y >= val)
-                        result[monthSalaryIndex].Add(newPoint);
-                }
-                newPoint = new Point(i, result[summarySalaryIndex].Last().y + 12 * val);
-                result[summarySalaryIndex].Add(newPoint);
+                else if (result[monthPriceIndex].Count == i && result[monthPriceIndex].Last().y >= value)
+                    result[monthSalaryIndex].Add(newPoint);
+
+                result[summarySalaryIndex].Add(new Point(i, result[summarySalaryIndex].Last().y + 12 * value));
             }
         }
 
         private IApproximator InitAproximator(Speciality speciality, short polinom)
         {
-            List<int> x, y;
-            x = new List<int>();
-            y = new List<int>();
+            var x = new List<int>();
+            var y = new List<int>();
 
             foreach (var key in speciality.Salaries.Keys)
             {
-                int val;
-                speciality.Salaries.TryGetValue(key, out val);
-                if (val > 0 || key == 1)
+                int value;
+                speciality.Salaries.TryGetValue(key, out value);
+                if (value > 0)
                 {
                     x.Add(key);
-                    y.Add(val);
+                    y.Add(value);
                 }
             }
             if (polinom + 1 >= x.Count)

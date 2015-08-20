@@ -169,6 +169,24 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сторінка не знайдена.
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Помилка.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на роки.
         /// </summary>
         public static string FewYears {
@@ -187,7 +205,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на топовому ВНЗ.
+        ///   Ищет локализованную строку, похожую на В топовому ВНЗ.
         /// </summary>
         public static string FirstPaymentName {
             get {
@@ -340,11 +358,20 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Плата за навчання в.
+        ///   Ищет локализованную строку, похожую на Плата за навчання за рік.
         /// </summary>
         public static string Payment {
             get {
                 return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Плата за навчання.
+        /// </summary>
+        public static string PaymentForYear {
+            get {
+                return ResourceManager.GetString("PaymentForYear", resourceCulture);
             }
         }
         
@@ -466,7 +493,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на середньому ВНЗ.
+        ///   Ищет локализованную строку, похожую на В середньому ВНЗ.
         /// </summary>
         public static string SecondPaymentName {
             get {
@@ -655,7 +682,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на малопрестижному ВНЗ.
+        ///   Ищет локализованную строку, похожую на В малопрестижному ВНЗ.
         /// </summary>
         public static string ThirdPaymentName {
             get {

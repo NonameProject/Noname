@@ -79,7 +79,6 @@ namespace Abitcareer.Web.Components
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
             var result = specialityManager.TrySave(mappedModel);
-            specialityManager.Index();
             return PartialView("SpecialityPartial", editedModel);
         }
 
