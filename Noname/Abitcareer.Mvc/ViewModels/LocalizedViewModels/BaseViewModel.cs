@@ -14,7 +14,6 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
         [ScaffoldColumn(false)]
         public virtual string Id { get; set; }
 
-        [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ")]
         public virtual string Name { get; set; }
     }
 }
