@@ -263,7 +263,7 @@
                 var payments = $("ul.tuition-fee li input");
                 var salaries = $("ul.salaries li input");
                 
-                if ($('#Name')s.val().length == 0 || $('#EnglishName').val().length == 0) {
+                if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
                     event.preventDefault();
