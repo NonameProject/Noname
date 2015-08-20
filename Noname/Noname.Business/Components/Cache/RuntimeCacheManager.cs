@@ -33,7 +33,6 @@ namespace Abitcareer.Web.Components
         public void ClearCacheByName(string name)
         {
             ClearCacheHelper(key => key.Contains(name));
-
         }
 
         public void ClearCacheByRegion(string region)
