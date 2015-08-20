@@ -169,7 +169,6 @@
 
             settings.search = $("#search");
 
-            settings.moneyInputs = settings.editor.find("ul.salaries li input, ul.tuition-fee li input");
 
             localStrings = localResourses;
 
@@ -258,11 +257,12 @@
             });
 
 
-            settings.moneyInputs.prop("min", 0);
-            settings.moneyInputs.prop("max", 10000000);
             settings.editor.children('input').prop('maxlength', 300);
 
             settings.editor.submit(function (event) {
+                var payments = $("ul.tuition-fee li input");
+                var salaries = $("ul.salaries li input");
+                
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);

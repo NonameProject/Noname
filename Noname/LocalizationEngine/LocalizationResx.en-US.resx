@@ -351,4 +351,7 @@
   <data name="CookiesOff" xml:space="preserve">
     <value>You have disabled cookies. To use all the features of the site, please enable them in your browser.</value>
   </data>
+  <data name="BanValuesBelowZero" xml:space="preserve">
+    <value>Value must be above 0</value>
+  </data>
 </root>

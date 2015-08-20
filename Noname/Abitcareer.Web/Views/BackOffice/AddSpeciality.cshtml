@@ -19,38 +19,7 @@
         @Html.ValidationMessageFor(x => x.EnglishName)
         <br />
         <span id="js-validation" class="error-text"></span>
-        <!--<article class="right">
-            <h4>@LocalizationResx.Salaries.ToUpper()</h4>
-    
-            <ul class="salaries">
-                @foreach (var item in Model.Salaries)
-                {
-                    string yearEnding = LocalizationResx.EndAfterFour;
-                    <li>
-                        @if (item.Key < 10 || item.Key > 20)
-                        {
-                            switch (item.Key % 10)
-                            {
-                            case 1:
-                                yearEnding = LocalizationResx.FirstEnd;
-                                break;
-                            case 2:
-                                yearEnding = LocalizationResx.SecondEnd;
-                                break;
-                            case 3:
-                                yearEnding = LocalizationResx.ThirdEnd;
-                                break;
-                            default:
-                                yearEnding = LocalizationResx.EndAfterFour;
-                                break;
-                            }
-                        }
-                        @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
-                    </li>
-                }
-                </ul>
-            </article>-->
+      
         <article class="left">
     
             <ul class="salaries">
@@ -78,7 +47,15 @@
                             }
                         }
                         @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                        @if (Model.Salaries[item.Key] != 0)
+                        {
+                            @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                        }
+                        else
+                        {
+                           @Html.EditorFor(m => m.Salaries[item.Key], new { @value = "" })
+                        }
+
                     </li>
                 }
                 </ul>
@@ -96,7 +73,7 @@
                         @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
-                </ul>
+                </ul>         
             </article>
     <div class="clear"></div>
        <div class="row">            
@@ -112,7 +89,9 @@
 
             SpecialityChangeSuccess: "@LocalizationResx.SpecialityAddingSuccess",
 
-            SpecialityChangeFailed: "@LocalizationResx.SpecialityAddingFailed"
+            SpecialityChangeFailed: "@LocalizationResx.SpecialityAddingFailed",
+
+            BanValuesBelowZero: "@LocalizationResx.BanValuesBelowZero"
         });
     });
 </script>

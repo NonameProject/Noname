@@ -40,6 +40,7 @@ namespace Abitcareer.Business.Components.Managers
             if (IsSpecialityNameAvailable(model.Name))
             {
                 Create(model);
+                new MySearcher<Speciality>(luceneDirectory).AddUpdateIndex(model);
                 return true;
             }
             return false;

@@ -41,7 +41,8 @@ namespace Abitcareer.Web.Components
             try
             {
                 var model = AutoMapper.Mapper.Map<SpecialityViewModel>(specialityManager.GetById(id));
-                if (!String.IsNullOrEmpty(model.EnglishName)) model.EnglishName = model.EnglishName.Trim('"');
+                if (!String.IsNullOrEmpty(model.EnglishName)) 
+                    model.EnglishName = model.EnglishName.Trim('"');
                 specialityManager.Index();
                 return PartialView("EditSpeciality", model);
             }
@@ -55,12 +56,9 @@ namespace Abitcareer.Web.Components
         public ActionResult AddSpeciality(SpecialityViewModel viewModel)
         {
             var model = AutoMapper.Mapper.Map<Speciality>(viewModel);
-            if (specialityManager.IsSpecialityNameAvailable(model.Name))
-            {
-                specialityManager.TryCreate(model);
-                specialityManager.Index();
+            if (specialityManager.TryCreate(model))
                 return PartialView("SpecialityPartial", viewModel);
-            }
+                        
             return Json(false);
         }
 
