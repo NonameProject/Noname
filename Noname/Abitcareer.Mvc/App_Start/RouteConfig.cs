@@ -173,12 +173,18 @@ namespace Abitcareer.Mvc
 
 
              routes.MapLocalizedRoute(
-              name: "NotFound",
+              name: "LocalizedNotFound",
               url: "{*url}",
               defaults: new { controller = "Error", action = "Index" },
               setupConstraints:
               (dynamic constraints) => {
               });
+
+             routes.MapRoute(
+                 "NotFound",
+                 "{*url}",
+              new { controller = "Error", action = "Abc" }
+             );
         }
     }
 }

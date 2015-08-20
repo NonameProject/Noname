@@ -1,4 +1,4 @@
-﻿using Abitcareer.Business.Components.MiniProfilers;
+﻿using Abitcareer.Mvc.MiniProfilers;
 using Abitcareer.Mvc.App_Start;
 using Elmah;
 using StackExchange.Profiling;

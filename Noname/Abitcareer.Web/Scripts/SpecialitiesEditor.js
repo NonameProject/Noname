@@ -169,6 +169,7 @@
 
             settings.search = $("#search");
 
+
             localStrings = localResourses;
 
             this.unbindUIActions();
@@ -255,13 +256,21 @@
                     return false;
             });
 
-            $("ul.salaries li input, ul.tuition-fee li input").prop("min", 0);
-            $("ul.salaries li input, ul.tuition-fee li input").prop("max", 10000000);
+
+            settings.editor.children('input').prop('maxlength', 300);
 
             settings.editor.submit(function (event) {
-                if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+                var payments = $("ul.tuition-fee li input");
+                var salaries = $("ul.salaries li input");
+                
+                if ($('#Name')s.val().length == 0 || $('#EnglishName').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
+                    event.preventDefault();
+                    return false;
+                }
+               if (parseInt(payments.val()) < 0 || parseInt(salaries.val()) < 0) {
+                    $("#validation-payments-salaries").html(localStrings.BanValuesBelowZero);
                     event.preventDefault();
                     return false;
                 }
