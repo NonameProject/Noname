@@ -79,6 +79,7 @@ namespace Abitcareer.Business.Components.Managers
             ClearCache();
             if(provider.GetById(id) != null)
                 provider.Delete(id);
+            new MySearcher<Speciality>(luceneDirectory).DeleteFromIndex(id);
         }
 
 

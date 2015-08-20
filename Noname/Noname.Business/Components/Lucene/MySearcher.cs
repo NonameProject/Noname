@@ -69,6 +69,20 @@ namespace Abitcareer.Business.Components.Lucene
             AddUpdateIndex(new List<T> { TValue });
         }
 
+        public void DeleteFromIndex(string id)
+        {
+            var analyzer = new StandardAnalyzer(Version.LUCENE_30);
+
+            using (var writer = new IndexWriter(directory, analyzer, IndexWriter.MaxFieldLength.UNLIMITED))
+            {
+                if (!String.IsNullOrEmpty(id))
+                {
+                    var searchQuery = new TermQuery(new Term("Id", id));
+                    writer.DeleteDocuments(searchQuery);
+                    writer.Flush(true, true, true);
+                }
+            }
+        }
         #endregion
 
         #region private methods
