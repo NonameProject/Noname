@@ -19,7 +19,10 @@
 
         var containerHeight = partialView.height(),
             height = inner.innerHeight();
-        if (height <= containerHeight) return;
+        if (height <= containerHeight) {
+            inner.css('top', 0);
+            return;
+        }
 
         var pos = parseInt(inner.css('top'));
         pos -= currentTop - prevTop;
