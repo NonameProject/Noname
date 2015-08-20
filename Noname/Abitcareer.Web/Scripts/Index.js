@@ -1,7 +1,7 @@
 ﻿function DataProvider() {
     this.getData = function (callback) {
         $("#js-loading-screen").addClass("active");
-        $.post(textStrings.UrlGet, { id: $("#spec").val() }, function (data) {
+        $.post('[Route:GetData]', { id: $("#spec").val() }, function (data) {
             var res = [];
 
             for (var i = 0; i < data.length; i++) {
@@ -48,13 +48,13 @@ $(function () {
     });
 
     var valueTypes = {
-        costs: textStrings.Costs,
-        year: textStrings.Year,
-        oneYear: textStrings.OneYear,
-        fewYears: textStrings.FewYears,
-        manyYears: textStrings.ManyYears,
-        UAH: textStrings.UAH,
-        profit: textStrings.Profit
+        costs: '[Resx:Costs]',
+        year: '[Resx:Year]',
+        oneYear: '[Resx:OneYear]',
+        fewYears: '[Resx:FewYears]',
+        manyYears: '[Resx:ManyYears]',
+        UAH: '[Resx:UAH]',
+        profit: '[Resx:Profit]'
     };
 
     var provider = new DataProvider();
@@ -72,25 +72,25 @@ $(function () {
             var length = selectedSpec.length;
 
             data1 = {
-                name: textStrings.payment1Name,
+                name: '[Resx:FirstPaymentName]',
                 color: 'darkblue',
                 data: selectedSpec[0].data,
                 stack: 'payment'
             };
             data2 = {
-                name: textStrings.payment2Name,
+                name: '[Resx:SecondPaymentName]',
                 color: 'blue',
                 data: selectedSpec[1].data,
                 stack: 'payment'
             };
             data3 = {
-                name: textStrings.payment3Name,
+                name: '[Resx:ThirdPaymentName]',
                 color: 'royalblue',
                 data: selectedSpec[2].data,
                 stack: 'payment'
             };
             data4 = {
-                name: textStrings.summaryAxis,
+                name: '[Resx:SummaryGraphCaption]',
                 color: 'green',
                 data: selectedSpec[length - 2].data
             };
@@ -104,15 +104,15 @@ $(function () {
                 $("#chart-container").fadeToggle(500);
             }
 
-            chart.draw("#payments-container", [data1, data2, data3, data4], textStrings.paymentsCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.dotCaption, valueTypes);
+            chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
 
             data1.data = selectedSpec[3].data;
             data2.data = selectedSpec[4].data;
             data3.data = selectedSpec[5].data;
             data4.data = selectedSpec[length - 1].data;
-            data4.name = textStrings.summarySalary;
+            data4.name = '[Resx:SummarySalary]';
 
-            chart.draw("#summary-container", [data1, data2, data3, data4], textStrings.summaryCaption, textStrings.xAxisCaption, textStrings.yAxisCaption, textStrings.brinkCaprion, valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+            chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
 
             setHash();
         });
