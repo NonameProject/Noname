@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Abitcareer.Business.Components.Translation;
 using System.Threading;
 using Abitcareer.Business.Components.XmlServices;
+using System;
 
 namespace Abitcareer.Mvc.Controllers
 {
@@ -61,14 +62,14 @@ namespace Abitcareer.Mvc.Controllers
 
                 universityManager.Create(node.University);
 
-                if (!string.IsNullOrEmpty(node.Faculty.Name) && !facultyList.Contains(node.Faculty.Name))
+                if (!String.IsNullOrEmpty(node.Faculty.Name) && !facultyList.Contains(node.Faculty.Name))
                 {
                     facultyManager.Create(node.Faculty);
 
                     facultyList.Add(node.Faculty.Name);
                 }
 
-                if (!string.IsNullOrEmpty(node.Speciality.Name) && !specialityList.Contains(node.Speciality.Name))
+                if (!String.IsNullOrEmpty(node.Speciality.Name) && !specialityList.Contains(node.Speciality.Name))
                 {
                     specialityManager.TryCreate(node.Speciality);
 

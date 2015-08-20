@@ -6,6 +6,7 @@ using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
 using Abitcareer.Business.Components.Managers;
 using Abitcareer.Business.Components.ChartsData;
 using System.Linq;
+using System;
 
 namespace Abitcareer.Mvc.Controllers
 {
@@ -29,7 +30,7 @@ namespace Abitcareer.Mvc.Controllers
 
         public ActionResult GetData(string id, short polinom = 3)
         {
-            if (string.IsNullOrEmpty(id))
+            if (String.IsNullOrEmpty(id))
             {
                 return Json(false);
             }
