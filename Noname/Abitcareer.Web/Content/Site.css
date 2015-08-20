@@ -3,7 +3,7 @@
     min-width: 330px;
     overflow-x: auto;
     overflow-y: auto;
-    background-image: url(Images/subtle_dots.png);
+    background-color: #F9F9F9;
 }
 #content
 {
