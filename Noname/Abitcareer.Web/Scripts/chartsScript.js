@@ -129,11 +129,27 @@ function Chart() {
 
         var addPointToLine = function (linePoints1, linePoints2, linePointsTo) {
             var n0 = linePoints1.length,
-            n1 = linePoints2.length;
-            var i, j, isect, isect2;
-            var ret = [];
-            var saveIsect;
-            var mx = -100;
+                n1 = linePoints2.length;
+            var i, j, isect, prev;
+            var ret = [],
+                saveIsect,
+                mx = -100;
+            var addIsect = function (isect) {
+                linePointsTo.addPoint(isect);
+                var tmp = {
+                    saveIsect: isect,
+                    mx: mx
+                };
+                ret.push(tmp);
+
+                var point = linePointsTo.data[linePointsTo.data.length - 1];
+                linePointsTo.data.sort(function (a, b) {
+                    if (!a || !b) return 1
+                    if (a.x - b.x) return a.x - b.x;
+                    return a.y - b.y;
+                });
+                point.update();
+            };
             for (i = 1; i < n0; i++) {
                 for (j = 1; j < n1; j++) {                    
                     if (linePoints1[i - 1].y > mx)
@@ -141,22 +157,14 @@ function Chart() {
                     if (linePoints1[i].y > mx)
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
-                                        linePoints2[j - 1], linePoints2[j])) {
-                        var tmp = new Object();
-                        if (isect.x === 0)
+                                        linePoints2[j - 1], linePoints2[j])) {                        
+                        if (isect.x === 0) {
+                            prev = isect;
                             continue;
-                        linePointsTo.addPoint(isect);
-                        tmp.saveIsect = isect;
-                        tmp.mx = mx;
-                        ret.push(tmp);
-
-                        var point = linePointsTo.data[linePointsTo.data.length - 1];
-                        linePointsTo.data.sort(function (a, b) {
-                            if (!a || !b) return 1
-                            if (a.x - b.x) return a.x - b.x;
-                            return a.y - b.y;
-                        });
-                        point.update();
+                        }
+                        if (prev && prev.x === 0 && isect.y>prev.y)
+                            addIsect(prev);
+                        addIsect(isect);
                     }
                 }
             }
