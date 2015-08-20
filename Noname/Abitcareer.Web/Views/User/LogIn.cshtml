@@ -6,7 +6,9 @@
 @section styles {
     @Styles.Render("~/Content/User.css")
 }
-
+<div class="cookies-off-wrapper">
+    <div class="cookies-off">@LocalizationResx.CookiesOff</div>
+</div>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
 
@@ -25,5 +27,6 @@
 }
 
 @section Scripts {
+    @Scripts.Render("~/Scripts/Login.js")
     @Scripts.Render("~/bundles/jqueryval")
 }

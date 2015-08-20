@@ -31,7 +31,7 @@ namespace Abitcareer.Web.Components
         {
             var spec = specialityManager.GetList();
             var tmp = spec.Where(x =>
-                !string.IsNullOrEmpty(x.Name) && !string.IsNullOrEmpty(x.Id)).ToList();
+                !String.IsNullOrEmpty(x.Name) && !String.IsNullOrEmpty(x.Id)).ToList();
             var result = AutoMapper.Mapper.Map<List<SpecialityViewModel>>(tmp);
             return View(result);
         }
