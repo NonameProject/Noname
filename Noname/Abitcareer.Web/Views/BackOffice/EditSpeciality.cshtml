@@ -63,6 +63,7 @@
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
                 </ul>
+            <span id="validation-payments-salaries" class="error-text"></span>
             </article>
         <div class="clear"></div>
         <div class="row">        
@@ -77,7 +78,9 @@
 
             SpecialityChangeSuccess: "@LocalizationResx.SpecialityEditingSuccess",
 
-            SpecialityChangeFailed: "@LocalizationResx.SpecialityEditingFailed"
+            SpecialityChangeFailed: "@LocalizationResx.SpecialityEditingFailed",
+
+            BanValuesBelowZero: "@LocalizationResx.BanValuesBelowZero"
         });
     });
 </script>

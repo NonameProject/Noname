@@ -351,4 +351,7 @@
   <data name="CookiesOff" xml:space="preserve">
     <value>У вас вимкнені cookies. Для користування усіма можливостями сайту, будь ласка, увімкніть їх у налаштуваннях браузера.</value>
   </data>
+  <data name="BanValuesBelowZero" xml:space="preserve">
+    <value>Значення повинно бути більше 0</value>
+  </data>
 </root>
