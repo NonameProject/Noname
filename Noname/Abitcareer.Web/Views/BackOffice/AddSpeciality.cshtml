@@ -47,7 +47,12 @@
                             }
                         }
                         @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                        @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                        @if (Model.Salaries[item.Key] != 0)
+                        {
+                            @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
+                        }
+                        else
+                        @Html.EditorFor(m => m.Salaries[item.Key], new { @value = "" })
                     </li>
                 }
                 </ul>
