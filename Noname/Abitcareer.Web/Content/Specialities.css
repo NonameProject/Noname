@@ -319,6 +319,7 @@ form button:disabled {
 
 .detailName {
     margin-top: 6px;
+    font-family: myriad;
 }
 
 #exitButton
@@ -370,6 +371,7 @@ form button:disabled {
     right: 0px;
     text-align: center;
     left: 0px;
+    font-family: myriad;
 }
 
 .ttip
