@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Abitcareer.Business.Components.ChartsData
 {
@@ -115,7 +116,7 @@ namespace Abitcareer.Business.Components.ChartsData
             }
         }
 
-        private Approximator InitAproximator(Speciality speciality, short polinom)
+        private IApproximator InitAproximator(Speciality speciality, short polinom)
         {
             List<int> x, y;
             x = new List<int>();
@@ -134,7 +135,7 @@ namespace Abitcareer.Business.Components.ChartsData
             if (polinom + 1 >= x.Count)
                 polinom = (short)(x.Count - 1);
 
-            return new Approximator(x, y);
+            return new Approximation.Approximator(x, y);
         }
 
     }
