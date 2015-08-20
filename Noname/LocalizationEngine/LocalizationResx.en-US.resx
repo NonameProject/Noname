@@ -127,7 +127,7 @@
     <value>Education self-sufficiency</value>
   </data>
   <data name="Payment" xml:space="preserve">
-    <value>Tuition fee</value>
+    <value>Tuition fee for year</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Pick university's quality</value>

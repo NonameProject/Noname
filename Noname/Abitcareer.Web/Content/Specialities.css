@@ -21,14 +21,14 @@
 
 .tuition-fee
 {
-    width: 55%;
+    width: 51%;
     float: right;
 }
 
 .tuition-fee li input
 {
     width: 80px;
-    margin-left: 37px;
+    margin-left: 11px;
     margin-bottom: 5px;
     font-size: 16px;
     padding-left: 7px;
@@ -129,6 +129,7 @@ h2 {
     min-width: 525px;
     padding-bottom: 1%;
     padding-left: 2%;
+    padding-right: 2%;
     position: relative;
     top: 0;
     width: 600px;
@@ -170,10 +171,11 @@ form {
 
 form input {
     margin-left: 5px;
-    max-width: 75%;
+    max-width: 74%;
     padding: 1px 2px;
     width: 70%;
     font-size: 15px !important;
+    padding-left: 10px !important;
 }
 
 form input:focus {
@@ -184,7 +186,7 @@ form input:focus {
 
 form button {
     margin-left:2%;
-    margin-right: 30px;
+    margin-right: -3px;
 }
 
 form button:disabled {
@@ -203,7 +205,7 @@ form button:disabled {
     color: gray;
     float: right;
     height: 15px;
-    margin-right: 10px;
+    margin-right: -23px;
     margin-top: 10px;
     padding: 0;
     width: 15px;
@@ -312,7 +314,11 @@ form button:disabled {
     display: block;
     font-family: myriad;
     font-size: 24px;
-    margin-top: 42px;
+    margin-top: 30px;
+}
+
+.detailName {
+    margin-top: 6px;
 }
 
 #exitButton
@@ -437,7 +443,7 @@ background-color:inherit;
 }
 .deleteControls
 {
-    margin-top: 10px;
+    margin-top: 34px;
 }
 @media (max-width: 991px) {
     #addCard{ /*Dirty hack, but it seems like it is only way to fix this shit*/

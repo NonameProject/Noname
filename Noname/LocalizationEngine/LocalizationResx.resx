@@ -127,7 +127,7 @@
     <value>Cамостійна оплата навчання</value>
   </data>
   <data name="Payment" xml:space="preserve">
-    <value>Плата за навчання</value>
+    <value>Плата за навчання за рік</value>
   </data>
   <data name="PickQuality" xml:space="preserve">
     <value>Виберіь якість ВНЗ</value>
@@ -340,6 +340,6 @@
     <value>Натисни для переходу</value>
   </data>
   <data name="PaymentForYear" xml:space="preserve">
-    <value>Плата за навчання за рік в </value>
+    <value>Плата за навчання</value>
   </data>
 </root>
