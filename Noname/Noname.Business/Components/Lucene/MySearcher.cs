@@ -36,15 +36,15 @@ namespace Abitcareer.Business.Components.Lucene
         public IEnumerable<T> Search(string input, string fieldName = "")
         {
             if (String.IsNullOrEmpty(input))
-                input = string.Format("Id:[0 TO {0}]", maxResultCount);
+                input = String.Format("Id:[0 TO {0}]", maxResultCount);
             else
             {
                 var terms = input.Trim().Replace("-", " ").Replace("_", "-").Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => {
                         string t = x.Trim();
-                        return string.Format("(({0}*)^2 {0}~0.6)", t);
+                        return String.Format("(({0}*)^2 {0}~0.6)", t);
                     });
-                input = string.Join("AND", terms);
+                input = String.Join("AND", terms);
             }
             return search(input, fieldName);
         }

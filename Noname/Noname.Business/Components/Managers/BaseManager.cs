@@ -17,7 +17,7 @@ namespace Abitcareer.Business.Components
     {
         protected ICacheManager CacheManager { get; private set; }
 
-        protected abstract string Name { get;}
+        protected abstract string Name { get; }
 
         protected TProvider provider;
 
@@ -62,13 +62,13 @@ namespace Abitcareer.Business.Components
 
         private string Localize(BaseModel model, string keyPrefix, int languageId, string defaultValue)
         {
-            var key = string.Format("<{0}>_<{1}>", languageId, keyPrefix);
+            var key = String.Format("<{0}>_<{1}>", languageId, keyPrefix);
 
             string localizedValue;
 
             if (model.Fields.TryGetValue(key, out localizedValue))
             {
-                if (!string.IsNullOrEmpty(localizedValue))
+                if (!String.IsNullOrEmpty(localizedValue))
                 {
                         localizedValue.Replace(@"\&quot;", "");
 
