@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Cache\RuntimeCacheManager.cs" />
-    <Compile Include="Components\ChartsData\ApproximatorPolinomial.cs" />
-    <Compile Include="Components\ChartsData\Approximator.cs" />
+    <Compile Include="Components\ChartsData\Approximation\ApproximatorPolinomial.cs" />
+    <Compile Include="Components\ChartsData\Approximation\Approximator.cs" />
     <Compile Include="Components\ChartsData\ChartsDataProvider.cs" />
-    <Compile Include="Components\ChartsData\IApproximator.cs" />
+    <Compile Include="Components\ChartsData\Approximation\IApproximator.cs" />
     <Compile Include="Components\Extensions\StringExtensions.cs" />
     <Compile Include="Components\Extensions\DictonaryExtensions.cs" />
     <Compile Include="Components\Lucene\Attributes\Storable.cs" />
