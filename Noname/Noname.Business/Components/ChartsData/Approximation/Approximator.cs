@@ -28,7 +28,6 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         }
         public Approximator(List<int> x, List<int> y, int startOfWorking = 1)
         {
-            startOfWorking--;
             Deltas = new List<double>();
             data = new Dictionary<int, double>();
             var counter = 0;
@@ -37,7 +36,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
             this.startOfWorking = startOfWorking;
             foreach (var item in x)
             {
-                var shiftedYear = item + startOfWorking;
+                var shiftedYear = item + startOfWorking - 1;
                 var delta = (y.Count < 2 || counter == 0) ? y[counter] : y[counter] - y[counter - 1];
                 var step = (year < startOfWorking) ? 0 : delta / (shiftedYear - (year - 1));
                 while (year < shiftedYear)
