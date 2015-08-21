@@ -530,3 +530,9 @@ background-color:inherit;
 {
         color: white;
 }
+
+.teal.accent-4 {
+    background-color: darkgray !important;
+     color: white;
+
+}

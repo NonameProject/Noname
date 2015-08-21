@@ -250,25 +250,35 @@
 
 
             settings.editor.children('input').prop('maxlength', 300);
+            var payment = $("ul.tuition-fee li input");
+            var salary = $("ul.salaries li input");
+            salary.attr("min", 0);
+            payment.attr("min", 0);
 
             settings.editor.submit(function (event) {
-                
-                var payment = $("ul.tuition-fee li input");
-                var salary = $("ul.salaries li input");
-                salary.attr("min", 0);
-                payment.attr("min", 0);
-                
+              
+
                 if ($('#Name').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
                     event.preventDefault();
                     return false;
                 }
-                if ( parseInt(payment.val()) < 0 || parseInt(salary.val()) < 0 ) {
-                    $("#validation-payment-salaries").html(localStrings.BanValuesBelowZero);
-                    event.preventDefault();
-                    return false;
-                }
+
+                var salaries = [1, 2, 3, 4, 5, 10, 20];
+                for (var i = 0; i < salaries.length; i++) 
+                    if (parseInt($('#Salaries_' + salaries[i] + '_').val()) < 0) {
+                        $("#js-validation").html(localStrings.BanSalariesBelowZero);
+                        event.preventDefault();
+                        return false;
+                    }
+                var prices = ["_TopUniversityPrice_", "_MiddleUniversityPrice_", "_LowUniversityPrice_"];
+                for (var i = 0; i < prices.length; i++)
+                    if (parseInt($('#Prices_' + salaries[i] + '_').val()) < 0) {
+                        $("#js-validation").html(localStrings.BanPaymentsBelowZero);
+                        event.preventDefault();
+                        return false;
+                    }
                 var data = settings.editor.serialize(),
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),

@@ -78,8 +78,8 @@
                 }
             };
             if ($('#Prices_TopUniversityPrice_').val() == '0') $('#Prices_TopUniversityPrice_').val('');
-            if($('#Prices_MiddleUniversityPrice_').val() == '0')$('#Prices_MiddleUniversityPrice_').val('');
-            if($('#Prices_LowUniversityPrice_').val() == '0')$('#Prices_LowUniversityPrice_').val('');
+            if ($('#Prices_MiddleUniversityPrice_').val() == '0') $('#Prices_MiddleUniversityPrice_').val('');
+            if ($('#Prices_LowUniversityPrice_').val() == '0') $('#Prices_LowUniversityPrice_').val('');
         }
         revertZero();
         SpecialityEditor.init({
@@ -89,7 +89,9 @@
 
             SpecialityChangeFailed: "@LocalizationResx.SpecialityEditingFailed",
 
-            BanValuesBelowZero: "@LocalizationResx.BanValuesBelowZero"
+            BanSalariesBelowZero: "@LocalizationResx.BanSalariesBelowZero",
+
+            BanPaymentsBelowZero: "@LocalizationResx.BanPaymentsBelowZero"
         });
     });
 </script>
