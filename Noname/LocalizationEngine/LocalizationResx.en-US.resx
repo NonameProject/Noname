@@ -358,7 +358,7 @@
     <value>Salary per month</value>
   </data>
   <data name="TextCardSalary" xml:space="preserve">
-    <value>Tuition fees a month</value>
+    <value>Tuition fees per month</value>
   </data>
   <data name="BanPaymentsBelowZero" xml:space="preserve">
     <value>Tuition fee must eaual or above zero</value>
