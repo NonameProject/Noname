@@ -18,6 +18,7 @@ namespace Abitcareer.Mvc
         public void Init(HttpApplication context)
         {
             context.BeginRequest += new EventHandler(OnBeginRequest);
+            context.EndRequest += new EventHandler(OnEndRequest);
         }
 
         private void OnBeginRequest(Object sender, EventArgs args)
@@ -51,6 +52,11 @@ namespace Abitcareer.Mvc
             {
                 CEngine.Instance.SetCultureForThread(userCulture);
             }
+        }
+
+        private void OnEndRequest(Object sender, EventArgs args)
+        {
+            HttpContext.Current.Response.AppendCookie(new HttpCookie("lang", System.Threading.Thread.CurrentThread.CurrentCulture.Name));
         }
     }
 }

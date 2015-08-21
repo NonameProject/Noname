@@ -30,6 +30,11 @@ public class JsHandler : IHttpHandler
         var request = context.Request;
         var response = context.Response;
         var server = context.Server;
+        var lang = request.Cookies["lang"];
+        if (lang != null && !string.IsNullOrEmpty(lang.Value))
+        {
+            CEngine.Instance.SetCultureForThread(lang.Value);
+        }
         string pattern = @"\[([A-Z]\w+):([A-z]\w+)\]";
         using (var reader = new StreamReader(server.MapPath(Path.Combine("./", request.FilePath.Replace("handl", "Scripts")))))
         {
