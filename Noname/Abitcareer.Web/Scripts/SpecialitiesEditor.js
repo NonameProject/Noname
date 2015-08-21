@@ -197,13 +197,14 @@
                     window.location.assign('[Route:Default]#' + $(this).attr('id'));
                     return;
                 }
+                settings.inner.empty();
+                settings.partialView.show(0);
                 $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
                     if (!data) {
+                        settings.partialView.hide(0);
                         Notificate('[Resx:SpecialityOpenFailed]');
                     }
                     else {
-                        settings.inner.empty();
-                        settings.partialView.show(0);
                         settings.inner.css('top', 0);
                         settings.inner.html(data);
                     }
