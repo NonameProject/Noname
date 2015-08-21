@@ -13,7 +13,6 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
         [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ")]
         public override string Name { get; set; }
 
-        [Remote("IsSpecialityEnglishNameAvailable", "BackOffice", ErrorMessage = " ")]
         public string EnglishName { get; set; }
         [ScaffoldColumn(false)]
         public virtual int DirectionCode { get; set; }
@@ -23,7 +22,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public Dictionary<int, int> Salaries { get; set; }
 
-       public  Dictionary<string, int> Prices { get; set; }
+        public  Dictionary<string, int> Prices { get; set; }
 
         public SpecialityViewModel()
         {
