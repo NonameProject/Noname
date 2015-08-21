@@ -171,6 +171,10 @@
             settings.exit = $("#exit");
 
             settings.search = $("#search");
+            
+            settings.salary = $("ul.salaries li input");
+            
+            setting.payment = $("ul.tuition-fee li input");
 
 
             localStrings = localResourses;
@@ -190,6 +194,8 @@
             settings.exitButton.off();
             settings.exit.off();
             settings.search.off();
+            settings.salary.off();
+            setting.payment.off();
         },
 
         bindUIActions: function () {
@@ -264,8 +270,9 @@
 
             settings.editor.submit(function (event) {
                 
-                var payment = $("ul.tuition-fee li input");
-                var salary = $("ul.salaries li input");
+              
+                setting.salary.attr("min", 0);
+                settings.payment.attr("min",0);
                 
                 if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
                     specialityName = $('#Name').val();
@@ -273,7 +280,7 @@
                     event.preventDefault();
                     return false;
                 }
-                if ( parseInt(payment.val()) < 0 || parseInt(salary.val()) < 0 ) {
+                if (parseInt(settings.payment.val()) < 0 || parseInt(settings.salary.val()) < 0 ) {
                     $("#validation-payment-salaries").html(localStrings.BanValuesBelowZero);
                     event.preventDefault();
                     return false;
