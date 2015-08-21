@@ -272,9 +272,7 @@ form button:disabled {
 
     .card:hover
     {
-        -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        -moz-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.2);
     }
 
 .card:hover .ttip
@@ -353,22 +351,29 @@ form button:disabled {
 
 .sal-pal-wrap
 {
-    padding-top: 9px;
+    padding-top: 12px;
 }
 
 .payment-wrapper h5
 {
     margin-top: 6px;
 }
+
+.salary-wrapper h5
+{
+    margin-bottom: 10px !important;
+}
+
     .salary-wrapper h5, .payment-wrapper h5
     {
         margin-bottom: 0px;
+        margin-top: 6px;
     }
 
     .salary-wrapper h4, .payment-wrapper h4
     {
-        margin-top: 9px;
-        margin-bottom: 6px;
+        margin-top: 7px;
+        margin-bottom: -2px;
         font-weight: 600;
     }
 
