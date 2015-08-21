@@ -262,13 +262,13 @@
     <value>Невірний пароль або електронна адреса</value>
   </data>
   <data name="FirstPaymentName" xml:space="preserve">
-    <value>В топовому ВНЗ</value>
+    <value>топовому ВНЗ</value>
   </data>
   <data name="SecondPaymentName" xml:space="preserve">
-    <value>В середньому ВНЗ</value>
+    <value>середньому ВНЗ</value>
   </data>
   <data name="ThirdPaymentName" xml:space="preserve">
-    <value>В малопрестижному ВНЗ</value>
+    <value>малопрестижному ВНЗ</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
     <value>Додати спеціальність</value>
@@ -334,13 +334,13 @@
     <value>Графіки</value>
   </data>
   <data name="ListOfSpecialities" xml:space="preserve">
-    <value>Список спеціальностей</value>
+    <value>Перелік спеціальностей</value>
   </data>
   <data name="ToChart" xml:space="preserve">
     <value>Натисни для переходу</value>
   </data>
   <data name="PaymentForYear" xml:space="preserve">
-    <value>Плата за навчання</value>
+    <value>Плата за навчання в</value>
   </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>Сторінка не знайдена</value>
