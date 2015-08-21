@@ -66,10 +66,14 @@ namespace Abitcareer.Web.Components
             return Json(false);
         }
 
-        [HttpPost]
         public JsonResult IsSpecialityNameAvailable(string name)
         {
-            return Json(specialityManager.IsSpecialityNameAvailable(name));
+            return Json(specialityManager.IsSpecialityNameAvailable(name), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsSpecialityEnglishNameAvailable(string englishName)
+        {
+            return Json(specialityManager.IsSpecialityEnglishNameAvailable(englishName), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

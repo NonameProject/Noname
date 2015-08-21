@@ -334,7 +334,7 @@
     <value>Графіки</value>
   </data>
   <data name="ListOfSpecialities" xml:space="preserve">
-    <value>Перелік спеціальностей</value>
+    <value>Список спеціальностей</value>
   </data>
   <data name="ToChart" xml:space="preserve">
     <value>Натисни для переходу</value>
@@ -351,13 +351,16 @@
   <data name="CookiesOff" xml:space="preserve">
     <value>У вас вимкнені cookies. Для користування усіма можливостями сайту, будь ласка, увімкніть їх у налаштуваннях браузера.</value>
   </data>
-  <data name="BanValuesBelowZero" xml:space="preserve">
-    <value>Значення повинно бути більше 0</value>
+  <data name="BanSalariesBelowZero" xml:space="preserve">
+    <value>Заробітня плата повинна бути більшою або ріною нулю</value>
   </data>
   <data name="TextCardPayment" xml:space="preserve">
     <value>Зарплата за місяць</value>
   </data>
   <data name="TextCardSalary" xml:space="preserve">
     <value>Оплата навчання за місяць</value>
+  </data>
+  <data name="BanPaymentsBelowZero" xml:space="preserve">
+    <value>Плата за навчання повинна бути більшою або рівною нулю</value>
   </data>
 </root>
