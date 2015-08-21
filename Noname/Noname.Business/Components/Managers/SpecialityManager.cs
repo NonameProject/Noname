@@ -116,7 +116,7 @@ namespace Abitcareer.Business.Components.Managers
                 Index();
 
             var searcher = new MySearcher<Speciality>(luceneDirectory);
-            var list = searcher.Search(name).ToList();
+            var list = searcher.Search(name, "Name").ToList();
             var result = new List<string>();
 
             foreach (var item in list)
