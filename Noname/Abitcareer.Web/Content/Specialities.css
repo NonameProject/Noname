@@ -314,8 +314,7 @@ form button:disabled {
 {
     color: green;
     display: block;
-    font-family: myriad;
-    font-size: 24px;
+    font-size: 23px;
     margin-top: 53px;
 }
 
@@ -381,7 +380,7 @@ form button:disabled {
         color: #044004;
     }
         .salary-wrapper::before {
-            color: gray;
+            color: lightgreen;
             content: '';
             position: relative;
             top: -1px;
@@ -392,7 +391,7 @@ form button:disabled {
     }
 
     .payment-wrapper::before {
-            color: gray;
+            color: lightsalmon;
             content: '';
             position: relative;
             top: -1px;
@@ -403,7 +402,7 @@ form button:disabled {
     bottom: 0px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 30px;
     vertical-align: middle;
     background-color: #F2F2F2;
@@ -412,7 +411,7 @@ form button:disabled {
     right: 0px;
     text-align: center;
     left: 0px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .ttip

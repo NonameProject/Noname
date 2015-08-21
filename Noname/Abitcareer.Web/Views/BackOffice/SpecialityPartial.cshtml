@@ -9,7 +9,15 @@
     }
 }
 <article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
-    <div class="col-md-4 card z-depth-2 specButton">
+    @if (Model.Name.Length>37)
+    {
+        <script>
+            $('#@Model.Id').first().attr("data-toggle", "tooltip");
+            $('#@Model.Id').first().attr("title", '@Model.Name');
+            $('#@Model.Id').first().attr("data-placement", "bottom");
+        </script>
+    }
+    <div class="col-md-4 card z-depth-2 specButton" >
         @if (User.Identity.IsAuthenticated)
         {
             <div class="ttip">
