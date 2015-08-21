@@ -262,13 +262,13 @@
     <value>Login data is incorrect</value>
   </data>
   <data name="FirstPaymentName" xml:space="preserve">
-    <value>In top-rank university</value>
+    <value>top-rank university</value>
   </data>
   <data name="SecondPaymentName" xml:space="preserve">
-    <value>In middle-rank university</value>
+    <value>middle-rank university</value>
   </data>
   <data name="ThirdPaymentName" xml:space="preserve">
-    <value>In low-rank university</value>
+    <value>low-rank university</value>
   </data>
   <data name="AddSpeciality" xml:space="preserve">
     <value>Add speciality</value>
@@ -351,13 +351,16 @@
   <data name="CookiesOff" xml:space="preserve">
     <value>You have disabled cookies. To use all the features of the site, please enable them in your browser.</value>
   </data>
-  <data name="BanValuesBelowZero" xml:space="preserve">
-    <value>Value must be above 0</value>
+  <data name="BanSalariesBelowZero" xml:space="preserve">
+    <value>Salary must be equal or above 0</value>
   </data>
   <data name="TextCardPayment" xml:space="preserve">
     <value>Salary per month</value>
   </data>
   <data name="TextCardSalary" xml:space="preserve">
     <value>Tuition fees a month</value>
+  </data>
+  <data name="BanPaymentsBelowZero" xml:space="preserve">
+    <value>Tuition fee must eaual or above zero</value>
   </data>
 </root>
