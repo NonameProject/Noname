@@ -208,8 +208,9 @@
                         settings.inner.css('top', 0);
                         settings.inner.html(data);
                     }
-                }
-                );
+                }).fail(function () {
+                    settings.partialView.hide(0);
+                });
             });
 
             settings.deleteDiscard.on('click', function () {
