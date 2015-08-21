@@ -49,18 +49,6 @@
                 $("#createSpeciality").prop("disabled", true);
             }
         };
-
-        $('#EnglishName').rules().remote.complete = function (xhr) {
-            $("span[data-valmsg-for='EnglishName']").removeClass();
-            if (xhr.status == 200 && xhr.responseText === 'true') {
-                $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-ok success");
-                if(res) $("#createSpeciality").prop("disabled", false);
-            }
-            else {
-                $("span[data-valmsg-for='EnglishName']").addClass("glyphicon glyphicon-remove failure");
-                $("#createSpeciality").prop("disabled", true);
-            }
-        };
     }
 
     var resizeCards = function () {
@@ -161,7 +149,7 @@
 
             settings.addButton = $("#addCard");
 
-            settings.names = $("#Name, EnglishName");
+            settings.names = $("#Name");
 
             settings.editor = $("#editor");
 
@@ -206,7 +194,7 @@
                 if (event.target === this)
                     return;
                 if ($(this).data('isauthenticated') === 'False') {
-                    window.location.assign($('.navbar-brand').attr('href') + '#' + $(this).attr('id'));
+                    window.location.assign('[Route:Default]#' + $(this).attr('id'));
                     return;
                 }
                 $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
@@ -268,7 +256,7 @@
                 salary.attr("min", 0);
                 payment.attr("min", 0);
                 
-                if ($('#Name').val().length == 0 || $('#EnglishName').val().length == 0) {
+                if ($('#Name').val().length == 0) {
                     specialityName = $('#Name').val();
                     $("#js-validation").html(localStrings.ValidationNameCannotBeEmpty);
                     event.preventDefault();
