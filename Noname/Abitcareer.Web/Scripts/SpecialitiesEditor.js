@@ -195,7 +195,7 @@
                 if (event.target === this)
                     return;
                 if ($(this).data('isauthenticated') === 'False') {
-                    window.location.assign($('.navbar-brand').attr('href') + '#' + $(this).attr('id'));
+                    window.location.assign('[Route:Default]#' + $(this).attr('id'));
                     return;
                 }
                 $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
