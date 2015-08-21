@@ -29,8 +29,15 @@ namespace Abitcareer.Web.Components
         [AllowAnonymous]
         public ActionResult Specialities()
         {
-            var spec = specialityManager.GetList();
-            var tmp = spec.Where(x =>
+            var specialities = (IEnumerable<Speciality>)specialityManager.GetList();
+            if (!User.Identity.IsAuthenticated)
+            {
+                specialities = from spec in specialities
+                               where (spec.Salaries.Max(x => x.Value) > 0 &&
+                                  spec.Prices["TopUniversityPrice"] > 0)
+                               select spec;
+            }
+            var tmp = specialities.Where(x =>
                 !String.IsNullOrEmpty(x.Name) && !String.IsNullOrEmpty(x.Id)).ToList();
             var result = AutoMapper.Mapper.Map<List<SpecialityViewModel>>(tmp);
             return View(result);
