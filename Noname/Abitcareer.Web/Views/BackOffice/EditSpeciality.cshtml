@@ -1,10 +1,4 @@
-﻿@using Abitcareer.Mvc.ViewModels.LocalizedViewModels
-@using System.Web
-@using System.Globalization
-@using System.Web.Mvc
-@using System.Text.RegularExpressions
-
-@model SpecialityViewModel
+﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
     @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role="form", id = "editor" }))
     {        
@@ -13,9 +7,11 @@
         <h2>@LocalizationResx.EditSpeciality</h2>
         @Html.LabelFor(m=>m.Name, LocalizationResx.NameUA)
         @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(x => x.Name)
         <br />
         @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
         @Html.EditorFor(m => m.EnglishName)
+        @Html.ValidationMessageFor(x => x.EnglishName)
         <br />
         <span id="js-validation" class="error-text"></span>
         <article class="left">    
