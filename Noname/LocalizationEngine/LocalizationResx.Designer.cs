@@ -232,7 +232,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на В топовому ВНЗ.
+        ///   Ищет локализованную строку, похожую на топовому ВНЗ.
         /// </summary>
         public static string FirstPaymentName {
             get {
@@ -268,7 +268,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Список спеціальностей.
+        ///   Ищет локализованную строку, похожую на Перелік спеціальностей.
         /// </summary>
         public static string ListOfSpecialities {
             get {
@@ -394,7 +394,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Плата за навчання.
+        ///   Ищет локализованную строку, похожую на Плата за навчання в.
         /// </summary>
         public static string PaymentForYear {
             get {
@@ -520,7 +520,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на В середньому ВНЗ.
+        ///   Ищет локализованную строку, похожую на середньому ВНЗ.
         /// </summary>
         public static string SecondPaymentName {
             get {
@@ -727,7 +727,7 @@ namespace CultureEngine {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на В малопрестижному ВНЗ.
+        ///   Ищет локализованную строку, похожую на малопрестижному ВНЗ.
         /// </summary>
         public static string ThirdPaymentName {
             get {
