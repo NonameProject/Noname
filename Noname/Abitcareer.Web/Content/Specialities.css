@@ -84,13 +84,13 @@ h2 {
 }
 
 #search {
-    border-bottom: 1px solid rgba(0,102,255, .9);
+    border-bottom: 1px solid #00bfa5;
     padding-right: 20px;
     font-size: 16px;
 }
 
     #search.success {
-        border-bottom: 1px solid rgba(0, 250, 102, 1) !important;
+        border-bottom: 1px solid #00bfa5 !important;
         box-shadow: 0 10px 14px -5px rgba(0, 160, 250, 0.25) !important;
         color: inherit;
         -webkit-box-shadow: 0px 10px 14px -5px rgba(0,160,250,0.25) !important;
@@ -98,7 +98,7 @@ h2 {
     }
 
     #search:focus{
-        border-bottom: 1px solid rgba(0,102,255,1);
+        border-bottom: 1px solid #00bfa5;
         box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
         -webkit-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);
         -moz-box-shadow: 0px 10px 14px -5px rgba(0,102,255,0.25);    
