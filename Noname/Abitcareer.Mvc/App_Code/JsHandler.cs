@@ -20,7 +20,7 @@ public class JsHandler : IHttpHandler
                 return Url.RouteUrl(name, new { locale = System.Threading.Thread.CurrentThread.CurrentCulture.Name });
             }},
             { "Resx", (name, context)=>{
-                return LocalizationResx.GetString(name);
+                return LocalizationResx.ResourceManager.GetString(name, LocalizationResx.Culture);
             }}
         };
     }
