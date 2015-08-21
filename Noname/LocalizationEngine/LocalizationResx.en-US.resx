@@ -361,6 +361,6 @@
     <value>Tuition fees a month</value>
   </data>
   <data name="BanPaymentsBelowZero" xml:space="preserve">
-    <value>Tuition fee must eaual or above zero</value>
+    <value>Tuition fee must equal or above zero</value>
   </data>
 </root>

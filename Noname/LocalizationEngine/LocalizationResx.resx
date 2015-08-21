@@ -352,7 +352,7 @@
     <value>У вас вимкнені cookies. Для користування усіма можливостями сайту, будь ласка, увімкніть їх у налаштуваннях браузера.</value>
   </data>
   <data name="BanSalariesBelowZero" xml:space="preserve">
-    <value>Заробітня плата повинна бути більшою або ріною нулю</value>
+    <value>Заробітня плата повинна бути більшою або рівною нулю</value>
   </data>
   <data name="TextCardPayment" xml:space="preserve">
     <value>Зарплата за місяць</value>
