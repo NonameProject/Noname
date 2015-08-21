@@ -117,7 +117,6 @@
 
     return {
 
-
         resizeCards: resizeCards,
 
         getCulture: function () {
@@ -288,6 +287,19 @@
                 if (!settings.editor.hasClass('addForm')) {
                     specialityName = "[" + $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
                 }
+                var revertZeroSubmit = function () {
+                    var input = $('.salaries[value]')
+                    var id = [1, 2, 3, 4, 5, 10, 20];
+                    for (var i = 0; i < id.length; i++) {
+                        if ($('#Salaries_' + id[i] + '_').val() == '') {
+                            $('#Salaries_' + id[i] + '_').css('color', 'transparent').val('0');
+                        }
+                    };
+                    if ($('#Prices_TopUniversityPrice_').val() == '') $('#Prices_TopUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices_MiddleUniversityPrice_').val() == '') $('#Prices_MiddleUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices_LowUniversityPrice_').val() == '') $('#Prices_LowUniversityPrice_').css('color', 'transparent').val('0');
+                }
+                revertZeroSubmit();
                 $.post(url, data, function (d) {
                     if (d) {
                         Notificate(specialityName + localStrings.SpecialityChangeSuccess);

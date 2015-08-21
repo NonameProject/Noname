@@ -73,6 +73,19 @@
     }
 <script>
     $(document).ready(function () {
+        var revertZero = function () {
+            var input = $('.salaries[value]')
+            var id = [1, 2, 3, 4, 5, 10, 20];
+            for (var i = 0; i < id.length; i++) {
+                if ($('#Salaries_' + id[i] + '_').val() == '0') {
+                    $('#Salaries_' + id[i] + '_').val('');
+                }
+            };
+            if ($('#Prices_TopUniversityPrice_').val() == '0') $('#Prices_TopUniversityPrice_').val('');
+            if($('#Prices_MiddleUniversityPrice_').val() == '0')$('#Prices_MiddleUniversityPrice_').val('');
+            if($('#Prices_LowUniversityPrice_').val() == '0')$('#Prices_LowUniversityPrice_').val('');
+        }
+        revertZero();
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
