@@ -24,8 +24,12 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public  Dictionary<string, int> Prices { get; set; }
 
+        public int StartOfWorking { get; set; }
+
         public SpecialityViewModel()
         {
+            StartOfWorking = 1;
+
             Salaries = new Dictionary<int, int>();
 
             Prices = new Dictionary<string, int>();

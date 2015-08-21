@@ -32,3 +32,8 @@
 {
     font-size: 15px !important;
 }
+
+.teal.accent-4 {
+    background-color: darkgray !important;
+    color: white;
+}
