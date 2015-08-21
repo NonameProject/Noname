@@ -34,14 +34,12 @@
     };
 
     var onRemoteComplete = function () {
-
         var res = false;
-
         $('#Name').rules().remote.complete = function (xhr) {
             $("span[data-valmsg-for='Name']").removeClass();
-            if (xhr.status == 200 && xhr.responseText === 'true') {
+            if ((xhr.status == 200 && xhr.responseText === 'true')) {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
-                res = true;
+                $("#createSpeciality").prop("disabled", false);
             }
             else {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure");
@@ -235,6 +233,11 @@
                             settings.inner.css('top', 0);
                             $.validator.unobtrusive.parse('#editor');
                             onRemoteComplete();
+                            if(!$("#Name").val())
+                            {
+                                $("#createSpeciality").prop("disabled", false);
+                                //$("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success")
+                            }
                         }
                     });
             });
@@ -264,21 +267,21 @@
                     event.preventDefault();
                     return false;
                 }
-
+               
                 var salaries = [1, 2, 3, 4, 5, 10, 20];
-                for (var i = 0; i < salaries.length; i++) 
+                for (var i = 0; i < salaries.length; i++) {
                     if (parseInt($('#Salaries_' + salaries[i] + '_').val()) < 0) {
                         $("#js-validation").html(localStrings.BanSalariesBelowZero);
                         event.preventDefault();
                         return false;
                     }
-                var prices = ["_TopUniversityPrice_", "_MiddleUniversityPrice_", "_LowUniversityPrice_"];
-                for (var i = 0; i < prices.length; i++)
-                    if (parseInt($('#Prices_' + salaries[i] + '_').val()) < 0) {
-                        $("#js-validation").html(localStrings.BanPaymentsBelowZero);
-                        event.preventDefault();
-                        return false;
-                    }
+                }
+            
+                if (parseInt($("#Prices_LowUniversityPrice_").val()) < 0 || parseInt($("#Prices_MiddleUniversityPrice_").val()) < 0 || parseInt($("#Prices_TopUniversityPrice_").val()) < 0) {
+                    $("#validation-payment-salaries").html(localStrings.BanPaymentsBelowZero);
+                    event.preventDefault();
+                    return false;
+                }
                 var data = settings.editor.serialize(),
                     url = settings.editor.attr("action"),
                     id = $('#Id').val(),
