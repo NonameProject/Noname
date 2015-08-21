@@ -14,8 +14,12 @@ namespace Abitcareer.Business.Models
 
         public virtual Dictionary<string, Decimal> Prices { get; set; }
 
+        public virtual int StartOfWorking { get; set; }
+
         public Speciality()
         {
+            StartOfWorking = 1;
+
             Salaries = new Dictionary<int, int>();
 
             Prices = new Dictionary<string, Decimal>();

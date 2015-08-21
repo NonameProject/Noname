@@ -9,6 +9,11 @@
   font-style: normal;
 }
 
+body
+{
+    overflow: scroll;
+}
+
 .salaries li input
 {
     width: 80px;
@@ -529,4 +534,23 @@ background-color:inherit;
 .material-icons
 {
         color: white;
+}
+
+.teal.accent-4 {
+    background-color: darkgray !important;
+     color: white;
+
+}
+
+#Name
+{
+    margin-right: -22px;
+    width: 398px;
+    padding-right: 22px;
+}
+
+#EnglishName
+{
+    width: 398px;
+    padding-right: 22px;
 }

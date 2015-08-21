@@ -184,3 +184,8 @@ select
 #input {
     max-height: 620px;
 }
+
+.teal.accent-4 {
+    background-color: darkgrey !important;
+     color: white;
+}
