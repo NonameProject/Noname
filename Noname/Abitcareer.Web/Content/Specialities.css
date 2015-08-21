@@ -380,7 +380,7 @@ form button:disabled {
         color: #044004;
     }
         .salary-wrapper::before {
-            color: lightgreen;
+            color: darkgrey;
             content: '';
             position: relative;
             top: -1px;
@@ -391,7 +391,7 @@ form button:disabled {
     }
 
     .payment-wrapper::before {
-            color: lightsalmon;
+            color: darkgrey;
             content: '';
             position: relative;
             top: -1px;
@@ -525,4 +525,9 @@ background-color:inherit;
     background-color: transparent;
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
     border: none;
+}
+
+.material-icons
+{
+        color: white;
 }
