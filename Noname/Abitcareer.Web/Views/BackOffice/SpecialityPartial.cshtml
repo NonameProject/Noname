@@ -9,7 +9,7 @@
     }
 }
 <article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
-    @if (Model.Name.Length>37)
+    @if (Model.Name.Length>32)
     {
         <script>
             $('#@Model.Id').first().attr("data-toggle", "tooltip");
