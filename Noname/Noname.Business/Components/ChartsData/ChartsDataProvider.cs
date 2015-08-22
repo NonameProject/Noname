@@ -46,7 +46,7 @@ namespace Abitcareer.Business.Components.ChartsData
             result.Add(new List<Point>(yearsOfStudying)); //salaries per month
             result.Add(new List<Point>(yearsOfStudying)); //salaries summary
 
-            Point point = new Point(startOfWorking);
+            Point point = new Point(speciality.StartOfWorking);
             result[monthSalaryIndex].Add(point);
             result[summarySalaryIndex].Add(point);
 
@@ -95,7 +95,7 @@ namespace Abitcareer.Business.Components.ChartsData
         {
             var aproximator = InitAproximator(speciality, polinom);
 
-            for (var i = startOfWorking; (result[monthPriceIndex].Count > i ||
+            for (var i = speciality.StartOfWorking; (result[monthPriceIndex].Count > i ||
                 result[summarySalaryIndex][i - 1].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
             {
                 var value = aproximator.CalcY(i);

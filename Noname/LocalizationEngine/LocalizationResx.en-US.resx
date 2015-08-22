@@ -363,4 +363,7 @@
   <data name="BanPaymentsBelowZero" xml:space="preserve">
     <value>Tuition fee must equal or above zero</value>
   </data>
+  <data name="StartOfWorking" xml:space="preserve">
+    <value>The year of study on which you start to work</value>
+  </data>
 </root>

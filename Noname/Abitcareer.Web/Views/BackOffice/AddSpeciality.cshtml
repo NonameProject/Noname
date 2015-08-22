@@ -74,6 +74,12 @@
                         @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
                     </li>
                 </ul> 
+            <ul>
+                <li>
+                    @Html.LabelFor(x => x.StartOfWorking, LocalizationResx.StartOfWorking)
+                    @Html.EditorFor(x => x.StartOfWorking)
+                </li>
+            </ul>
             <span id = "validation-payment-salaries" class="error-text"></span>        
             </article>
     <div class="clear"></div>

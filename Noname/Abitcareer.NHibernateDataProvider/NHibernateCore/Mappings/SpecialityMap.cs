@@ -20,6 +20,8 @@ namespace Abitcareer.NHibernateDataProvider.NHibernateCore.Mappings
             Map(x => x.CompressedSalaries).Length(500);
 
             Map(x => x.CompressedPrices).Length(500);
+
+            Map(x => x.StartOfWorking);
         }
     }
 }
