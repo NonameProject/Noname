@@ -96,7 +96,7 @@ namespace Abitcareer.Business.Components.ChartsData
             var aproximator = InitAproximator(speciality, polinom);
 
             for (var i = speciality.StartOfWorking; (result[monthPriceIndex].Count > i ||
-                result[summarySalaryIndex][i - 1].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
+                result[summarySalaryIndex][i - 1 - speciality.StartOfWorking].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
             {
                 var value = aproximator.CalcY(i);
                 if (value < 0)
