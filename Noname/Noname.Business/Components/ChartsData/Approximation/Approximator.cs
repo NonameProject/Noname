@@ -32,22 +32,23 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
             data = new Dictionary<int, double>();
             var counter = 0;
             var previous = 0;
-            var year = 0;
+            var year = 1;
             this.startOfWorking = startOfWorking;
             foreach (var item in x)
             {
-                var shiftedYear = item + startOfWorking - 1;
+                var shiftedYear = item + startOfWorking;
                 var delta = (y.Count < 2 || counter == 0) ? y[counter] : y[counter] - y[counter - 1];
-                var step = (year < startOfWorking) ? 0 : delta / (shiftedYear - (year - 1));
+                var step = (shiftedYear + 1 == year) ? 0 : delta / (shiftedYear - (year - 1));
                 while (year < shiftedYear)
                 {
-                    data.Add(year, previous + step);
+                    var valueToAdd = (counter == 0) ? 0 : previous + step;
+                    data.Add(year - 1, valueToAdd);
                     previous = previous + step;
                     year++;
                 }
-                if (data.Keys.LastOrDefault() == shiftedYear - 1)
+                if (!data.ContainsKey(shiftedYear))
                 {
-                    data.Add(shiftedYear, y[counter]);
+                    data.Add(shiftedYear - 1, y[counter]);
                     previous = y[counter];
                     year = shiftedYear + 1;
                 }
