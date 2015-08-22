@@ -62,7 +62,7 @@
 
             <ul>
                 <li>
-                    @Html.LabelFor(x => x.StartOfWorking, LocalizationResx.StartOfWorking)
+                   <h4 id="job-year">@LocalizationResx.StartOfWorking.ToUpper()</h4>
                     @Html.EditorFor(x => x.StartOfWorking)
                 </li>
             </ul>
@@ -87,6 +87,7 @@
             if ($('#Prices_TopUniversityPrice_').val() == '0') $('#Prices_TopUniversityPrice_').val('');
             if ($('#Prices_MiddleUniversityPrice_').val() == '0') $('#Prices_MiddleUniversityPrice_').val('');
             if ($('#Prices_LowUniversityPrice_').val() == '0') $('#Prices_LowUniversityPrice_').val('');
+            if ($('#StartOfWorking').val() == '0') $('#StartOfWorking').val('');
         }
         revertZero();
         SpecialityEditor.init({

@@ -364,6 +364,6 @@
     <value>Плата за навчання повинна бути більшою або рівною нулю</value>
   </data>
   <data name="StartOfWorking" xml:space="preserve">
-    <value>Рік навчання на якому почав працювати</value>
+    <value>Рік навчання, на якому почав працювати</value>
   </data>
 </root>

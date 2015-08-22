@@ -164,3 +164,7 @@ nav ul a
     background: white;
     display:inline-block;
 }
+#job-year 
+{
+    line-height:22px;
+}
