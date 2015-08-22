@@ -10,6 +10,7 @@
             }
 
             var length = res[data.length - 1].data.length - 1;
+            length = res[data.length - 1].data[length].x;
 
             for (var i = 0; i < data.length - 2; i++) {
                 if (i < 3) {
@@ -20,19 +21,11 @@
                 }
             }
 
-            $("#js-loading-screen").removeClass("active");
             callback(res);
-        });
-    };
-
-    this.MultiplieData = function (data, coef) {
-        var data2 = [];
-        for (var i = 0; i < data.length; i++) {
-            var x2 = data[i].x,
-                y2 = data[i].y * coef;
-            data2.push({ x: x2, y: y2 });
-        }
-        return data2;
+        })
+            .always(function () {
+                $("#js-loading-screen").removeClass("active");
+            });
     };
 }
 
