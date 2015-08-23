@@ -1,0 +1,16 @@
+﻿@model Dictionary<string, int>
+
+<ul class="tuition-fee">                  
+    <li>
+        @Html.LabelFor(m => m["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
+        @Html.EditorFor(m => m["TopUniversityPrice"])
+    </li>
+    <li>
+        @Html.LabelFor(m => m["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
+        @Html.EditorFor(m => m["MiddleUniversityPrice"])
+    </li>
+    <li>
+        @Html.LabelFor(m => m["LowUniversityPrice"],  LocalizationResx.ThirdPaymentName)
+        @Html.EditorFor(m => m["LowUniversityPrice"])
+    </li>
+</ul>

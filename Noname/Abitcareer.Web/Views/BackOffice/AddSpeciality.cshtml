@@ -1,92 +1,12 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
+<button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 @using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false", @class = "addForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
-        <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        @Html.HiddenFor(x => x.Id)   
-    
-        <h2>@LocalizationResx.AddSpeciality</h2>
-        
-        @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
-        @Html.EditorFor(m => m.Name)
-        @Html.ValidationMessageFor(x => x.Name)
-        <br />
-        @Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
-        @Html.EditorFor(m => m.EnglishName)
-        @Html.ValidationMessageFor(x => x.EnglishName)
-        <br />
-        <span id="js-validation" class="error-text"></span>
-      
-        <article class="left">
-    
-            <ul class="salaries">
-                <h4>@LocalizationResx.Salaries.ToUpper()</h4>
-                @foreach (var item in Model.Salaries)
-                {
-                    string yearEnding = LocalizationResx.EndAfterFour;
-                    <li>
-                        @if (item.Key < 10 || item.Key > 20)
-                        {
-                            switch (item.Key % 10)
-                            {
-                            case 1:
-                                yearEnding = LocalizationResx.FirstEnd;
-                                break;
-                            case 2:
-                                yearEnding = LocalizationResx.SecondEnd;
-                                break;
-                            case 3:
-                                yearEnding = LocalizationResx.ThirdEnd;
-                                break;
-                            default:
-                                yearEnding = LocalizationResx.EndAfterFour;
-                                break;
-                            }
-                        }
-                        @Html.LabelFor(m => m.Salaries[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
-                        @if (Model.Salaries[item.Key] != 0)
-                        {
-                            @Html.EditorFor(m => m.Salaries[item.Key], new { @class = "form-control" })
-                        }
-                        else
-                        {
-                           @Html.EditorFor(m => m.Salaries[item.Key], new { @value = "" })
-                        }
-
-                    </li>
-                }
-                </ul>
-                <ul class="tuition-fee">
-                    <h4>@LocalizationResx.Payment.ToUpper()</h4>
-                    <li>
-                        @Html.LabelFor(m => m.Prices["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
-                        @Html.EditorFor(m => m.Prices["TopUniversityPrice"])
-                    </li>
-                    <li>
-                        @Html.LabelFor(m => m.Prices["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
-                        @Html.EditorFor(m => m.Prices["MiddleUniversityPrice"])
-                    </li>
-                    <li>
-                        @Html.LabelFor(m => m.Prices["LowUniversityPrice"], LocalizationResx.ThirdPaymentName)
-                        @Html.EditorFor(m => m.Prices["LowUniversityPrice"])
-                    </li>
-                </ul> 
-            <ul>
-                <li>
-                    <h4 id="job-year">@LocalizationResx.StartOfWorking.ToUpper()</h4>
-                    @Html.EditorFor(x => x.StartOfWorking)
-                </li>
-            </ul>
-            <span id = "validation-payment-salaries" class="error-text"></span>        
-            </article>
-    <div class="clear"></div>
-       <div class="row">            
-            <button type="submit" id="createSpeciality" class="btn btn-primary right waves-effect waves-light teal accent-4">@LocalizationResx.Save</button>
-            <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
-        </div>
+    @Html.Partial("Speciality", Model)
 }
 
 <script>

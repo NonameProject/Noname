@@ -1,0 +1,33 @@
+﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
+
+@Html.HiddenFor(x => x.Id)
+<h2>@LocalizationResx.EditSpeciality</h2>
+@Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
+@Html.EditorFor(m => m.Name)
+@Html.ValidationMessageFor(x => x.Name)
+<br />
+@Html.LabelFor(m => m.EnglishName, LocalizationResx.NameEN)
+@Html.EditorFor(m => m.EnglishName)
+@Html.ValidationMessageFor(x => x.EnglishName)
+<br />
+<span id="js-validation" class="error-text"></span>
+<article class="right">
+    <h4>@LocalizationResx.Payment.ToUpper()</h4>
+    @Html.EditorFor(m => m.Prices, "TutionFee")
+    <h4 id="job-year">@Html.LabelFor(m => m.StartOfWorking, LocalizationResx.StartOfWorking.ToUpper())</h4>
+    <ul>
+        <li>
+            @Html.EditorFor(x => x.StartOfWorking)
+        </li>
+    </ul>
+    <span id="validation-payment-salaries" class="error-text"></span>
+</article>
+<article class="left">
+    <h4>@LocalizationResx.Salaries.ToUpper()</h4> 
+    @Html.EditorFor(m => m.Salaries, "Salaries")
+</article>
+<div class="clear"></div>
+<div class="row">        
+    <button type="submit" id="saveButton" class="btn btn-primary right waves-effect waves-light teal accent-4">@LocalizationResx.Save</button>
+    <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
+</div>
