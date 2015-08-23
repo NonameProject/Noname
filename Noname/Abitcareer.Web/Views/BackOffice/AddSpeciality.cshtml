@@ -1,7 +1,7 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
 <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { Id = "editor", onsubmit = "return false", @class = "addForm" }))
+@using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { id = "editor", onsubmit = "return false", @class = "addForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -19,9 +19,9 @@
                     $('#Salaries_' + id[i] + '_').val('');
                 }
             };
-            if ($('#Prices_TopUniversityPrice_').val() == '0') $('#Prices_TopUniversityPrice_').val('');
-            if ($('#Prices_MiddleUniversityPrice_').val() == '0') $('#Prices_MiddleUniversityPrice_').val('');
-            if ($('#Prices_LowUniversityPrice_').val() == '0') $('#Prices_LowUniversityPrice_').val('');
+            if ($('#Prices__TopUniversityPrice_').val() == '0') $('#Prices__TopUniversityPrice_').val('');
+            if ($('#Prices__MiddleUniversityPrice_').val() == '0') $('#Prices__MiddleUniversityPrice_').val('');
+            if ($('#Prices__LowUniversityPrice_').val() == '0') $('#Prices__LowUniversityPrice_').val('');
             if ($('#StartOfWorking').val() == '0') $('#StartOfWorking').val('');
         }
         revertZero();

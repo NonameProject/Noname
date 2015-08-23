@@ -20,7 +20,7 @@ namespace Abitcareer.Mvc.Components
             var dictionary = new Dictionary<int, int>();
             foreach (var item in model.Salaries)
             {
-                int.TryParse(bindingContext.ValueProvider.GetValue("Salaries[" + item.Key + "]").AttemptedValue, out tmp);
+                int.TryParse(bindingContext.ValueProvider.GetValue("Salaries.[" + item.Key + "]").AttemptedValue, out tmp);
                 dictionary[item.Key] = tmp;
             }
             model.Salaries = dictionary;
@@ -28,7 +28,7 @@ namespace Abitcareer.Mvc.Components
             var newDictionary = new Dictionary<string, int>();
             foreach (var item in model.Prices)
             {
-                int.TryParse(bindingContext.ValueProvider.GetValue("Prices[" + item.Key + "]").AttemptedValue, out tmp);
+                int.TryParse(bindingContext.ValueProvider.GetValue("Prices.[" + item.Key + "]").AttemptedValue, out tmp);
                 newDictionary[item.Key] = tmp;
             }
             model.Prices = newDictionary;

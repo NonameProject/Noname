@@ -277,7 +277,7 @@
                     }
                 }
             
-                if (parseInt($("#Prices_LowUniversityPrice_").val()) < 0 || parseInt($("#Prices_MiddleUniversityPrice_").val()) < 0 || parseInt($("#Prices_TopUniversityPrice_").val()) < 0) {
+                if (parseInt($("#Prices__LowUniversityPrice_").val()) < 0 || parseInt($("#Prices__MiddleUniversityPrice_").val()) < 0 || parseInt($("#Prices__TopUniversityPrice_").val()) < 0) {
                     $("#validation-payment-salaries").html(localStrings.BanPaymentsBelowZero);
                     event.preventDefault();
                     return false;
@@ -298,9 +298,9 @@
                             $('#Salaries_' + id[i] + '_').css('color', 'transparent').val('0');
                         }
                     };
-                    if ($('#Prices_TopUniversityPrice_').val() == '') $('#Prices_TopUniversityPrice_').css('color', 'transparent').val('0');
-                    if ($('#Prices_MiddleUniversityPrice_').val() == '') $('#Prices_MiddleUniversityPrice_').css('color', 'transparent').val('0');
-                    if ($('#Prices_LowUniversityPrice_').val() == '') $('#Prices_LowUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__TopUniversityPrice_').val() == '') $('#Prices__TopUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__MiddleUniversityPrice_').val() == '') $('#Prices__MiddleUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__LowUniversityPrice_').val() == '') $('#Prices__LowUniversityPrice_').css('color', 'transparent').val('0');
                 }
                 revertZeroSubmit();
                 $.post(url, data, function (d) {
