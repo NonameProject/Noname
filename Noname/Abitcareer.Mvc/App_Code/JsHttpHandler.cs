@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
-public class JsHandler : IHttpHandler
+public class JsHttpHandler : IHttpHandler
 {
     private delegate string OperationDelegate(string param, System.Web.Routing.RequestContext context);
     private static Dictionary<string, OperationDelegate> operations;
 
-    static JsHandler( )
+    static JsHttpHandler( )
     {
         operations =  new Dictionary<string, OperationDelegate>
         {

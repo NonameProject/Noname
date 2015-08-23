@@ -119,7 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbitcareerApplication.cs" />
-    <Compile Include="App_Code\JsHandler.cs" />
+    <Compile Include="App_Code\JsHttpHandler.cs" />
     <Compile Include="App_Code\RouteHandler.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
