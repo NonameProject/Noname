@@ -172,3 +172,6 @@ nav ul a
         color:inherit;
         font:inherit;
     }
+    input[type='number'] {
+-moz-appearance: textfield;
+}

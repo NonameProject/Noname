@@ -75,11 +75,12 @@ select
 #greeting h3
 {
     text-align: center;
+    font-size:35px;
 }
 
 #greeting
 {
-    width: 300px;
+    width: 450px;
     margin: 0 auto;
     text-align: center;
 }
@@ -188,4 +189,10 @@ select
 .teal.accent-4 {
     background-color: darkgrey !important;
      color: white;
+}
+.greeting {
+    font-size:18px;
+}
+a#commit {
+    padding: 7px 12px;
 }
