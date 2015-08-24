@@ -197,7 +197,7 @@
                 }
                 settings.inner.empty();
                 settings.partialView.show(0);
-                $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
+                $.get('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
                     if (!data) {
                         settings.partialView.hide(0);
                         Notificate('[Resx:SpecialityOpenFailed]');
@@ -205,6 +205,8 @@
                     else {
                         settings.inner.css('top', 0);
                         settings.inner.html(data);
+                        $.validator.unobtrusive.parse('#editor');
+                        onRemoteComplete();
                     }
                 }).fail(function () {
                     settings.partialView.hide(0);
@@ -224,22 +226,18 @@
             settings.addButton.on("click", function (event) {
                 settings.inner.empty();
                 event.stopPropagation();
-                $.ajax(
-                    {
-                        url: "[Route:addSpeciality]",
-                        success: function (data) {
-                            settings.inner.html(data);
-                            settings.partialView.show(0);
-                            settings.inner.css('top', 0);
-                            $.validator.unobtrusive.parse('#editor');
-                            onRemoteComplete();
-                            if(!$("#Name").val())
-                            {
-                                $("#createSpeciality").prop("disabled", false);
-                                //$("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success")
-                            }
-                        }
-                    });
+                settings.partialView.show(0);
+                $.get("[Route:addSpeciality]", function (data) {
+                    settings.inner.html(data);
+                    settings.inner.css('top', 0);
+                    $.validator.unobtrusive.parse('#editor');
+                    onRemoteComplete();
+                    if (!$("#Name").val()) {
+                        $("#createSpeciality").prop("disabled", false);
+                    }
+                }).fail(function () {
+                    settings.partialView.hide(0);
+                });
             });
 
             settings.deleteSubmit.on('click', function () {

@@ -43,6 +43,7 @@ namespace Abitcareer.Web.Components
             return View(result);
         }
 
+        [HttpGet]
         public ActionResult EditSpeciality(string id)
         {
             try
@@ -84,7 +85,7 @@ namespace Abitcareer.Web.Components
         }
 
         [HttpPost]
-        public ActionResult Save(SpecialityViewModel editedModel)
+        public ActionResult EditSpeciality(SpecialityViewModel editedModel)
         {
             var mappedModel = AutoMapper.Mapper.Map<Speciality>(editedModel);
             var result = specialityManager.TrySave(mappedModel);
