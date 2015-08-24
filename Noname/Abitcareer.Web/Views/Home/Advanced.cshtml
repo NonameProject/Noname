@@ -8,7 +8,7 @@
     @Html.HiddenFor(x => x.EnglishName)
     @Html.HiddenFor(x => x.Id)
     <h2>@LocalizationResx.Advanced</h2>
-    <p id="nameOfSpeciality">@Model.Name.ToUpper()</p>
+    @Model.Name
     <article class="right">
         <h4>@LocalizationResx.Payment.ToUpper()</h4>
         @Html.EditorFor(m => m.Prices, "TutionFee")
@@ -19,6 +19,7 @@
                 @Html.ValidationMessageFor(x => x.StartOfWorking)
             </li>
         </ul>
+        <span id="js-validation" class="error-text"></span>
         <h4 id="additionalCosts">@LocalizationResx.AdditionalCosts</h4>
         <ul>
             <li>
@@ -41,10 +42,8 @@
     </article>
     <div class="clear"></div>
     <div class="row">
-        <div id="buttons">        
         <button type="submit" id="calculate" class="btn btn-primary right waves-effect waves-light teal accent-4">@LocalizationResx.Calculate</button>
         <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
-            </div>
     </div>
 }
 <script>

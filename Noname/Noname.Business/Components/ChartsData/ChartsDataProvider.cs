@@ -95,6 +95,8 @@ namespace Abitcareer.Business.Components.ChartsData
         {
             var aproximator = InitAproximator(speciality, polinom);
 
+            var isFirstNonZeroValueReached = false;
+
             for (var i = speciality.StartOfWorking; (result[monthPriceIndex].Count > i ||
                 result[summarySalaryIndex][i - 1 - speciality.StartOfWorking].y <= result[summaryPriceIndex][result[summaryPriceIndex].Count - 1].y) && i < maxYears; i++)
             {
@@ -104,11 +106,22 @@ namespace Abitcareer.Business.Components.ChartsData
 
                 var newPoint = new Point(i, value);
                 if (result[monthPriceIndex].Count > i)
+                {
+                    if (!isFirstNonZeroValueReached && value > 0) 
+                        result[monthSalaryIndex].Add(new Point(i, 0));
                     result[monthSalaryIndex].Add(newPoint);
+                }
                 else if (result[monthPriceIndex].Count == i && result[monthPriceIndex].Last().y >= value)
+                {
+                    if (!isFirstNonZeroValueReached && value > 0) 
+                        result[monthSalaryIndex].Add(new Point(i, 0));
                     result[monthSalaryIndex].Add(newPoint);
+                }
 
                 result[summarySalaryIndex].Add(new Point(i, result[summarySalaryIndex].Last().y + 12 * value));
+
+                if (value > 0)
+                    isFirstNonZeroValueReached = true;
             }
         }
 
