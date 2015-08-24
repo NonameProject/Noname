@@ -1,6 +1,6 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityAdvancedViewModel
 
-@using (Html.BeginForm("GetAdvancedSpeciality", "Home", FormMethod.Post))
+@using (Html.BeginForm("GetAdvancedSpeciality", "Home", FormMethod.Post, new { id = "editor" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -45,3 +45,8 @@
         <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
     </div>
 }
+<script>
+    $(function () {
+        BindHandler();
+    });
+</script>

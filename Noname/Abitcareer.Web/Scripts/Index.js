@@ -34,7 +34,7 @@
 
     this.getAdvancedData = function (callback) {
         $("#js-loading-screen").addClass("active");
-        $.post('[Route:GetAdvancedSpeciality]', { id: $("#spec").val() }, function (data) {
+        $.post('[Route:GetAdvancedSpeciality]', $('#editor').serialize(), function (data) {
             var res = prepareData(data);
             callback(res);
         })
@@ -44,17 +44,7 @@
     };
 }
 
-$(function () {
-    setHash();
-
-    var urlContainsSpecialityHash = /[\w\s]*([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12})/gi.test(document.location.href.split('#')[1]);
-    if (!urlContainsSpecialityHash)
-        $("#js-loading-screen").removeClass("active");
-
-    $('a.changeLanguage:not([href*="#"])').click(function () {
-        $("#js-loading-screen").addClass("active");
-    });
-
+var module = function () {
     var valueTypes = {
         costs: '[Resx:Costs]',
         year: '[Resx:Year]',
@@ -67,138 +57,119 @@ $(function () {
 
     var provider = new DataProvider();
 
-    var drawAdvanced = function () {
+    var DrawChart = function (selectedSpec) {
+        var butt = $('#commit');
+        butt.prop('disabled', true);
+
+        var length = selectedSpec.length;
+
+        data1 = {
+            name: '[Resx:FirstPaymentName]',
+            color: 'darkblue',
+            data: selectedSpec[0].data,
+            stack: 'payment'
+        };
+        data2 = {
+            name: '[Resx:SecondPaymentName]',
+            color: 'blue',
+            data: selectedSpec[1].data,
+            stack: 'payment'
+        };
+        data3 = {
+            name: '[Resx:ThirdPaymentName]',
+            color: 'royalblue',
+            data: selectedSpec[2].data,
+            stack: 'payment'
+        };
+        data4 = {
+            name: '[Resx:SummaryGraphCaption]',
+            color: 'green',
+            data: selectedSpec[length - 2].data
+        };
+
+        window.location.hash = $("#spec").val();
+        var chart = new Chart();
+
+        butt.prop('disabled', false);
+        if ($("#commit").css("display") != "none") {
+            $(".toFade").fadeToggle(500);
+            $("#chart-container").fadeToggle(500);
+            $(".advanced").attr("id", $("#spec").val());
+            $(".advanced").fadeToggle(500);
+        }
+
+        chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
+
+        data1.data = selectedSpec[3].data;
+        data2.data = selectedSpec[4].data;
+        data3.data = selectedSpec[5].data;
+        data4.data = selectedSpec[length - 1].data;
+        data4.name = '[Resx:SummarySalary]';
+
+        chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+
+        setHash();
+    };
+
+    this.drawAdvanced = function () {
         $("#js-loading-screen").removeClass("active");
         var spec = $("#spec");
         if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))
             return false;
         $("title").html(spec.find('option:selected').html() + ' - AbitCareer');
-        var butt = $('#commit');
-        butt.prop('disabled', true);
+        
 
-        provider.getAdvancedData(function (selectedSpec) {
-            var length = selectedSpec.length;
-
-            data1 = {
-                name: '[Resx:FirstPaymentName]',
-                color: 'darkblue',
-                data: selectedSpec[0].data,
-                stack: 'payment'
-            };
-            data2 = {
-                name: '[Resx:SecondPaymentName]',
-                color: 'blue',
-                data: selectedSpec[1].data,
-                stack: 'payment'
-            };
-            data3 = {
-                name: '[Resx:ThirdPaymentName]',
-                color: 'royalblue',
-                data: selectedSpec[2].data,
-                stack: 'payment'
-            };
-            data4 = {
-                name: '[Resx:SummaryGraphCaption]',
-                color: 'green',
-                data: selectedSpec[length - 2].data
-            };
-
-            window.location.hash = $("#spec").val();
-            var chart = new Chart();
-
-            butt.prop('disabled', false);
-            if ($("#commit").css("display") != "none") {
-                $(".toFade").fadeToggle(500);
-                $("#chart-container").fadeToggle(500);
-                $(".advanced").attr("id", $("#spec").val());
-                $(".advanced").fadeToggle(500);
-            }
-
-            chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
-
-            data1.data = selectedSpec[3].data;
-            data2.data = selectedSpec[4].data;
-            data3.data = selectedSpec[5].data;
-            data4.data = selectedSpec[length - 1].data;
-            data4.name = '[Resx:SummarySalary]';
-
-            chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
-
-            setHash();
+        provider.getAdvancedData(function (d) {
+            DrawChart(d);
+            var partialView = $("#partialView");
+            partialView.hide(0);
         });
 
         return false;
     };
 
-    var draw = function () {
+    this.draw = function () {
         $("#js-loading-screen").removeClass("active");
         var spec = $("#spec");
         if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))
-            return false;        
+            return false;
         $("title").html(spec.find('option:selected').html() + ' - AbitCareer');
-        var butt = $('#commit');
-        butt.prop('disabled', true);
 
-        provider.getData(function (selectedSpec) {
-            var length = selectedSpec.length;
-
-            data1 = {
-                name: '[Resx:FirstPaymentName]',
-                color: 'darkblue',
-                data: selectedSpec[0].data,
-                stack: 'payment'
-            };
-            data2 = {
-                name: '[Resx:SecondPaymentName]',
-                color: 'blue',
-                data: selectedSpec[1].data,
-                stack: 'payment'
-            };
-            data3 = {
-                name: '[Resx:ThirdPaymentName]',
-                color: 'royalblue',
-                data: selectedSpec[2].data,
-                stack: 'payment'
-            };
-            data4 = {
-                name: '[Resx:SummaryGraphCaption]',
-                color: 'green',
-                data: selectedSpec[length - 2].data
-            };
-
-            window.location.hash = $("#spec").val();
-            var chart = new Chart();
-
-            butt.prop('disabled', false);
-            if ($("#commit").css("display") != "none") {
-                $(".toFade").fadeToggle(500);
-                $("#chart-container").fadeToggle(500);
-                $(".advanced").attr("id", $("#spec").val());
-                $(".advanced").fadeToggle(500);
-            }
-
-            chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
-
-            data1.data = selectedSpec[3].data;
-            data2.data = selectedSpec[4].data;
-            data3.data = selectedSpec[5].data;
-            data4.data = selectedSpec[length - 1].data;
-            data4.name = '[Resx:SummarySalary]';
-
-            chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
-
-            setHash();
-        });
+        provider.getData(DrawChart);
 
         return false;
     };
+};
+
+function BindHandler() {
+    $('#editor').submit(function (e) {
+        module.drawAdvanced();
+        e.preventDefault();
+    });
+}
+
+
+
+$(function () {
+    module = new module();
+    setHash();
+
+    var urlContainsSpecialityHash = /[\w\s]*([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12})/gi.test(document.location.href.split('#')[1]);
+    if (!urlContainsSpecialityHash)
+        $("#js-loading-screen").removeClass("active");
+
+    $('a.changeLanguage:not([href*="#"])').click(function () {
+        $("#js-loading-screen").addClass("active");
+    });
+
+
 
     if (window.location.hash) {
         var spec = $("#spec"),
             hash = window.location.hash.slice(1);
         if (spec.find('option[value="' + hash + '"]').length) {
             spec.val(hash);
-            draw();
+            module.draw();
         }
         else
         {
@@ -208,7 +179,7 @@ $(function () {
     
     $("#spec").on("change", function () {
         if ($("#commit").css("display") == "none")
-            draw();
+            module.draw();
     });
 
     $(".advanced").on("click", function () {
@@ -227,5 +198,5 @@ $(function () {
         });
     });
 
-    $("#commit").on("click", draw);
+    $("#commit").on("click", module.draw);
 })
