@@ -26,7 +26,7 @@ namespace Abitcareer.Business.Models
             }
             set
             {
-                Image = value;
+                Image = value ?? "unknown";
             }
         }
 

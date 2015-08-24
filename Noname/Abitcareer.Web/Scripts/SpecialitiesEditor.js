@@ -8,7 +8,7 @@
 
     var partialView = $('#partialView'),
         inner = $('#inner');
-    var onDocScroll = function (e) {
+    var onDocumentScroll = function (e) {
         var currentTop = $(this).scrollTop();
         if (partialView.css('display') == 'none') {
             prevTop = currentTop;
@@ -33,7 +33,7 @@
         inner.css('top', pos);
     };
 
-    var onRemoteComplete = function () {
+    var onRemoteValidationComplete = function () {
         var res = false;
         $('#Name').rules().remote.complete = function (xhr) {
             $("span[data-valmsg-for='Name']").removeClass();
@@ -66,11 +66,12 @@
         if (computedWidth > maxWidth) computedWidth = maxWidth;
         card.width(computedWidth)
     };
+
     resizeCards.reset = function () {
         oldWidth = 0;
     }
 
-    var find = function () {
+    var search = function () {
         clearTimeout(searchItemId);
         setTimeout(function (settings) {
             if (!settings.search.val().trim()) $("#searchclear").hide();
@@ -178,7 +179,7 @@
         },
 
         bindUIActions: function () {
-            $(document).scroll(onDocScroll);
+            $(document).scroll(onDocumentScroll);
 
             $(document).ajaxStart(function () {
                 $("body").toggleClass("loading");
@@ -230,7 +231,7 @@
                     settings.inner.html(data);
                     settings.inner.css('top', 0);
                     $.validator.unobtrusive.parse('#editor');
-                    onRemoteComplete();
+                    onRemoteValidationComplete();
                     if (!$("#Name").val()) {
                         $("#createSpeciality").prop("disabled", false);
                     }
@@ -285,7 +286,7 @@
                     resize = resizeCards,
                     specialityName = '';
                 if (!settings.editor.hasClass('addForm')) {
-                    specialityName = "[" + $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
+                    specialityName = "[" + $('#' + id).search('div').search('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
                 }
                 var revertZeroSubmit = function () {
                     var input = $('.salaries[value]')
@@ -328,10 +329,10 @@
 
             $("#searchclear").click(function () {
                 $("#search").val('');
-                find();
+                search();
             });
 
-            settings.search.keydown(find);
+            settings.search.keydown(search);
         },
     }
 })();
