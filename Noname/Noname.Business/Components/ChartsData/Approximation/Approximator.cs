@@ -13,16 +13,16 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         private List<double> Deltas { get; set; }
         private void CalcDelta()
         {
-            var tmp = data.Values.ToList();
+            var tmp = data.Values.Where(x => x > 0).ToList();
             if (tmp.Count == 1)
             {
                 avgDelta = tmp[0];
                 return;
             }
-            avgDelta = tmp[0] - tmp[1];
+            avgDelta = tmp[1] - tmp[0];
             for (int i = 1; i < tmp.Count - 1; i++)
             {
-                var localDelta = (tmp[i] - tmp[i + 1]);
+                var localDelta = (tmp[i + 1] - tmp[i]);
                 avgDelta = (avgDelta - localDelta) / 2;
             }
         }
@@ -36,7 +36,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
             if (startOfWorking == 0)
             {
                 year = x.First();
-                this.startOfWorking = year;
+                this.startOfWorking = x.First();
             }
             else
             {
@@ -44,7 +44,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
             }
             foreach (var item in x)
             {
-                var shiftedYear = item + startOfWorking;
+                var shiftedYear = item + ((startOfWorking == 0) ? 1 : startOfWorking);
                 var delta = (y.Count < 2 || counter == 0) ? y[counter] : y[counter] - y[counter - 1];
                 var step = (shiftedYear + 1 == year) ? 0 : delta / (shiftedYear - (year - 1));
                 while (year < shiftedYear)
@@ -67,13 +67,13 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         }
         public double CalcY(double x)
         {
-            if (x < startOfWorking)
+            if (x < startOfWorking - 1)
                 return 0;
             var convertedX = (int)Math.Floor(x);
             if (!data.ContainsKey(convertedX))
             {
                 var lastDelta = (data.ContainsKey(convertedX - 1) && data.ContainsKey(convertedX - 2)) ? data[convertedX - 1] - data[convertedX - 2] : 0;
-                var shift = lastDelta == 0 ? 0 : (avgDelta + (avgDelta / (avgDelta + lastDelta)));
+                var shift = (lastDelta == 0 || avgDelta + lastDelta == 0) ? 0 : (avgDelta + (avgDelta / (avgDelta + lastDelta)));
                 Deltas.Add(shift);
                 data.Add(convertedX, data.LastOrDefault().Value + (int)Math.Floor(shift));
                 CalcDelta();

@@ -46,7 +46,7 @@
     text-align: center;
     top: 0;
     width: 100%;
-    top: 40px;
+    top: 35px;
     background-color: transparent;
 }
 
@@ -164,7 +164,7 @@ select
     padding: 0;
     height: calc(100% - 170px);
     max-height: 85%;
-    top: 160px;
+    top: 173px;
     margin-top: -35px;
 }
 #js-loading-screen.active
@@ -235,4 +235,47 @@ article.left {
     float:left;
     width: 40%;
     height: 80%;
+}
+#inner 
+{
+    line-height:0.4;
+    font-size:14px;
+    top:-35px;
+    height:675px;
+}
+input[type='number'] 
+{
+    font-size:14px;
+}
+label {
+    font-size:13px;
+}
+h4 {font-size:16px;
+}
+h2 {padding-top:5px;
+}
+
+input#exitButton {
+    margin-right:3px;
+}
+div#buttons {
+    position: relative;
+    top: 87px;
+    left: 230px;
+}
+input#exitButton {
+    border-style:none;
+}
+p#nameOfSpeciality {
+    font-size: 16px;
+    padding-top: 5px;
+}
+button#calculate {
+    border-style:none;
+}
+#nameOfSpeciality {
+    line-height:1.3;
+}
+#reset {
+    background-color:white;
 }

@@ -52,7 +52,8 @@ var module = function () {
         fewYears: '[Resx:FewYears]',
         manyYears: '[Resx:ManyYears]',
         UAH: '[Resx:UAH]',
-        profit: '[Resx:Profit]'
+        profit: '[Resx:Profit]',
+        validationYearOfWork: '[Resx:ValidationYearOfStartWorking]'
     };
 
     var provider = new DataProvider();
@@ -112,6 +113,10 @@ var module = function () {
     };
 
     this.drawAdvanced = function () {
+        if (parseInt($("#StartOfWorking").val()) < 0 || parseInt($("#StartOfWorking").val()) > 5) {
+            $("#js-validation").html('[Resx:ValidationYearOfStartWorking]');
+            return false;
+        }
         $("#js-loading-screen").removeClass("active");
         var spec = $("#spec");
         if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))
@@ -157,6 +162,7 @@ function BindHandler() {
 $(function () {
     module = new module();
     setHash();
+    isNewData = true;
 
     var urlContainsSpecialityHash = /[\w\s]*([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12})/gi.test(document.location.href.split('#')[1]);
     if (!urlContainsSpecialityHash)
@@ -180,8 +186,9 @@ $(function () {
     }
     
     $("#spec").on("change", function () {
-        if ($("#commit").css("display") == "none")
+        if ($("#commit").css("display") == "none")            
             module.draw();
+            isNewData = true;
     });
 
     $(".advancedButton").on("click", function () {
@@ -189,19 +196,25 @@ $(function () {
         var inner = $("#inner");
         var partialView = $("#partialView");
         partialView.show(0);
-        $.get("[Route:GetAdvancedSpeciality]", { id: $(".advancedButton").attr("id") }, function (data) {
-            if (!data) {
+        if (isNewData) {
+            $.get("[Route:GetAdvancedSpeciality]", { id: $(".advancedButton").attr("id") }, function (data) {
+                if (!data) {
+                    $("#js-loading-screen").removeClass("active");
+                    partialView.hide(0);
+                }
+                else {
+                    $("#js-loading-screen").removeClass("active");
+                    inner.html(data);
+                    isNewData = false;
+                }
+            }).fail(function () {
                 $("#js-loading-screen").removeClass("active");
                 partialView.hide(0);
-            }
-            else {
-                $("#js-loading-screen").removeClass("active");
-                inner.html(data);
-            }
-        }).fail(function () {
+            });
+        }
+        else {
             $("#js-loading-screen").removeClass("active");
-            partialView.hide(0);
-        });
+        }
     });
 
     $("#reset").on("click", module.draw);

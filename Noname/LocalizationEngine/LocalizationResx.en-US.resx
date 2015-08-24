@@ -373,9 +373,12 @@
     <value>Additional monthly income</value>
   </data>
   <data name="Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Advanced settings</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
+  </data>
+  <data name="ValidationYearOfStartWorking" xml:space="preserve">
+    <value>value should be in the range of 0 to 5</value>
   </data>
 </root>
