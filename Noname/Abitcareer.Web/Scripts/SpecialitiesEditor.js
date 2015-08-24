@@ -4,6 +4,7 @@
         localStrings = {},
         getSearchResultItemId = 0,
         oldWidth = 0,
+        saveThisSpecialityName = '',
         prevTop = 0;
 
     var onDocumentScroll = function (e) {
@@ -35,7 +36,7 @@
         var res = false;
         $('#Name').rules().remote.complete = function (xhr) {
             $("span[data-valmsg-for='Name']").removeClass();
-            if ((xhr.status == 200 && xhr.responseText === 'true')) {
+            if ((xhr.status == 200 && xhr.responseText === 'true') || $("#Name").val() == settings.saveThisSpecialityName) {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
                 $("#saveButton").prop("disabled", false);
             }
@@ -122,6 +123,8 @@
                     settings.inner.css('top', 0);
                     settings.inner.html(data);
                     $.validator.unobtrusive.parse('#editor');
+                    settings.saveThisSpecialityName = $("#Name").val();
+                    setNameStatus();
                 }
             }).fail(function () {
                 settings.partialView.hide(0);
