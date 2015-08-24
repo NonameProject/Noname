@@ -26,14 +26,22 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
                 avgDelta = (avgDelta - localDelta) / 2;
             }
         }
-        public Approximator(List<int> x, List<int> y, int startOfWorking = 1)
+        public Approximator(List<int> x, List<int> y, int startOfWorking = 0)
         {
             Deltas = new List<double>();
             data = new Dictionary<int, double>();
             var counter = 0;
             var previous = 0;
             var year = 1;
-            this.startOfWorking = startOfWorking;
+            if (startOfWorking == 0)
+            {
+                year = x.First();
+                this.startOfWorking = year;
+            }
+            else
+            {
+                this.startOfWorking = startOfWorking;
+            }
             foreach (var item in x)
             {
                 var shiftedYear = item + startOfWorking;
@@ -55,6 +63,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
                 counter++;
             }
             CalcDelta();
+            
         }
         public double CalcY(double x)
         {
