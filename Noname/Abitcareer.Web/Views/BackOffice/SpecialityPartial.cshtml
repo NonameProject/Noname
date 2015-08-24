@@ -1,12 +1,21 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 @{
-    int payment;
-    if (Model.Prices.TryGetValue("TopUniversityPrice", out payment)){
-        payment = payment/10;
-    }
-    else{
-        payment = 0;
-    }
+    var payments = new List<int>();
+    var paymentTop = 0; 
+    var paymentMid = 0;
+    var paymentLow = 0;
+    
+    Model.Prices.TryGetValue("TopUniversityPrice", out paymentTop);
+    payments.Add(paymentTop);
+    
+    Model.Prices.TryGetValue("MiddleUniversityPrice", out paymentMid);
+    payments.Add(paymentMid);
+    
+    Model.Prices.TryGetValue("LowUniversityPrice", out paymentLow);
+    payments.Add(paymentLow);
+
+    payments = payments.Where(x => x != 0).ToList();
+    var averagePaymentPerMonth = Math.Floor((payments.Count > 0) ? payments.Average() / 10 : 0);
 }
 <article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
     @if (Model.Name.Length>37)
@@ -40,7 +49,7 @@
                 <h5>@LocalizationResx.TextCardPayment</h5>
             </div>
             <div class="payment-wrapper">
-                <h4>@payment @LocalizationResx.UAH</h4>
+                <h4>@averagePaymentPerMonth @LocalizationResx.UAH</h4>
                 <h5>@LocalizationResx.TextCardSalary</h5>
             </div>
         </div>
