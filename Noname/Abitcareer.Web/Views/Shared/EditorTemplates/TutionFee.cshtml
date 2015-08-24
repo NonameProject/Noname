@@ -4,16 +4,16 @@
     <li>
         @Html.LabelFor(m => m["TopUniversityPrice"], LocalizationResx.FirstPaymentName)
         @Html.EditorFor(m => m["TopUniversityPrice"])
-        @Html.ValidationMessageFor(m => m["TopUniversityPrice"])
+        @Html.ValidationMessageFor(m => m["TopUniversityPrice"],"", new { style = "display:none", hidden="true" })
     </li>
     <li>
         @Html.LabelFor(m => m["MiddleUniversityPrice"], LocalizationResx.SecondPaymentName)
         @Html.EditorFor(m => m["MiddleUniversityPrice"])
-        @Html.ValidationMessageFor(m => m["MiddleUniversityPrice"])
+        @Html.ValidationMessageFor(m => m["MiddleUniversityPrice"],"", new { style = "display:none", hidden="true" })
     </li>
     <li>
         @Html.LabelFor(m => m["LowUniversityPrice"],  LocalizationResx.ThirdPaymentName)
         @Html.EditorFor(m => m["LowUniversityPrice"])
-        @Html.ValidationMessageFor(m => m["LowUniversityPrice"])
+        @Html.ValidationMessageFor(m => m["LowUniversityPrice"],"", new { style = "display:none", hidden="true" })
     </li>
 </ul>

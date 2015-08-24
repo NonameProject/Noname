@@ -1,8 +1,9 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
     <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    @using (@Html.BeginForm("Save", "BackOffice", FormMethod.Post, new { @role = "form", id = "editor" }))
+    @using (@Html.BeginForm("EditSpeciality", "BackOffice", FormMethod.Post, new {onsubmit = "return false", id = "editor" }))
     {   
+        <h2>@LocalizationResx.EditSpeciality</h2>
         @Html.Partial("Speciality", Model)
     }
 <script>

@@ -39,12 +39,12 @@
             $("span[data-valmsg-for='Name']").removeClass();
             if ((xhr.status == 200 && xhr.responseText === 'true')) {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
-                $("#createSpeciality").prop("disabled", false);
+                $("#saveButton").prop("disabled", false);
             }
             else {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure");
                 res = false;
-                $("#createSpeciality").prop("disabled", true);
+                $("#saveButton").prop("disabled", true);
             }
         };
     }
@@ -206,7 +206,6 @@
                         settings.inner.css('top', 0);
                         settings.inner.html(data);
                         $.validator.unobtrusive.parse('#editor');
-                        onRemoteComplete();
                     }
                 }).fail(function () {
                     settings.partialView.hide(0);
@@ -253,8 +252,8 @@
             settings.editor.children('input').prop('maxlength', 300);
             var payment = $("ul.tuition-fee li input");
             var salary = $("ul.salaries li input");
-            salary.attr("min", 0);
-            payment.attr("min", 0);
+            salary.prop("min", 0).attr("min", 0);;
+            payment.prop("min", 0).attr("min", 0);
 
             settings.editor.submit(function (event) {
               

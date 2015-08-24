@@ -1,7 +1,7 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 
 @Html.HiddenFor(x => x.Id)
-<h2>@LocalizationResx.EditSpeciality</h2>
+
 @Html.LabelFor(m => m.Name, LocalizationResx.NameUA)
 @Html.EditorFor(m => m.Name)
 @Html.ValidationMessageFor(x => x.Name)

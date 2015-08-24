@@ -3,8 +3,9 @@
 <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 @using (Html.BeginForm("AddSpeciality", "BackOffice", FormMethod.Post, new { id = "editor", onsubmit = "return false", @class = "addForm" }))
 {
+    <h2>@LocalizationResx.AddSpeciality</h2>
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false, "", new { style = "display:none", hidden="true" })
     
     @Html.Partial("Speciality", Model)
 }
