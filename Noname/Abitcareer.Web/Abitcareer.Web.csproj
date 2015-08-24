@@ -365,6 +365,7 @@
     <Content Include="Views\Shared\EditorTemplates\Salaries.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TutionFee.cshtml" />
     <Content Include="Views\BackOffice\Speciality.cshtml" />
+    <Content Include="Views\Home\Advanced.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

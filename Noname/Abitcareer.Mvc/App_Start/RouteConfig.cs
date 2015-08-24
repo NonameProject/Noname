@@ -55,7 +55,14 @@ namespace Abitcareer.Mvc
              {
              });
 
-
+            routes.MapLocalizedRoute(
+             name: "GetAdvancedSpeciality",
+             url: "getadvancedspeciality/{id}",
+             defaults: new { controller = "Home", action = "GetAdvancedSpeciality", id = UrlParameter.Optional },
+             setupConstraints:
+             (dynamic constraints) =>
+             {
+             });
 
             routes.MapRoute(
                 "GetData",

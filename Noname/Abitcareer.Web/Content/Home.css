@@ -196,3 +196,43 @@ select
 a#commit {
     padding: 7px 12px;
 }
+
+.advanced {
+    display:none;
+}
+
+#partialView {
+    background-color: rgba(32, 32, 32, 0.81);
+    display: none;
+    height: 100%;
+    padding-top: 100px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#inner {
+    background-color: white;
+    border-radius: 3px;
+    margin: 0 auto;
+    min-height: 20%;
+    min-width: 525px;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    position: relative;
+    top: -100px;
+    width: 600px;
+}
+
+article.right {
+    float:right;
+    width:40%;
+}
+
+article.left {
+    float:left;
+    width: 40%;
+    height: 80%;
+}

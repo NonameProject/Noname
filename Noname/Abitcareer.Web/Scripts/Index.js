@@ -1,26 +1,41 @@
 ﻿function DataProvider() {
+    var prepareData = function (data) {
+        var res = [];
+
+        for (var i = 0; i < data.length; i++) {
+            res[i] = {};
+            res[i].data = data[i];
+        }
+
+        var length = res[data.length - 1].data.length - 1;
+        length = res[data.length - 1].data[length].x;
+
+        for (var i = 0; i < data.length - 2; i++) {
+            if (i < 3) {
+                res[i].data.push({ x: res[i].data[res[i].data.length - 1].x, y: 0 });
+            }
+            else {
+                res[i].data.push({ x: length, y: res[i].data[res[i].data.length - 1].y });
+            }
+        }
+        return res;
+    };
+
     this.getData = function (callback) {
         $("#js-loading-screen").addClass("active");
         $.post('[Route:GetData]', { id: $("#spec").val() }, function (data) {
-            var res = [];
+            var res = prepareData(data);
+            callback(res);
+        })
+            .always(function () {
+                $("#js-loading-screen").removeClass("active");
+            });
+    };
 
-            for (var i = 0; i < data.length; i++) {
-                res[i] = {};
-                res[i].data = data[i];
-            }
-
-            var length = res[data.length - 1].data.length - 1;
-            length = res[data.length - 1].data[length].x;
-
-            for (var i = 0; i < data.length - 2; i++) {
-                if (i < 3) {
-                    res[i].data.push({ x: res[i].data[res[i].data.length - 1].x, y: 0 });
-                }
-                else {
-                    res[i].data.push({ x: length, y: res[i].data[res[i].data.length - 1].y });
-                }
-            }
-
+    this.getAdvancedData = function (callback) {
+        $("#js-loading-screen").addClass("active");
+        $.post('[Route:GetAdvancedSpeciality]', { id: $("#spec").val() }, function (data) {
+            var res = prepareData(data);
             callback(res);
         })
             .always(function () {
@@ -51,6 +66,69 @@ $(function () {
     };
 
     var provider = new DataProvider();
+
+    var drawAdvanced = function () {
+        $("#js-loading-screen").removeClass("active");
+        var spec = $("#spec");
+        if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))
+            return false;
+        $("title").html(spec.find('option:selected').html() + ' - AbitCareer');
+        var butt = $('#commit');
+        butt.prop('disabled', true);
+
+        provider.getAdvancedData(function (selectedSpec) {
+            var length = selectedSpec.length;
+
+            data1 = {
+                name: '[Resx:FirstPaymentName]',
+                color: 'darkblue',
+                data: selectedSpec[0].data,
+                stack: 'payment'
+            };
+            data2 = {
+                name: '[Resx:SecondPaymentName]',
+                color: 'blue',
+                data: selectedSpec[1].data,
+                stack: 'payment'
+            };
+            data3 = {
+                name: '[Resx:ThirdPaymentName]',
+                color: 'royalblue',
+                data: selectedSpec[2].data,
+                stack: 'payment'
+            };
+            data4 = {
+                name: '[Resx:SummaryGraphCaption]',
+                color: 'green',
+                data: selectedSpec[length - 2].data
+            };
+
+            window.location.hash = $("#spec").val();
+            var chart = new Chart();
+
+            butt.prop('disabled', false);
+            if ($("#commit").css("display") != "none") {
+                $(".toFade").fadeToggle(500);
+                $("#chart-container").fadeToggle(500);
+                $(".advanced").attr("id", $("#spec").val());
+                $(".advanced").fadeToggle(500);
+            }
+
+            chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
+
+            data1.data = selectedSpec[3].data;
+            data2.data = selectedSpec[4].data;
+            data3.data = selectedSpec[5].data;
+            data4.data = selectedSpec[length - 1].data;
+            data4.name = '[Resx:SummarySalary]';
+
+            chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+
+            setHash();
+        });
+
+        return false;
+    };
 
     var draw = function () {
         $("#js-loading-screen").removeClass("active");
@@ -95,6 +173,8 @@ $(function () {
             if ($("#commit").css("display") != "none") {
                 $(".toFade").fadeToggle(500);
                 $("#chart-container").fadeToggle(500);
+                $(".advanced").attr("id", $("#spec").val());
+                $(".advanced").fadeToggle(500);
             }
 
             chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
@@ -129,6 +209,22 @@ $(function () {
     $("#spec").on("change", function () {
         if ($("#commit").css("display") == "none")
             draw();
+    });
+
+    $(".advanced").on("click", function () {
+        var inner = $("#inner");
+        var partialView = $("#partialView");
+        partialView.show(0);
+        $.get("[Route:GetAdvancedSpeciality]", { id: $(".advanced").attr("id") }, function (data) {
+            if (!data) {
+                partialView.hide(0);
+            }
+            else {
+                inner.html(data);
+            }
+        }).fail(function () {
+            partialView.hide(0);
+        });
     });
 
     $("#commit").on("click", draw);

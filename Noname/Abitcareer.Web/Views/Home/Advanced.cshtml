@@ -1,0 +1,46 @@
+﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityAdvancedViewModel
+
+@using (Html.BeginForm("GetAdvancedSpeciality", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(x => x.Id)
+    <h2>Advanced</h2>
+    @Model.Name
+    <article class="right">
+        <h4>@LocalizationResx.Payment.ToUpper()</h4>
+        @Html.EditorFor(m => m.Prices, "TutionFee")
+        <h4 id="job-year">@Html.LabelFor(m => m.StartOfWorking, LocalizationResx.StartOfWorking.ToUpper())</h4>
+        <ul>
+            <li>
+                @Html.EditorFor(x => x.StartOfWorking)
+                @Html.ValidationMessageFor(x => x.StartOfWorking)
+            </li>
+        </ul>
+        <h4 id="additionalCosts">Додаткові витрати</h4>
+        <ul>
+            <li>
+                @Html.EditorFor(x => x.AdditionalCosts)
+                @Html.ValidationMessageFor(x => x.AdditionalCosts)
+            </li>
+        </ul>
+        <h4 id="additionalIncome">Додаткові витрати</h4>
+        <ul>
+            <li>
+                @Html.EditorFor(x => x.AdditionalIncome)
+                @Html.ValidationMessageFor(x => x.AdditionalIncome)
+            </li>
+        </ul>
+        <span id="validation-payment-salaries" class="error-text"></span>
+    </article>
+    <article class="left">
+        <h4>@LocalizationResx.Salaries.ToUpper()</h4> 
+        @Html.EditorFor(m => m.Salaries, "Salaries")
+    </article>
+    <div class="clear"></div>
+    <div class="row">        
+        <button type="submit" id="calculate" class="btn btn-primary right waves-effect waves-light teal accent-4">Calculate</button>
+        <input type="button" id="exitButton" class="btn btn-default right waves-effect waves-light" value="@LocalizationResx.Cancel"/>
+    </div>
+}

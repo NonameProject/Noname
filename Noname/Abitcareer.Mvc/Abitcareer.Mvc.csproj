@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\Authorize\UserViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\CityViewModel.cs" />
+    <Compile Include="ViewModels\LocalizedViewModels\SpecialityAdvancedViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\SpecialityViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\UniversityViewModel.cs" />
   </ItemGroup>
