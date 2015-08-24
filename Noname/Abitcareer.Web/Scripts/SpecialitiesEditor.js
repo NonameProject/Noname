@@ -8,7 +8,7 @@
 
     var partialView = $('#partialView'),
         inner = $('#inner');
-    var onDocumentScroll = function (e) {
+    var onDocScroll = function (e) {
         var currentTop = $(this).scrollTop();
         if (partialView.css('display') == 'none') {
             prevTop = currentTop;
@@ -33,7 +33,7 @@
         inner.css('top', pos);
     };
 
-    var onRemoteValidationComplete = function () {
+    var onRemoteComplete = function () {
         var res = false;
         $('#Name').rules().remote.complete = function (xhr) {
             $("span[data-valmsg-for='Name']").removeClass();
@@ -66,22 +66,21 @@
         if (computedWidth > maxWidth) computedWidth = maxWidth;
         card.width(computedWidth)
     };
-
     resizeCards.reset = function () {
         oldWidth = 0;
     }
 
-    var search = function () {
+    var find = function () {
         clearTimeout(searchItemId);
         setTimeout(function (settings) {
-            if (!settings.search.val().trim()) $("#searchclear").hide();
+            if (!settings.search.val()) $("#searchclear").hide();
             else
                 $("#searchclear").show();
         }, 10, settings);
         $(this).removeClass('success', 100);
         searchItemId = setTimeout(function () {
             var value = settings.search.val();
-            if (!value && !value.trim()) {
+            if (!value || !value.trim()) {
                 $('#search').addClass('success');
                 $(".cardWrapper").show(0);
                 return;
@@ -179,7 +178,7 @@
         },
 
         bindUIActions: function () {
-            $(document).scroll(onDocumentScroll);
+            $(document).scroll(onDocScroll);
 
             $(document).ajaxStart(function () {
                 $("body").toggleClass("loading");
@@ -231,7 +230,7 @@
                     settings.inner.html(data);
                     settings.inner.css('top', 0);
                     $.validator.unobtrusive.parse('#editor');
-                    onRemoteValidationComplete();
+                    onRemoteComplete();
                     if (!$("#Name").val()) {
                         $("#createSpeciality").prop("disabled", false);
                     }
@@ -286,7 +285,7 @@
                     resize = resizeCards,
                     specialityName = '';
                 if (!settings.editor.hasClass('addForm')) {
-                    specialityName = "[" + $('#' + id).search('div').search('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
+                    specialityName = "[" + $('#' + id).find('div').find('.name').html().replace(new RegExp("\n", 'g'), "").replace(new RegExp(" ", 'g'), "") + '] - ';
                 }
                 var revertZeroSubmit = function () {
                     var input = $('.salaries[value]')
@@ -329,10 +328,10 @@
 
             $("#searchclear").click(function () {
                 $("#search").val('');
-                search();
+                find();
             });
 
-            settings.search.keydown(search);
+            settings.search.keyup(find);
         },
     }
 })();
