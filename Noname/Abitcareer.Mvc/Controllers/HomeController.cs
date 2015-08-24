@@ -66,22 +66,9 @@ namespace Abitcareer.Mvc.Controllers
             if (speciality == null)
                 return Json(false);
 
-            prepareData(speciality, model.AdditionalCosts, model.AdditionalIncome);
+            specialityManager.PrepareAdvancedData(speciality, model.AdditionalCosts, model.AdditionalIncome);
 
             return Json(new ChartsDataProvider().PrepareData(speciality, polinom));
-        }
-
-        private void prepareData(Speciality speciality, int costs, int incomes)
-        {
-            speciality.Prices["TopUniversityPrice"] += costs;
-            speciality.Prices["MiddleUniversityPrice"] += costs;
-            speciality.Prices["LowUniversityPrice"] += costs;
-
-            speciality.Salaries[1] += incomes;
-            speciality.Salaries[2] += incomes;
-            speciality.Salaries[3] += incomes;
-            speciality.Salaries[4] += incomes;
-            speciality.Salaries[5] += incomes;
         }
     }
 }

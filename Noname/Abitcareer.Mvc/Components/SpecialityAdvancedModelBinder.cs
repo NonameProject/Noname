@@ -18,7 +18,7 @@ namespace Abitcareer.Mvc.Components
             model.Name = bindingContext.ValueProvider.GetValue("Name").AttemptedValue;
             model.EnglishName = String.Format("\"{0}\"", bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue);
             int.TryParse(bindingContext.ValueProvider.GetValue("AdditionalCosts").AttemptedValue, out tmp);
-            model.AdditionalCosts = tmp;
+            model.AdditionalCosts = tmp * 10; // 10 months
             int.TryParse(bindingContext.ValueProvider.GetValue("AdditionalIncome").AttemptedValue, out tmp);
             model.AdditionalIncome = tmp;
             var dictionary = new Dictionary<int, int>();

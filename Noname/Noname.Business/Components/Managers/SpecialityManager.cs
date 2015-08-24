@@ -132,6 +132,23 @@ namespace Abitcareer.Business.Components.Managers
             return provider.GetByName(name);
         }
 
+        public void PrepareAdvancedData(Speciality speciality, int costs, int incomes)
+        {
+            if (costs != 0)
+            {
+                if (speciality.TopUniversityPrice != 0) speciality.TopUniversityPrice += costs;
+                if (speciality.MiddleUniversityPrice != 0) speciality.MiddleUniversityPrice += costs;
+                if (speciality.LowUniversityPrice != 0) speciality.LowUniversityPrice += costs;
+            }
+            if (incomes != 0)
+            {
+                for (int i = 1; i <= 5; i++)
+                {
+                    speciality.Salaries[i] += incomes;
+                }
+            }            
+        }
+
         private IList<Speciality> SortBasedOnCurrentCulture(IEnumerable<Speciality> list, LCID languageId)
         {
             switch (languageId)

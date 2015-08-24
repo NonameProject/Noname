@@ -18,6 +18,42 @@ namespace Abitcareer.Business.Models
 
         public virtual string Image { get; set; }
 
+        public virtual decimal TopUniversityPrice
+        {
+            get 
+            {
+                return Prices["TopUniversityPrice"];
+            }
+            set 
+            {
+                Prices["TopUniversityPrice"] = value;
+            }
+        }
+
+        public virtual decimal MiddleUniversityPrice
+        {
+            get
+            {
+                return Prices["MiddleUniversityPrice"];
+            }
+            set
+            {
+                Prices["MiddleUniversityPrice"] = value;
+            }
+        }
+
+        public virtual decimal LowUniversityPrice
+        {
+            get
+            {
+                return Prices["LowUniversityPrice"];
+            }
+            set
+            {
+                Prices["LowUniversityPrice"] = value;
+            }
+        }
+
         public virtual string ImageLink
         {
             get

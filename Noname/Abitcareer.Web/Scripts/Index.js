@@ -90,11 +90,11 @@ var module = function () {
         window.location.hash = $("#spec").val();
         var chart = new Chart();
 
+        $(".advancedButton").attr("id", $("#spec").val());
         butt.prop('disabled', false);
         if ($("#commit").css("display") != "none") {
             $(".toFade").fadeToggle(500);
-            $("#chart-container").fadeToggle(500);
-            $(".advanced").attr("id", $("#spec").val());
+            $("#chart-container").fadeToggle(500);            
             $(".advanced").fadeToggle(500);
         }
 
@@ -146,6 +146,10 @@ function BindHandler() {
         module.drawAdvanced();
         e.preventDefault();
     });
+    $("#exitButton").click(function (e) {
+        $("#partialView").hide(0);
+        e.preventDefault();
+    });
 }
 
 
@@ -161,8 +165,6 @@ $(function () {
     $('a.changeLanguage:not([href*="#"])').click(function () {
         $("#js-loading-screen").addClass("active");
     });
-
-
 
     if (window.location.hash) {
         var spec = $("#spec"),
@@ -182,21 +184,27 @@ $(function () {
             module.draw();
     });
 
-    $(".advanced").on("click", function () {
+    $(".advancedButton").on("click", function () {
+        $("#js-loading-screen").addClass("active");
         var inner = $("#inner");
         var partialView = $("#partialView");
         partialView.show(0);
-        $.get("[Route:GetAdvancedSpeciality]", { id: $(".advanced").attr("id") }, function (data) {
+        $.get("[Route:GetAdvancedSpeciality]", { id: $(".advancedButton").attr("id") }, function (data) {
             if (!data) {
+                $("#js-loading-screen").removeClass("active");
                 partialView.hide(0);
             }
             else {
+                $("#js-loading-screen").removeClass("active");
                 inner.html(data);
             }
         }).fail(function () {
+            $("#js-loading-screen").removeClass("active");
             partialView.hide(0);
         });
     });
+
+    $("#reset").on("click", module.draw);
 
     $("#commit").on("click", module.draw);
 })
