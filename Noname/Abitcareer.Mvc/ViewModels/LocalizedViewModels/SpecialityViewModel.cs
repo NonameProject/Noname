@@ -26,6 +26,8 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public int StartOfWorking { get; set; }
 
+        public string ImageLink { get; set; }
+
         public SpecialityViewModel()
         {
             StartOfWorking = 1;
