@@ -47,9 +47,7 @@ namespace Abitcareer.Mvc.Controllers
         {
             try
             {
-                var model = AutoMapper.Mapper.Map<SpecialityAdvancedViewModel>(specialityManager.GetById(id));
-                if (!String.IsNullOrEmpty(model.EnglishName))
-                    model.EnglishName = model.EnglishName.Trim('"');
+                var model = AutoMapper.Mapper.Map<SpecialityAdvancedViewModel>((Speciality)specialityManager.GetBaseModel(specialityManager.GetById(id)));
                 return PartialView("Advanced", model);
             }
             catch (Exception)
