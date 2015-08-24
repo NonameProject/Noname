@@ -25,6 +25,7 @@
         }
         @Html.LabelFor(m => m[item.Key], item.Key.ToString() + '-' + yearEnding + ' ' + LocalizationResx.Year)
         @Html.EditorFor(m => m[item.Key], new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m[item.Key])
     </li>
 }
 </ul>
