@@ -9,12 +9,18 @@
 {
     @Styles.Render("~/Content/Home.css")
 }
+
+<div id="partialView">
+    <div id="inner">
+
+    </div>
+</div>
 <div id="js-loading-screen" class="active"></div>
 <div id="input" class="panel left">
     <div id="greeting" class="toFade">
         <h3>@LocalizationResx.GreetingHeader</h3>
-        <p>@LocalizationResx.Greeting</p>
-        <p>@LocalizationResx.GreetingFooter</p>
+        <p class="greeting">@LocalizationResx.Greeting</p>
+        <p class="greeting">@LocalizationResx.GreetingFooter</p>
     </div>
         <select class="form-control" id="spec">
             <option value="noData">@LocalizationResx.PickSpeciality</option>
@@ -26,6 +32,7 @@
             }
         </select>
     <a href="#" id="commit" class="btn toFade waves-effect waves-light teal accent-4">@LocalizationResx.Calculate</a>
+    <button id="" class="advanced btn waves-effect waves-light teal accent-4">Advanced</button>
 </div>
 <div id="chart-container" class="panel" style="display: none">
     

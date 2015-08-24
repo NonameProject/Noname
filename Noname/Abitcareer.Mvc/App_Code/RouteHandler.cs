@@ -6,6 +6,6 @@ using System.Web.Routing;
     {
         public IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            return new JsHandler();
+            return new JsHttpHandler();
         }
     }

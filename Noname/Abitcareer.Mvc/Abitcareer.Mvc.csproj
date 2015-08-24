@@ -119,7 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbitcareerApplication.cs" />
-    <Compile Include="App_Code\JsHandler.cs" />
+    <Compile Include="App_Code\JsHttpHandler.cs" />
     <Compile Include="App_Code\RouteHandler.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
@@ -128,6 +128,7 @@
     <Compile Include="App_Start\MiniprofilerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Components\SpecialityAdvancedModelBinder.cs" />
     <Compile Include="Components\SpecialityBinder.cs" />
     <Compile Include="Components\WebUserContext.cs" />
     <Compile Include="Controllers\BackOfficeController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="ViewModels\Authorize\UserViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\CityViewModel.cs" />
+    <Compile Include="ViewModels\LocalizedViewModels\SpecialityAdvancedViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\SpecialityViewModel.cs" />
     <Compile Include="ViewModels\LocalizedViewModels\UniversityViewModel.cs" />
   </ItemGroup>

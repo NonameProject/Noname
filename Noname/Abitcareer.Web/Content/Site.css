@@ -138,14 +138,14 @@ nav ul a
 .success
 {
     color: green;
-    margin-left: 6px;
+    margin-left: 0px;
 }
 
 .failure
 {
     color: red;
 
-    margin-left: 15px;
+    margin-left: 0px;
 }
 
 .cookies-off-wrapper
@@ -172,3 +172,7 @@ nav ul a
         color:inherit;
         font:inherit;
     }
+    input[type='number'] {
+-moz-appearance: textfield;
+}
+

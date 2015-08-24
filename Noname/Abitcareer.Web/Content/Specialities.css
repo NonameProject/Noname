@@ -497,7 +497,7 @@ background-color:inherit;
 }
 #addNew .name
 {
-    background-color: #00bfa5;
+    background-color: #5BB957;
 }
 
 .delete
@@ -535,7 +535,7 @@ background-color:inherit;
 }
 
 .teal.accent-4 {
-    background-color: darkgray !important;
+    background-color: #5BB957 !important;
      color: white;
 
 }
@@ -549,6 +549,7 @@ background-color:inherit;
 
 #EnglishName
 {
+    margin-right: -22px;
     width: 398px;
     padding-right: 22px;
 }

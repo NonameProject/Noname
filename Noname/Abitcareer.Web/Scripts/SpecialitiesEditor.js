@@ -39,12 +39,12 @@
             $("span[data-valmsg-for='Name']").removeClass();
             if ((xhr.status == 200 && xhr.responseText === 'true')) {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success");
-                $("#createSpeciality").prop("disabled", false);
+                $("#saveButton").prop("disabled", false);
             }
             else {
                 $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure");
                 res = false;
-                $("#createSpeciality").prop("disabled", true);
+                $("#saveButton").prop("disabled", true);
             }
         };
     }
@@ -197,7 +197,7 @@
                 }
                 settings.inner.empty();
                 settings.partialView.show(0);
-                $.post('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
+                $.get('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
                     if (!data) {
                         settings.partialView.hide(0);
                         Notificate('[Resx:SpecialityOpenFailed]');
@@ -205,6 +205,7 @@
                     else {
                         settings.inner.css('top', 0);
                         settings.inner.html(data);
+                        $.validator.unobtrusive.parse('#editor');
                     }
                 }).fail(function () {
                     settings.partialView.hide(0);
@@ -224,22 +225,18 @@
             settings.addButton.on("click", function (event) {
                 settings.inner.empty();
                 event.stopPropagation();
-                $.ajax(
-                    {
-                        url: "[Route:addSpeciality]",
-                        success: function (data) {
-                            settings.inner.html(data);
-                            settings.partialView.show(0);
-                            settings.inner.css('top', 0);
-                            $.validator.unobtrusive.parse('#editor');
-                            onRemoteComplete();
-                            if(!$("#Name").val())
-                            {
-                                $("#createSpeciality").prop("disabled", false);
-                                //$("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-ok success")
-                            }
-                        }
-                    });
+                settings.partialView.show(0);
+                $.get("[Route:addSpeciality]", function (data) {
+                    settings.inner.html(data);
+                    settings.inner.css('top', 0);
+                    $.validator.unobtrusive.parse('#editor');
+                    onRemoteComplete();
+                    if (!$("#Name").val()) {
+                        $("#createSpeciality").prop("disabled", false);
+                    }
+                }).fail(function () {
+                    settings.partialView.hide(0);
+                });
             });
 
             settings.deleteSubmit.on('click', function () {
@@ -255,8 +252,8 @@
             settings.editor.children('input').prop('maxlength', 300);
             var payment = $("ul.tuition-fee li input");
             var salary = $("ul.salaries li input");
-            salary.attr("min", 0);
-            payment.attr("min", 0);
+            salary.prop("min", 0).attr("min", 0);;
+            payment.prop("min", 0).attr("min", 0);
 
             settings.editor.submit(function (event) {
               
@@ -270,14 +267,14 @@
                
                 var salaries = [1, 2, 3, 4, 5, 10, 20];
                 for (var i = 0; i < salaries.length; i++) {
-                    if (parseInt($('#Salaries_' + salaries[i] + '_').val()) < 0) {
+                    if (parseInt($('#Salaries__' + salaries[i] + '_').val()) < 0) {
                         $("#js-validation").html(localStrings.BanSalariesBelowZero);
                         event.preventDefault();
                         return false;
                     }
                 }
             
-                if (parseInt($("#Prices_LowUniversityPrice_").val()) < 0 || parseInt($("#Prices_MiddleUniversityPrice_").val()) < 0 || parseInt($("#Prices_TopUniversityPrice_").val()) < 0) {
+                if (parseInt($("#Prices__LowUniversityPrice_").val()) < 0 || parseInt($("#Prices__MiddleUniversityPrice_").val()) < 0 || parseInt($("#Prices__TopUniversityPrice_").val()) < 0) {
                     $("#validation-payment-salaries").html(localStrings.BanPaymentsBelowZero);
                     event.preventDefault();
                     return false;
@@ -298,9 +295,9 @@
                             $('#Salaries_' + id[i] + '_').css('color', 'transparent').val('0');
                         }
                     };
-                    if ($('#Prices_TopUniversityPrice_').val() == '') $('#Prices_TopUniversityPrice_').css('color', 'transparent').val('0');
-                    if ($('#Prices_MiddleUniversityPrice_').val() == '') $('#Prices_MiddleUniversityPrice_').css('color', 'transparent').val('0');
-                    if ($('#Prices_LowUniversityPrice_').val() == '') $('#Prices_LowUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__TopUniversityPrice_').val() == '') $('#Prices__TopUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__MiddleUniversityPrice_').val() == '') $('#Prices__MiddleUniversityPrice_').css('color', 'transparent').val('0');
+                    if ($('#Prices__LowUniversityPrice_').val() == '') $('#Prices__LowUniversityPrice_').css('color', 'transparent').val('0');
                 }
                 revertZeroSubmit();
                 $.post(url, data, function (d) {

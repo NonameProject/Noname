@@ -8,15 +8,19 @@ using System.Web.Mvc;
 
 namespace Abitcareer.Mvc.Components
 {
-    class SpecialityBinder : DefaultModelBinder
+    class SpecialityAdvancedModelBinder : DefaultModelBinder
     {
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             int tmp = 0;
-            var model = new SpecialityViewModel();
+            var model = new SpecialityAdvancedViewModel();
             model.Id = bindingContext.ValueProvider.GetValue("Id").AttemptedValue;
             model.Name = bindingContext.ValueProvider.GetValue("Name").AttemptedValue;
-            model.EnglishName = String.Format("\"{0}\"", bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue);            
+            model.EnglishName = String.Format("\"{0}\"", bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue);
+            int.TryParse(bindingContext.ValueProvider.GetValue("AdditionalCosts").AttemptedValue, out tmp);
+            model.AdditionalCosts = tmp;
+            int.TryParse(bindingContext.ValueProvider.GetValue("AdditionalIncome").AttemptedValue, out tmp);
+            model.AdditionalIncome = tmp;
             var dictionary = new Dictionary<int, int>();
             foreach (var item in model.Salaries)
             {

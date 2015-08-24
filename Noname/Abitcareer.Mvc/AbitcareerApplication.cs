@@ -31,6 +31,7 @@ namespace Abitcareer.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(SpecialityViewModel), new SpecialityBinder());
+            ModelBinders.Binders.Add(typeof(SpecialityAdvancedViewModel), new SpecialityAdvancedModelBinder());
             DefaultModelBinder.ResourceClassKey = "LocalizationResx";
             GlobalFilters.Filters.Add(new ProfilingActionFilter());
             var copy = ViewEngines.Engines.ToList();

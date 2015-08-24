@@ -42,5 +42,46 @@ namespace Abitcareer.Mvc.Controllers
 
             return Json(new ChartsDataProvider().PrepareData(speciality, polinom));
         }
+
+        public ActionResult GetAdvancedSpeciality(string id)
+        {
+            try
+            {
+                var model = AutoMapper.Mapper.Map<SpecialityAdvancedViewModel>(specialityManager.GetById(id));
+                if (!String.IsNullOrEmpty(model.EnglishName))
+                    model.EnglishName = model.EnglishName.Trim('"');
+                return PartialView("Advanced", model);
+            }
+            catch (Exception)
+            {
+                return Json(false);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult GetAdvancedSpeciality(SpecialityAdvancedViewModel model, short polinom = 3)
+        {
+            var speciality = AutoMapper.Mapper.Map<Speciality>(model);
+
+            if (speciality == null)
+                return Json(false);
+
+            prepareData(speciality, model.AdditionalCosts, model.AdditionalIncome);
+
+            return Json(new ChartsDataProvider().PrepareData(speciality, polinom));
+        }
+
+        private void prepareData(Speciality speciality, int costs, int incomes)
+        {
+            speciality.Prices["TopUniversityPrice"] += costs;
+            speciality.Prices["MiddleUniversityPrice"] += costs;
+            speciality.Prices["LowUniversityPrice"] += costs;
+
+            speciality.Salaries[1] += incomes;
+            speciality.Salaries[2] += incomes;
+            speciality.Salaries[3] += incomes;
+            speciality.Salaries[4] += incomes;
+            speciality.Salaries[5] += incomes;
+        }
     }
 }
