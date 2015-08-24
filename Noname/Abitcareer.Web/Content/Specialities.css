@@ -549,6 +549,7 @@ background-color:inherit;
 
 #EnglishName
 {
+    margin-right: -22px;
     width: 398px;
     padding-right: 22px;
 }
