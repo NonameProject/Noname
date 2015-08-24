@@ -73,14 +73,14 @@
     var find = function () {
         clearTimeout(searchItemId);
         setTimeout(function (settings) {
-            if (!settings.search.val().trim()) $("#searchclear").hide();
+            if (!settings.search.val()) $("#searchclear").hide();
             else
                 $("#searchclear").show();
         }, 10, settings);
         $(this).removeClass('success', 100);
         searchItemId = setTimeout(function () {
             var value = settings.search.val();
-            if (!value && !value.trim()) {
+            if (!value || !value.trim()) {
                 $('#search').addClass('success');
                 $(".cardWrapper").show(0);
                 return;
@@ -331,7 +331,7 @@
                 find();
             });
 
-            settings.search.keydown(find);
+            settings.search.keyup(find);
         },
     }
 })();
