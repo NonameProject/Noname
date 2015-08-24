@@ -43,7 +43,7 @@ namespace Abitcareer.Web.Components
             return View(result);
         }
 
-        public ActionResult EditSpecialities(string id)
+        public ActionResult EditSpeciality(string id)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Abitcareer.Web.Components
                 if (!String.IsNullOrEmpty(model.EnglishName)) 
                     model.EnglishName = model.EnglishName.Trim('"');
                 specialityManager.Index();
-                return PartialView("EditSpeciality", model);
+                return PartialView(model);
             }
             catch(Exception)
             {
@@ -104,11 +104,6 @@ namespace Abitcareer.Web.Components
         public ActionResult AddSpeciality()
         {
             return PartialView(new SpecialityViewModel());
-        }
-
-        public ActionResult EditSpeciality()
-        {
-            return PartialView();
         }
 
         [AllowAnonymous]
