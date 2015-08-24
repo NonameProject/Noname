@@ -4,7 +4,8 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
+    @Html.HiddenFor(x => x.Name)
+    @Html.HiddenFor(x => x.EnglishName)
     @Html.HiddenFor(x => x.Id)
     <h2>Advanced</h2>
     @Model.Name
