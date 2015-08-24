@@ -267,7 +267,7 @@
                
                 var salaries = [1, 2, 3, 4, 5, 10, 20];
                 for (var i = 0; i < salaries.length; i++) {
-                    if (parseInt($('#Salaries_' + salaries[i] + '_').val()) < 0) {
+                    if (parseInt($('#Salaries__' + salaries[i] + '_').val()) < 0) {
                         $("#js-validation").html(localStrings.BanSalariesBelowZero);
                         event.preventDefault();
                         return false;
