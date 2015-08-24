@@ -16,6 +16,20 @@ namespace Abitcareer.Business.Models
 
         public virtual int StartOfWorking { get; set; }
 
+        public virtual string Image { get; set; }
+
+        public virtual string ImageLink
+        {
+            get
+            {
+                return String.Format("/Content/Images/Icons/{0}.png", Image);
+            }
+            set
+            {
+                Image = value;
+            }
+        }
+
         public Speciality()
         {
             StartOfWorking = 1;

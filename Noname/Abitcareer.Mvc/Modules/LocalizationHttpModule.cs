@@ -18,7 +18,8 @@ namespace Abitcareer.Mvc
         public void Init(HttpApplication context)
         {
             context.BeginRequest += new EventHandler(OnBeginRequest);
-            context.EndRequest += new EventHandler(OnEndRequest);
+            //context.EndRequest += new EventHandler(OnEndRequest);
+            context.PostRequestHandlerExecute += new EventHandler(OnEndRequest);
         }
 
         private void OnBeginRequest(Object sender, EventArgs args)
