@@ -366,4 +366,16 @@
   <data name="StartOfWorking" xml:space="preserve">
     <value>The year of study on which you start to work</value>
   </data>
+  <data name="AdditionalCosts" xml:space="preserve">
+    <value>Additional monthly costs</value>
+  </data>
+  <data name="AdditionalIncome" xml:space="preserve">
+    <value>Additional monthly income</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>

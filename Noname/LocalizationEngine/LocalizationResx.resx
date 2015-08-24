@@ -366,4 +366,16 @@
   <data name="StartOfWorking" xml:space="preserve">
     <value>Рік навчання, на якому почав працювати</value>
   </data>
+  <data name="AdditionalCosts" xml:space="preserve">
+    <value>Додаткові місячні витрати</value>
+  </data>
+  <data name="AdditionalIncome" xml:space="preserve">
+    <value>Додаткові місячні доходи</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Додатково</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
 </root>
