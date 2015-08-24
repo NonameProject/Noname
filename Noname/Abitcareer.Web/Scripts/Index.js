@@ -52,7 +52,8 @@ var module = function () {
         fewYears: '[Resx:FewYears]',
         manyYears: '[Resx:ManyYears]',
         UAH: '[Resx:UAH]',
-        profit: '[Resx:Profit]'
+        profit: '[Resx:Profit]',
+        validationYearOfWork: '[Resx:ValidationYearOfStartWorking]'
     };
 
     var provider = new DataProvider();
@@ -112,6 +113,10 @@ var module = function () {
     };
 
     this.drawAdvanced = function () {
+        if (parseInt($("#StartOfWorking").val()) < 0 || parseInt($("#StartOfWorking").val()) > 5) {
+            $("#js-validation").html('[Resx:ValidationYearOfStartWorking]');
+            return false;
+        }
         $("#js-loading-screen").removeClass("active");
         var spec = $("#spec");
         if (spec.val() === "noData" || $("#commit").hasOwnProperty("disabled"))

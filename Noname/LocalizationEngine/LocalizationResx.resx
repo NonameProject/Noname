@@ -378,4 +378,7 @@
   <data name="Reset" xml:space="preserve">
     <value>Скинути</value>
   </data>
+  <data name="ValidationYearOfStartWorking" xml:space="preserve">
+    <value>значення має бути в межах від 0 до 5</value>
+  </data>
 </root>

@@ -808,6 +808,15 @@ namespace CultureEngine {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на значення має бути в межах від 0 до 5.
+        /// </summary>
+        public static string ValidationYearOfStartWorking {
+            get {
+                return ResourceManager.GetString("ValidationYearOfStartWorking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Гроші (грн).
         /// </summary>
         public static string xChartAxisCaption {
