@@ -138,7 +138,7 @@ nav ul a
 .success
 {
     color: green;
-    margin-left: 6px;
+    margin-left: 0px;
 }
 
 .failure
