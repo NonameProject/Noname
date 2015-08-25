@@ -10,9 +10,14 @@
     @Html.Partial("Speciality", Model)
 }
 
+@section Scripts
+{    
+    @Scripts.Render("~/Scripts/discardZero.js")
+}
+
 <script>
     $(document).ready(function () {
-        SpecialityEditor.revertZero();
+        revertZero();
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 

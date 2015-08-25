@@ -154,7 +154,7 @@
     <value>Рівень зарплати</value>
   </data>
   <data name="xChartAxisCaption" xml:space="preserve">
-    <value>Гроші (грн)</value>
+    <value>Гроші (грн./місяць)</value>
   </data>
   <data name="yChartAxisCaption" xml:space="preserve">
     <value>Час (роки)</value>
@@ -214,7 +214,7 @@
     <value>ий</value>
   </data>
   <data name="Salaries" xml:space="preserve">
-    <value>Зарплати</value>
+    <value>Зарплатні за місяць</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
@@ -355,7 +355,7 @@
     <value>Заробітня плата повинна бути більшою або рівною нулю</value>
   </data>
   <data name="TextCardPayment" xml:space="preserve">
-    <value>Зарплата за місяць</value>
+    <value>Зарплатня за місяць</value>
   </data>
   <data name="TextCardSalary" xml:space="preserve">
     <value>Оплата навчання за місяць</value>

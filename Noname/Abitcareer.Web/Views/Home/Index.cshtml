@@ -17,6 +17,7 @@
 </div>
 <div id="js-loading-screen" class="active"></div>
 <div id="input" class="panel left">
+    <div id="greeting-wrapper">
     <div id="greeting" class="toFade">
         <h3>@LocalizationResx.GreetingHeader</h3>
         <p class="greeting">@LocalizationResx.Greeting</p>
@@ -31,10 +32,13 @@
                 }
             }
         </select>
+    <br class="toFade" />
     <a href="#" id="commit" class="btn toFade waves-effect waves-light teal accent-4">@LocalizationResx.Calculate</a>
     <button class="advanced advancedButton btn waves-effect waves-light teal accent-4">@LocalizationResx.Advanced</button>
     <button id="reset" class="advanced btn waves-effect waves-light">@LocalizationResx.Reset</button>
 </div>
+</div>
+
 <div id="chart-container" class="panel" style="display: none">
     
     <div class="chartWrapper">
@@ -64,5 +68,6 @@
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/highcharts.js")
     @Scripts.Render("~/Scripts/Highcharts-4.0.1/js/modules/exporting.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/discardZero.js")
     @Scripts.Render("~/handl/Index.js")
 }
