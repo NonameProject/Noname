@@ -567,4 +567,9 @@ background-color:inherit;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
+card col-md-4 z-depth-2 {
+background-size: 36px;
+background-repeat: no-repeat;
+background-position-x: 220px;
+background-position-y: 5px;
+}
