@@ -36,13 +36,13 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
             Prices = new Dictionary<string, int>();
 
-            Salaries[1] = 0;
-            Salaries[2] = 0;
-            Salaries[3] = 0;
-            Salaries[4] = 0;
-            Salaries[5] = 0;
-            Salaries[10] = 0;
-            Salaries[20] = 0;
+            Salaries[1] = -1;
+            Salaries[2] = -1;
+            Salaries[3] = -1;
+            Salaries[4] = -1;
+            Salaries[5] = -1;
+            Salaries[10] = -1;
+            Salaries[20] = -1;
 
             Prices["TopUniversityPrice"] = 0;
             Prices["MiddleUniversityPrice"] = 0;

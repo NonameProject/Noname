@@ -12,20 +12,7 @@
 
 <script>
     $(document).ready(function () {
-        var revertZero = function () {
-            var input = $('.salaries[value]')
-            var id = [1, 2, 3, 4, 5, 10, 20];
-            for (var i = 0; i < id.length; i++) {
-                if ($('#Salaries__' + id[i] + '_').val() == '0') {
-                    $('#Salaries__' + id[i] + '_').val('');
-                }
-            };
-            if ($('#Prices__TopUniversityPrice_').val() == '0') $('#Prices__TopUniversityPrice_').val('');
-            if ($('#Prices__MiddleUniversityPrice_').val() == '0') $('#Prices__MiddleUniversityPrice_').val('');
-            if ($('#Prices__LowUniversityPrice_').val() == '0') $('#Prices__LowUniversityPrice_').val('');
-            if ($('#StartOfWorking').val() == '0') $('#StartOfWorking').val('');
-        }
-        revertZero();
+        SpecialityEditor.revertZero();
         SpecialityEditor.init({
             ValidationNameCannotBeEmpty: "@LocalizationResx.ValidationNameCannotBeEmpty",
 
