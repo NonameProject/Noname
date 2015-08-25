@@ -1,5 +1,5 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityAdvancedViewModel
-
+ <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 @using (Html.BeginForm("GetAdvancedSpeciality", "Home", FormMethod.Post, new { id = "editor" }))
 {
     @Html.AntiForgeryToken()
