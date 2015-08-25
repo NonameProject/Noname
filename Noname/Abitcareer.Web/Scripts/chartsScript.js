@@ -81,15 +81,17 @@ var ChartApi = (function () {
         });
     })(); //fillLegend
 
-        var customizeIntersectedData = function () {
+        var customizeIntersectedData = function (chartType) {
             var retData = [],
                 length = chart.series.length;
             for (var i = 0; i < length - 1; i++) {
-                var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
+                var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1], chartType);
                 for (var q = 0; q < tmpData.length; q++) {
                     retData.push(tmpData[q]);
                 }
             }
+
+            
 
             retData.sort(function (a, b) {
                 if (a.saveIsect.x > b.saveIsect.x)
@@ -128,7 +130,8 @@ var ChartApi = (function () {
             }
         };
 
-        var addPointToLine = function (linePoints1, linePoints2, linePointsTo) {
+        var addPointToLine = function (linePoints1, linePoints2, linePointsTo, chartType) {
+            chartType = chartType || "summary";
             var n0 = linePoints1.length,
                 n1 = linePoints2.length;
             var i, j, isect, prev;
@@ -159,7 +162,7 @@ var ChartApi = (function () {
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
                                         linePoints2[j - 1], linePoints2[j])) {
-                        if (isect.x === 0) {
+                        if (isect.x === 0 && chart.conteiner == "#summary-container") {
                             prev = isect;
                             continue;
                         }
@@ -175,7 +178,7 @@ var ChartApi = (function () {
         chart.setSize($(".chartWrapper").width(), height(), false);
 
         if (chart.series[0].points.length != 0 || chart.series[1].points.length != 0) {
-            customizeIntersectedData();
+            customizeIntersectedData(chart.chartType);
         }
 
         $(window).on('resize', function () {
@@ -366,7 +369,8 @@ var ChartApi = (function () {
                         }
                     }
                 },
-                series: dataObj
+                series: dataObj,
+                
             }, function (chart) { tuneChart(chart) });
         }
     };

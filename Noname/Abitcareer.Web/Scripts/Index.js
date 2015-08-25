@@ -98,7 +98,7 @@ var module = function () {
             $(".advancedButton").fadeToggle(500);
         }
 
-        ChartApi.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
+        ChartApi.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes,['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)']);
 
         data1.data = selectedSpec[3].data;
         data2.data = selectedSpec[4].data;
