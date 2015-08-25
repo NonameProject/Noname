@@ -15,7 +15,6 @@
 #greeting-wrapper {
     width: 35%;
     margin: 0 auto;
-    border: 1px solid red;
 }
 
 .highcharts-title
@@ -210,6 +209,7 @@ a#commit {
 
 #spec {
     display:inline-block;
+    width: 100% !important;
 }
 
 

@@ -13,17 +13,18 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         private List<double> Deltas { get; set; }
         private void CalcDelta()
         {
-            var tmp = data.Values.Where(x => x > 0).ToList();
+            var tmpData = data.OrderBy(x => x.Key).ToDictionary(x=>x.Key, x=>x.Value);
+            var tmp = tmpData.TakeWhile(pair => tmpData.ContainsKey(pair.Key + 1)).ToList();
             if (tmp.Count == 1)
             {
-                avgDelta = tmp[0];
+                avgDelta = 0;
                 return;
             }
-            avgDelta = tmp[1] - tmp[0];
+            avgDelta = tmp[1].Value - tmp[0].Value;
             for (int i = 1; i < tmp.Count - 1; i++)
             {
-                var localDelta = (tmp[i + 1] - tmp[i]);
-                avgDelta = (avgDelta - localDelta) / 2;
+                var localDelta = (tmp[i + 1].Value - tmp[i].Value);
+                avgDelta = Math.Floor(((avgDelta - localDelta) / 2) - 0.5);
             }
         }
         public Approximator(List<int> x, List<int> y, int startOfWorking = 0)
@@ -32,18 +33,18 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
             data = new Dictionary<int, double>();
             var counter = 0;
             var previous = 0;
-            var year = 1;
-            if (startOfWorking == 0)
-            {
-                year = x.First();
-                this.startOfWorking = x.First();
-            }
-            else
-            {
-                this.startOfWorking = startOfWorking;
-            }
+            var year = startOfWorking;
+            this.startOfWorking = startOfWorking;
             foreach (var item in x)
             {
+                if (!data.ContainsKey(item))
+                {
+                    data.Add(item + startOfWorking - 1, y[counter]);
+                    previous = y[counter];
+                    year = item + startOfWorking + 1;
+                    counter++;
+                    continue;
+                }
                 var shiftedYear = item + ((startOfWorking == 0) ? 1 : startOfWorking);
                 var delta = (y.Count < 2 || counter == 0) ? y[counter] : y[counter] - y[counter - 1];
                 var step = (shiftedYear + 1 == year) ? 0 : delta / (shiftedYear - (year - 1));
@@ -54,12 +55,6 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
                     previous = previous + step;
                     year++;
                 }
-                if (!data.ContainsKey(shiftedYear))
-                {
-                    data.Add(shiftedYear - 1, y[counter]);
-                    previous = y[counter];
-                    year = shiftedYear + 1;
-                }
                 counter++;
             }
             CalcDelta();
@@ -67,16 +62,28 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         }
         public double CalcY(double x)
         {
-            if (x < startOfWorking - 1)
+            if (x < startOfWorking)
                 return 0;
             var convertedX = (int)Math.Floor(x);
+            for (int i = 0; i < convertedX; i++)
+            {
+                if (!data.ContainsKey(i))
+                    CalcY(i);
+            }
             if (!data.ContainsKey(convertedX))
             {
-                var lastDelta = (data.ContainsKey(convertedX - 1) && data.ContainsKey(convertedX - 2)) ? data[convertedX - 1] - data[convertedX - 2] : 0;
-                var shift = (lastDelta == 0 || avgDelta + lastDelta == 0) ? 0 : (avgDelta + (avgDelta / (avgDelta + lastDelta)));
-                Deltas.Add(shift);
-                data.Add(convertedX, data.LastOrDefault().Value + (int)Math.Floor(shift));
-                CalcDelta();
+                if (data.Count(pair => pair.Key > convertedX) > 0)
+                {
+                    var difference = data.First(pair => pair.Key >= convertedX).Value - data[convertedX - 1];
+                    var keyDifference = data.First(pair => pair.Key >= convertedX).Key - (convertedX - 1);
+                    var shift = difference / keyDifference;
+                    Deltas.Add(shift);
+                    data.Add(convertedX, data[convertedX - 1] + (int)Math.Floor(shift));
+                    CalcDelta();
+                }
+                else
+                    data.Add(convertedX, data[convertedX - 1] + avgDelta);
+                
             }
             return data[convertedX];
         }

@@ -41,7 +41,7 @@
                 $("#saveButton").prop("disabled", false);
             }
             else {
-                $("span[data-valmsg-for='Name']").addClass("glyphicon glyphicon-remove failure");
+                $("span[data-valmsg-for='Name']").attr("data-toggle", "tooltip").attr("title", localStrings.ErrorValidationNameTooltip).attr("data-placement", "bottom").addClass("glyphicon glyphicon-remove failure");
                 res = false;
                 $("#saveButton").prop("disabled", true);
             }

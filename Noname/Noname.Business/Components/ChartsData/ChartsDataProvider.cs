@@ -130,14 +130,20 @@ namespace Abitcareer.Business.Components.ChartsData
             var x = new List<int>();
             var y = new List<int>();
 
-            foreach (var key in speciality.Salaries.Keys)
+            var tmp = speciality.Salaries.SkipWhile(pair => pair.Value == -1).ToList();
+
+            foreach (var item in speciality.Salaries)
             {
-                int value;
-                speciality.Salaries.TryGetValue(key, out value);
-                if (value > 0)
+                int value = item.Value;
+                x.Add(item.Key);
+                   
+                if (value >= 0)
                 {
-                    x.Add(key);
                     y.Add(value);
+                }
+                else
+                {
+                    y.Add(tmp.First().Value);
                 }
             }
             if (polinom + 1 >= x.Count)
