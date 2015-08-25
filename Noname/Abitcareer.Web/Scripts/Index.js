@@ -154,6 +154,10 @@ function BindHandler() {
         $("#partialView").hide(0);
         e.preventDefault();
     });
+    $("#exit").click(function (e) {
+        $("#partialView").hide(0);
+        e.preventDefault();
+    });
 }
 
 
