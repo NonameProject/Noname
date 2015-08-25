@@ -117,7 +117,7 @@
             $.get('[Route:editSpeciality]', { id: $(this).attr('id') }, function (data) {
                 if (!data) {
                     settings.partialView.hide(0);
-                    Notificate('[Resx:SpecialityOpenFailed]');
+                    NotificationApi.Failure('[Resx:SpecialityOpenFailed]');
                 }
                 else {
                     settings.inner.css('top', 0);
@@ -238,7 +238,7 @@
 
             $.post(url, data, function (d) {
                 if (d) {
-                    Notificate(specialityName + localStrings.SpecialityChangeSuccess);
+                    NotificationApi.Success(specialityName + localStrings.SpecialityChangeSuccess);
                     settings.partialView.hide();
                     var card = $('#' + id);
                     if (card.length) card.replaceWith(d);
@@ -247,7 +247,7 @@
                     resize();
                 }
                 else {
-                    Notificate(specialityName + localStrings.SpecialityChangeFailed);
+                    NotificationApi.Failure(specialityName + localStrings.SpecialityChangeFailed);
                 }
 
             });
@@ -308,11 +308,11 @@
                     type: "POST",
                     data: { id: id },
                     success: function (name) {
-                        Notificate("[" + name + "] - [Resx:SpecialityRemoveSuccess]");
+                        NotificationApi.Success("[" + name + "] - [Resx:SpecialityRemoveSuccess]");
                         $("#" + id).remove();
                     },
                     error: function () {
-                        Notificate("[" + name + "] - [Resx:SpecialityRemoveFailed]");
+                        NotificationApi.Failure("[" + name + "] - [Resx:SpecialityRemoveFailed]");
                     }
                 });
             settings.deleteConfirm.hide(0);
