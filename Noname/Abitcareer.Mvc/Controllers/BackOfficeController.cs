@@ -80,11 +80,6 @@ namespace Abitcareer.Web.Components
             return Json(specialityManager.IsSpecialityNameAvailable(name));
         }
 
-        public JsonResult IsSpecialityEnglishNameAvailable(string englishName)
-        {
-            return Json(specialityManager.IsSpecialityEnglishNameAvailable(englishName), JsonRequestBehavior.AllowGet);
-        }
-
         [HttpPost]
         public ActionResult EditSpeciality(SpecialityViewModel editedModel)
         {
