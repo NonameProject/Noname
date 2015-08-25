@@ -16,6 +16,20 @@
 
     payments = payments.Where(x => x != 0).ToList();
     var averagePaymentPerMonth = Math.Floor((payments.Count > 0) ? payments.Average() / 10 : 0);
+
+    int min = int.MaxValue, max = 0;
+    foreach (var val in Model.Salaries.Values)
+    {
+        if (val < min && val != -1)
+        {
+            min = val;
+        }
+        if (val > max)
+        {
+            max = val;
+        }
+    }
+    min = min == int.MaxValue ? 0 : min;
 }
 <article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
     @if (Model.Name.Length>37)
@@ -48,7 +62,7 @@
 </div>
 <div class="sal-pal-wrap">
     <div class="salary-wrapper">
-        <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value) @LocalizationResx.UAH</h4>
+        <h4>@min - @max @LocalizationResx.UAH</h4>
         <h5>@LocalizationResx.TextCardPayment</h5>
     </div>
     <div class="payment-wrapper">
