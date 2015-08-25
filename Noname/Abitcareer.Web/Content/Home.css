@@ -240,8 +240,8 @@ article.left {
 {
     line-height:0.4;
     font-size:14px;
-    top:-35px;
-    height:675px;
+    top:-53px;
+    height:630px;
 }
 input[type='number'] 
 {
@@ -260,7 +260,7 @@ input#exitButton {
 }
 div#buttons {
     position: relative;
-    top: 87px;
+    top: 64px;
     left: 230px;
 }
 input#exitButton {
@@ -276,6 +276,7 @@ button#calculate {
 #nameOfSpeciality {
     line-height:1.3;
 }
-#reset {
-    background-color:white;
+button#reset {
+   background-color: rgba(244, 245, 249, 0.01);
+color: black;
 }

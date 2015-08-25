@@ -175,4 +175,4 @@ nav ul a
     input[type='number'] {
 -moz-appearance: textfield;
 }
-
+label{margin-bottom:1px;}
