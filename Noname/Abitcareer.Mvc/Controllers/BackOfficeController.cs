@@ -1,18 +1,11 @@
 ﻿using Abitcareer.Business.Components.Managers;
 using Abitcareer.Business.Models;
+using Abitcareer.Core;
 using Abitcareer.Mvc.ViewModels.LocalizedViewModels;
-using Abitcareer.NHibernateDataProvider.Data_Providers;
-using CultureEngine;
 using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Xml.Linq;
-using Abitcareer.Business.Components.Translation;
-using System.Threading;
 using System.Linq;
-using Abitcareer.Core;
-using Abitcareer.Business.Components.Lucene;
-using System.IO;
+using System.Web.Mvc;
 
 namespace Abitcareer.Web.Components
 {
