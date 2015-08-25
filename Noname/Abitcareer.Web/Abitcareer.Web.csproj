@@ -596,7 +596,6 @@
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.woff" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.ttf" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.eot" />
-    <Content Include="Content\fonts\flaticon.woff" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
