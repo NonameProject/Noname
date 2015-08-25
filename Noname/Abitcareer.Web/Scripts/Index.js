@@ -94,8 +94,8 @@ var module = function () {
         butt.prop('disabled', false);
         if ($("#commit").css("display") != "none") {
             $(".toFade").fadeToggle(500);
-            $("#chart-container").fadeToggle(500);            
-            $(".advanced").fadeToggle(500);
+            $("#chart-container").fadeToggle(500);
+            $(".advancedButton").fadeToggle(500);
         }
 
         ChartApi.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
@@ -148,11 +148,22 @@ var module = function () {
 function BindHandler() {
     $('#editor').submit(function (e) {
         module.drawAdvanced();
+        if ($("#reset").css("display") == "none")
+            $("#reset").fadeToggle();
         e.preventDefault();
     });
     $("#exitButton").click(function (e) {
         $("#partialView").hide(0);
         e.preventDefault();
+    });
+    $("#exit").click(function (e) {
+        $("#partialView").hide(0);
+        e.preventDefault();
+    });
+    $("#reset").on("click", function () {
+        if ($("#reset").css("display") != "none")
+            $("#reset").hide(0);
+        module.draw();
     });
 }
 
@@ -185,16 +196,27 @@ $(function () {
     }
     
     $("#spec").on("change", function () {
-        if ($("#commit").css("display") == "none")            
+        if ($("#commit").css("display") == "none")
+        {
             module.draw();
+            if ($("#reset").css("display") != "none")
+                $("#reset").hide(0);
             isNewData = true;
+        }            
     });
 
-    $(".advancedButton").on("click", function () {
+    $(document).on('click', function (event) {
+        if ($(event.target).closest("#inner").length) return;
+        $("#partialView").hide();
+        event.stopPropagation();
+    });
+
+    $(".advancedButton").on("click", function (event) {
         $("#js-loading-screen").addClass("active");
         var inner = $("#inner");
         var partialView = $("#partialView");
         partialView.show(0);
+        event.stopPropagation();
         if (isNewData) {
             $.get("[Route:GetAdvancedSpeciality]", { id: $(".advancedButton").attr("id") }, function (data) {
                 if (!data) {
@@ -214,9 +236,7 @@ $(function () {
         else {
             $("#js-loading-screen").removeClass("active");
         }
-    });
-
-    $("#reset").on("click", module.draw);
+    }); 
 
     $("#commit").on("click", module.draw);
 })

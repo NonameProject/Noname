@@ -154,7 +154,7 @@
     <value>Salary</value>
   </data>
   <data name="xChartAxisCaption" xml:space="preserve">
-    <value>Money (UAH)</value>
+    <value>Money (UAH./month)</value>
   </data>
   <data name="yChartAxisCaption" xml:space="preserve">
     <value>Time (years)</value>
@@ -214,7 +214,7 @@
     <value>st</value>
   </data>
   <data name="Salaries" xml:space="preserve">
-    <value>Salaries</value>
+    <value>Salaries per month</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>

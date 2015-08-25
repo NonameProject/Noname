@@ -12,6 +12,12 @@
     }
 }
 
+#greeting-wrapper {
+    width: 35%;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
 .highcharts-title
 {
     font-size: small !important;
@@ -25,6 +31,7 @@
     top: 30px;
     width: 200px;
 }
+
 
 .chartWrapper
 {
@@ -80,10 +87,14 @@ select
 
 #greeting
 {
-    width: 450px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
+
+    #greeting p {
+        width: 100%;
+    }
 
 @media (max-width: 800px){
     .chartWrapper
@@ -197,8 +208,14 @@ a#commit {
     padding: 7px 12px;
 }
 
+#spec {
+    display:inline-block;
+}
+
+
 .advanced {
     display:none;
+    margin-top: -5px;
 }
 
 #partialView {
