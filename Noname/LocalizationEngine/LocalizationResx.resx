@@ -381,4 +381,7 @@
   <data name="ValidationYearOfStartWorking" xml:space="preserve">
     <value>значення має бути в межах від 0 до 5</value>
   </data>
+  <data name="ErrorValidationNameTooltip" xml:space="preserve">
+    <value>Спеціальність з таким іменем вже існує</value>
+  </data>
 </root>
