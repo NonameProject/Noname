@@ -381,4 +381,7 @@
   <data name="ValidationYearOfStartWorking" xml:space="preserve">
     <value>value should be in the range of 0 to 5</value>
   </data>
+  <data name="ErrorValidationNameTooltip" xml:space="preserve">
+    <value>Specialty of the same name already exists</value>
+  </data>
 </root>
