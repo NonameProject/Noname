@@ -177,9 +177,9 @@
                 $('#Salaries__' + id[i] + '_').css('color', 'transparent').val(-1);
             }
         };
-        if ($('#Prices__TopUniversityPrice_').val() == '') $('#Prices__TopUniversityPrice_').css('color', 'transparent').val('0');
-        if ($('#Prices__MiddleUniversityPrice_').val() == '') $('#Prices__MiddleUniversityPrice_').css('color', 'transparent').val('0');
-        if ($('#Prices__LowUniversityPrice_').val() == '') $('#Prices__LowUniversityPrice_').css('color', 'transparent').val('0');
+        if ($('#Prices__TopUniversityPrice_').val() == '') $('#Prices__TopUniversityPrice_').css('color', 'transparent').val('-1');
+        if ($('#Prices__MiddleUniversityPrice_').val() == '') $('#Prices__MiddleUniversityPrice_').css('color', 'transparent').val('-1');
+        if ($('#Prices__LowUniversityPrice_').val() == '') $('#Prices__LowUniversityPrice_').css('color', 'transparent').val('-1');
     };
 
     var isSpecialityNameAvailable = function()
@@ -297,9 +297,9 @@
                     $('#Salaries__' + id[i] + '_').val('');
                 }
             };
-            if ($('#Prices__TopUniversityPrice_').val() == '0') $('#Prices__TopUniversityPrice_').val('');
-            if ($('#Prices__MiddleUniversityPrice_').val() == '0') $('#Prices__MiddleUniversityPrice_').val('');
-            if ($('#Prices__LowUniversityPrice_').val() == '0') $('#Prices__LowUniversityPrice_').val('');
+            if ($('#Prices__TopUniversityPrice_').val() == '-1') $('#Prices__TopUniversityPrice_').val('');
+            if ($('#Prices__MiddleUniversityPrice_').val() == '-1') $('#Prices__MiddleUniversityPrice_').val('');
+            if ($('#Prices__LowUniversityPrice_').val() == '-1') $('#Prices__LowUniversityPrice_').val('');
             if ($('#StartOfWorking').val() == '0') $('#StartOfWorking').val('');
         },
 
