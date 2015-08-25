@@ -16,44 +16,64 @@
 
     payments = payments.Where(x => x != 0).ToList();
     var averagePaymentPerMonth = Math.Floor((payments.Count > 0) ? payments.Average() / 10 : 0);
+
+    int min = int.MaxValue, max = 0;
+    foreach (var val in Model.Salaries.Values)
+    {
+        if (val < min && val != -1)
+        {
+            min = val;
+        }
+        if (val > max)
+        {
+            max = val;
+        }
+    }
+    min = min == int.MaxValue ? 0 : min;
 }
 <article class="cardWrapper" id="@Model.Id" data-isauthenticated="@User.Identity.IsAuthenticated">
-    @if (Model.Name.Length>37)
-    {
-        <script>
-            $('#@Model.Id').first().attr("data-toggle", "tooltip");
-            $('#@Model.Id').first().attr("title", '@Model.Name');
-            $('#@Model.Id').first().attr("data-placement", "bottom");
-        </script>
-    }
-    <div class="side-logo" style="background: #F2F2F2 url(@Model.ImageLink); background-size: 50px; background-repeat: no-repeat;  background-position: 7px;">
-    </div>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div class="ttip">
-            <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>
-            <span>@LocalizationResx.PressToEdit</span>
-            <!--<div class="detailName">@Model.Name</div>-->
+    <div class ="inner">
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="ttip">
+                <button type="button" class="left delete close" onclick="SpecialityEditor.requestDeletion('@Model.Id', event)" id="close">×</button>
+                <span>@LocalizationResx.PressToEdit</span>
+                <!--<div class="detailName">@Model.Name</div>-->
+            </div>
+        }
+        else
+        {
+            <div class="ttip">
+                <span>@LocalizationResx.ToChart</span>       <!--<div class="detailName">@Model.Name</div>-->
+            </div>
+        }
+
+        @if (Model.Name.Length>37)
+        {
+            <script>
+                $('#@Model.Id').first().attr("data-toggle", "tooltip");
+                $('#@Model.Id').first().attr("title", '@Model.Name');
+                $('#@Model.Id').first().attr("data-placement", "bottom");
+            </script>
+        }
+
+        <div class="side-logo" style="background: #F2F2F2 url(@Model.ImageLink); background-size: 50px; background-repeat: no-repeat;  background-position: 7px;">
         </div>
-    }
-    else
-    {
-        <div class="ttip">
-            <span>@LocalizationResx.ToChart</span>       <!--<div class="detailName">@Model.Name</div>-->
-        </div>
-    }
-        <div class="col-md-4 card z-depth-2 specButton">
-<div class="name">
-    @Model.Name
-</div>
-<div class="sal-pal-wrap">
-    <div class="salary-wrapper">
-        <h4>@Model.Salaries.Min(x => x.Value) - @Model.Salaries.Max(x => x.Value) @LocalizationResx.UAH</h4>
-        <h5>@LocalizationResx.TextCardPayment</h5>
+        
+            <div class="col-md-4 card z-depth-2 specButton">
+    <div class="name">
+        @Model.Name
     </div>
-    <div class="payment-wrapper">
-        <h4>@averagePaymentPerMonth @LocalizationResx.UAH</h4>
-        <h5>@LocalizationResx.TextCardSalary</h5>
+    <div class="sal-pal-wrap">
+        <div class="salary-wrapper">
+            <h4>@min - @max @LocalizationResx.UAH</h4>
+            <h5>@LocalizationResx.TextCardPayment</h5>
+        </div>
+        <div class="payment-wrapper">
+            <h4>@averagePaymentPerMonth @LocalizationResx.UAH</h4>
+            <h5>@LocalizationResx.TextCardSalary</h5>
+        </div>
     </div>
 </div>
 </div>

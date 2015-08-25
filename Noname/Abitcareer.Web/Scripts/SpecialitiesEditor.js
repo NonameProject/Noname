@@ -2,7 +2,7 @@
 
     var settings = {},
         localStrings = {},
-        getSearchResultItemId = 0,
+        ItemId = 0,
         oldWidth = 0,
         saveThisSpecialityName = '',
         prevTop = 0;
@@ -71,27 +71,27 @@
     }
 
     var getSearchResult = function () {
-        clearTimeout(getSearchResultItemId);
+        clearTimeout(ItemId);
         setTimeout(function (settings) {
-            if (!settings.getSearchResult.val()) $("#getSearchResultclear").hide();
+            if (!settings.getSearchResult.val()) $("#searchclear").hide();
             else
-                $("#getSearchResultclear").show();
+                $("#searchclear").show();
         }, 10, settings);
         $(this).removeClass('success', 100);
-        getSearchResultItemId = setTimeout(function () {
+        ItemId = setTimeout(function () {
             var value = settings.getSearchResult.val();
             if (!value || !value.trim()) {
-                $('#getSearchResult').addClass('success');
+                $('#search').addClass('success');
                 $(".cardWrapper").show(0);
                 return;
             }
             $.ajax(
                 {
-                    url: "[Route:getSearchResultForSpeaciality]",
+                    url: "[Route:searchForSpeaciality]",
                     type: "POST",
                     data: { name: value },
                     success: function (result) {
-                        $('#getSearchResult').addClass('success');
+                        $('#search').addClass('success');
                         $(".cardWrapper:not(#addCard)").hide(0);
                         for (var i = 0; i < result.length; i++) {
                             $("#" + result[i]).show(0);
@@ -262,8 +262,8 @@
             settings.partialView.hide();
         });
 
-        $("#getSearchResultclear").click(function () {
-            $("#getSearchResult").val('');
+        $("#searchclear").click(function () {
+            $("#search").val('');
             getSearchResult();
         });
 
@@ -326,7 +326,7 @@
 
             settings.exit = $("#exit");
 
-            settings.getSearchResult = $("#getSearchResult");
+            settings.getSearchResult = $("#search");
 
             settings.payment = $("ul.tuition-fee li input");
 

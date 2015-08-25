@@ -278,7 +278,14 @@ form button:disabled {
         box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.2);
     }
 
-.card:hover .ttip
+.cardWrapper .inner {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+.inner:hover {
+}
+.inner:hover .ttip
 {
     display:block;
 }
@@ -423,7 +430,7 @@ form button:disabled {
     text-align: center;
     top: 0;
     width: 100%;
-    z-index: 50;
+    z-index: 80;
 }
 
 .ttip span
@@ -474,6 +481,7 @@ background-color:inherit;
 }
 #addNew{
     cursor: pointer;
+    width: 100%;
 }
 
     #addNew

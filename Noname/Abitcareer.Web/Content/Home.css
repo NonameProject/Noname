@@ -15,7 +15,6 @@
 #greeting-wrapper {
     width: 35%;
     margin: 0 auto;
-    border: 1px solid red;
 }
 
 .highcharts-title
@@ -210,6 +209,7 @@ a#commit {
 
 #spec {
     display:inline-block;
+    width: 100% !important;
 }
 
 
@@ -258,7 +258,7 @@ article.left {
     line-height:0.4;
     font-size:14px;
     top:-53px;
-    height:630px;
+    height:585px;
 }
 input[type='number'] 
 {
@@ -277,8 +277,8 @@ input#exitButton {
 }
 div#buttons {
     position: relative;
-    top: 64px;
-    left: 230px;
+    top: 33px;
+    left: 235px;
 }
 input#exitButton {
     border-style:none;
@@ -328,4 +328,16 @@ button.close {
     color: #ffffff;
     text-shadow: 0 1px 0 #ffffff;
     opacity: 0.2;
+}
+input#StartOfWorking 
+{
+        height: 23px;;
+}
+h4#additionalCosts
+{
+    height:5px;
+}
+input#AdditionalIncome 
+{
+    height:20px;
 }
