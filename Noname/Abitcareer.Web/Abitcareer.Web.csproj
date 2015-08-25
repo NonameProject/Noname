@@ -533,6 +533,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chartsScript.js" />
+    <Content Include="Scripts\discardZero.js" />
     <Content Include="Scripts\errorhandler.js" />
     <Content Include="Scripts\googleAnalytics.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
