@@ -1,6 +1,8 @@
 ﻿
-function Chart() {
+
+var ChartApi = (function () {
     $(window).off('resize');
+
     var plotColors = ['rgba(234, 204, 102, .4)', 'rgba(234, 204, 102, .6)', 'rgba(234, 204, 102, .8)'],
         minHeight = 300, //px
         height = function () {
@@ -24,7 +26,7 @@ function Chart() {
 
         var s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y),
             t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
-        
+
         if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
             return {
                 x: p0_x + (t * s1_x),
@@ -37,53 +39,52 @@ function Chart() {
     };
 
     var tuneChart = function (chart) {
+    (function () {
+        var legend = $(chart.container).parent().siblings('.customLegend'),
+            fieldsets = legend.find('fieldset');
+        payment = legend.find('fieldset.payment');
 
-        (function () {
-            var legend = $(chart.container).parent().siblings('.customLegend'),
-                fieldsets = legend.find('fieldset');
-                payment = legend.find('fieldset.payment');
+        fieldsets.each(function (i, element) {
+            element = $(element);
+            var leg = element.find('legend').detach();
+            element.empty();
+            element.append(leg);
+        });
+        fieldsets = fieldsets.detach();
+        legend.empty();
+        legend.append(fieldsets);
 
-                fieldsets.each(function (i, element) {
-                    element = $(element);
-                    var leg = element.find('legend').detach();
-                    element.empty();
-                    element.append(leg);
-                });
-                fieldsets = fieldsets.detach();
-                legend.empty();
-                legend.append(fieldsets);
+        $.each(chart.series, function (j, data) {
+            item = '<div class="item serieName"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div>' + data.name + '</div>';
+            if (data.options.stack === 'payment' && payment.length)
+                payment.append(item);
+            else
+                legend.append(item);
 
-            $.each(chart.series, function (j, data) {
-                item = '<div class="item serieName"><div class="symbol" oldColor="' + data.color + '" style="background-color:' + data.color + '"></div>' + data.name + '</div>';
-                if (data.options.stack === 'payment' && payment.length)
-                    payment.append(item);
-                else
-                    legend.append(item);
+        });
 
-            });
-
-            var items = legend.find('.item');
-            items.click(function () {
-                var item = $(this),
-                    inx = $.inArray(this, items.toArray()),
-                    seria = chart.series[inx],
-                    symbol = item.find('.symbol');
-                item.toggleClass('nonVisible');
-                if (seria.visible) {
-                    seria.setVisible(false);
-                    symbol.css('backgroundColor', item.css('color'));
-                }
-                else {
-                    seria.setVisible(true);
-                    symbol.css('backgroundColor', symbol.attr('oldColor'));
-                }
-            });
-        })(); //fillLegend
+        var items = legend.find('.item');
+        items.click(function () {
+            var item = $(this),
+                inx = $.inArray(this, items.toArray()),
+                seria = chart.series[inx],
+                symbol = item.find('.symbol');
+            item.toggleClass('nonVisible');
+            if (seria.visible) {
+                seria.setVisible(false);
+                symbol.css('backgroundColor', item.css('color'));
+            }
+            else {
+                seria.setVisible(true);
+                symbol.css('backgroundColor', symbol.attr('oldColor'));
+            }
+        });
+    })(); //fillLegend
 
         var customizeIntersectedData = function () {
             var retData = [],
                 length = chart.series.length;
-            for (var i = 0; i < length-1; i++) {
+            for (var i = 0; i < length - 1; i++) {
                 var tmpData = addPointToLine(chart.series[length - 1].points, chart.series[i].points, chart.series[length - 1]);
                 for (var q = 0; q < tmpData.length; q++) {
                     retData.push(tmpData[q]);
@@ -94,7 +95,7 @@ function Chart() {
                 if (a.saveIsect.x > b.saveIsect.x)
                     return 1;
                 if (a.saveIsect.x === b.saveIsect.x)
-                    return 0;                
+                    return 0;
                 return -1;
             });
             var ticks = [];
@@ -102,7 +103,7 @@ function Chart() {
                 selectPoint(chart.series[length - 1], retData[i]);
                 ticks.push(retData[i].saveIsect.x.toFixed(1));
                 if (retData[i + 1]) retData[i].mx = retData[i + 1].saveIsect.x;
-                addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length-1]);
+                addPlotChart(retData[i], plotColors[i] || plotColors[plotColors.length - 1]);
             }
             chart.xAxis[0].update({ additionalTicks: ticks });
             chart.redraw();
@@ -122,7 +123,7 @@ function Chart() {
                 return;
             for (var p = 0; p < line.data.length; p++) {
                 if (line.data[p].x == retData.saveIsect.x && line.data[p].y == retData.saveIsect.y) {
-                    line.data[p].select(true,true);
+                    line.data[p].select(true, true);
                 };
             }
         };
@@ -151,25 +152,25 @@ function Chart() {
                 point.update();
             };
             for (i = 1; i < n0; i++) {
-                for (j = 1; j < n1; j++) {                    
+                for (j = 1; j < n1; j++) {
                     if (linePoints1[i - 1].y > mx)
                         mx = linePoints1[i - 1].y;
                     if (linePoints1[i].y > mx)
                         mx = linePoints1[i].y;
                     if (isect = getLineIntersection(linePoints1[i - 1], linePoints1[i],
-                                        linePoints2[j - 1], linePoints2[j])) {                        
+                                        linePoints2[j - 1], linePoints2[j])) {
                         if (isect.x === 0) {
                             prev = isect;
                             continue;
                         }
-                        if (prev && prev.x === 0 && isect.y>prev.y)
+                        if (prev && prev.x === 0 && isect.y > prev.y)
                             addIsect(prev);
                         addIsect(isect);
                     }
                 }
             }
             return ret;
-        };        
+        };
 
         chart.setSize($(".chartWrapper").width(), height(), false);
 
@@ -183,33 +184,32 @@ function Chart() {
         });
     };
 
+
     return {
         draw: function (conteiner, dataInput, title, yAxisCaption, xAxisCaption, dotCaption, valueTypes, colors, out) {
             var dataObj = [];
-            
+
             for (var i = 0; i < dataInput.length; i++) {
                 var numberOfZeros = 0;
                 for (var j = 0; j < dataInput[i].data.length - 1; j++) {
-                    if (dataInput[i].data[j].y == 0 && dataInput[i].stack) 
-                    {
+                    if (dataInput[i].data[j].y == 0 && dataInput[i].stack) {
                         numberOfZeros++;
                     }
                 }
-                if (conteiner == "#payments-container")
-                {
+                if (conteiner == "#payments-container") {
                     if (numberOfZeros == 0)
                         dataObj.push(dataInput[i]);
-                } 
+                }
                 else
                     if (numberOfZeros < 6) dataObj.push(dataInput[i]);
 
             }
-            
+
             if (colors != undefined && colors != null)
                 plotColors = colors;
 
             var max = 0;
-            for(var i = 0; i < dataObj.length; i++){
+            for (var i = 0; i < dataObj.length; i++) {
                 var data = dataObj[i].data;
                 for (var j = 0; j < data.length; j++) {
                     if (data[j].y && data[j].y > max) max = data[j].y; //for arr of objects
@@ -217,7 +217,7 @@ function Chart() {
                     else if (data[j] > max) max = data[j];   //for arr of y values
                 }
             }
-            var interval = Math.ceil(max/4000)*1000;
+            var interval = Math.ceil(max / 4000) * 1000;
 
             var unique = function (arr) {
                 var result = [];
@@ -251,7 +251,7 @@ function Chart() {
                     }
                 },
                 legend: {
-                    enabled:false
+                    enabled: false
                 },
                 title: {
                     text: title,
@@ -277,8 +277,8 @@ function Chart() {
                     //endOnTick: false,
                     //max: max + Math.round(max * 0.1),
                     min: 0,
-                    labels: {                
-                        formatter: function () {                         
+                    labels: {
+                        formatter: function () {
                             return this.value;
                         }
                     },
@@ -299,19 +299,19 @@ function Chart() {
                         }
                         return unique(positions);
                     },
-                    
+
                     tickmarkPlacement: 'on',
                     title: {
                         text: xAxisCaption
                     },
                     labels: {
                         autoRotationLimit: 100,
-                        maxStaggerLines: 1,                        
+                        maxStaggerLines: 1,
                         formatter: function () {
-                            if(+this.value !== 0)
+                            if (+this.value !== 0)
                                 return this.value;
                             return '';
-                        }                        
+                        }
                     },
                     min: 0,
                     startOnTick: true,
@@ -332,7 +332,7 @@ function Chart() {
                             yearStr = valueTypes.manyYears;
                         if (year - Math.ceil(year) === 0) {
                             year = Math.ceil(year);
-                            if (year < 10 || year > 20) {                                
+                            if (year < 10 || year > 20) {
                                 var last = year % 10;
                                 if (last === 1) yearStr = valueTypes.oneYear;
                                 else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
@@ -349,7 +349,7 @@ function Chart() {
                     },
                     series: {
                         dataLabels: {
-                            enabled: false,                            
+                            enabled: false,
                             align: 'left',
                             formatter: function () {
                                 if (this.point.myName !== 'crossPoint') return;
@@ -361,13 +361,14 @@ function Chart() {
                                     if (last === 1) yearStr = valueTypes.oneYear;
                                     else if (last > 1 && last < 5) yearStr = valueTypes.fewYears;
                                 }
-                                return this.y.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;                        
+                                return this.y.toFixed(0) + ' ' + valueTypes.UAH + ',  ' + year + ' ' + yearStr;
                             }
                         }
                     }
                 },
                 series: dataObj
-            }, function (chart) { tuneChart(chart)});
+            }, function (chart) { tuneChart(chart) });
         }
     };
-};
+})();
+

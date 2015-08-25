@@ -89,7 +89,6 @@ var module = function () {
         };
 
         window.location.hash = $("#spec").val();
-        var chart = new Chart();
 
         $(".advancedButton").attr("id", $("#spec").val());
         butt.prop('disabled', false);
@@ -99,7 +98,7 @@ var module = function () {
             $(".advanced").fadeToggle(500);
         }
 
-        chart.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
+        ChartApi.draw("#payments-container", [data1, data2, data3, data4], '[Resx:PaymentsCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:DotCaption]', valueTypes);
 
         data1.data = selectedSpec[3].data;
         data2.data = selectedSpec[4].data;
@@ -107,7 +106,7 @@ var module = function () {
         data4.data = selectedSpec[length - 1].data;
         data4.name = '[Resx:SummarySalary]';
 
-        chart.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
+        ChartApi.draw("#summary-container", [data1, data2, data3, data4], '[Resx:SummaryCaption]', '[Resx:xChartAxisCaption]', '[Resx:yChartAxisCaption]', '[Resx:BrinkCaption]', valueTypes, ['#C9F76F', '#C0F56E', '#ACF53D']);
 
         setHash();
     };
