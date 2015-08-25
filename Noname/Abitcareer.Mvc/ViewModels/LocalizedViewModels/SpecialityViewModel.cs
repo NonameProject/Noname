@@ -10,7 +10,7 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 {
     public class SpecialityViewModel : BaseViewModel
     {
-        [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ")]
+        [Remote("IsSpecialityNameAvailable", "BackOffice", ErrorMessage = " ", HttpMethod="POST")]
         public override string Name { get; set; }
 
         public string EnglishName { get; set; }
