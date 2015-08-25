@@ -205,11 +205,18 @@ $(function () {
         }            
     });
 
-    $(".advancedButton").on("click", function () {
+    $(document).on('click', function (event) {
+        if ($(event.target).closest("#inner").length) return;
+        $("#partialView").hide();
+        event.stopPropagation();
+    });
+
+    $(".advancedButton").on("click", function (event) {
         $("#js-loading-screen").addClass("active");
         var inner = $("#inner");
         var partialView = $("#partialView");
         partialView.show(0);
+        event.stopPropagation();
         if (isNewData) {
             $.get("[Route:GetAdvancedSpeciality]", { id: $(".advancedButton").attr("id") }, function (data) {
                 if (!data) {
