@@ -15,7 +15,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
         {
             var tmpData = data.OrderBy(x => x.Key).ToDictionary(x=>x.Key, x=>x.Value);
             var tmp = tmpData.TakeWhile(pair => tmpData.ContainsKey(pair.Key + 1)).ToList();
-            if (tmp.Count == 1)
+            if (tmp.Count <= 1)
             {
                 avgDelta = 0;
                 return;
@@ -82,8 +82,13 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
                     CalcDelta();
                 }
                 else
-                    data.Add(convertedX, data[convertedX - 1] + avgDelta);
-                
+                {
+                    if (Deltas.Count > 0)
+                        data.Add(convertedX, data[convertedX - 1] + (Deltas.LastOrDefault() * Math.Abs(avgDelta / Deltas.LastOrDefault())));
+                    else
+                        data.Add(convertedX, data[convertedX - 1]);
+                }
+                    
             }
             return data[convertedX];
         }

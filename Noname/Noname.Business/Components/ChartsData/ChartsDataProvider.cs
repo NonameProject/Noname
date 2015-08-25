@@ -135,15 +135,20 @@ namespace Abitcareer.Business.Components.ChartsData
             foreach (var item in speciality.Salaries)
             {
                 int value = item.Value;
-                x.Add(item.Key);
+                
                    
                 if (value >= 0)
                 {
                     y.Add(value);
+                    x.Add(item.Key);
                 }
                 else
                 {
-                    y.Add(tmp.First().Value);
+                    if (item.Key < speciality.Salaries.First(pair => pair.Value > -1).Key)
+                    {
+                        x.Add(item.Key);
+                        y.Add(tmp.First().Value);
+                    }
                 }
             }
             if (polinom + 1 >= x.Count)
