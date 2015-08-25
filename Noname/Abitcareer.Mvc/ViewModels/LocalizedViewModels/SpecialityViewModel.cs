@@ -44,9 +44,9 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[10] = -1;
             Salaries[20] = -1;
 
-            Prices["TopUniversityPrice"] = 0;
-            Prices["MiddleUniversityPrice"] = 0;
-            Prices["LowUniversityPrice"] = 0;
+            Prices["TopUniversityPrice"] = -1;
+            Prices["MiddleUniversityPrice"] = -1;
+            Prices["LowUniversityPrice"] = -1;
 
             Id = Guid.NewGuid().ToString();
         }

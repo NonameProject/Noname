@@ -208,8 +208,14 @@ a#commit {
     padding: 7px 12px;
 }
 
+#spec {
+    display:inline-block;
+}
+
+
 .advanced {
     display:none;
+    margin-top: -5px;
 }
 
 #partialView {
