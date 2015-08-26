@@ -24,6 +24,46 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
 
         public  Dictionary<string, int> Prices { get; set; }
 
+        public int TopPrice
+        {
+            get
+            {
+                int x;
+                Prices.TryGetValue("TopUniversityPrice", out x);
+                return x;
+            } set{
+                Prices["TopUniversityPrice"] = value;
+            }
+        }
+
+        public int MiddlePrice
+        {
+            get
+            {
+                int x;
+                Prices.TryGetValue("MiddleUniversityPrice", out x);
+                return x;
+            }
+            set
+            {
+                Prices["MiddleUniversityPrice"] = value;
+            }
+        }
+
+        public int LowPrice
+        {
+            get
+            {
+                int x;
+                Prices.TryGetValue("LowUniversityPrice", out x);
+                return x;
+            }
+            set
+            {
+                Prices["LowUniversityPrice"] = value;
+            }
+        }
+
         public int StartOfWorking { get; set; }
 
         public string ImageLink { get; set; }
@@ -44,9 +84,9 @@ namespace Abitcareer.Mvc.ViewModels.LocalizedViewModels
             Salaries[10] = -1;
             Salaries[20] = -1;
 
-            Prices["TopUniversityPrice"] = -1;
-            Prices["MiddleUniversityPrice"] = -1;
-            Prices["LowUniversityPrice"] = -1;
+            TopPrice = -1;
+            MiddlePrice = -1;
+            LowPrice = -1;
 
             Id = Guid.NewGuid().ToString();
         }

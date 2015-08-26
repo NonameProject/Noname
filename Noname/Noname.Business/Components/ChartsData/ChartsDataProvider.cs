@@ -30,12 +30,12 @@ namespace Abitcareer.Business.Components.ChartsData
 
         public List<List<Point>> PrepareData(Speciality speciality, short polinom)
         {
-            var topMonthPayments = GetMonthPayments((int)speciality.Prices["TopUniversityPrice"]);
-            var middleMonthPayments = GetMonthPayments((int)speciality.Prices["MiddleUniversityPrice"]);
-            var lowMonthPayments = GetMonthPayments((int)speciality.Prices["LowUniversityPrice"]);
-            var topSummaryPayments = GetSummaryPayments((int)speciality.Prices["TopUniversityPrice"]);
-            var middleSummaryPayments = GetSummaryPayments((int)speciality.Prices["MiddleUniversityPrice"]);
-            var lowSummaryPayments = GetSummaryPayments((int)speciality.Prices["LowUniversityPrice"]);
+            var topMonthPayments = GetMonthPayments((int)speciality.TopPrice);
+            var middleMonthPayments = GetMonthPayments((int)speciality.MiddlePrice);
+            var lowMonthPayments = GetMonthPayments((int)speciality.LowPrice);
+            var topSummaryPayments = GetSummaryPayments((int)speciality.TopPrice);
+            var middleSummaryPayments = GetSummaryPayments((int)speciality.MiddlePrice);
+            var lowSummaryPayments = GetSummaryPayments((int)speciality.LowPrice);
 
             result.Add(Point.InitList(topMonthPayments));
             result.Add(Point.InitList(middleMonthPayments));

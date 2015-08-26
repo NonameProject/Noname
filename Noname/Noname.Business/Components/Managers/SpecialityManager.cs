@@ -136,9 +136,9 @@ namespace Abitcareer.Business.Components.Managers
         {
             if (costs != 0)
             {
-                if (speciality.TopUniversityPrice != 0) speciality.TopUniversityPrice += costs;
-                if (speciality.MiddleUniversityPrice != 0) speciality.MiddleUniversityPrice += costs;
-                if (speciality.LowUniversityPrice != 0) speciality.LowUniversityPrice += costs;
+                if (speciality.TopPrice != 0) speciality.TopPrice += costs;
+                if (speciality.MiddlePrice != 0) speciality.MiddlePrice += costs;
+                if (speciality.LowPrice != 0) speciality.LowPrice += costs;
             }
             if (incomes != 0)
             {

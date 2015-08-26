@@ -1,20 +1,12 @@
 ﻿@model Abitcareer.Mvc.ViewModels.LocalizedViewModels.SpecialityViewModel
 @{
     var payments = new List<int>();
-    var paymentTop = 0; 
-    var paymentMid = 0;
-    var paymentLow = 0;
-    
-    Model.Prices.TryGetValue("TopUniversityPrice", out paymentTop);
-    payments.Add(paymentTop);
-    
-    Model.Prices.TryGetValue("MiddleUniversityPrice", out paymentMid);
-    payments.Add(paymentMid);
-    
-    Model.Prices.TryGetValue("LowUniversityPrice", out paymentLow);
-    payments.Add(paymentLow);
 
-    payments = payments.Where(x => x != 0).ToList();
+    payments.Add(Model.TopPrice);
+    payments.Add(Model.MiddlePrice);
+    payments.Add(Model.LowPrice);
+
+    payments = payments.Where(x => x != -1).ToList();
     var averagePaymentPerMonth = Math.Floor((payments.Count > 0) ? payments.Average() / 10 : 0);
 
     int min = int.MaxValue, max = 0;

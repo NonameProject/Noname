@@ -18,7 +18,7 @@ namespace Abitcareer.Business.Models
 
         public virtual string Image { get; set; }
 
-        public virtual decimal TopUniversityPrice
+        public virtual decimal TopPrice
         {
             get 
             {
@@ -30,7 +30,7 @@ namespace Abitcareer.Business.Models
             }
         }
 
-        public virtual decimal MiddleUniversityPrice
+        public virtual decimal MiddlePrice
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Abitcareer.Business.Models
             }
         }
 
-        public virtual decimal LowUniversityPrice
+        public virtual decimal LowPrice
         {
             get
             {
@@ -82,9 +82,9 @@ namespace Abitcareer.Business.Models
             Salaries[10] = 0;
             Salaries[20] = 0;
 
-            Prices["TopUniversityPrice"] = 0;
-            Prices["MiddleUniversityPrice"] = 0;
-            Prices["LowUniversityPrice"] = 0;
+            TopPrice = 0;
+            MiddlePrice = 0;
+            LowPrice = 0;
         }
 
         public virtual string CompressedSalaries
