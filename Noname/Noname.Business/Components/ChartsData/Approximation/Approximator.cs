@@ -78,7 +78,7 @@ namespace Abitcareer.Business.Components.ChartsData.Approximation
                     var keyDifference = data.First(pair => pair.Key >= convertedX).Key - (convertedX - 1);
                     var shift = difference / keyDifference;
                     Deltas.Add(shift);
-                    data.Add(convertedX, data[convertedX - 1] + (int)Math.Floor(shift));
+                    data.Add(convertedX, data[convertedX - 1] + (int)Math.Ceiling(shift));
                     CalcDelta();
                 }
                 else
