@@ -17,19 +17,32 @@ namespace Abitcareer.Mvc.Components
             model.Id = bindingContext.ValueProvider.GetValue("Id").AttemptedValue;
             model.Name = bindingContext.ValueProvider.GetValue("Name").AttemptedValue;
             model.EnglishName = String.Format("\"{0}\"", bindingContext.ValueProvider.GetValue("EnglishName").AttemptedValue);            
-            var dictionary = new Dictionary<int, int>();
+            var dictionary = new Dictionary<int, int?>();
             foreach (var item in model.Salaries)
             {
-                int.TryParse(bindingContext.ValueProvider.GetValue("Salaries.[" + item.Key + "]").AttemptedValue, out tmp);
-                dictionary[item.Key] = tmp;
+                var contextValue = bindingContext.ValueProvider.GetValue("Salaries.[" + item.Key + "]");
+                string val = contextValue == null ? null : contextValue.AttemptedValue;
+                if(string.IsNullOrEmpty(val))
+                    dictionary[item.Key] = null;
+                else {
+                    int.TryParse(val, out tmp);
+                    dictionary[item.Key] = tmp;
+                }
             }
             model.Salaries = dictionary;
 
-            var newDictionary = new Dictionary<string, int>();
+            var newDictionary = new Dictionary<string, int?>();
             foreach (var item in model.Prices)
             {
-                int.TryParse(bindingContext.ValueProvider.GetValue("Prices.[" + item.Key + "]").AttemptedValue, out tmp);
-                newDictionary[item.Key] = tmp;
+                var contextValue = bindingContext.ValueProvider.GetValue("Salaries.[" + item.Key + "]");
+                string val = contextValue == null ? null : contextValue.AttemptedValue;
+                if (string.IsNullOrEmpty(val))
+                    newDictionary[item.Key] = null;
+                else
+                {
+                    int.TryParse(val, out tmp);
+                    newDictionary[item.Key] = tmp;
+                }
             }
             model.Prices = newDictionary;
 

@@ -130,11 +130,11 @@ namespace Abitcareer.Business.Components.ChartsData
             var x = new List<int>();
             var y = new List<int>();
 
-            var tmp = speciality.Salaries.SkipWhile(pair => pair.Value == -1).ToList();
+            var tmp = speciality.Salaries.SkipWhile(pair => pair.Value == null).ToList();
 
             foreach (var item in speciality.Salaries)
             {
-                int value = item.Value;
+                int value = item.Value ?? -1;
                 
                    
                 if (value >= 0)
@@ -147,7 +147,7 @@ namespace Abitcareer.Business.Components.ChartsData
                     if (item.Key < speciality.Salaries.First(pair => pair.Value > -1).Key)
                     {
                         x.Add(item.Key);
-                        y.Add(tmp.First().Value);
+                        y.Add(tmp.First().Value ?? -1);
                     }
                 }
             }

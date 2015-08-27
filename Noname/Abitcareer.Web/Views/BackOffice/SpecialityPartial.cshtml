@@ -2,17 +2,17 @@
 @{
     var payments = new List<int>();
 
-    payments.Add(Model.TopPrice);
-    payments.Add(Model.MiddlePrice);
-    payments.Add(Model.LowPrice);
+    payments.Add(Model.TopPrice ?? 0);
+    payments.Add(Model.MiddlePrice ?? 0);
+    payments.Add(Model.LowPrice ?? 0);
 
-    payments = payments.Where(x => x != -1).ToList();
+    payments = payments.Where(x => x != null).ToList();
     var averagePaymentPerMonth = Math.Floor((payments.Count > 0) ? payments.Average() / 10 : 0);
 
-    int min = int.MaxValue, max = 0;
+    int? min = int.MaxValue, max = 0;
     foreach (var val in Model.Salaries.Values)
     {
-        if (val < min && val != -1)
+        if (val < min && val != null)
         {
             min = val;
         }

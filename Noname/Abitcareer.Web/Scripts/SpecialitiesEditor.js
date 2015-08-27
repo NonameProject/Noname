@@ -210,8 +210,6 @@
             if (!isSpecialityNameAvailable() || !isSalaryValuesValid() || !isPriceValuesValid())
                 return;
 
-            revertZeroSubmit();
-
             var data = settings.editor.serialize(),
                 url = settings.editor.attr("action"),
                 id = $('#Id').val(),

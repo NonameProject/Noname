@@ -18,10 +18,11 @@ namespace Abitcareer.Business.Components.Extensions
                         .Parse(str)
                         .Descendants("field")
                         .ToDictionary(x => x.Attribute("key").Value, x => x.Attribute("value").Value);
+            var type = typeof(TValue);
+            if (type == ( typeof(Nullable<int>) ))
+                type = typeof(int);
             foreach (var item in tempDict)
-	        {
-                result[(TKey)Convert.ChangeType(item.Key, typeof(TKey))] = (TValue)Convert.ChangeType(item.Value, typeof(TValue));		 
-	        }
+                result[(TKey)Convert.ChangeType(item.Key, typeof(TKey))] = (TValue) (string.IsNullOrEmpty(item.Value) ? null : Convert.ChangeType(item.Value, type));
             return result;
         }
     }

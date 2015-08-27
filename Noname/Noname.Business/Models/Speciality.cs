@@ -10,15 +10,15 @@ namespace Abitcareer.Business.Models
 
         public virtual int Code { get; set; }
 
-        public virtual Dictionary<int, int> Salaries { get; set; }
+        public virtual Dictionary<int, int?> Salaries { get; set; }
 
-        public virtual Dictionary<string, Decimal> Prices { get; set; }
+        public virtual Dictionary<string, int?> Prices { get; set; }
 
         public virtual int StartOfWorking { get; set; }
 
         public virtual string Image { get; set; }
 
-        public virtual decimal TopPrice
+        public virtual int? TopPrice
         {
             get 
             {
@@ -30,7 +30,7 @@ namespace Abitcareer.Business.Models
             }
         }
 
-        public virtual decimal MiddlePrice
+        public virtual int? MiddlePrice
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Abitcareer.Business.Models
             }
         }
 
-        public virtual decimal LowPrice
+        public virtual int? LowPrice
         {
             get
             {
@@ -70,9 +70,9 @@ namespace Abitcareer.Business.Models
         {
             StartOfWorking = 1;
 
-            Salaries = new Dictionary<int, int>();
+            Salaries = new Dictionary<int, int?>();
 
-            Prices = new Dictionary<string, Decimal>();
+            Prices = new Dictionary<string, int?>();
 
             Salaries[1] = 0;
             Salaries[2] = 0;
@@ -91,11 +91,11 @@ namespace Abitcareer.Business.Models
         {
             get
             {
-                return Salaries.ToXmlString<int, int>();
+                return Salaries.ToXmlString<int, int?>();
             }
             set
             {
-                Salaries = value.ToDictionary<int, int>();
+                Salaries = value.ToDictionary<int, int?>();
             }
         }
 
@@ -103,11 +103,11 @@ namespace Abitcareer.Business.Models
         {
             get
             {
-                return Prices.ToXmlString<string, Decimal>();
+                return Prices.ToXmlString<string, int?>();
             }
             set
             {
-                Prices = value.ToDictionary<string, Decimal>();
+                Prices = value.ToDictionary<string, int?>();
             }
         }
 
