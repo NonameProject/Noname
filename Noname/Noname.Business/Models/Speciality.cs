@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Abitcareer.Business.Components.Extensions;
+﻿using Abitcareer.Business.Components.Extensions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Abitcareer.Business.Models
 {
@@ -64,6 +65,11 @@ namespace Abitcareer.Business.Models
             {
                 Image = value ?? "unknown";
             }
+        }
+
+        public virtual bool HasInformation( )
+        {
+            return Salaries.Max(x => x.Value) != null && TopPrice != null;
         }
 
         public Speciality()

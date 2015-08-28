@@ -26,8 +26,7 @@ namespace Abitcareer.Web.Components
             if (!User.Identity.IsAuthenticated)
             {
                 specialities = from spec in specialities
-                               where (spec.Salaries.Max(x => x.Value) > 0 &&
-                                  spec.TopPrice > 0)
+                               where ( spec.HasInformation() )
                                select spec;
             }
             var tmp = specialities.Where(x =>
