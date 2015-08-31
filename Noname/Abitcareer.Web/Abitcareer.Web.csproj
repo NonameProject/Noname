@@ -653,7 +653,7 @@
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\BackOffice\AddSpeciality.cshtml" />
     <Content Include="Views\BackOffice\SpecialityPartial.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Salaries.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TutionFee.cshtml" />
     <Content Include="Views\BackOffice\Speciality.cshtml" />

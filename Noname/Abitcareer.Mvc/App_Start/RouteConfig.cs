@@ -193,7 +193,7 @@ namespace Abitcareer.Mvc
              routes.MapRoute(
                  "NotFound",
                  "{*url}",
-              new { controller = "Error", action = "Abc" }
+              new { controller = "Error", action = "NotFound" }
              );
         }
     }
