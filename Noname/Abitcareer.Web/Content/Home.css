@@ -15,6 +15,7 @@
 #greeting-wrapper {
     width: 35%;
     margin: 0 auto;
+    display: inline;
 }
 
 .highcharts-title
@@ -86,7 +87,7 @@ select
 
 #greeting
 {
-    width: 100%;
+    width: 500px;
     margin: 0 auto;
     text-align: center;
 }
@@ -227,6 +228,7 @@ a#commit {
     top: 0;
     width: 100%;
     z-index: 100;
+    left: 0;
 }
 
 #inner {
