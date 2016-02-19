@@ -1,0 +1,35 @@
+﻿@model StudentList.Models.Student
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="center-align">Список оцінок</h2>
+<table>
+    <tr>
+        <th>
+            Назва предмету
+        </th>
+        <th>
+            Оцінка
+        </th>       
+    </tr>
+
+@foreach (var item in Model.Marks) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>         
+            <div class="waves-effect waves-light btn function-button "> @Html.ActionLink("Редагувати", "Edit", new { id = item.Id, studentId = Model.Id }, new { @class = "actionLink" })</div>
+            <div class="waves-effect waves-light btn function-button red">@Html.ActionLink("Видалити", "Delete", new { id = item.Id, studentId = Model.Id }, new { @class = "actionLink" })</div>
+</td>
+    </tr>
+}
+
+</table>
+
+<div class="create-subject">@Html.ActionLink("Додати предмет", "Create", new { StudentId = Model.Id }, new { @class = "waves-effect waves-light btn" })</div>

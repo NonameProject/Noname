@@ -1,0 +1,59 @@
+﻿@model StudentList.Models.Student
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="center-align">Редагування</h2>
+
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Surname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Surname)
+            @Html.ValidationMessageFor(model => model.Surname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Faculty)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Faculty)
+            @Html.ValidationMessageFor(model => model.Faculty)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Group)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Group)
+            @Html.ValidationMessageFor(model => model.Group)
+        </div>
+
+        <div class="editor-label">Фото</div>
+        <div class="editor-field">
+            <input type="file" name="uploadImage" />
+        </div>
+
+        <p>
+            <button type="submit" class="waves-effect waves-light btn submit">Зберегти</button>
+            <button type="reset" class="waves-effect waves-light btn red">@Html.ActionLink("Відмінити", "List",null,new {  @class ="actionLink"})</button>
+        </p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

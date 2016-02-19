@@ -1,0 +1,36 @@
+﻿@model StudentList.Models.Mark
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3 class="center-align">Ви впевнені, що хочете видалити цей предмет?</h3>
+<div class="center big-text">
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.Name):</b>
+
+    @Html.DisplayFor(model => model.Name)
+</div>
+
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.Value):
+</b>
+
+    @Html.DisplayFor(model => model.Value)
+</div>
+
+    <div class="display-label"><b>
+    @Html.DisplayNameFor(model => model.StudentId):
+</b>
+
+    @Html.DisplayFor(model => model.StudentId)
+</div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="buttons">
+        <button type="submit" class="waves-effect waves-light btn submit red">Видалити</button>
+        <button type="reset" class="waves-effect waves-light btn ">@Html.ActionLink("Відмінити", "List", new { id = Model.StudentId }, new { @class = "actionLink" })</button>
+    </div>
+    }

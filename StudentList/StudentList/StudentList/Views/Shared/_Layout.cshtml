@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("/Content/materialize/css/materialize.min.css")
+    @Styles.Render("/Content/materialize/font/roboto")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <nav>
+        <div class="nav-wrapper blue-grey darken-4">
+            <a href=@Url.RouteUrl("studentList") class="brand-logo">StudentList</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down top-menu">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="@Url.RouteUrl("LogOff")">Ви увійшли як: @User.Identity.Name</a></li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Увійти", "Login", "Account")</li>
+                } 
+            </ul>
+        </div>
+    </nav>
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")

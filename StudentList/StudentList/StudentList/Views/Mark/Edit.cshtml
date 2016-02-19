@@ -1,0 +1,39 @@
+﻿@model StudentList.Models.Mark
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="center-align">Редагувати предмет</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Value)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Value)
+            @Html.ValidationMessageFor(model => model.Value)
+        </div>
+
+        <p>
+            <button type="submit" class="waves-effect waves-light btn submit">Зберегти</button>
+            <button type="reset" class="waves-effect waves-light btn red">@Html.ActionLink("Відмінити", "List", new { id = Model.StudentId }, new { @class = "actionLink" })</button>
+        </p>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

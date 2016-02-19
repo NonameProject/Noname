@@ -1,0 +1,52 @@
+﻿@model StudentList.Models.Student
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3 class="center-align">Ви впевнені, що хочете його видалити?</h3>
+<div class="center big-text">
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.Name):
+        </b>
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.Surname):
+        </b>
+
+        @Html.DisplayFor(model => model.Surname)
+    </div>
+
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.Faculty):
+        </b>
+
+        @Html.DisplayFor(model => model.Faculty)
+    </div>
+
+    <div class="display-label">
+        <b>
+            @Html.DisplayNameFor(model => model.Group):
+        </b>
+
+        @Html.DisplayFor(model => model.Group)
+    </div>
+    <div>
+        @Html.Raw("<img style='width:250px; height:200px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Photo) + "\" />")
+    </div>
+   </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="buttons">
+        <button type="submit" class="waves-effect waves-light btn red">Видалити</button>
+        <button type="reset" class="waves-effect waves-light btn " value="Save">@Html.ActionLink("Відмінити", "List",null, new { @class="actionLink"})</button>
+    </div>
+    }

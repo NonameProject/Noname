@@ -59,3 +59,38 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+nav .brand-logo {
+    margin-left: 7px;
+}
+.top-menu {
+    margin-right:7px;
+}
+a.actionLink {
+    color:whitesmoke;
+    display:block;
+    width:100px;
+}
+.main {
+    position: relative;
+    left: 300px;
+    font-size:14px;
+}
+h2.create-student {
+    text-align:center;
+}
+form {
+    width: 30%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.big-text {
+    font-size:20px;    
+    line-height: 40px;
+}
+.buttons {
+    margin-left: 25%;
+}
+.create-subject {
+    margin-top:18px;
+}

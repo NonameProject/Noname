@@ -1,0 +1,56 @@
+﻿@model IList<StudentList.Models.Student>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="center-align">Cписок студентів</h2>
+<div class="center-align">
+<table class="stripped main">
+    <tr>
+        <th>
+            Ім'я
+        </th>
+        <th>
+            Прізвище
+        </th>
+        <th>
+            Факультет
+        </th>
+        <th>
+            Група
+        </th>
+        <th>
+            Фотокартка
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group)
+            </td>
+            <td>
+                @Html.Raw("<img style='width:70px; height:70px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.Photo) + "\" />")
+            <td>
+                <div class="waves-effect waves-light btn function-button">@Html.ActionLink("Редагувати", "Edit", new { id = item.Id }, new { @class = "actionLink" }) </div>
+                <div class="waves-effect waves-light btn function-button">@Html.ActionLink("Детальніше", "List", "Mark", new { id = item.Id }, new { @class="actionLink"}) </div>
+                <div class="waves-effect waves-light btn function-button red">@Html.ActionLink("Видалити", "Delete", new { id = item.Id }, new { @class = "actionLink" })</div>
+            </td>
+        </tr>
+    }
+</table>
+    <br/>
+    <div><a class="waves-effect waves-light btn" href="@Url.RouteUrl("createStudent")">Cтворити нового студента</a></div>
+</div>
